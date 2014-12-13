@@ -1,0 +1,44 @@
+<keyframes>
+    <key>
+        <switchName>part1</switchName>
+        <max>00:00:59:258</max>
+        <time>00:00:02:086</time>
+        <value>0.524999976</value>
+    </key>
+    <key>
+        <switchName>rect2</switchName>
+        <max>00:02:28:286</max>
+        <time>00:01:17:123</time>
+        <value>0.574999988</value>
+    </key>
+    <key>
+        <switchName>perlin1</switchName>
+        <max>00:03:44:834</max>
+        <time>00:02:43:792</time>
+        <value>0.041666687</value>
+    </key>
+    <key>
+        <switchName>ribbon1</switchName>
+        <max>00:05:56:881</max>
+        <time>00:03:51:377</time>
+        <value>0.958333313</value>
+    </key>
+    <key>
+        <switchName>ribbon3</switchName>
+        <max>00:06:37:250</max>
+        <time>00:06:13:673</time>
+        <value>0.458333313</value>
+    </key>
+    <key>
+        <switchName>sin1</switchName>
+        <max>00:07:45:383</max>
+        <time>00:07:12:848</time>
+        <value>0.750000000</value>
+    </key>
+    <key>
+        <switchName />
+        <max>199591305:54:27:968</max>
+        <time>199591902:24:19:200</time>
+        <value>0.000000000</value>
+    </key>
+</keyframes>

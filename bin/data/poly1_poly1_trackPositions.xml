@@ -1,0 +1,242 @@
+<positions>
+    <element name="poly1.0.x">
+        <x>422.000000000</x>
+        <y>168.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.0.y">
+        <x>422.000000000</x>
+        <y>179.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.1.x">
+        <x>422.000000000</x>
+        <y>190.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.1.y">
+        <x>422.000000000</x>
+        <y>201.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.10.x">
+        <x>422.000000000</x>
+        <y>758.000000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.10.y">
+        <x>422.000000000</x>
+        <y>773.500000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.11.x">
+        <x>422.000000000</x>
+        <y>789.000000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.11.y">
+        <x>422.000000000</x>
+        <y>804.500000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.12.x">
+        <x>422.000000000</x>
+        <y>820.000000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.12.y">
+        <x>422.000000000</x>
+        <y>835.500000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.13.x">
+        <x>422.000000000</x>
+        <y>851.000000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.13.y">
+        <x>422.000000000</x>
+        <y>866.500000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.14.x">
+        <x>422.000000000</x>
+        <y>882.000000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.14.y">
+        <x>422.000000000</x>
+        <y>897.500000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.15.x">
+        <x>422.000000000</x>
+        <y>913.000000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.15.y">
+        <x>422.000000000</x>
+        <y>928.500000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.16.x">
+        <x>422.000000000</x>
+        <y>944.000000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.16.y">
+        <x>422.000000000</x>
+        <y>959.500000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.17.x">
+        <x>422.000000000</x>
+        <y>975.000000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.17.y">
+        <x>422.000000000</x>
+        <y>990.500000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.18.x">
+        <x>422.000000000</x>
+        <y>1006.000000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.18.y">
+        <x>422.000000000</x>
+        <y>1021.500000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.19.x">
+        <x>422.000000000</x>
+        <y>1037.000000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.19.y">
+        <x>422.000000000</x>
+        <y>1052.500000000</y>
+        <width>1018.000000000</width>
+        <height>9.500000000</height>
+    </element>
+    <element name="poly1.2.x">
+        <x>422.000000000</x>
+        <y>212.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.2.y">
+        <x>422.000000000</x>
+        <y>223.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.3.x">
+        <x>422.000000000</x>
+        <y>234.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.3.y">
+        <x>422.000000000</x>
+        <y>245.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.4.x">
+        <x>422.000000000</x>
+        <y>256.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.4.y">
+        <x>422.000000000</x>
+        <y>267.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.5.x">
+        <x>422.000000000</x>
+        <y>278.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.5.y">
+        <x>422.000000000</x>
+        <y>289.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.6.x">
+        <x>422.000000000</x>
+        <y>300.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.6.y">
+        <x>422.000000000</x>
+        <y>311.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.7.x">
+        <x>422.000000000</x>
+        <y>322.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.7.y">
+        <x>422.000000000</x>
+        <y>333.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.8.x">
+        <x>422.000000000</x>
+        <y>344.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.8.y">
+        <x>422.000000000</x>
+        <y>355.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.9.x">
+        <x>422.000000000</x>
+        <y>366.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+    <element name="poly1.9.y">
+        <x>422.000000000</x>
+        <y>377.000000000</y>
+        <width>1018.000000000</width>
+        <height>4.999999046</height>
+    </element>
+</positions>
