@@ -21,6 +21,10 @@ AnimatedStuff::~AnimatedStuff(){
     delete gui;
 }
 
+void AnimatedStuff::showGui(bool show){
+    gui->setVisible(show);
+}
+
 void AnimatedStuff::setTimelineActive(bool enable){
     if (enable){
         timeline.enableEvents();

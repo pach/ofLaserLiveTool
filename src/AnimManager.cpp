@@ -42,6 +42,7 @@ void AnimManager::setup() {
     
     load ();
     
+    animUIselectEvent = false;
 //    layer.setup(animList);
     
     
@@ -115,9 +116,9 @@ void AnimManager::setupGui(){
     
     gui->addSpacer();
     
-    gui->addRadio("anim list", animName, OFX_UI_ORIENTATION_VERTICAL);
-//    ofxUIDropDownList *ddl = gui->addDropDownList("animation list", animName);
-//    ddl->setAllowMultiple(false);
+//    gui->addRadio("anim list", animName, OFX_UI_ORIENTATION_VERTICAL);
+    ofxUIDropDownList *ddl = gui->addDropDownList("anim list", animName);
+    ddl->setAllowMultiple(false);
     
     gui->setHeight(ofGetWindowHeight());
     
@@ -150,8 +151,22 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         else if (name == "add SVG"){
             createNewAnimationWithTextbox("AnimatedSvg");
         }
+        
+        else if (name == "anim list"){
+            animUIselectEvent = true;
+            cout<<"select a new animtaiotn"<<endl;
+        }
+        newAnimBool = false;
     }
-    newAnimBool = false;
+    if (animUIselectEvent && name != "anim list") {
+        setCurrentSelected(name);
+        addActiveAnim(1, name);
+        
+        cout<<" run animation "<<name<<endl;
+        
+        animUIselectEvent = false;
+    }
+    
 }
 
 void AnimManager::createNewAnimationWithTextbox(string type){
@@ -199,20 +214,20 @@ void AnimManager::createNewAnimation(string type, string name){
         animName.push_back(name);
         
         // update animName gui menu
-//        ofxUIDropDownList *w = (ofxUIDropDownList *)gui->getWidget("animation list");
-//        w->addToggle(name);
-        ofxUIRadio *r = (ofxUIRadio *)gui->getWidget("anim list");
-        ofxUIToggle *toggle = new ofxUIToggle(name, false, r->getRect()->getWidth(), r->getRect()->getHeight());
-        r->addEmbeddedWidget(toggle);
-        r->addToggle(toggle);
-        r->setVisible(true);
-        gui->stateChange();
+        ofxUIDropDownList *w = (ofxUIDropDownList *)gui->getWidget("anim list");
+        w->addToggle(name);
         
-//        gui->removeWidget("anim list");
-//        gui->addRadio("anim list", animName, OFX_UI_ORIENTATION_VERTICAL);
-        
-//        r->addToggle(new ofxUIToggle(name, false, gui->getRect()->getWidth() , 40));
-        // marche pas!
+        /* to update radio group, doesn't work*/
+//        ofxUIRadio *r = (ofxUIRadio *)gui->getWidget("anim list");
+//        ofxUIToggle *toggle = new ofxUIToggle(name, false, r->getRect()->getWidth(), r->getRect()->getHeight());
+//        r->addEmbeddedWidget(toggle);
+//        r->addToggle(toggle);
+//        r->setVisible(true);
+//        r->getRect()->setHeight(500);
+//        r->calculatePaddingRect();
+//        r->stateChange();
+////        gui->autoSizeToFitWidgets();
+//        gui->stateChange();
         
         cout<<"create new anim "<<name<<" of type "<<type<<endl;
 //        vector<ofxUIToggle *> tg =r->getToggles();
@@ -258,6 +273,7 @@ void AnimManager::addActiveAnim(int trackId, string name){
     while (!found && it!=itEnd) {
         if ((*it)->getName() == name) {
             found = true;
+            (*it)->showGui(true);
             activeAnims.insert(pair<int, AnimatedStuff*>(trackId, *it));
             (*it)->start();
         }
@@ -268,6 +284,7 @@ void AnimManager::addActiveAnim(int trackId, string name){
 void AnimManager::removeActiveAnim(int trackId){
     map<int, AnimatedStuff*>::iterator itActive = activeAnims.find(trackId);
     if (itActive != activeAnims.end()){
+        itActive->second->showGui(false);
         activeAnims.erase(itActive);
     }
 }
@@ -411,7 +428,7 @@ void AnimManager::setGuiOffset(ofVec2f offset){
     
     // update offset pour chaque sous anim
     for (int i=0; i<allAnims.size(); i++) {
-        allAnims[i]->setGuiOffset(offset+ofVec2f(0., gui->getRect()->getHeight()));
+        allAnims[i]->setGuiOffset(offset+ofVec2f(gui->getRect()->x + 10., 0.));
     }
     
     cout<<"gui offset "<<guiOffset.x<<", "<<guiOffset.y<<endl;

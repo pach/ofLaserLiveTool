@@ -86,6 +86,8 @@ private:
     
     bool newAnimBool ;
     
+    bool animUIselectEvent;
+    
 //    LayerManager layer;
     
 };

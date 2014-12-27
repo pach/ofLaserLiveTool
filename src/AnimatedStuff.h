@@ -39,6 +39,8 @@ public:
     void clear();
     void setLoop(ofLoopType loop);
     
+    void showGui(bool show);
+    
     void setDrawWidth(int w);
     void setDrawHeight(int h);
     void setDrawOffset(ofVec2f offset);
