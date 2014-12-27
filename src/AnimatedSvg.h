@@ -20,8 +20,8 @@ public:
     
     void loadSvg(string filename);
     
-    void setup();
-    void update();
+    void setup (string name);
+    void update ();
     
 private:
     

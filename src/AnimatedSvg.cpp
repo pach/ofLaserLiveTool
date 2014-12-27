@@ -14,12 +14,19 @@ AnimatedSvg::AnimatedSvg(){
 }
 
 AnimatedSvg::~AnimatedSvg(){
-    
+     AnimatedStuff::~AnimatedStuff();
 }
 
 
-void AnimatedSvg::setup() {
+void AnimatedSvg::setup(string name) {
+    AnimatedStuff::setup(name);
+    type = "AnimatedSvg";
     
+    pos = ofVec2f (0.5f, 0.5f);
+    rot = 0.0f;
+    size = 0.0f;
+    
+    load();
 }
 
 void AnimatedSvg::update() {

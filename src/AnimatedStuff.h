@@ -87,6 +87,6 @@ protected:
     
     ofxUISuperCanvas *gui;
     
-    boolean useTimeline; // todo
+    bool useTimeline; // todo
     
 };

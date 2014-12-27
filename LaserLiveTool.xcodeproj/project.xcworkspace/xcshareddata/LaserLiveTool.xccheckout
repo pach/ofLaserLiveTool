@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>D3A5E293-49F6-4A7B-B7D8-A2302A1C88B0</string>
+	<string>83DCDE45-C2E9-49C9-B64B-91E03FB99285</string>
 	<key>IDESourceControlProjectName</key>
 	<string>LaserLiveTool</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -20,10 +20,10 @@
 		<string>https://github.com/YCAMInterlab/ofxTimecode.git</string>
 		<key>5CCE3EFE-CA0B-4666-8BC1-3552A3B2B290</key>
 		<string>https://github.com/pach/ofxIlda.git</string>
-		<key>95464BE8-A006-4328-AB3C-DA207B1C5DD9</key>
-		<string>https://github.com/pach/ofLaserAnimTool.git</string>
 		<key>A512E44D-08B6-4704-B620-A713036446AC</key>
 		<string>https://github.com/memo/ofxEtherdream.git</string>
+		<key>BC25042C-EA43-4464-AE78-4008577B3138</key>
+		<string>ssh://github.com/pach/ofLaserLiveTool.git</string>
 		<key>CB5AAE60-6E51-4911-B81E-81EB5E5E1AFA</key>
 		<string>https://github.com/Flightphase/ofxRange.git</string>
 		<key>D1A784D8-FE54-4E75-8D18-74B0D1696854</key>
@@ -45,10 +45,10 @@
 		<string>../../../../../addons/ofxTimecode</string>
 		<key>5CCE3EFE-CA0B-4666-8BC1-3552A3B2B290</key>
 		<string>../../../../../addons/ofxIlda</string>
-		<key>95464BE8-A006-4328-AB3C-DA207B1C5DD9</key>
-		<string>../..</string>
 		<key>A512E44D-08B6-4704-B620-A713036446AC</key>
 		<string>../../../../../addons/ofxEtherdream</string>
+		<key>BC25042C-EA43-4464-AE78-4008577B3138</key>
+		<string>../..</string>
 		<key>CB5AAE60-6E51-4911-B81E-81EB5E5E1AFA</key>
 		<string>../../../../../addons/ofxRange</string>
 		<key>D1A784D8-FE54-4E75-8D18-74B0D1696854</key>
@@ -57,20 +57,20 @@
 		<string>../../../../../addons/ofxTextInputField</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/pach/ofLaserAnimTool.git</string>
+	<string>ssh://github.com/pach/ofLaserLiveTool.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>95464BE8-A006-4328-AB3C-DA207B1C5DD9</string>
+	<string>BC25042C-EA43-4464-AE78-4008577B3138</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>95464BE8-A006-4328-AB3C-DA207B1C5DD9</string>
+			<string>BC25042C-EA43-4464-AE78-4008577B3138</string>
 			<key>IDESourceControlWCCName</key>
-			<string>LaserAnimTool_git</string>
+			<string>LaserLiveTool_git</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

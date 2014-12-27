@@ -14,10 +14,6 @@
 
 #include "ofxUI.h"
 
-enum AnimType {
-    
-};
-
 
 class AnimManager{
     
@@ -43,11 +39,7 @@ public:
     void setDrawWidth(int w);
     void setDrawHeight(int h);
     void setDrawOffset(ofVec2f offset);
-    
-    void setTlWidth(int w);
-    void setTlHeight(int h);
-    void setTlOffset(ofVec2f offset);
-    
+        
     void setGuiOffset(ofVec2f offset);
     
     void load();
@@ -56,15 +48,9 @@ public:
     void setupAnimatedList();
     void setupGui();
     
-    void addAnimatedPoly();
-    void addAnimatedCircle();
-    
     vector<ofPolyline> getPolylines();
     
     void guiEvent(ofxUIEventArgs &e);
-    void animFired(ofxTLSwitchEventArgs& args);
-    void trackGainFocused(ofxTLTrackEventArgs &args);
-    void trackLostFocused(ofxTLTrackEventArgs &args);
     
     void hasClicked (ofMouseEventArgs &e);
     
@@ -75,15 +61,12 @@ public:
     void createNewAnimation(string type, string name);
     void createNewAnimationWithTextbox(string type);
     
-    ofxTimeline timeline;
-    
 private:
     vector<AnimatedStuff*> allAnims;
     map<int, AnimatedStuff*> activeAnims;
     
-    bool updateSelected;
+//    bool updateSelected;
     
-    ofxTLSwitches * curTrackSelected;
     AnimatedStuff * curSelected;
     
     int nbLayer;
@@ -94,7 +77,7 @@ private:
     int drawH;
     ofVec2f drawOffset;
     ofVec2f guiOffset;
-    bool isTimelineActive;
+//    bool isTimelineActive;
 
     map<int, AnimatedStuff*>::iterator itActive;
     map<int, AnimatedStuff*>::iterator itActiveEnd;
@@ -102,5 +85,7 @@ private:
     vector<string>animName;
     
     bool newAnimBool ;
+    
+//    LayerManager layer;
     
 };

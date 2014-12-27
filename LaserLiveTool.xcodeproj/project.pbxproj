@@ -29,7 +29,7 @@
 		856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9604B925D32EE39065747725 /* ofxBaseGui.cpp */; };
 		85A41526FDFA1A8CDAEE81F7 /* ofxEasingQuart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 882494DB324414B7B31DB11C /* ofxEasingQuart.cpp */; };
 		87C50BA2BBD5B23272DAA6D5 /* etherdream.c in Sources */ = {isa = PBXBuildFile; fileRef = E472D66E13960563DF74BB41 /* etherdream.c */; };
-		8C2BD7521A3C92CC005B9707 /* LayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C2BD7501A3C92CC005B9707 /* LayerManager.cpp */; };
+		8C1235941A4E17A900AA9357 /* LayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C1235921A4E17A900AA9357 /* LayerManager.cpp */; };
 		8C31198A199411C1000FAED9 /* AnimatedSinus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C311988199411C1000FAED9 /* AnimatedSinus.cpp */; };
 		8C39599519CD8524001697BF /* AnimatedPerlinLines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C39599319CD8524001697BF /* AnimatedPerlinLines.cpp */; };
 		8C60190C19CDD80A00F16199 /* AnimatedRibbon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C60190A19CDD80A00F16199 /* AnimatedRibbon.cpp */; };
@@ -243,8 +243,8 @@
 		89449E3044D456F7DE7BEA14 /* ofxPanel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPanel.h; path = ../../../addons/ofxGui/src/ofxPanel.h; sourceTree = SOURCE_ROOT; };
 		89D5795EEC647196E421147A /* ofxIldaFrame.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxIldaFrame.h; path = ../../../addons/ofxIlda/src/ofxIldaFrame.h; sourceTree = SOURCE_ROOT; };
 		8AF5CDE1B5F658D7DE6849D5 /* svgtiny.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = svgtiny.h; path = ../../../addons/ofxSvg/libs/svgTiny/src/svgtiny.h; sourceTree = SOURCE_ROOT; };
-		8C2BD7501A3C92CC005B9707 /* LayerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayerManager.cpp; sourceTree = "<group>"; };
-		8C2BD7511A3C92CC005B9707 /* LayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerManager.h; sourceTree = "<group>"; };
+		8C1235921A4E17A900AA9357 /* LayerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayerManager.cpp; sourceTree = "<group>"; };
+		8C1235931A4E17A900AA9357 /* LayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerManager.h; sourceTree = "<group>"; };
 		8C311988199411C1000FAED9 /* AnimatedSinus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedSinus.cpp; sourceTree = "<group>"; };
 		8C311989199411C1000FAED9 /* AnimatedSinus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedSinus.h; sourceTree = "<group>"; };
 		8C39599319CD8524001697BF /* AnimatedPerlinLines.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedPerlinLines.cpp; sourceTree = "<group>"; };
@@ -1458,8 +1458,8 @@
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				8C8FDE5D1937902900662718 /* AnimManager.cpp */,
 				8C8FDE5E1937902900662718 /* AnimManager.h */,
-				8C2BD7501A3C92CC005B9707 /* LayerManager.cpp */,
-				8C2BD7511A3C92CC005B9707 /* LayerManager.h */,
+				8C1235921A4E17A900AA9357 /* LayerManager.cpp */,
+				8C1235931A4E17A900AA9357 /* LayerManager.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1618,7 +1618,7 @@
 				8C8FDE2C193730FA00662718 /* ofxTLImageSequenceFrame.cpp in Sources */,
 				8C8F7C421938CA82005A2D28 /* ofxUIMultiImageToggle.cpp in Sources */,
 				8C8F7C561938CA82005A2D28 /* ofxUIWidgetWithLabel.cpp in Sources */,
-				8C2BD7521A3C92CC005B9707 /* LayerManager.cpp in Sources */,
+				8C1235941A4E17A900AA9357 /* LayerManager.cpp in Sources */,
 				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,
 				8CC22BAA19D18A7A001DD026 /* ofxOscSender.cpp in Sources */,
 				8CC22BAE19D18A7A001DD026 /* OscOutboundPacketStream.cpp in Sources */,

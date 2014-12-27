@@ -51,7 +51,8 @@ void IldaControl::setup(){
     gui->add2DPad("offset", ofxUIVec2f(-1., 1), ofxUIVec2f(-1., 1.), &offset);
     gui->add2DPad("scale", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &scale);
     
-    gui->autoSizeToFitWidgets();
+//    gui->autoSizeToFitWidgets();
+    gui->setHeight(ofGetWindowHeight());
 //	ofAddListener(gui1->newGUIEvent,this,&ofApp::guiEvent);
     
 //    gui.add(pps.set("pps", 20000, 1000, 90000));
