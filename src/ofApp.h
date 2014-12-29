@@ -6,8 +6,6 @@
 #include "SvgLoader.h"
 
 //#define OSC_ASPI_ADDR "169.254.48.100"
-#define OSC_ASPI_ADDR "127.0.0.1"
-#define OSC_ASPI_PORT 10000
 #define OSC_LISTENING_PORT 10001
 
 #include "ofxOsc.h"

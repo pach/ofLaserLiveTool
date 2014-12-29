@@ -19,7 +19,7 @@ void ofApp::setup(){
     animManager.setGuiOffset(ofVec2f(ilda.getGuiWidth()+10., 0.));
     
     
-    oscSender.setup(OSC_ASPI_ADDR, OSC_ASPI_PORT);
+//    oscSender.setup(OSC_ASPI_ADDR, OSC_ASPI_PORT);
     oscTimeDelay = 0.2;
     lastOscTime = 0;
     
