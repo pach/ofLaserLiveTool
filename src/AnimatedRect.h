@@ -22,7 +22,7 @@ public:
     
 private:
     
-    ofVec2f center;
+    ofPoint center;
     float rot;
     float size;
     

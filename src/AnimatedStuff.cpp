@@ -25,28 +25,28 @@ void AnimatedStuff::showGui(bool show){
     gui->setVisible(show);
 }
 
-void AnimatedStuff::setTimelineActive(bool enable){
-    if (enable){
-        timeline.enableEvents();
-        ofLog(OF_LOG_NOTICE, "enabling events");
-    }else{
-        timeline.disableEvents();
-        ofLog(OF_LOG_NOTICE, "disabling events");
-    }
-}
+//void AnimatedStuff::setTimelineActive(bool enable){
+//    if (enable){
+//        timeline.enableEvents();
+//        ofLog(OF_LOG_NOTICE, "enabling events");
+//    }else{
+//        timeline.disableEvents();
+//        ofLog(OF_LOG_NOTICE, "disabling events");
+//    }
+//}
 
-void AnimatedStuff::setLoopMode(ofLoopType mode){
-    loopMode = mode;
-    timeline.setLoopType(mode);
-}
+//void AnimatedStuff::setLoopMode(ofLoopType mode){
+//    loopMode = mode;
+//    timeline.setLoopType(mode);
+//}
 
 
 void AnimatedStuff::setup(string name) {
-    timeline.setup();
-    timeline.setSpacebarTogglePlay(false);
-    timeline.setMinimalHeaders(true);
-    timeline.setShowInoutControl(false);
-    timeline.disableEvents();
+//    timeline.setup();
+//    timeline.setSpacebarTogglePlay(false);
+//    timeline.setMinimalHeaders(true);
+//    timeline.setShowInoutControl(false);
+//    timeline.disableEvents();
     
     gui = new ofxUISuperCanvas("");
     gui->disable();
@@ -57,7 +57,7 @@ void AnimatedStuff::setup(string name) {
     drawW = ofGetWidth();
     drawH = ofGetHeight();
     drawOffset = ofVec2f (0., 0.);
-    setLoopMode(OF_LOOP_NORMAL);
+//    setLoopMode(OF_LOOP_NORMAL);
 }
 
 void AnimatedStuff::draw(){
@@ -76,18 +76,18 @@ void AnimatedStuff::draw(){
     
     ofPopMatrix();
 }
-
-void AnimatedStuff::drawTimeline(){
-    if (isSelected){
-        timeline.draw();
-        gui->draw();
-    }
-}
+//
+//void AnimatedStuff::drawTimeline(){
+//    if (isSelected){
+//        timeline.draw();
+//        gui->draw();
+//    }
+//}
 
 void AnimatedStuff::setName(string newName){
     name = newName;
-    timeline.setName(name);
-    timeline.setPageName(name);
+//    timeline.setName(name);
+//    timeline.setPageName(name);
     gui->setName(name);
 }
 
@@ -95,34 +95,34 @@ void AnimatedStuff::load(){
     cout<<"loading animated stuff "<<name<<endl;
     
     gui->loadSettings(name+"_gui.xml");
-    timeline.loadTracksFromFolder(ofToDataPath(""));
+//    timeline.loadTracksFromFolder(ofToDataPath(""));
 }
 
 void AnimatedStuff::save(){
     cout<<"saving animated stuff "<<name<<endl;
-    timeline.save();
+//    timeline.save();
     gui->saveSettings(name+"_gui.xml");
 }
 
-void AnimatedStuff::play(){
-    timeline.play();
-}
-
-void AnimatedStuff::togglePlay(){
-    timeline.togglePlay();
-}
-
-void AnimatedStuff::stop(){
-    timeline.stop();
-}
-
-void AnimatedStuff::clear(){
-    timeline.clear();
-}
-
-void AnimatedStuff::setLoop(ofLoopType loop){
-    timeline.setLoopType(loop);
-}
+//void AnimatedStuff::play(){
+//    timeline.play();
+//}
+//
+//void AnimatedStuff::togglePlay(){
+//    timeline.togglePlay();
+//}
+//
+//void AnimatedStuff::stop(){
+//    timeline.stop();
+//}
+//
+//void AnimatedStuff::clear(){
+//    timeline.clear();
+//}
+//
+//void AnimatedStuff::setLoop(ofLoopType loop){
+//    timeline.setLoopType(loop);
+//}
 
 void AnimatedStuff::setDrawWidth(int w){
     drawW = w;
@@ -137,27 +137,27 @@ void AnimatedStuff::setDrawOffset(ofVec2f offset){
 }
 
 
-void AnimatedStuff::setTlWidth(int w){
-    timeline.setWidth(w);
-}
-
-void AnimatedStuff::setTlHeight(int h){
-    timeline.setHeight(h);
-}
-
-void AnimatedStuff::setTlOffset(ofVec2f offset){
-    timeline.setOffset(offset);
-}
+//void AnimatedStuff::setTlWidth(int w){
+//    timeline.setWidth(w);
+//}
+//
+//void AnimatedStuff::setTlHeight(int h){
+//    timeline.setHeight(h);
+//}
+//
+//void AnimatedStuff::setTlOffset(ofVec2f offset){
+//    timeline.setOffset(offset);
+//}
 
 void AnimatedStuff::setSelected(bool selected){
     isSelected = selected;
     if (isSelected) {
         gui->enable();
-        timeline.enableEvents();
+//        timeline.enableEvents();
         ofRegisterMouseEvents(this);
     }else{
         gui->disable();
-        timeline.disableEvents();
+//        timeline.disableEvents();
         ofUnregisterMouseEvents(this);
     }
 }
@@ -167,11 +167,11 @@ void AnimatedStuff::setGuiOffset(ofVec2f offset){
     gui->setHeight(ofGetHeight()-offset.y-150);
     cout<<"anim gui offset "<<offset.x<<", "<<offset.y<<endl;
 }
-
-void AnimatedStuff::setCurrentTime(unsigned long long time){
-    timeline.setCurrentTimeMillis(time);
-}
-
-void AnimatedStuff::setTimeLength(long time){
-    timeline.setDurationInMillis(time);
-}
+//
+//void AnimatedStuff::setCurrentTime(unsigned long long time){
+//    timeline.setCurrentTimeMillis(time);
+//}
+//
+//void AnimatedStuff::setTimeLength(long time){
+//    timeline.setDurationInMillis(time);
+//}

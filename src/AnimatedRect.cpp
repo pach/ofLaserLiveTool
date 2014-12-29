@@ -25,12 +25,15 @@ void AnimatedRect::setup(string name) {
     size = 0.0f;
     
     type = "AnimatedRect";
+    gui->add2DPad("position", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &center);
+    gui->addSlider("rotation", 0., 360., &rot);
+    gui->addSlider("size", 0., 1., &size);
 
-    timeline.addCurves(name+".x");
-    timeline.addCurves(name+".y");
-    timeline.addCurves(name+".rot");
-    timeline.addCurves(name+".size");
-    
+//    timeline.addCurves(name+".x");
+//    timeline.addCurves(name+".y");
+//    timeline.addCurves(name+".rot");
+//    timeline.addCurves(name+".size");
+//    
     ofPolyline p ;
     p.addVertex(center+ofVec2f(-size/2., -size/2.));
     p.addVertex(center+ofVec2f(size/2., -size/2.));
@@ -53,11 +56,11 @@ void AnimatedRect::setup(string name) {
 
 void AnimatedRect::update() {
     
-    center.x = timeline.getValue(name+".x");
-    center.y = timeline.getValue(name+".y");
-    rot = timeline.getValue(name+".rot");
-    rot = rot * 360.0;
-    size = timeline.getValue(name+".size");
+//    center.x = timeline.getValue(name+".x");
+//    center.y = timeline.getValue(name+".y");
+//    rot = timeline.getValue(name+".rot");
+//    rot = rot * 360.0;
+//    size = timeline.getValue(name+".size");
     
     ofPolyline p ;
     polylines.clear();

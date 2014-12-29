@@ -14,13 +14,14 @@
 
 #include "ofxXmlSettings.h"
 
-#include "AnimatedPolyline.h"
+//#include "AnimatedPolyline.h"
 #include "AnimatedSinus.h"
 #include "AnimatedRect.h"
-#include "AnimatedMultiline.h"
+//#include "AnimatedMultiline.h"
 #include "AnimatedPerlinLines.h"
 #include "AnimatedRibbon.h"
 #include "AnimatedSvg.h"
+#include "AnimatedLines.h"
 
 AnimManager::AnimManager(){
     curSelected = NULL;
@@ -107,12 +108,13 @@ void AnimManager::setupGui(){
     gui->addSpacer();
     newAnimBool = false;
     gui->addButton("add SVG", newAnimBool);
-    gui->addButton("add Polyline", newAnimBool);
-    gui->addButton("add Multiline", newAnimBool);
+//    gui->addButton("add Polyline", newAnimBool);
+//    gui->addButton("add Multiline", newAnimBool);
     gui->addButton("add Sinus", newAnimBool);
     gui->addButton("add Rect", newAnimBool);
     gui->addButton("add Perlin", newAnimBool);
     gui->addButton("add Ribbon", newAnimBool);
+    gui->addButton("add lines", newAnimBool);
     
     gui->addSpacer();
     
@@ -130,18 +132,18 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
 {
     string name = e.widget->getName();
     if (!newAnimBool){
-        if (name == "add Polyline"){
-            createNewAnimationWithTextbox("AnimatedPolyline");
-        }
-        else if (name == "add Sinus"){
+//        if (name == "add Polyline"){
+//            createNewAnimationWithTextbox("AnimatedPolyline");
+//        }
+        if (name == "add Sinus"){
             createNewAnimationWithTextbox("AnimatedSinus");
         }
         else if (name == "add Rect"){
             createNewAnimationWithTextbox("AnimatedRect");
         }
-        else if (name == "add Multiline"){
-            createNewAnimationWithTextbox("AnimatedMultiline");
-        }
+//        else if (name == "add Multiline"){
+//            createNewAnimationWithTextbox("AnimatedMultiline");
+//        }
         else if (name == "add Perlin"){
             createNewAnimationWithTextbox("AnimatedPerlin");
         }
@@ -150,6 +152,9 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         }
         else if (name == "add SVG"){
             createNewAnimationWithTextbox("AnimatedSvg");
+        }
+        else if (name == "add lines"){
+            createNewAnimationWithTextbox("AnimatedLines");
         }
         
         else if (name == "anim list"){
@@ -178,11 +183,11 @@ void AnimManager::createNewAnimation(string type, string name){
     
     if (name != ""){
         AnimatedStuff *a;
-        if (type == "AnimatedPolyline") {
-            a = new AnimatedPolyline();
-            a->setup(name);
-        }
-        else if (type == "AnimatedSinus") {
+//        if (type == "AnimatedPolyline") {
+//            a = new AnimatedPolyline();
+//            a->setup(name);
+//        }
+        if (type == "AnimatedSinus") {
             a = new AnimatedSinus();
             a->setup(name);
         }
@@ -190,10 +195,10 @@ void AnimManager::createNewAnimation(string type, string name){
             a = new AnimatedRect();
             a->setup(name);
         }
-        else if (type == "AnimatedMultiline") {
-            a = new AnimatedMultiline();
-            a->setup(name);
-        }
+//        else if (type == "AnimatedMultiline") {
+//            a = new AnimatedMultiline();
+//            a->setup(name);
+//        }
         else if (type == "AnimatedPerlin") {
             a = new AnimatedPerlinLines();
             a->setup(name);
@@ -204,6 +209,10 @@ void AnimManager::createNewAnimation(string type, string name){
         }
         else if (type == "AnimatedSvg") {
             a = new AnimatedSvg();
+            a->setup(name);
+        }
+        else if (type == "AnimatedLines") {
+            a = new AnimatedLines();
             a->setup(name);
         }
         a->setDrawWidth(drawW);
@@ -369,13 +378,13 @@ void AnimManager::draw() {
     
     if (curSelected != NULL){
         curSelected->draw();
-        curSelected->drawTimeline();
+//        curSelected->drawTimeline();
     }
 }
 
 void AnimManager::play(){
     for (int i=0; i<activeAnims.size(); i++) {
-        allAnims[i]->play();
+//        allAnims[i]->play();
     }
 }
 
@@ -387,7 +396,7 @@ void AnimManager::togglePlay(){
 void AnimManager::stop(){
 //    timeline.stop();
     for (int i=0; i<allAnims.size(); i++) {
-        allAnims[i]->stop();
+//        allAnims[i]->stop();
     }
 }
 

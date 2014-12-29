@@ -46,4 +46,6 @@ private:
     bool pointIsPicked;
     int pointPickedId;
     
+    ofxTimeline timeline;
+    
 };

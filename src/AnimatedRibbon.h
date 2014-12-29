@@ -20,13 +20,15 @@ public:
     void setup(string name);
     void update();
     
-    void addPointAtCurrentTime(float x, float y);
+//    void addPointAtCurrentTime(float x, float y);
     
 private:
     
     int nbMaxVertex;
+    float nbVertex;
     float noiseCoeff;
     float smoothCoeff;
+    float smooth;
     float noiseSpeed;
     float moveSpeed;
     bool useNoise;
@@ -35,6 +37,9 @@ private:
     
     float windX;
     float windY;
+
+    ofPoint wind;
+    ofPoint curPos;
     
     bool isRecording;
     

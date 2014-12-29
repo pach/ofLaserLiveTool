@@ -23,9 +23,9 @@ public:
     virtual void draw();
     virtual void start(){};
     
-    void setTimelineActive(bool enable);
+//    void setTimelineActive(bool enable);
     
-    void drawTimeline();
+//    void drawTimeline();
     void drawGui();
     
     void setName(string newName);
@@ -33,11 +33,11 @@ public:
     virtual void load() ;
     virtual void save() ;
     
-    void play();
-    void stop();
-    void togglePlay();
-    void clear();
-    void setLoop(ofLoopType loop);
+//    void play();
+//    void stop();
+//    void togglePlay();
+//    void clear();
+//    void setLoop(ofLoopType loop);
     
     void showGui(bool show);
     
@@ -45,9 +45,9 @@ public:
     void setDrawHeight(int h);
     void setDrawOffset(ofVec2f offset);
 
-    void setTlWidth(int w);
-    void setTlHeight(int h);
-    void setTlOffset(ofVec2f offset);
+//    void setTlWidth(int w);
+//    void setTlHeight(int h);
+//    void setTlOffset(ofVec2f offset);
     
     void setGuiOffset(ofVec2f offset);
     
@@ -65,9 +65,9 @@ public:
     inline virtual void mouseDragged(ofMouseEventArgs& e) {};
     inline virtual void mouseReleased(ofMouseEventArgs& e) {};
     inline virtual void mouseMoved(ofMouseEventArgs& e) {};
-
-    void setCurrentTime(unsigned long long time);
-    void setTimeLength(long time);
+//
+//    void setCurrentTime(unsigned long long time);
+//    void setTimeLength(long time);
     
     string getType(){ return type;};
 protected:
@@ -76,7 +76,7 @@ protected:
     
     vector<ofPolyline> polylines;
     
-    ofxTimeline timeline;
+//    ofxTimeline timeline;
     string name;
     
     int drawW;
@@ -89,6 +89,6 @@ protected:
     
     ofxUISuperCanvas *gui;
     
-    bool useTimeline; // todo
+//    bool useTimeline; // todo
     
 };

@@ -26,6 +26,7 @@ private:
     float noiseSpeedCoeff;
     int nbPoints;
     int nbPointsCoeff;
+    float nbVertex;
     int oldNbPoints;
     float noiseTime;
     
@@ -33,5 +34,8 @@ private:
     bool oldMode;
     
     bool setFirstShape;
+    
+    ofPoint scale;
+    ofPoint offset;
     
 };

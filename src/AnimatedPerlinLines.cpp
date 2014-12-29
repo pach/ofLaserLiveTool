@@ -27,20 +27,25 @@ void AnimatedPerlinLines::setup(string name) {
     lineMode = false;
     
     
-    timeline.addCurves("noise speed");
-    timeline.addCurves("line mode");
-    timeline.addCurves("nb points");
-    timeline.addCurves("scaleX");
-    timeline.addCurves("scaleY");
-    timeline.addCurves("offsetX");
-    timeline.addCurves("offsetY");
+//    timeline.addCurves("noise speed");
+//    timeline.addCurves("line mode");
+//    timeline.addCurves("nb points");
+//    timeline.addCurves("scaleX");
+//    timeline.addCurves("scaleY");
+//    timeline.addCurves("offsetX");
+//    timeline.addCurves("offsetY");
     
     gui->addSlider("noise speed coeff", 0., 0.5, &noiseSpeedCoeff);
     gui->addIntSlider("nb points coeff", 1, 20, &nbPointsCoeff);
+    gui->addSlider("noise speed", 0., 1., &noiseSpeed);
+    gui->addSlider("nb Point", 0., 1., &nbVertex);
+    gui->add2DPad("offset", ofVec2f(-0.5, 0.5), ofVec2f(-0.5, 0.5), &offset);
+    gui->add2DPad("scale", ofVec2f(0., 1.), ofVec2f(0., 1.), &scale);
 //    gui->addToggle("line mode", &lineMode);
     noiseTime = 0.;
     
     load();
+    nbPoints = nbVertex*nbPointsCoeff;
     
     oldNbPoints = nbPoints;
     oldMode = lineMode;
@@ -66,10 +71,11 @@ void AnimatedPerlinLines::setup(string name) {
 }
 
 void AnimatedPerlinLines::update() {
-    nbPoints = (int)(timeline.getValue("nb points")*nbPointsCoeff);
+//    nbPoints = (int)(timeline.getValue("nb points")*nbPointsCoeff);
+    nbPoints = nbVertex*nbPointsCoeff;
     if (nbPoints == 0) nbPoints = 1;
     
-    lineMode = (timeline.getValue("line mode")>0.5) ? true : false;
+//    lineMode = (timeline.getValue("line mode")>0.5) ? true : false;
     if (nbPoints != oldNbPoints){
         if (lineMode){
             if (nbPoints > oldNbPoints){
@@ -97,7 +103,7 @@ void AnimatedPerlinLines::update() {
         oldNbPoints = nbPoints;
     }
     
-    noiseSpeed = timeline.getValue("noise speed");
+//    noiseSpeed = timeline.getValue("noise speed");
     
     noiseTime += noiseSpeedCoeff*noiseSpeed;
     
@@ -129,10 +135,14 @@ void AnimatedPerlinLines::update() {
         oldMode = lineMode;
     }
     
-    float scaleX = timeline.getValue("scaleX");
-    float scaleY = timeline.getValue("scaleY");
-    float offsetX = ofMap(timeline.getValue("offsetX"), 0., 1., -0.5, 0.5);
-    float offsetY = ofMap(timeline.getValue("offsetY"), 0., 1., -0.5, 0.5);
+//    float scaleX = timeline.getValue("scaleX");
+//    float scaleY = timeline.getValue("scaleY");
+//    float offsetX = ofMap(timeline.getValue("offsetX"), 0., 1., -0.5, 0.5);
+//    float offsetY = ofMap(timeline.getValue("offsetY"), 0., 1., -0.5, 0.5);
+    float scaleX = scale.x;
+    float scaleY = scale.y;
+    float offsetX = offset.x;
+    float offsetY = offset.y;
     
     // set perlin points
     if (lineMode) {

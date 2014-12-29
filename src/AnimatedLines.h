@@ -9,18 +9,28 @@
 #pragma once
 
 #include "ofMain.h"
+#include "AnimatedStuff.h"
 
-
-class Lines{
+class AnimatedLines : public AnimatedStuff{
     
 public:
-    Lines();
-    ~Lines();
+    AnimatedLines();
+    ~AnimatedLines();
     
-    void setup();
+    void setup(string name);
     void update();
     void draw();
     
 private:
     
+    float nbLines;
+    float pos;
+    int dir;
+    
+    float speed;
+    
+    long lastTime;
+    int updateTime;
+    
+    bool reinitSpeed;
 };

@@ -7,25 +7,85 @@
 //
 
 
-#include "Lines.h"
+#include "AnimatedLines.h"
 
-Lines::Lines(){
+AnimatedLines::AnimatedLines(){
     
 }
 
-Lines::~Lines(){
-    
+AnimatedLines::~AnimatedLines(){
+    AnimatedStuff::~AnimatedStuff();
 }
 
 
-void Lines::setup() {
+void AnimatedLines::setup(string name) {
+    AnimatedStuff::setup(name);
     
+    type = "AnimatedLines";
+    
+    nbLines = 1;
+    pos = 0.5;
+    dir = 0;
+    speed = 0.;
+    reinitSpeed = false;
+    
+    updateTime = 50;
+    
+    gui->addSlider("nbLines", 1, 10, &nbLines);
+    gui->addSlider("pos", 0., 1., &pos);
+    gui->addIntSlider("dir", 0, 2, &dir);
+    
+    gui->addSlider("speed", -0.05, 0.05, &speed);
+    gui->addToggle("reinit speed", &reinitSpeed);
 }
 
-void Lines::update() {
+void AnimatedLines::update() {
+    if (reinitSpeed == false) {
+        speed = 0;
+        reinitSpeed = true;
+    }
     
+    if (speed != 0 && ofGetElapsedTimeMillis()-lastTime>updateTime){
+        pos += speed;
+        
+        if (pos > 1.){
+            pos = pos - 1.;
+        }else if (pos < 1.){
+            pos = pos + 1.;
+        }
+    }
+    
+    polylines.clear();
+    
+    ofPolyline p;
+    float step = 1./nbLines;
+    for (int i=0; i<nbLines; i++) {
+        p.clear();
+        float lp = pos+i*step;
+        while (lp>1.) {
+            lp = lp-1.;
+        }
+        if (dir == 0){
+            p.addVertex(ofVec2f(0., lp));
+            p.addVertex(ofVec2f(1., lp));
+        }
+        else if (dir == 1){
+            p.addVertex(ofVec2f(lp, 0.));
+            p.addVertex(ofVec2f(lp, 1.));
+        }
+        else{
+            if (i%2 == 0) {
+                p.addVertex(ofVec2f(0., lp));
+                p.addVertex(ofVec2f(1., lp));
+            }else{
+                p.addVertex(ofVec2f(lp, 0.));
+                p.addVertex(ofVec2f(lp, 1.));
+            }
+        }
+        polylines.push_back(p);
+    }
 }
 
-void Lines::draw() {
+void AnimatedLines::draw() {
     
 }

@@ -27,7 +27,7 @@ void AnimatedRibbon::setup(string name) {
     noiseSpeed = 0.2;
     moveSpeed = 0.5;
     windCoeff = 0.01;
-    useNoise = false;
+    useNoise = true;
     isRecording = false;
     
     windX = 0.;
@@ -45,16 +45,23 @@ void AnimatedRibbon::setup(string name) {
     gui->addSlider("wind coeff", 0., 0.05, &windCoeff);
     gui->addSlider("wind noise start pos", 0., 1., &windNoiseDisplace);
     gui->addToggle("use noise", &useNoise);
-    gui->addToggle("record", &isRecording);
     
-    timeline.addCurves(name+".x");
-    timeline.addCurves(name+".y");
+    gui->addSlider("nb vertex", 0., 1., &nbVertex);
+    gui->addSlider("smooth", 0., 1., &smooth);
     
-    timeline.addCurves(name+".wind.x");
-    timeline.addCurves(name+".wind.y");
+    gui->add2DPad("wind", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &wind);
+    gui->add2DPad("pos", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &curPos);
     
-    timeline.addCurves("smooth");
-    timeline.addCurves("nb vertex");
+//    gui->addToggle("record", &isRecording);
+    
+//    timeline.addCurves(name+".x");
+//    timeline.addCurves(name+".y");
+//    
+//    timeline.addCurves(name+".wind.x");
+//    timeline.addCurves(name+".wind.y");
+//    
+//    timeline.addCurves("smooth");
+//    timeline.addCurves("nb vertex");
     
     type = "AnimatedRibbon";
     
@@ -68,9 +75,12 @@ void AnimatedRibbon::setup(string name) {
 }
 
 void AnimatedRibbon::update() {
+    windX = ofMap(wind.x, 0., 1., -windCoeff, windCoeff);
+    windY = ofMap(wind.y, 0., 1., -windCoeff, windCoeff);
+
     
-    windX = ofMap(timeline.getValue(name+".wind.x"), 0., 1., -windCoeff, windCoeff);
-    windY = ofMap(timeline.getValue(name+".wind.y"), 0., 1., -windCoeff, windCoeff);
+//    windX = ofMap(timeline.getValue(name+".wind.x"), 0., 1., -windCoeff, windCoeff);
+//    windY = ofMap(timeline.getValue(name+".wind.y"), 0., 1., -windCoeff, windCoeff);
     
     if (useNoise) {
         lastPoint = ofVec2f(ofNoise(ofGetElapsedTimef()*moveSpeed, 0), ofNoise(ofGetElapsedTimef()*moveSpeed, 1));
@@ -86,16 +96,9 @@ void AnimatedRibbon::update() {
         }else{
             lastPoint.y = ofMap(lastPoint.y, 0., 1., 0., ofMap(windY, 0., windCoeff, 1., 1.-windNoiseDisplace));
         }
-    }else{
-        if (!isRecording){
-            lastPoint.x = timeline.getValue(name+".x");
-            lastPoint.y = timeline.getValue(name+".y");
-        }
-        else{
-            lastPoint.x = (float)ofGetMouseX()/(float)ofGetWidth();
-            lastPoint.y = (float)ofGetMouseY()/(float)ofGetHeight();
-            addPointAtCurrentTime(lastPoint.x, lastPoint.y);
-        }
+    }
+    else{
+            lastPoint = curPos;
     }
     
 
@@ -104,14 +107,14 @@ void AnimatedRibbon::update() {
     polylines[0].clear();
     
     
-    while (p.size() > (int)(nbMaxVertex*timeline.getValue("nb vertex"))){
+    while (p.size() > (int)(nbMaxVertex*nbVertex)){
         p.erase(p.begin());
     }
     
     vector<ofPoint>::iterator pIt = p.begin();
     vector<ofPoint>::iterator pItEnd = p.end();
     int idPt=0;
-    while (pIt != pItEnd && idPt < (int)(nbMaxVertex*timeline.getValue("nb vertex") - 2)){
+    while (pIt != pItEnd && idPt < (int)(nbMaxVertex*nbVertex - 2)){
         
 //        float noiseX = ofSignedNoise(pIt->x, idPt/nbMaxVertex*noiseSpeed);
 //        float noiseY = ofSignedNoise(pIt->y, idPt/nbMaxVertex*noiseSpeed);
@@ -155,63 +158,63 @@ void AnimatedRibbon::update() {
     }
     
     polylines[0].addVertices(p);
-    polylines[0] = polylines[0].getSmoothed(smoothCoeff*timeline.getValue("smooth"));
+    polylines[0] = polylines[0].getSmoothed(smoothCoeff*smooth);
 }
 
-void AnimatedRibbon::addPointAtCurrentTime(float x, float y){
-    
-    bool found = false;
-    int idKey = -1;
-    
-    ofxTLCurves * keysX = (ofxTLCurves *)(timeline.getTrack(name+".x"));
-    if(keysX != NULL){
-        vector<ofxTLKeyframe *> & keyframesX = keysX->getKeyframes();
-        for (int i=0; i<keyframesX.size() && !found; i++) {
-            if (keyframesX[i]->previousTime >= timeline.getCurrentTimeMillis()-timeKeyPickDistance
-                && keyframesX[i]->previousTime <= timeline.getCurrentTimeMillis()+timeKeyPickDistance) {
-                found = true;
-                idKey = i;
-            }
-        }
-        
-        if (found){
-            keysX->updateKey(idKey, x);
-            ofLog(OF_LOG_VERBOSE, "updating x key "+ofToString(idKey)+" to pos "+ofToString(x));
-        }
-        else {
-            keysX->addKeyframe(x);
-            ofLog(OF_LOG_VERBOSE, "adding a new x key ");
-        }
-    }
-    else{
-        ofLog(OF_LOG_NOTICE, "no timeline found to add key");
-    }
-    
-    
-    // update y point
-    ofxTLCurves * keysY = (ofxTLCurves *)(timeline.getTrack(name+".y"));
-    if(keysY != NULL){
-        vector<ofxTLKeyframe *> & keyframesY = keysY->getKeyframes();
-        
-        found = false;
-        for (int i=0; i<keyframesY.size() && !found; i++) {
-            if (keyframesY[i]->previousTime >= timeline.getCurrentTimeMillis()-timeKeyPickDistance
-                && keyframesY[i]->previousTime <= timeline.getCurrentTimeMillis()+timeKeyPickDistance) {
-                found = true;
-                idKey = i;
-            }
-        }
-        
-        if (found){
-            keysY->updateKey(idKey, y);
-            ofLog(OF_LOG_VERBOSE, "updating y key "+ofToString(idKey)+" to pos "+ofToString(y));
-        }
-        else {
-            keysY->addKeyframe(y);
-            ofLog(OF_LOG_VERBOSE, "adding a new y key ");
-        }
-    }
-    else{
-        ofLog(OF_LOG_NOTICE, "no timeline found to add key");
-    }
-}
+//void AnimatedRibbon::addPointAtCurrentTime(float x, float y){
+//    
+//    bool found = false;
+//    int idKey = -1;
+//    
+//    ofxTLCurves * keysX = (ofxTLCurves *)(timeline.getTrack(name+".x"));
+//    if(keysX != NULL){
+//        vector<ofxTLKeyframe *> & keyframesX = keysX->getKeyframes();
+//        for (int i=0; i<keyframesX.size() && !found; i++) {
+//            if (keyframesX[i]->previousTime >= timeline.getCurrentTimeMillis()-timeKeyPickDistance
+//                && keyframesX[i]->previousTime <= timeline.getCurrentTimeMillis()+timeKeyPickDistance) {
+//                found = true;
+//                idKey = i;
+//            }
+//        }
+//        
+//        if (found){
+//            keysX->updateKey(idKey, x);
+//            ofLog(OF_LOG_VERBOSE, "updating x key "+ofToString(idKey)+" to pos "+ofToString(x));
+//        }
+//        else {
+//            keysX->addKeyframe(x);
+//            ofLog(OF_LOG_VERBOSE, "adding a new x key ");
+//        }
+//    }
+//    else{
+//        ofLog(OF_LOG_NOTICE, "no timeline found to add key");
+//    }
+//    
+//    
+//    // update y point
+//    ofxTLCurves * keysY = (ofxTLCurves *)(timeline.getTrack(name+".y"));
+//    if(keysY != NULL){
+//        vector<ofxTLKeyframe *> & keyframesY = keysY->getKeyframes();
+//        
+//        found = false;
+//        for (int i=0; i<keyframesY.size() && !found; i++) {
+//            if (keyframesY[i]->previousTime >= timeline.getCurrentTimeMillis()-timeKeyPickDistance
+//                && keyframesY[i]->previousTime <= timeline.getCurrentTimeMillis()+timeKeyPickDistance) {
+//                found = true;
+//                idKey = i;
+//            }
+//        }
+//        
+//        if (found){
+//            keysY->updateKey(idKey, y);
+//            ofLog(OF_LOG_VERBOSE, "updating y key "+ofToString(idKey)+" to pos "+ofToString(y));
+//        }
+//        else {
+//            keysY->addKeyframe(y);
+//            ofLog(OF_LOG_VERBOSE, "adding a new y key ");
+//        }
+//    }
+//    else{
+//        ofLog(OF_LOG_NOTICE, "no timeline found to add key");
+//    }
+//}
