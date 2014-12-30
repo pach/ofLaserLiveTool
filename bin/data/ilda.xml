@@ -8,17 +8,17 @@
 <Widget>
     <Kind>42</Kind>
     <Name>pps</Name>
-    <Value>28715</Value>
+    <Value>40620</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>point count</Name>
-    <Value>543</Value>
+    <Value>518</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>smooth amount</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,12 +28,12 @@
 <Widget>
     <Kind>42</Kind>
     <Name>blank count</Name>
-    <Value>27</Value>
+    <Value>31</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>end count</Name>
-    <Value>11</Value>
+    <Value>22</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>cap Y</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -58,7 +58,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>red</Name>
-    <Value>0.000000000</Value>
+    <Value>0.418719202</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -68,17 +68,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>blue</Name>
-    <Value>1.000000000</Value>
+    <Value>0.576354682</Value>
 </Widget>
 <Widget>
     <Kind>11</Kind>
     <Name>offset</Name>
-    <XValue>-0.034482777</XValue>
-    <YValue>0.270936012</YValue>
+    <XValue>-0.211822689</XValue>
+    <YValue>0.034482718</YValue>
 </Widget>
 <Widget>
     <Kind>11</Kind>
     <Name>scale</Name>
-    <XValue>0.487684727</XValue>
-    <YValue>0.492610842</YValue>
+    <XValue>0.123152710</XValue>
+    <YValue>0.133004919</YValue>
 </Widget>

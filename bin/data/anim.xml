@@ -1,9 +1,5 @@
 <ANIMATIONS>
     <animList>
-        <name>part1</name>
-        <type>AnimatedMultiline</type>
-    </animList>
-    <animList>
         <name>sin1</name>
         <type>AnimatedSinus</type>
     </animList>
@@ -28,19 +24,11 @@
         <type>AnimatedRibbon</type>
     </animList>
     <animList>
-        <name>poly1</name>
-        <type>AnimatedPolyline</type>
-    </animList>
-    <animList>
-        <name>poly2</name>
-        <type>AnimatedPolyline</type>
-    </animList>
-    <animList>
         <name>ribbon3</name>
         <type>AnimatedRibbon</type>
     </animList>
     <animList>
-        <name>ribbon3</name>
-        <type>AnimatedRibbon</type>
+        <name>lines</name>
+        <type>AnimatedLines</type>
     </animList>
 </ANIMATIONS>

@@ -2,28 +2,28 @@
     <Kind>40</Kind>
     <Name>ribbon1</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>211.000000000</XPosition>
-    <YPosition>211.000000000</YPosition>
+    <XPosition>452.000000000</XPosition>
+    <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>42</Kind>
     <Name>max vertex</Name>
-    <Value>498</Value>
+    <Value>537</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise coeff</Name>
-    <Value>0.000000000</Value>
+    <Value>0.001182266</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>smooth coeff</Name>
-    <Value>7.987635136</Value>
+    <Value>9.723793030</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise Speed</Name>
-    <Value>0.403940886</Value>
+    <Value>0.926108360</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,7 +38,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>wind noise start pos</Name>
-    <Value>0.645320177</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -46,7 +46,24 @@
     <Value>1</Value>
 </Widget>
 <Widget>
-    <Kind>2</Kind>
-    <Name>record</Name>
-    <Value>0</Value>
+    <Kind>4</Kind>
+    <Name>nb vertex</Name>
+    <Value>0.935960591</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>smooth</Name>
+    <Value>0.443349749</Value>
+</Widget>
+<Widget>
+    <Kind>11</Kind>
+    <Name>wind</Name>
+    <XValue>0.507389188</XValue>
+    <YValue>0.625615776</YValue>
+</Widget>
+<Widget>
+    <Kind>11</Kind>
+    <Name>pos</Name>
+    <XValue>0.472906411</XValue>
+    <YValue>0.527093589</YValue>
 </Widget>

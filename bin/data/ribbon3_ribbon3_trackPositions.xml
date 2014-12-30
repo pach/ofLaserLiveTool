@@ -1,38 +1,38 @@
 <positions>
     <element name="nb vertex">
-        <x>422.000000000</x>
-        <y>281.333343506</y>
-        <width>1018.000000000</width>
+        <x>0.000000000</x>
+        <y>140.333328247</y>
+        <width>1440.000000000</width>
         <height>16.666666031</height>
     </element>
     <element name="ribbon3.wind.x">
-        <x>422.000000000</x>
-        <y>213.333343506</y>
-        <width>1018.000000000</width>
+        <x>0.000000000</x>
+        <y>72.333328247</y>
+        <width>1440.000000000</width>
         <height>16.666666031</height>
     </element>
     <element name="ribbon3.wind.y">
-        <x>422.000000000</x>
-        <y>236.000015259</y>
-        <width>1018.000000000</width>
+        <x>0.000000000</x>
+        <y>94.999992371</y>
+        <width>1440.000000000</width>
         <height>16.666666031</height>
     </element>
     <element name="ribbon3.x">
-        <x>422.000000000</x>
-        <y>168.000000000</y>
-        <width>1018.000000000</width>
+        <x>0.000000000</x>
+        <y>27.000000000</y>
+        <width>1440.000000000</width>
         <height>16.666666031</height>
     </element>
     <element name="ribbon3.y">
-        <x>422.000000000</x>
-        <y>190.666671753</y>
-        <width>1018.000000000</width>
+        <x>0.000000000</x>
+        <y>49.666664124</y>
+        <width>1440.000000000</width>
         <height>16.666666031</height>
     </element>
     <element name="smooth">
-        <x>422.000000000</x>
-        <y>258.666687012</y>
-        <width>1018.000000000</width>
+        <x>0.000000000</x>
+        <y>117.666656494</y>
+        <width>1440.000000000</width>
         <height>16.666666031</height>
     </element>
 </positions>

@@ -2,16 +2,38 @@
     <Kind>40</Kind>
     <Name>perlin1</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>211.000000000</XPosition>
-    <YPosition>211.000000000</YPosition>
+    <XPosition>452.000000000</XPosition>
+    <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>noise speed coeff</Name>
-    <Value>0.041871920</Value>
+    <Value>0.229064032</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>nb points coeff</Name>
     <Value>20</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise speed</Name>
+    <Value>0.034482758</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>nb Point</Name>
+    <Value>0.931034505</Value>
+</Widget>
+<Widget>
+    <Kind>11</Kind>
+    <Name>offset</Name>
+    <XValue>-0.061576366</XValue>
+    <YValue>-0.061576366</YValue>
+</Widget>
+<Widget>
+    <Kind>11</Kind>
+    <Name>scale</Name>
+    <XValue>0.458128065</XValue>
+    <YValue>0.551724136</YValue>
 </Widget>

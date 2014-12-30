@@ -2,23 +2,23 @@
     <Kind>40</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>211.000000000</XPosition>
+    <XPosition>221.000000000</XPosition>
     <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>22</Kind>
-    <Name>animation list</Name>
-    <Value>0</Value>
+    <Name>anim list</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>part1</Name>
+    <Name>none</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
     <Name>sin1</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -47,21 +47,11 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>poly1</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
-    <Name>poly2</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>17</Kind>
     <Name>ribbon3</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
-    <Name>ribbon3</Name>
+    <Name>lines</Name>
     <Value>0</Value>
 </Widget>

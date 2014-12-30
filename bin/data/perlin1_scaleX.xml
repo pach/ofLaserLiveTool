@@ -3,7 +3,13 @@
         <easefunc>0</easefunc>
         <easetype>0</easetype>
         <time>00:00:00:000</time>
-        <value>0.500000000</value>
+        <value>0.500000536</value>
+    </key>
+    <key>
+        <easefunc>0</easefunc>
+        <easetype>0</easetype>
+        <time>00:00:02:416</time>
+        <value>0.430000544</value>
     </key>
     <key>
         <easefunc>1</easefunc>
