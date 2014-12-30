@@ -25,9 +25,9 @@ void AnimatedRect::setup(string name) {
     size = 0.0f;
     
     type = "AnimatedRect";
-    gui->add2DPad("position", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &center);
-    gui->addSlider("rotation", 0., 360., &rot);
-    gui->addSlider("size", 0., 1., &size);
+    gui->add2DPad("/center", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &center);
+    gui->addSlider("/rot", 0., 360., &rot);
+    gui->addSlider("/size", 0., 1., &size);
 
 //    timeline.addCurves(name+".x");
 //    timeline.addCurves(name+".y");
@@ -80,4 +80,35 @@ void AnimatedRect::update() {
     p.addVertex(center+ofVec2f(-size/2., -size/2.).rotate(rot));
     polylines.push_back(p);
     
+}
+
+void AnimatedRect::parseOSC(ofxOscMessage &m){
+    string msg = m.getAddress();
+    string cmd ;
+    
+    int ces = msg.find_first_of("/");
+    
+    if (ces != -1) {
+        if (ces == 0){
+            msg = msg.substr(ces+1);
+            ces = msg.find_first_of("/");
+        }
+        if (ces == -1){
+            cmd = msg;
+        }
+        else{
+            cmd = msg.substr(0, ces);
+            msg = msg.substr(ces);
+        }
+    }
+    
+    if (cmd == "center"){
+        center = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
+    }
+    else if (cmd == "rot"){
+        rot = ofMap(m.getArgAsFloat(0), 0, 1, 0, 360);
+    }
+    else if (cmd == "size"){
+        size = m.getArgAsFloat(0);
+    }
 }

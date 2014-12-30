@@ -30,11 +30,11 @@ void AnimatedSinus::setup(string name) {
     posY = 0.;
     
     gui->addSpacer();
-    gui->addSlider("freq", 0., 500., &freq);
-    gui->addIntSlider("nbPoint", 10, 1000, &nbPoint);
-    gui->addSlider("speed", 0., 50., &speed);
-    gui->addSlider("height", 0., 1., &height);
-    gui->addSlider("posY", -1., 1., &posY);
+    gui->addSlider("/freq", 0., 500., &freq);
+    gui->addIntSlider("/nbPoint", 10, 1000, &nbPoint);
+    gui->addSlider("/speed", 0., 50., &speed);
+    gui->addSlider("/height", 0., 1., &height);
+    gui->addSlider("/posY", -1., 1., &posY);
     
     ofPolyline p;
     polylines.push_back(p);
