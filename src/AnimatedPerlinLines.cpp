@@ -39,9 +39,9 @@ void AnimatedPerlinLines::setup(string name) {
     gui->addIntSlider("nb points coeff", 1, 20, &nbPointsCoeff);
     gui->addSlider("/noiseSpeed", 0., 1., &noiseSpeed);
     gui->addSlider("/nbPoint", 0., 1., &nbVertex);
-    gui->add2DPad("/offset", ofVec2f(-0.5, 0.5), ofVec2f(-0.5, 0.5), &offset);
-    gui->add2DPad("/scale", ofVec2f(0., 1.), ofVec2f(0., 1.), &scale);
-//    gui->addToggle("line mode", &lineMode);
+    gui->add2DPad("/offset", ofxUIVec2f(-0.5, 0.5), ofxUIVec2f(-0.5, 0.5), &offset);
+    gui->add2DPad("/scale", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &scale);
+    gui->addToggle("/lineMode", &lineMode);
     noiseTime = 0.;
     
     load();
@@ -194,6 +194,9 @@ void AnimatedPerlinLines::parseOSC(ofxOscMessage &m){
     }
     else if (cmd == "scale"){
         scale = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
+    }
+    else if (cmd == "lineMode"){
+        lineMode = m.getArgAsInt32(0);
     }
 }
 
