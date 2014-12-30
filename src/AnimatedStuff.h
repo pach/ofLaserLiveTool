@@ -11,6 +11,7 @@
 #include "ofMain.h"
 #include "ofxTimeline.h"
 #include "ofxUI.h"
+#include "ofxOsc.h"
 
 class AnimatedStuff{
     
@@ -32,6 +33,8 @@ public:
     
     virtual void load() ;
     virtual void save() ;
+    
+    virtual void parseOSC (ofxOscMessage &m) {};
     
 //    void play();
 //    void stop();

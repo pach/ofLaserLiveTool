@@ -465,3 +465,27 @@ vector<ofPolyline> AnimManager::getPolylines(){
     
     return polys;
 }
+
+void AnimManager::parseOSC(ofxOscMessage &m){
+    string msg = m.getAddress();
+    string cmd ;
+    
+    int ces = msg.find_first_of("/");
+
+    if (ces != -1) {
+        if (ces == 0){
+            msg = msg.substr(ces+1);
+            ces = msg.find_first_of("/");
+        }
+        cmd = msg.substr(0, ces);
+        msg = msg.substr(ces);
+    }
+    
+    if (cmd == "layer1"){
+        m.setAddress(msg);
+        if (curSelected != NULL)
+            curSelected->parseOSC(m);
+    }
+    
+    
+}

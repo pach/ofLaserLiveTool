@@ -20,6 +20,8 @@ public:
     void setup(string name);
     void update();
     
+    void parseOSC(ofxOscMessage &m);
+    
 private:
     float freq;
     int nbPoint;

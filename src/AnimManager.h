@@ -13,6 +13,7 @@
 #include "AnimatedStuff.h"
 
 #include "ofxUI.h"
+#include "ofxOSC.h"
 
 
 class AnimManager{
@@ -61,6 +62,8 @@ public:
     void createNewAnimation(string type, string name);
     void createNewAnimationWithTextbox(string type);
     
+    void parseOSC (ofxOscMessage &m);
+    
 private:
     vector<AnimatedStuff*> allAnims;
     map<int, AnimatedStuff*> activeAnims;
@@ -88,6 +91,6 @@ private:
     
     bool animUIselectEvent;
     
-//    LayerManager layer;
+//    LayerManager layer1;
     
 };

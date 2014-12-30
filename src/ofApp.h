@@ -6,7 +6,7 @@
 #include "SvgLoader.h"
 
 //#define OSC_ASPI_ADDR "169.254.48.100"
-#define OSC_LISTENING_PORT 10001
+#define OSC_LISTENING_PORT 10000
 
 #include "ofxOsc.h"
 
@@ -29,6 +29,7 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
+    void parseOSC();
     
 private:
     IldaControl ilda;
@@ -40,7 +41,4 @@ private:
     float lastOscTime;
     
     ofxOscReceiver oscReceive;
-    
-//    AnimatedPolyline test;
-//    SvgLoader testSvg;
 };

@@ -51,3 +51,40 @@ void AnimatedSinus::update() {
         polylines[0].addVertex((float)i/(float)nbPoint, sin((float)i/freq+ofGetElapsedTimef()*speed)*height-posY);
     }
 }
+
+void AnimatedSinus::parseOSC(ofxOscMessage &m){
+    string msg = m.getAddress();
+    string cmd ;
+    
+    int ces = msg.find_first_of("/");
+    
+    if (ces != -1) {
+        if (ces == 0){
+            msg = msg.substr(ces+1);
+            ces = msg.find_first_of("/");
+        }
+        if (ces == -1){
+            cmd = msg;
+        }
+        else{
+            cmd = msg.substr(0, ces);
+            msg = msg.substr(ces);
+        }
+    }
+    
+    if (cmd == "freq"){
+        freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
+    }
+    else if (cmd == "nbPoint"){
+        nbPoint = m.getArgAsInt32(0);
+    }
+    else if (cmd == "speed"){
+        speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
+    }
+    else if (cmd == "height"){
+        height = m.getArgAsFloat(0);
+    }
+    else if (cmd == "posY"){
+        posY = ofMap(m.getArgAsFloat(0), 0., 1., -1., 1.);
+    }
+}

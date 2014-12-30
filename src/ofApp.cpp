@@ -28,7 +28,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    
+    parseOSC();
     
     animManager.update();
     
@@ -110,4 +110,13 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+void ofApp::parseOSC(){
+    while (oscReceive.hasWaitingMessages()){
+        ofxOscMessage m ;
+        oscReceive.getNextMessage(&m);
+        
+        animManager.parseOSC(m);
+    }
 }
