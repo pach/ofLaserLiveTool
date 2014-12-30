@@ -7,17 +7,17 @@
 </Canvas>
 <Widget>
     <Kind>11</Kind>
-    <Name>position</Name>
-    <XValue>0.428571433</XValue>
-    <YValue>0.423645318</YValue>
+    <Name>/center</Name>
+    <XValue>0.500000000</XValue>
+    <YValue>0.500000000</YValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>rotation</Name>
-    <Value>175.566497803</Value>
+    <Name>/rot</Name>
+    <Value>3.599999905</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>size</Name>
-    <Value>0.408867002</Value>
+    <Name>/size</Name>
+    <Value>0.349999994</Value>
 </Widget>
