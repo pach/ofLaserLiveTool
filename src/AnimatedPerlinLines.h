@@ -21,6 +21,8 @@ public:
     void update();
 //    void draw();
     
+    void parseOSC(ofxOscMessage &m);
+    
 private:
     float noiseSpeed;
     float noiseSpeedCoeff;

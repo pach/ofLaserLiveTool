@@ -37,10 +37,10 @@ void AnimatedPerlinLines::setup(string name) {
     
     gui->addSlider("noise speed coeff", 0., 0.5, &noiseSpeedCoeff);
     gui->addIntSlider("nb points coeff", 1, 20, &nbPointsCoeff);
-    gui->addSlider("noise speed", 0., 1., &noiseSpeed);
-    gui->addSlider("nb Point", 0., 1., &nbVertex);
-    gui->add2DPad("offset", ofVec2f(-0.5, 0.5), ofVec2f(-0.5, 0.5), &offset);
-    gui->add2DPad("scale", ofVec2f(0., 1.), ofVec2f(0., 1.), &scale);
+    gui->addSlider("/noiseSpeed", 0., 1., &noiseSpeed);
+    gui->addSlider("/nbPoint", 0., 1., &nbVertex);
+    gui->add2DPad("/offset", ofVec2f(-0.5, 0.5), ofVec2f(-0.5, 0.5), &offset);
+    gui->add2DPad("/scale", ofVec2f(0., 1.), ofVec2f(0., 1.), &scale);
 //    gui->addToggle("line mode", &lineMode);
     noiseTime = 0.;
     
@@ -163,11 +163,37 @@ void AnimatedPerlinLines::update() {
     }
 }
 
-//void AnimatedPerlinLines::draw() {
-//    if (setFirstShape){
-//
-//    }else{
-//
-//    }
-//}
+void AnimatedPerlinLines::parseOSC(ofxOscMessage &m){
+    string msg = m.getAddress();
+    string cmd ;
+    
+    int ces = msg.find_first_of("/");
+    
+    if (ces != -1) {
+        if (ces == 0){
+            msg = msg.substr(ces+1);
+            ces = msg.find_first_of("/");
+        }
+        if (ces == -1){
+            cmd = msg;
+        }
+        else{
+            cmd = msg.substr(0, ces);
+            msg = msg.substr(ces);
+        }
+    }
+    
+    if (cmd == "noiseSpeed"){
+        noiseSpeed = m.getArgAsFloat(0);
+    }
+    else if (cmd == "nbPoint"){
+        nbVertex = m.getArgAsFloat(0);
+    }
+    else if (cmd == "offset"){
+        offset = ofPoint(ofMap(m.getArgAsFloat(0), 0, 1, -0.5, 0.5), ofMap(m.getArgAsFloat(1), 0, 1, -0.5, 0.5));
+    }
+    else if (cmd == "scale"){
+        scale = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
+    }
+}
 
