@@ -37,20 +37,19 @@ void AnimatedRibbon::setup(string name) {
     
     lastPoint = ofVec2f (0.5, 0.5);
     
-    gui->addIntSlider("max vertex", 1, 1000, &nbMaxVertex);
-    gui->addSlider("noise coeff", 0., 0.02, &noiseCoeff);
+    gui->addIntSlider("max Vertex coeff", 1, 1000, &nbMaxVertex);
     gui->addSlider("smooth coeff", 1.99, 10., &smoothCoeff);
-    gui->addSlider("noise Speed", 0., 1., &noiseSpeed);
-    gui->addSlider("move Speed", 0., 1., &moveSpeed);
+    gui->addSlider("noise coeff", 0., 0.02, &noiseCoeff);
     gui->addSlider("wind coeff", 0., 0.05, &windCoeff);
     gui->addSlider("wind noise start pos", 0., 1., &windNoiseDisplace);
     gui->addToggle("use noise", &useNoise);
     
-    gui->addSlider("nb vertex", 0., 1., &nbVertex);
-    gui->addSlider("smooth", 0., 1., &smooth);
-    
-    gui->add2DPad("wind", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &wind);
-    gui->add2DPad("pos", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &curPos);
+    gui->addSlider("/noise", 0., 1., &noiseSpeed);
+    gui->addSlider("/moveSpeed", 0., 1., &moveSpeed);
+    gui->addSlider("/nbVertex", 0., 1., &nbVertex);
+    gui->addSlider("/smooth", 0., 1., &smooth);
+    gui->add2DPad("/wind", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &wind);
+    gui->add2DPad("/pos", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &curPos);
     
 //    gui->addToggle("record", &isRecording);
     
@@ -159,6 +158,46 @@ void AnimatedRibbon::update() {
     
     polylines[0].addVertices(p);
     polylines[0] = polylines[0].getSmoothed(smoothCoeff*smooth);
+}
+
+void AnimatedRibbon::parseOSC(ofxOscMessage &m){
+    string msg = m.getAddress();
+    string cmd ;
+    
+    int ces = msg.find_first_of("/");
+    
+    if (ces != -1) {
+        if (ces == 0){
+            msg = msg.substr(ces+1);
+            ces = msg.find_first_of("/");
+        }
+        if (ces == -1){
+            cmd = msg;
+        }
+        else{
+            cmd = msg.substr(0, ces);
+            msg = msg.substr(ces);
+        }
+    }
+    
+    if (cmd == "nbVertex"){
+        nbVertex = m.getArgAsFloat(0);
+    }
+    else if (cmd == "noise"){
+        noiseSpeed = m.getArgAsFloat(0);
+    }
+    else if (cmd == "moveSpeed"){
+        moveSpeed = m.getArgAsFloat(0);
+    }
+    else if (cmd == "smooth"){
+        smooth = m.getArgAsFloat(0);
+    }
+    else if (cmd == "wind"){
+        wind = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
+    }
+    else if (cmd == "pos"){
+        curPos = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
+    }
 }
 
 //void AnimatedRibbon::addPointAtCurrentTime(float x, float y){

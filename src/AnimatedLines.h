@@ -19,7 +19,8 @@ public:
     
     void setup(string name);
     void update();
-    void draw();
+    
+    void parseOSC(ofxOscMessage &m);
     
 private:
     

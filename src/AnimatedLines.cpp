@@ -31,11 +31,11 @@ void AnimatedLines::setup(string name) {
     
     updateTime = 50;
     
-    gui->addSlider("nbLines", 1, 10, &nbLines);
-    gui->addSlider("pos", 0., 1., &pos);
-    gui->addIntSlider("dir", 0, 2, &dir);
+    gui->addSlider("/nbLines", 1, 10, &nbLines);
+    gui->addSlider("/pos", 0., 1., &pos);
+    gui->addIntSlider("/dir", 0, 2, &dir);
     
-    gui->addSlider("speed", -0.05, 0.05, &speed);
+    gui->addSlider("/speed", -0.05, 0.05, &speed);
     gui->addToggle("reinit speed", &reinitSpeed);
 }
 
@@ -86,6 +86,36 @@ void AnimatedLines::update() {
     }
 }
 
-void AnimatedLines::draw() {
+void AnimatedLines::parseOSC(ofxOscMessage &m){
+    string msg = m.getAddress();
+    string cmd ;
     
+    int ces = msg.find_first_of("/");
+    
+    if (ces != -1) {
+        if (ces == 0){
+            msg = msg.substr(ces+1);
+            ces = msg.find_first_of("/");
+        }
+        if (ces == -1){
+            cmd = msg;
+        }
+        else{
+            cmd = msg.substr(0, ces);
+            msg = msg.substr(ces);
+        }
+    }
+    
+    if (cmd == "nbLines"){
+        nbLines = m.getArgAsFloat(0);
+    }
+    else if (cmd == "pos"){
+        pos = m.getArgAsFloat(0);
+    }
+    else if (cmd == "dir"){
+        dir = m.getArgAsInt32(0);
+    }
+    else if (cmd == "speed"){
+        speed = ofMap(m.getArgAsFloat(0), 0., 1., -0.05, 0.05);
+    }
 }
