@@ -22,6 +22,7 @@
 #include "AnimatedRibbon.h"
 #include "AnimatedSvg.h"
 #include "AnimatedLines.h"
+#include "AnimatedCircle.h"
 
 AnimManager::AnimManager(){
     curSelected = NULL;
@@ -115,7 +116,7 @@ void AnimManager::setupGui(){
     gui->addButton("add Perlin", newAnimBool);
     gui->addButton("add Ribbon", newAnimBool);
     gui->addButton("add lines", newAnimBool);
-    
+    gui->addButton("add circle", newAnimBool);
     gui->addSpacer();
     
 //    gui->addRadio("anim list", animName, OFX_UI_ORIENTATION_VERTICAL);
@@ -155,6 +156,9 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         }
         else if (name == "add lines"){
             createNewAnimationWithTextbox("AnimatedLines");
+        }
+        else if (name == "add circle"){
+            createNewAnimationWithTextbox("AnimatedCircle");
         }
         
         else if (name == "anim list"){
@@ -213,6 +217,10 @@ void AnimManager::createNewAnimation(string type, string name){
         }
         else if (type == "AnimatedLines") {
             a = new AnimatedLines();
+            a->setup(name);
+        }
+        else if (type == "AnimatedCircle") {
+            a = new AnimatedCircle();
             a->setup(name);
         }
         a->setDrawWidth(drawW);
