@@ -14,8 +14,11 @@
 
 #include "ofxXmlSettings.h"
 
+#include "Utils.h"
+
 //#include "AnimatedPolyline.h"
 #include "AnimatedSinus.h"
+#include "AnimatedMultiSinus.h"
 #include "AnimatedRect.h"
 //#include "AnimatedMultiline.h"
 #include "AnimatedPerlinLines.h"
@@ -23,6 +26,9 @@
 #include "AnimatedSvg.h"
 #include "AnimatedLines.h"
 #include "AnimatedCircle.h"
+#include "AnimatedOSCLines.h"
+#include "AnimatedSvg.h"
+
 
 AnimManager::AnimManager(){
     curSelected = NULL;
@@ -45,7 +51,6 @@ void AnimManager::setup() {
     load ();
     
     animUIselectEvent = false;
-//    layer.setup(animList);
     
     
 }
@@ -112,11 +117,13 @@ void AnimManager::setupGui(){
 //    gui->addButton("add Polyline", newAnimBool);
 //    gui->addButton("add Multiline", newAnimBool);
     gui->addButton("add Sinus", newAnimBool);
+    gui->addButton("add MultiSinus", newAnimBool);
     gui->addButton("add Rect", newAnimBool);
     gui->addButton("add Perlin", newAnimBool);
     gui->addButton("add Ribbon", newAnimBool);
     gui->addButton("add lines", newAnimBool);
     gui->addButton("add circle", newAnimBool);
+    gui->addButton("add osc lines", newAnimBool);
     gui->addSpacer();
     
 //    gui->addRadio("anim list", animName, OFX_UI_ORIENTATION_VERTICAL);
@@ -139,6 +146,9 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         if (name == "add Sinus"){
             createNewAnimationWithTextbox("AnimatedSinus");
         }
+        else if (name == "add MultiSinus"){
+            createNewAnimationWithTextbox("AnimatedMultiSinus");
+        }
         else if (name == "add Rect"){
             createNewAnimationWithTextbox("AnimatedRect");
         }
@@ -160,10 +170,13 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         else if (name == "add circle"){
             createNewAnimationWithTextbox("AnimatedCircle");
         }
+        else if (name == "add osc lines"){
+            createNewAnimationWithTextbox("AnimatedOSCLines");
+        }
         
         else if (name == "anim list"){
             animUIselectEvent = true;
-            cout<<"select a new animtaiotn"<<endl;
+            cout<<"select a new animation"<<endl;
         }
         newAnimBool = false;
     }
@@ -195,6 +208,10 @@ void AnimManager::createNewAnimation(string type, string name){
             a = new AnimatedSinus();
             a->setup(name);
         }
+        else if (type == "AnimatedMultiSinus") {
+            a = new AnimatedMultiSinus();
+            a->setup(name);
+        }
         else if (type == "AnimatedRect") {
             a = new AnimatedRect();
             a->setup(name);
@@ -221,6 +238,10 @@ void AnimManager::createNewAnimation(string type, string name){
         }
         else if (type == "AnimatedCircle") {
             a = new AnimatedCircle();
+            a->setup(name);
+        }
+        else if (type == "AnimatedOSCLines") {
+            a = new AnimatedOSCLines();
             a->setup(name);
         }
         a->setDrawWidth(drawW);
@@ -475,24 +496,35 @@ vector<ofPolyline> AnimManager::getPolylines(){
 }
 
 void AnimManager::parseOSC(ofxOscMessage &m){
-    string msg = m.getAddress();
-    string cmd ;
-    
-    int ces = msg.find_first_of("/");
-
-    if (ces != -1) {
-        if (ces == 0){
-            msg = msg.substr(ces+1);
-            ces = msg.find_first_of("/");
-        }
-        cmd = msg.substr(0, ces);
-        msg = msg.substr(ces);
-    }
+//    string msg = m.getAddress();
+//    string cmd ;
+//    
+//    int ces = msg.find_first_of("/");
+//
+//    if (ces != -1) {
+//        if (ces == 0){
+//            msg = msg.substr(ces+1);
+//            cmd = msg;
+//            ces = msg.find_first_of("/");
+//            if (ces != -1) {
+//                cmd = msg.substr(0, ces);
+//                msg = msg.substr(ces);
+//            }
+//        }
+//        else{
+//            cmd = msg.substr(0, ces);
+//            msg = msg.substr(ces);
+//        }
+//    }
+    vector<string> osc = getOSCcmd(m.getAddress());
+    string cmd = osc[0];
+    string msg = osc[1];
     
     if (cmd == "layer1"){
         m.setAddress(msg);
-        if (curSelected != NULL)
+        if (curSelected != NULL){
             curSelected->parseOSC(m);
+        }
     }
     
     

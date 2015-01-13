@@ -7,6 +7,7 @@
 //
 
 #include "IldaControl.h"
+#include "Utils.h"
 
 IldaControl::~IldaControl(){
     delete gui;
@@ -134,4 +135,67 @@ void IldaControl::draw(int x, int y, int w, int h){
     etherdream.setPoints(ildaFrame);
     
     gui->draw();
+}
+
+void IldaControl::parseOSC(ofxOscMessage &m){
+//    string msg = m.getAddress();
+//    string cmd ;
+//    
+//    int ces = msg.find_first_of("/");
+//    
+//    if (ces != -1) {
+//        if (ces == 0){
+//            msg = msg.substr(ces+1);
+//            cmd = msg;
+//            ces = msg.find_first_of("/");
+//            if (ces != -1) {
+//                cmd = msg.substr(0, ces);
+//                msg = msg.substr(ces);
+//            }
+//        }
+//        else{
+//            cmd = msg.substr(0, ces);
+//            msg = msg.substr(ces);
+//        }
+//    }
+
+    vector<string> osc = getOSCcmd(m.getAddress());
+    string cmd = osc[0];
+    string msg = osc[1];
+    
+    if (cmd == "laser"){
+        
+//        m.setAddress(msg);
+//        ces = msg.find_first_of("/");
+//        
+//        if (ces != -1) {
+//            if (ces == 0){
+//                msg = msg.substr(ces+1);
+//                cmd = msg;
+//                ces = msg.find_first_of("/");
+//            }else{
+//                cmd = msg.substr(0, ces);
+//                msg = msg.substr(ces);
+//            }
+//        }
+        osc = getOSCcmd(msg);
+        cmd = osc[0];
+        msg = osc[1];
+        
+        if (cmd == "offset"){
+            offset.x = m.getArgAsFloat(0);
+            offset.y = m.getArgAsFloat(1);
+            cout<<"setting offset "<<offset<<endl;
+        }
+        else if (cmd == "scale"){
+            scale.x = m.getArgAsFloat(0);
+            scale.y = m.getArgAsFloat(1);
+        }
+        else if (cmd == "color"){
+            laserColor.r = m.getArgAsFloat(0);
+            laserColor.g = m.getArgAsFloat(1);
+            laserColor.b = m.getArgAsFloat(2);
+        }
+        
+    }
 }

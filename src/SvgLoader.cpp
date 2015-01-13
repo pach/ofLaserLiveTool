@@ -46,6 +46,8 @@ ofPolyline SvgLoader::getPolyline(){
 void SvgLoader::load(string filename){
     clear();
     
+    cout<<"loading svg "<<filename<<endl;
+    
 //    ofxSVG svg ;
     svg.load(filename);
     

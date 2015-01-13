@@ -1,7 +1,15 @@
 <ANIMATIONS>
     <animList>
+        <name>svg1</name>
+        <type>AnimatedSvg</type>
+    </animList>
+    <animList>
         <name>sin1</name>
         <type>AnimatedSinus</type>
+    </animList>
+    <animList>
+        <name>multisin1</name>
+        <type>AnimatedMultiSinus</type>
     </animList>
     <animList>
         <name>rect1</name>
@@ -30,5 +38,13 @@
     <animList>
         <name>lines</name>
         <type>AnimatedLines</type>
+    </animList>
+    <animList>
+        <name>circle1</name>
+        <type>AnimatedCircle</type>
+    </animList>
+    <animList>
+        <name>oscLines</name>
+        <type>AnimatedOSCLines</type>
     </animList>
 </ANIMATIONS>

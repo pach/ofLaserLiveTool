@@ -12,6 +12,7 @@
 #include "ofxIldaFrame.h"
 #include "ofxEtherdream.h"
 #include "ofxUI.h"
+#include "ofxOsc.h"
 
 class IldaControl {
 public:
@@ -28,6 +29,8 @@ public:
     
     void load();
     void save();
+    
+    void parseOSC(ofxOscMessage &m);
     
     int pps;
     bool capX;

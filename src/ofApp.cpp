@@ -118,5 +118,6 @@ void ofApp::parseOSC(){
         oscReceive.getNextMessage(&m);
         
         animManager.parseOSC(m);
+        ilda.parseOSC(m);
     }
 }

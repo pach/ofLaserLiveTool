@@ -34,6 +34,8 @@
 		8C1235941A4E17A900AA9357 /* LayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C1235921A4E17A900AA9357 /* LayerManager.cpp */; };
 		8C31198A199411C1000FAED9 /* AnimatedSinus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C311988199411C1000FAED9 /* AnimatedSinus.cpp */; };
 		8C39599519CD8524001697BF /* AnimatedPerlinLines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C39599319CD8524001697BF /* AnimatedPerlinLines.cpp */; };
+		8C3FD5CF1A5414A700E8E54B /* AnimatedMultiSinus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FD5CD1A5414A700E8E54B /* AnimatedMultiSinus.cpp */; };
+		8C5C3D471A52E63300A25C24 /* AnimatedCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C5C3D451A52E63300A25C24 /* AnimatedCircle.cpp */; };
 		8C60190C19CDD80A00F16199 /* AnimatedRibbon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C60190A19CDD80A00F16199 /* AnimatedRibbon.cpp */; };
 		8C8EC39719C6135900823AEE /* AnimatedRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C8EC39519C6135900823AEE /* AnimatedRect.cpp */; };
 		8C8EC39A19C636F400823AEE /* AnimatedSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C8EC39819C636F400823AEE /* AnimatedSvg.cpp */; };
@@ -129,6 +131,7 @@
 		8C8FDE50193730FA00662718 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C8FDE4C193730FA00662718 /* tinyxmlparser.cpp */; };
 		8C8FDE5F1937902900662718 /* AnimManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C8FDE5D1937902900662718 /* AnimManager.cpp */; };
 		8CB8E4B219BE59E0002BD1CB /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB8E4B119BE59E0002BD1CB /* OpenAL.framework */; };
+		8CC1935E1A56DDD900BD8A8C /* AnimatedOSCLines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC1935C1A56DDD900BD8A8C /* AnimatedOSCLines.cpp */; };
 		8CC22BA619D18A7A001DD026 /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC22B7F19D18A7A001DD026 /* ofxOscBundle.cpp */; };
 		8CC22BA719D18A7A001DD026 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC22B8119D18A7A001DD026 /* ofxOscMessage.cpp */; };
 		8CC22BA819D18A7A001DD026 /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC22B8319D18A7A001DD026 /* ofxOscParameterSync.cpp */; };
@@ -253,7 +256,12 @@
 		8C311989199411C1000FAED9 /* AnimatedSinus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedSinus.h; sourceTree = "<group>"; };
 		8C39599319CD8524001697BF /* AnimatedPerlinLines.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedPerlinLines.cpp; sourceTree = "<group>"; };
 		8C39599419CD8524001697BF /* AnimatedPerlinLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedPerlinLines.h; sourceTree = "<group>"; };
+		8C3FD5CD1A5414A700E8E54B /* AnimatedMultiSinus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedMultiSinus.cpp; sourceTree = "<group>"; };
+		8C3FD5CE1A5414A700E8E54B /* AnimatedMultiSinus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedMultiSinus.h; sourceTree = "<group>"; };
+		8C46ACA91A5825C300E2A8B0 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		8C48E4B693CA266E50AF3E1B /* protocol.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = protocol.h; path = ../../../addons/ofxEtherdream/libs/common/protocol.h; sourceTree = SOURCE_ROOT; };
+		8C5C3D451A52E63300A25C24 /* AnimatedCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedCircle.cpp; sourceTree = "<group>"; };
+		8C5C3D461A52E63300A25C24 /* AnimatedCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedCircle.h; sourceTree = "<group>"; };
 		8C60190A19CDD80A00F16199 /* AnimatedRibbon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedRibbon.cpp; sourceTree = "<group>"; };
 		8C60190B19CDD80A00F16199 /* AnimatedRibbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedRibbon.h; sourceTree = "<group>"; };
 		8C8EC39519C6135900823AEE /* AnimatedRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedRect.cpp; sourceTree = "<group>"; };
@@ -449,6 +457,8 @@
 		8C8FDE5D1937902900662718 /* AnimManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimManager.cpp; sourceTree = "<group>"; };
 		8C8FDE5E1937902900662718 /* AnimManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimManager.h; sourceTree = "<group>"; };
 		8CB8E4B119BE59E0002BD1CB /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		8CC1935C1A56DDD900BD8A8C /* AnimatedOSCLines.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedOSCLines.cpp; sourceTree = "<group>"; };
+		8CC1935D1A56DDD900BD8A8C /* AnimatedOSCLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedOSCLines.h; sourceTree = "<group>"; };
 		8CC22B7D19D18A7A001DD026 /* ofxOsc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOsc.h; sourceTree = "<group>"; };
 		8CC22B7E19D18A7A001DD026 /* ofxOscArg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOscArg.h; sourceTree = "<group>"; };
 		8CC22B7F19D18A7A001DD026 /* ofxOscBundle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscBundle.cpp; sourceTree = "<group>"; };
@@ -829,6 +839,12 @@
 				8C10EB161A51D64F00A651FD /* KinectPath.h */,
 				8C10EB181A51D65C00A651FD /* AnimatedLines.cpp */,
 				8C10EB191A51D65C00A651FD /* AnimatedLines.h */,
+				8C5C3D451A52E63300A25C24 /* AnimatedCircle.cpp */,
+				8C5C3D461A52E63300A25C24 /* AnimatedCircle.h */,
+				8C3FD5CD1A5414A700E8E54B /* AnimatedMultiSinus.cpp */,
+				8C3FD5CE1A5414A700E8E54B /* AnimatedMultiSinus.h */,
+				8CC1935C1A56DDD900BD8A8C /* AnimatedOSCLines.cpp */,
+				8CC1935D1A56DDD900BD8A8C /* AnimatedOSCLines.h */,
 			);
 			name = AnimTools;
 			sourceTree = "<group>";
@@ -1460,6 +1476,7 @@
 				8C8FDE5E1937902900662718 /* AnimManager.h */,
 				8C1235921A4E17A900AA9357 /* LayerManager.cpp */,
 				8C1235931A4E17A900AA9357 /* LayerManager.h */,
+				8C46ACA91A5825C300E2A8B0 /* Utils.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1581,6 +1598,7 @@
 				8C31198A199411C1000FAED9 /* AnimatedSinus.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				8C8FDE1F193730FA00662718 /* ofxHotKeys_impl_win.cpp in Sources */,
+				8C5C3D471A52E63300A25C24 /* AnimatedCircle.cpp in Sources */,
 				8C8FDE5F1937902900662718 /* AnimManager.cpp in Sources */,
 				8C8F7C2B1938CA82005A2D28 /* ofxUI2DGraph.cpp in Sources */,
 				8C8F7C441938CA82005A2D28 /* ofxUIRadio.cpp in Sources */,
@@ -1606,6 +1624,7 @@
 				483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */,
 				8C8FDE26193730FA00662718 /* ofxTLColorTrack.cpp in Sources */,
 				8CC22BA919D18A7A001DD026 /* ofxOscReceiver.cpp in Sources */,
+				8C3FD5CF1A5414A700E8E54B /* AnimatedMultiSinus.cpp in Sources */,
 				8C8F7C481938CA82005A2D28 /* ofxUIScrollableCanvas.cpp in Sources */,
 				F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */,
 				8C8F7C3B1938CA82005A2D28 /* ofxUIImageToggle.cpp in Sources */,
@@ -1617,6 +1636,7 @@
 				B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */,
 				8C8FDE2C193730FA00662718 /* ofxTLImageSequenceFrame.cpp in Sources */,
 				8C8F7C421938CA82005A2D28 /* ofxUIMultiImageToggle.cpp in Sources */,
+				8CC1935E1A56DDD900BD8A8C /* AnimatedOSCLines.cpp in Sources */,
 				8C8F7C561938CA82005A2D28 /* ofxUIWidgetWithLabel.cpp in Sources */,
 				8C1235941A4E17A900AA9357 /* LayerManager.cpp in Sources */,
 				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,

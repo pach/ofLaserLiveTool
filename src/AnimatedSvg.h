@@ -10,7 +10,7 @@
 
 #include "ofMain.h"
 #include "AnimatedStuff.h"
-#include "ofxSvg.h"
+#include "SvgLoader.h"
 
 class AnimatedSvg : public AnimatedStuff{
     
@@ -18,18 +18,20 @@ public:
     AnimatedSvg();
     ~AnimatedSvg();
     
-    void loadSvg(string filename);
-    
     void setup (string name);
     void update ();
     
+    void textInputEvent(ofxUIEventArgs &e);
+    
 private:
-    
-    ofxSVG svg;
-    ofPath svgPath;
-    
-    ofVec2f pos;
+
+    ofPoint pos;
     float rot;
     float size;
+    
+    string filename;
+    bool hasLoaded;
+    
+    SvgLoader svg;
     
 };
