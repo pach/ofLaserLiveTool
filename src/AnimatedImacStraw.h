@@ -9,18 +9,37 @@
 #pragma once
 
 #include "ofMain.h"
+#include "AnimatedStuff.h"
 
-
-class AnimatedImacStraw{
+class AnimatedImacStraw : public AnimatedStuff{
     
 public:
     AnimatedImacStraw();
     ~AnimatedImacStraw();
     
-    void setup();
+    void setup(string name);
     void update();
-    void draw();
+    
+    void save();
+    void load();
     
 private:
+    int nbStraw;
+    vector<ofPoint> strawPos;
+    vector<float> size;
+    vector<bool> active;
+    float rot;
+
+    int idUpdateStraw;
+    ofPoint updatePos;
+    float updateSize;
     
+    int animationMode;
+    float animationSpeed;
+    float lastStepTime;
+    
+    int idOn;
+    
+    float horizontalDisplace;
+    float displacePos;
 };
