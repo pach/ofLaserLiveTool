@@ -28,7 +28,7 @@
 #include "AnimatedCircle.h"
 #include "AnimatedOSCLines.h"
 #include "AnimatedSvg.h"
-
+#include "AnimatedImacStraw.h"
 
 AnimManager::AnimManager(){
     curSelected = NULL;
@@ -42,9 +42,13 @@ void AnimManager::setup() {
     
     gui = new ofxUISuperCanvas("Anim Manager");
     
-    nbLayer = 2;
+    curSelected = NULL;
+    lastSelected = NULL;
     
     animName.push_back("none");
+    
+    fadeTime = 2.;
+    isFading = false;
     
     setupGui();
     
@@ -124,6 +128,7 @@ void AnimManager::setupGui(){
     gui->addButton("add lines", newAnimBool);
     gui->addButton("add circle", newAnimBool);
     gui->addButton("add osc lines", newAnimBool);
+    gui->addButton("add imac straws", newAnimBool);
     gui->addSpacer();
     
 //    gui->addRadio("anim list", animName, OFX_UI_ORIENTATION_VERTICAL);
@@ -173,6 +178,9 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         else if (name == "add osc lines"){
             createNewAnimationWithTextbox("AnimatedOSCLines");
         }
+        else if (name == "add imac straws"){
+            createNewAnimationWithTextbox("AnimatedImacStraw");
+        }
         
         else if (name == "anim list"){
             animUIselectEvent = true;
@@ -182,7 +190,7 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
     }
     if (animUIselectEvent && name != "anim list") {
         setCurrentSelected(name);
-        addActiveAnim(1, name);
+//        addActiveAnim(1, name);
         
         cout<<" run animation "<<name<<endl;
         
@@ -244,6 +252,10 @@ void AnimManager::createNewAnimation(string type, string name){
             a = new AnimatedOSCLines();
             a->setup(name);
         }
+        else if (type == "AnimatedImacStraw") {
+            a = new AnimatedImacStraw();
+            a->setup(name);
+        }
         a->setDrawWidth(drawW);
         a->setDrawHeight(drawH);
         a->setDrawOffset(drawOffset);
@@ -283,6 +295,7 @@ void AnimManager::hasClicked(ofMouseEventArgs &e){
 void AnimManager::setCurrentSelected(string name){
     if (curSelected != NULL){
         curSelected->toggleSelected();
+        lastSelected = curSelected;
         curSelected = NULL;
     }
     
@@ -299,142 +312,115 @@ void AnimManager::setCurrentSelected(string name){
         }
         it++;
     }
-}
-
-void AnimManager::addActiveAnim(int trackId, string name){
-    removeActiveAnim(trackId);
     
-    vector<AnimatedStuff*>::iterator it = allAnims.begin();
-    vector<AnimatedStuff*>::iterator itEnd = allAnims.end();
-    bool found = false;
+    // start fading
+    isFading = true;
+    fadeStartTime = ofGetElapsedTimef();
+    polysMerger.clear();
+    ofxPolylineMerger p;
+    p.setup();
+    ofPolyline popo ;
+    popo.addVertex(ofPoint(0.5, 0.5));
+    popo.addVertex(ofPoint(0.5, 0.5));
     
-    while (!found && it!=itEnd) {
-        if ((*it)->getName() == name) {
-            found = true;
-            (*it)->showGui(true);
-            activeAnims.insert(pair<int, AnimatedStuff*>(trackId, *it));
-            (*it)->start();
-        }
-        it++;
+    if(curSelected!=NULL){
+        curSelected->update();
+        p.setPoly1(curSelected->getPolylines()[0]);
+    }else{
+        p.setPoly1(popo);
     }
-}
+    if (lastSelected != NULL) {
+        p.setPoly2(lastSelected->getPolylines()[0]);
+    }else{
+        p.setPoly2(popo);
+    }
 
-void AnimManager::removeActiveAnim(int trackId){
-    map<int, AnimatedStuff*>::iterator itActive = activeAnims.find(trackId);
-    if (itActive != activeAnims.end()){
-        itActive->second->showGui(false);
-        activeAnims.erase(itActive);
-    }
+    polysMerger.push_back(p);
 }
 
 void AnimManager::update() {
-//    if (updateSelected && curTrackSelected != NULL){
-//        // check if a new item has been selected
-//        ofxTLSwitch * selectedItem = curTrackSelected->getActiveSwitchAtMillis(curTrackSelected->getLatestSelectedTime());
-//        if (selectedItem != NULL){
-//            cout<<"item "<<selectedItem->textField.text<<" from track "<<curTrackSelected->getName()<<" is selected"<<endl;
-//            setCurrentSelected(selectedItem->textField.text);
-//        }
-//        
-//        // check time of all items and update according to switches time
-//        vector <ofxTLKeyframe*> kf = curTrackSelected->getKeyframes();
-//        vector <ofxTLKeyframe*>::iterator it = kf.begin();
-//        vector <ofxTLKeyframe*>::iterator itEnd = kf.end();
-//        ofxTLSwitch * sw = NULL;
-//        vector<AnimatedStuff*>::iterator itAnim = allAnims.begin();
-//        vector<AnimatedStuff*>::iterator itAnimEnd = allAnims.end();
-//        
-//        while (it != itEnd){
-//            sw = static_cast<ofxTLSwitch *>(*it);
-//            if (sw != NULL) {
-//                long timeLength = sw->timeRange.max - sw->timeRange.min;
-//                string name = sw->textField.text;
-//                cout<<name <<" time is "<<sw->timeRange<<" length "<<timeLength<<endl;
-//                
-//                itAnim = allAnims.begin();
-//                bool found = false;
-//                while (itAnim != itAnimEnd) {
-//                    if ((*itAnim)->getName() == name){
-//                        found = true;
-//                        (*itAnim)->setTimeLength(timeLength);
-//                    }
-//                    itAnim ++;
-//                }
-//            }
-//            
-//            it++;
-//        }
-//        
-//        updateSelected = false;
-//    }
+    if (curSelected != NULL)
+        curSelected->update();
     
-    itActive = activeAnims.begin();
-    itActiveEnd = activeAnims.end();
-    
-    while (itActive != itActiveEnd) {
-        itActive->second->update();
-        itActive ++;
+    if (lastSelected != NULL){
+        lastSelected -> update();
     }
     
-//    // set time for each active anim
-//    unsigned long long curTime = timeline.getCurrentTimeMillis();
-//    ofxTLSwitches* t ;
-//    ofxTLSwitch* s;
-//    for (int i=0 ; i<nbLayer; i++){
-//        t = dynamic_cast<ofxTLSwitches*>(timeline.getTrack("layer"+ofToString(i+1)));
-//        if (t != NULL){
-//            s = dynamic_cast<ofxTLSwitch*>(t->getActiveSwitchAtMillis(curTime));
-//            if (s!=NULL){
-//                unsigned long long startTime = s->time;
-//                string name = s->textField.text;
-//                
-//                map<int, AnimatedStuff*>::iterator animIt = activeAnims.find(i+1);
-//                if (animIt != activeAnims.end()) {
-//                    animIt->second->setCurrentTime(curTime-startTime);
+    if (!isFading && curSelected != NULL) {
+        polys = curSelected->getPolylines();
+    }
+    else{
+        fadeCurrentTime = ofGetElapsedTimef()-fadeStartTime;
+        if (fadeCurrentTime>fadeTime) {
+            isFading = false;
+            lastSelected = NULL;
+            if (curSelected != NULL){
+                polys = curSelected->getPolylines();
+            }
+        }
+        else{
+            polys.clear() ;
+            
+            if(curSelected!=NULL){
+                polysMerger[0].setPoly2(curSelected->getPolylines()[0]);
+            }
+            if (lastSelected != NULL) {
+                polysMerger[0].setPoly1(lastSelected->getPolylines()[0]);
+            }
+            
+            polysMerger[0].mergePolyline(fadeCurrentTime/fadeTime);
+            polys.push_back(polysMerger[0].getPolyline());
+            
+//            for (int i=0; i<polysMerger.size(); i++) {
+//                if (curSelected != NULL && curSelected->getPolylines().size()>i) {
+//                    polysMerger[i].setPoly1(curSelected->getPolylines()[i]);
+//                }
+//                if (lastSelected != NULL && lastSelected->getPolylines().size()>i) {
+//                    polysMerger[i].setPoly2(lastSelected->getPolylines()[i]);
 //                }
 //                
+//                polysMerger[i].mergePolyline(fadeCurrentTime/fadeTime);
+//                
+//                polys.push_back(polysMerger[i].getPolyline());
 //            }
-//        }
-//    }
+        }
+    }
     
-//    if (curSelected != NULL){
-//        curSelected->update();
-//    }
 }
 
 void AnimManager::draw() {
     gui->draw();
     
-    if (curSelected != NULL){
-        curSelected->draw();
-//        curSelected->drawTimeline();
-    }
-}
-
-void AnimManager::play(){
-    for (int i=0; i<activeAnims.size(); i++) {
-//        allAnims[i]->play();
-    }
-}
-
-void AnimManager::togglePlay(){
-
+    ofSetColor(0);
+    ofRect(drawOffset, drawW, drawH);
     
-}
-
-void AnimManager::stop(){
-//    timeline.stop();
-    for (int i=0; i<allAnims.size(); i++) {
-//        allAnims[i]->stop();
+    if(isFading){
+        
+        ofPushMatrix();
+        ofSetColor(255);
+        
+        ofTranslate(drawOffset);
+        ofScale(drawW, drawH);
+        
+        ofSetColor(255, 0, 0);
+        if (curSelected != NULL){
+            curSelected->getPolylines()[0].draw();
+        }
+        ofSetColor(0, 255, 0);
+        if (lastSelected != NULL){
+            lastSelected->getPolylines()[0].draw();
+        }
+        ofSetColor(255, 255, 0);
+        polysMerger[0].getPolyline().draw();
+        
+        ofPopMatrix();
+        
     }
-}
-
-void AnimManager::clear(){
-//    timeline.clear();
-}
-
-void AnimManager::setLoop(ofLoopType loop){
-//    timeline.setLoopType(loop);
+    else {
+        if (curSelected != NULL){
+            curSelected->draw();
+        }
+    }
 }
 
 void AnimManager::setDrawWidth(int w){
@@ -473,49 +459,10 @@ void AnimManager::setGuiOffset(ofVec2f offset){
 }
 
 vector<ofPolyline> AnimManager::getPolylines(){
-    vector<ofPolyline> polys;
-    itActive = activeAnims.begin();
-    itActiveEnd = activeAnims.end();
-    
-    vector<ofPolyline>::iterator itT ;
-    vector<ofPolyline>::iterator itEndT ;
-    vector<ofPolyline> polytemp;
-    
-    while (itActive != itActiveEnd) {
-        polytemp = itActive->second->getPolylines();
-        itT = polytemp.begin();
-        itEndT = polytemp.end();
-        while (itT != itEndT) {
-            polys.push_back((*itT));
-            itT ++;
-        }
-        itActive ++;
-    }
-    
     return polys;
 }
 
 void AnimManager::parseOSC(ofxOscMessage &m){
-//    string msg = m.getAddress();
-//    string cmd ;
-//    
-//    int ces = msg.find_first_of("/");
-//
-//    if (ces != -1) {
-//        if (ces == 0){
-//            msg = msg.substr(ces+1);
-//            cmd = msg;
-//            ces = msg.find_first_of("/");
-//            if (ces != -1) {
-//                cmd = msg.substr(0, ces);
-//                msg = msg.substr(ces);
-//            }
-//        }
-//        else{
-//            cmd = msg.substr(0, ces);
-//            msg = msg.substr(ces);
-//        }
-//    }
     vector<string> osc = getOSCcmd(m.getAddress());
     string cmd = osc[0];
     string msg = osc[1];

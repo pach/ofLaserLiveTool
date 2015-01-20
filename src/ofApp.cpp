@@ -63,9 +63,6 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    if (key == ' '){
-        animManager.togglePlay();
-    }
     if (key == 's'){
         ilda.save();
         animManager.save();

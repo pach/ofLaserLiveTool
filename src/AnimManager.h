@@ -15,6 +15,7 @@
 #include "ofxUI.h"
 #include "ofxOSC.h"
 
+#include "ofxPolylineMerger.h"
 
 class AnimManager{
     
@@ -26,16 +27,8 @@ public:
     void update();
     void draw();
     
-    void setTimelineActive(bool enable);
-    
-    void drawTimeline();
     void drawGui();
     
-    void play();
-    void stop();
-    void togglePlay();
-    void clear();
-    void setLoop(ofLoopType loop);
     
     void setDrawWidth(int w);
     void setDrawHeight(int h);
@@ -56,8 +49,8 @@ public:
     void hasClicked (ofMouseEventArgs &e);
     
     void setCurrentSelected(string name);
-    void addActiveAnim(int trackId, string name);
-    void removeActiveAnim(int trackId);
+//    void addActiveAnim(int trackId, string name);
+//    void removeActiveAnim(int trackId);
     
     void createNewAnimation(string type, string name);
     void createNewAnimationWithTextbox(string type);
@@ -66,13 +59,12 @@ public:
     
 private:
     vector<AnimatedStuff*> allAnims;
-    map<int, AnimatedStuff*> activeAnims;
+//    map<int, AnimatedStuff*> activeAnims;
     
 //    bool updateSelected;
     
     AnimatedStuff * curSelected;
-    
-    int nbLayer;
+    AnimatedStuff * lastSelected;
     
     ofxUISuperCanvas *gui;
     
@@ -82,15 +74,20 @@ private:
     ofVec2f guiOffset;
 //    bool isTimelineActive;
 
-    map<int, AnimatedStuff*>::iterator itActive;
-    map<int, AnimatedStuff*>::iterator itActiveEnd;
+//    map<int, AnimatedStuff*>::iterator itActive;
+//    map<int, AnimatedStuff*>::iterator itActiveEnd;
     
     vector<string>animName;
+    
+    vector<ofPolyline> polys;
+    vector<ofxPolylineMerger> polysMerger;
     
     bool newAnimBool ;
     
     bool animUIselectEvent;
     
-//    LayerManager layer1;
-    
+    bool isFading;
+    float fadeTime;
+    float fadeCurrentTime;
+    float fadeStartTime;
 };
