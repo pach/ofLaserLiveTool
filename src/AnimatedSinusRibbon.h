@@ -9,18 +9,47 @@
 #pragma once
 
 #include "ofMain.h"
+#include "AnimatedStuff.h"
+#include "AnimatedMultiSinus.h"
 
+//struct sinWave {
+//    float freq;
+//    float speed;
+//    float height;
+//};
 
-class AnimatedSinusRibbon{
+class AnimatedSinusRibbon : public AnimatedStuff{
     
 public:
     AnimatedSinusRibbon();
     ~AnimatedSinusRibbon();
     
-    void setup();
+    void setup(string name);
     void update();
-    void draw();
+    
+    void parseOSC(ofxOscMessage &m);
     
 private:
+    int nbMaxVertex;
+    float nbVertex;
+    float noiseCoeff;
+    float smoothCoeff;
+    float smooth;
+    float noiseSpeed;
+    float moveSpeed;
+    bool useNoise;
+    float windCoeff;
+    float windNoiseDisplace;
     
+    float windX;
+    float windY;
+    
+    ofPoint wind;
+    ofPoint curPos;
+    
+    ofVec2f lastPoint;
+    
+    sinWave sin1;
+    sinWave sin2;
+    sinWave sin3;
 };
