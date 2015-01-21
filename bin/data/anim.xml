@@ -28,6 +28,10 @@
         <type>AnimatedRibbon</type>
     </animList>
     <animList>
+        <name>ribbonSin</name>
+        <type>AnimatedSinusRibbon</type>
+    </animList>
+    <animList>
         <name>ribbon2</name>
         <type>AnimatedRibbon</type>
     </animList>
