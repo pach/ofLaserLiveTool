@@ -48,6 +48,10 @@
         <type>AnimatedCircle</type>
     </animList>
     <animList>
+        <name>spiral1</name>
+        <type>AnimatedSpiral</type>
+    </animList>
+    <animList>
         <name>oscLines</name>
         <type>AnimatedOSCLines</type>
     </animList>
