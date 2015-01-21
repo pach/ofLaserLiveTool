@@ -30,6 +30,7 @@
 #include "AnimatedSvg.h"
 #include "AnimatedImacStraw.h"
 #include "AnimatedSinusRibbon.h"
+#include "AnimatedSpiral.h"
 
 AnimManager::AnimManager(){
     curSelected = NULL;
@@ -131,6 +132,7 @@ void AnimManager::setupGui(){
     gui->addButton("add circle", newAnimBool);
     gui->addButton("add osc lines", newAnimBool);
     gui->addButton("add imac straws", newAnimBool);
+    gui->addButton("add spiral", newAnimBool);
     gui->addSpacer();
     
 //    gui->addRadio("anim list", animName, OFX_UI_ORIENTATION_VERTICAL);
@@ -186,7 +188,9 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         else if (name == "add imac straws"){
             createNewAnimationWithTextbox("AnimatedImacStraw");
         }
-        
+        else if (name == "add spiral"){
+            createNewAnimationWithTextbox("AnimatedSpiral");
+        }
         else if (name == "anim list"){
             animUIselectEvent = true;
             cout<<"select a new animation"<<endl;
@@ -265,6 +269,11 @@ void AnimManager::createNewAnimation(string type, string name){
             a = new AnimatedImacStraw();
             a->setup(name);
         }
+        else if (type == "AnimatedSpiral") {
+            a = new AnimatedSpiral();
+            a->setup(name);
+        }
+
         a->setDrawWidth(drawW);
         a->setDrawHeight(drawH);
         a->setDrawOffset(drawOffset);
