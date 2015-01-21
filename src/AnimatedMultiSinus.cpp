@@ -28,15 +28,15 @@ void AnimatedMultiSinus::setup(string name) {
     gui->addSlider("/posY", -1., 1., &posY);
     gui->addSpacer();
     gui->addSlider("/1/freq", 0., 500., &sin1.freq);
-    gui->addSlider("/1/speed", 0., 50., &sin1.speed);
+    gui->addSlider("/1/speed", -10., 10., &sin1.speed);
     gui->addSlider("/1/height", 0., 1., &sin1.height);
     gui->addSpacer();
     gui->addSlider("/2/freq", 0., 500., &sin2.freq);
-    gui->addSlider("/2/speed", 0., 50., &sin2.speed);
+    gui->addSlider("/2/speed", -10., 10., &sin2.speed);
     gui->addSlider("/2/height", 0., 1., &sin2.height);
     gui->addSpacer();
     gui->addSlider("/3/freq", 0., 500., &sin3.freq);
-    gui->addSlider("/3/speed", 0., 50., &sin3.speed);
+    gui->addSlider("/3/speed", -10., 10., &sin3.speed);
     gui->addSlider("/3/height", 0., 1., &sin3.height);
     ofPolyline p;
     polylines.push_back(p);
