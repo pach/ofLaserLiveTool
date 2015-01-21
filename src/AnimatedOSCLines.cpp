@@ -21,6 +21,10 @@ AnimatedOSCLines::~AnimatedOSCLines(){
 void AnimatedOSCLines::setup(string name) {
     AnimatedStuff::setup(name);
     type = "AnimatedOSCLines";
+    
+    ofPolyline p;
+    p.addVertex(ofVec2f(0.5, 0.5));
+    polylines.push_back(p);
 }
 
 void AnimatedOSCLines::update() {
@@ -62,7 +66,7 @@ void AnimatedOSCLines::parseOSC(ofxOscMessage &m){
         for (int i=0; i<nbPoints-1; i++) {
             p.addVertex(m.getArgAsFloat(1+i*2), m.getArgAsFloat(1+i*2+1));
         }
-        p.addVertex(m.getArgAsFloat(1), m.getArgAsFloat(2));
+//        p.addVertex(m.getArgAsFloat(1), m.getArgAsFloat(2));
         polylines.push_back(p);
     }
 }
