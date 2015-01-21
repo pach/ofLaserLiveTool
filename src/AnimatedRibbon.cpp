@@ -161,29 +161,7 @@ void AnimatedRibbon::update() {
 }
 
 void AnimatedRibbon::parseOSC(ofxOscMessage &m){
-//    string msg = m.getAddress();
-//    string cmd ;
-//    
-//    
-//    int ces = msg.find_first_of("/");
-//    
-//    if (ces != -1) {
-//        if (ces == 0){
-//            msg = msg.substr(ces+1);
-//            cmd = msg;
-//            ces = msg.find_first_of("/");
-//            if (ces != -1) {
-//                cmd = msg.substr(0, ces);
-//                msg = msg.substr(ces);
-//            }
-//        }
-//        else{
-//            cmd = msg.substr(0, ces);
-//            msg = msg.substr(ces);
-//        }
-//    }
-//    cout << "cmd "<<cmd<<" msg "<<msg<<endl;
-
+    
     vector<string> osc = getOSCcmd(m.getAddress());
     string cmd = osc[0];
     string msg = osc[1];
