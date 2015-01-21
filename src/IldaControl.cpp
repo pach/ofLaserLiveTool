@@ -11,6 +11,8 @@
 
 IldaControl::~IldaControl(){
     delete gui;
+//    delete guiCurve;
+//    delete guiTabBar;
 }
 
 void IldaControl::setup(){
@@ -29,6 +31,8 @@ void IldaControl::setup(){
     scale = ofPoint(0.5, 0.5);
     
     gui = new ofxUISuperCanvas("ILDA Control");
+//    guiCurve = new ofxUISuperCanvas("Laser Curve");
+//    guiTabBar = new ofxUITabBar();
     
     gui->addSpacer();
     gui->addIntSlider("pps", 500, 90000, &pps);
@@ -47,13 +51,21 @@ void IldaControl::setup(){
     gui->addSlider("red", 0, 1, &laserColor.r);
     gui->addSlider("green", 0, 1, &laserColor.g);
     gui->addSlider("blue", 0, 1, &laserColor.b);
+    gui->addToggle("show curve", &showCurve);
     
     gui->addSpacer();
     gui->add2DPad("offset", ofxUIVec2f(-1., 1), ofxUIVec2f(-1., 1.), &offset);
     gui->add2DPad("scale", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &scale);
     
-//    gui->autoSizeToFitWidgets();
+    
+//    guiTabBar->addCanvas(gui);
+//    
+//    guiCurve->addSpacer();
+//    
+//    guiTabBar->addCanvas(guiCurve);
+    
     gui->setHeight(ofGetWindowHeight());
+    
 //	ofAddListener(gui1->newGUIEvent,this,&ofApp::guiEvent);
     
 //    gui.add(pps.set("pps", 20000, 1000, 90000));
@@ -75,6 +87,12 @@ void IldaControl::setup(){
     
     etherdream.setup();
     etherdream.setPPS(pps);
+    
+    redCurve.setup();
+    greenCurve.setup();
+    blueCurve.setup();
+    
+    load();
 
 }
 
@@ -102,7 +120,9 @@ void IldaControl::update(){
     ildaFrame.params.output.transform.doFlipY = flipY;
     ildaFrame.params.output.doCapX = capX;
     ildaFrame.params.output.doCapY = capY;
-    ildaFrame.params.output.color = laserColor;
+    ildaFrame.params.output.color.r = (float)redCurve[laserColor.r*255]/255.;
+    ildaFrame.params.output.color.g = (float)greenCurve[laserColor.g*255]/255.;
+    ildaFrame.params.output.color.b = (float)blueCurve[laserColor.b*255]/255.;
     ildaFrame.params.output.blankCount = blankCount;
     ildaFrame.params.output.endCount = endCount;
  
@@ -114,10 +134,16 @@ void IldaControl::update(){
 
 void IldaControl::load(){
     gui->loadSettings("ilda.xml");
+    redCurve.load("red.yml");
+    redCurve.load("green.yml");
+    redCurve.load("blue.yml");
 }
 
 void IldaControl::save(){
     gui->saveSettings("ilda.xml");
+    redCurve.save("red.yml");
+    redCurve.save("green.yml");
+    redCurve.save("blue.yml");
 }
 
 int IldaControl::getGuiWidth(){
@@ -134,6 +160,11 @@ void IldaControl::draw(int x, int y, int w, int h){
     // send points to the etherdream
     etherdream.setPoints(ildaFrame);
     
+    if (showCurve) {
+        redCurve.draw(ofGetWidth()-830, 10);
+        greenCurve.draw(ofGetWidth()-540, 10);
+        blueCurve.draw(ofGetWidth()-270, 10);
+    }
     gui->draw();
 }
 

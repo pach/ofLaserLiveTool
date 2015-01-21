@@ -13,6 +13,7 @@
 #include "ofxEtherdream.h"
 #include "ofxUI.h"
 #include "ofxOsc.h"
+#include "ofxCurvesTool.h"
 
 class IldaControl {
 public:
@@ -69,6 +70,8 @@ public:
     bool ppsChanged;
     int oldPps;
     
+    bool showCurve;
+    
 private:
     
     ofxIlda::Frame ildaFrame;   // stores and manages ILDA frame drawings
@@ -76,5 +79,11 @@ private:
     ofxEtherdream etherdream;   // interface to the etherdream device
     
     ofxUISuperCanvas * gui;
+    
+    ofxCurvesTool redCurve;
+    ofxCurvesTool greenCurve;
+    ofxCurvesTool blueCurve;
+//    ofxUISuperCanvas * guiCurve;
+//    ofxUITabBar *guiTabBar;
     
 };
