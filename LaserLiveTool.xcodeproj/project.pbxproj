@@ -127,6 +127,7 @@
 		8C8FDE4F193730FA00662718 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C8FDE4B193730FA00662718 /* tinyxmlerror.cpp */; };
 		8C8FDE50193730FA00662718 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C8FDE4C193730FA00662718 /* tinyxmlparser.cpp */; };
 		8C8FDE5F1937902900662718 /* AnimManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C8FDE5D1937902900662718 /* AnimManager.cpp */; };
+		8CB7E5E41A6ECB08000E9930 /* AnimatedSinusRibbon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CB7E5E21A6ECB08000E9930 /* AnimatedSinusRibbon.cpp */; };
 		8CB8E4B219BE59E0002BD1CB /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB8E4B119BE59E0002BD1CB /* OpenAL.framework */; };
 		8CC1935E1A56DDD900BD8A8C /* AnimatedOSCLines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC1935C1A56DDD900BD8A8C /* AnimatedOSCLines.cpp */; };
 		8CC22BA619D18A7A001DD026 /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC22B7F19D18A7A001DD026 /* ofxOscBundle.cpp */; };
@@ -452,6 +453,8 @@
 		8C8FDE4C193730FA00662718 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		8C8FDE5D1937902900662718 /* AnimManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimManager.cpp; sourceTree = "<group>"; };
 		8C8FDE5E1937902900662718 /* AnimManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimManager.h; sourceTree = "<group>"; };
+		8CB7E5E21A6ECB08000E9930 /* AnimatedSinusRibbon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedSinusRibbon.cpp; sourceTree = "<group>"; };
+		8CB7E5E31A6ECB08000E9930 /* AnimatedSinusRibbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedSinusRibbon.h; sourceTree = "<group>"; };
 		8CB8E4B119BE59E0002BD1CB /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		8CC1935C1A56DDD900BD8A8C /* AnimatedOSCLines.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedOSCLines.cpp; sourceTree = "<group>"; };
 		8CC1935D1A56DDD900BD8A8C /* AnimatedOSCLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedOSCLines.h; sourceTree = "<group>"; };
@@ -825,6 +828,8 @@
 				8CC1935D1A56DDD900BD8A8C /* AnimatedOSCLines.h */,
 				8C35E59C1A66AD00005FAC62 /* AnimatedImacStraw.cpp */,
 				8C35E59D1A66AD00005FAC62 /* AnimatedImacStraw.h */,
+				8CB7E5E21A6ECB08000E9930 /* AnimatedSinusRibbon.cpp */,
+				8CB7E5E31A6ECB08000E9930 /* AnimatedSinusRibbon.h */,
 			);
 			name = AnimTools;
 			sourceTree = "<group>";
@@ -1689,6 +1694,7 @@
 				8C8F7C4F1938CA82005A2D28 /* ofxUITextArea.cpp in Sources */,
 				8C8F7C401938CA82005A2D28 /* ofxUIMovingGraph.cpp in Sources */,
 				8C8FDE2E193730FA00662718 /* ofxTLInOut.cpp in Sources */,
+				8CB7E5E41A6ECB08000E9930 /* AnimatedSinusRibbon.cpp in Sources */,
 				8C8FDE24193730FA00662718 /* ofxTLCameraTrack.cpp in Sources */,
 				8C8FDE2F193730FA00662718 /* ofxTLKeyframes.cpp in Sources */,
 				4294163B15857489B2176769 /* svgtiny_gradient.cpp in Sources */,
