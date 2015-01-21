@@ -29,6 +29,7 @@
 #include "AnimatedOSCLines.h"
 #include "AnimatedSvg.h"
 #include "AnimatedImacStraw.h"
+#include "AnimatedSinusRibbon.h"
 
 AnimManager::AnimManager(){
     curSelected = NULL;
@@ -125,6 +126,7 @@ void AnimManager::setupGui(){
     gui->addButton("add Rect", newAnimBool);
     gui->addButton("add Perlin", newAnimBool);
     gui->addButton("add Ribbon", newAnimBool);
+    gui->addButton("add Sinus Ribbon", newAnimBool);
     gui->addButton("add lines", newAnimBool);
     gui->addButton("add circle", newAnimBool);
     gui->addButton("add osc lines", newAnimBool);
@@ -165,6 +167,9 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         }
         else if (name == "add Ribbon"){
             createNewAnimationWithTextbox("AnimatedRibbon");
+        }
+        else if (name == "add Sinus Ribbon"){
+            createNewAnimationWithTextbox("AnimatedSinusRibbon");
         }
         else if (name == "add SVG"){
             createNewAnimationWithTextbox("AnimatedSvg");
@@ -234,6 +239,10 @@ void AnimManager::createNewAnimation(string type, string name){
         }
         else if (type == "AnimatedRibbon") {
             a = new AnimatedRibbon();
+            a->setup(name);
+        }
+        else if (type == "AnimatedSinusRibbon") {
+            a = new AnimatedSinusRibbon();
             a->setup(name);
         }
         else if (type == "AnimatedSvg") {

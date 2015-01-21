@@ -114,6 +114,7 @@ void ofApp::parseOSC(){
         ofxOscMessage m ;
         oscReceive.getNextMessage(&m);
         
+        cout<<"just received OSC "<<m.getAddress()<<endl;
         animManager.parseOSC(m);
         ilda.parseOSC(m);
     }
