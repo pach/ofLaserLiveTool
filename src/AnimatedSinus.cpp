@@ -14,7 +14,7 @@ AnimatedSinus::AnimatedSinus(){
 }
 
 AnimatedSinus::~AnimatedSinus(){
-    
+   AnimatedStuff::~AnimatedStuff();
 }
 
 
