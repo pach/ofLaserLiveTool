@@ -24,10 +24,15 @@ private:
     ofPoint center;
     float nbPoint;
     float maxSize;
+    float innerSize;
     float spiralCoeff;
     
     float lastTime;
     
     float rotSpeed;
     float currentRot;
+    bool resetSpeed;
+    
+    bool isLogSpiral;
+    float logCoeff;
 };
