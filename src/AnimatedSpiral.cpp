@@ -34,8 +34,11 @@ void AnimatedSpiral::setup(string name) {
     gui->addSlider("nbPoint", 10, 500, &nbPoint);
     gui->addSlider("maxSize", 0., 1., &maxSize);
     gui->addSlider("spiralCoeff", 0., 2., &spiralCoeff);
-    gui->addSlider("rotSpeed", -10., 10., &rotSpeed);
+    gui->addSlider("rotSpeed", -50., 50., &rotSpeed);
     gui->add2DPad("center", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &center);
+    
+    load();
+    
 }
 
 void AnimatedSpiral::update() {

@@ -31,6 +31,7 @@ void AnimatedCircle::setup(string name) {
     nbPointPerCircle = 20;
     
     noiseTime = 0.;
+    rotSpeed = 0.;
     
     gui->addIntSlider("/nbCircle", 1, 10, &nbCircle);
     gui->addIntSlider("/nbPointCircle", 3, 50, &nbPointPerCircle);
@@ -39,6 +40,7 @@ void AnimatedCircle::setup(string name) {
     gui->addToggle("/useNoise", &useNoise);
     gui->addSlider("noise speed coeff", 0., 0.5, &noiseSpeedCoeff);
     gui->addSlider("/noiseSpeed", 0., 1., &noiseSpeed);
+    gui->addSlider("/rotSpeed", 0., 100., &rotSpeed);
     
     load();
 
@@ -49,13 +51,14 @@ void AnimatedCircle::update() {
     ofPolyline p;
     
     float quadra = (2*PI) / nbPointPerCircle;
+    float currentRot = ofGetElapsedTimef()*rotSpeed;
     
     if (!useNoise){
         
         for (int n = 0; n<nbPointPerCircle; n++) {
-            p.addVertex(onePos.x+sin(quadra*n)*oneSize, onePos.y+cos(quadra*n)*oneSize);
+            p.addVertex(onePos.x+sin(quadra*n+currentRot)*oneSize, onePos.y+cos(quadra*n+currentRot)*oneSize);
         }
-        p.addVertex(onePos.x+sin(0)*oneSize, onePos.y+cos(0)*oneSize);
+        p.addVertex(onePos.x+sin(currentRot)*oneSize, onePos.y+cos(currentRot)*oneSize);
         polylines.push_back(p);
     }
     else{
@@ -67,9 +70,9 @@ void AnimatedCircle::update() {
             float size = ofNoise(i, 2, noiseTime)*oneSize;
             
             for (int n = 0; n<nbPointPerCircle; n++) {
-                p.addVertex(pos.x+sin(quadra*n)*size, pos.y+cos(quadra*n)*size);
+                p.addVertex(pos.x+sin(quadra*n+currentRot)*size, pos.y+cos(quadra*n+currentRot)*size);
             }
-            p.addVertex(pos.x+sin(0)*size, pos.y+cos(0)*size);
+            p.addVertex(pos.x+sin(currentRot)*size, pos.y+cos(currentRot)*size);
             polylines.push_back(p);
         }
     }

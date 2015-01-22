@@ -37,4 +37,6 @@ private:
     float noiseSpeed;
     
     float noiseTime;
+    
+    float rotSpeed;
 };
