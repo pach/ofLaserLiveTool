@@ -30,7 +30,7 @@ void AnimatedSinus::setup(string name) {
     posY = 0.;
     
     gui->addSpacer();
-    gui->addSlider("/freq", 0., 500., &freq);
+    gui->addSlider("/freq", 0., 50., &freq);
     gui->addIntSlider("/nbPoint", 10, 1000, &nbPoint);
     gui->addSlider("/speed", 0., 50., &speed);
     gui->addSlider("/height", 0., 1., &height);
@@ -48,7 +48,7 @@ void AnimatedSinus::update() {
     polylines[0].clear();
     
     for (int i=0 ; i<nbPoint ; i++){
-        polylines[0].addVertex((float)i/(float)nbPoint, sin((float)i/freq+ofGetElapsedTimef()*speed)*height-posY);
+        polylines[0].addVertex((float)i/(float)nbPoint, sin((float)i*freq/nbPoint+ofGetElapsedTimef()*speed)*height-posY);
     }
 }
 

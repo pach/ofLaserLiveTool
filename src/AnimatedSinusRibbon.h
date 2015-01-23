@@ -49,7 +49,13 @@ private:
     
     ofVec2f lastPoint;
     
+    ofPolyline spleenLine;
+    
     sinWave sin1;
     sinWave sin2;
     sinWave sin3;
+//    sinWave tan1;
+    
+    float derivativeTime;
+    float lastTime;
 };

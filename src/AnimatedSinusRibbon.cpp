@@ -34,6 +34,19 @@ void AnimatedSinusRibbon::setup(string name) {
 
     lastPoint = ofVec2f (0.5, 0.5);
     
+    sin1.freq = 0.1;
+    sin1.speed = 0.;
+    sin1.height = 0.;
+    sin2.freq = 0.1;
+    sin2.speed = 0.;
+    sin2.height = 0.;
+    sin3.freq = 0.1;
+    sin3.speed = 0.;
+    sin3.height = 0.;
+//    tan1.freq = 0.;
+//    tan1.speed = 0.;
+//    tan1.height = 0.;
+
     gui->addIntSlider("max Vertex coeff", 1, 1000, &nbMaxVertex);
     gui->addSlider("smooth coeff", 1.99, 10., &smoothCoeff);
 //    gui->addSlider("noise coeff", 0., 0.02, &noiseCoeff);
@@ -49,17 +62,23 @@ void AnimatedSinusRibbon::setup(string name) {
 //    gui->add2DPad("/pos", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &curPos);
     
     gui->addSpacer();
-    gui->addSlider("/1/freq", 0.1, 50., &sin1.freq);
-    gui->addSlider("/1/speed", -10., 10., &sin1.speed);
-    gui->addSlider("/1/height", 0., 0.01, &sin1.height);
+    gui->addSlider("/1/freq", 0., 50., &sin1.freq);
+    gui->addSlider("/1/speed", -0.01, 0.01, &sin1.speed);
+    gui->addSlider("/1/height", 0., 0.5, &sin1.height);
     gui->addSpacer();
-    gui->addSlider("/2/freq", 0.1, 50., &sin2.freq);
-    gui->addSlider("/2/speed", -10., 10., &sin2.speed);
-    gui->addSlider("/2/height", 0., 0.01, &sin2.height);
+    gui->addSlider("/2/freq", 0., 50., &sin2.freq);
+    gui->addSlider("/2/speed", -0.01, 0.01, &sin2.speed);
+    gui->addSlider("/2/height", 0., 0.5, &sin2.height);
     gui->addSpacer();
-    gui->addSlider("/3/freq", 0.1, 50., &sin3.freq);
-    gui->addSlider("/3/speed", -10., 10., &sin3.speed);
-    gui->addSlider("/3/height", 0., 0.01, &sin3.height);
+    gui->addSlider("/3/freq", 0., 50., &sin3.freq);
+    gui->addSlider("/3/speed", -0.01, 0.01, &sin3.speed);
+    gui->addSlider("/3/height", 0., 0.5, &sin3.height);
+//    gui->addSpacer();
+//    gui->addSlider("/tan/freq", 0.1, 50., &tan1.freq);
+//    gui->addSlider("/tan/speed", -0.1, 0.1, &tan1.speed);
+//    gui->addSlider("/tan/height", 0., 0.5, &tan1.height);
+    
+    gui->autoSizeToFitWidgets();
     
     type = "AnimatedSinusRibbon";
      
@@ -67,15 +86,22 @@ void AnimatedSinusRibbon::setup(string name) {
     
     polylines.clear();
     
-    ofPolyline p;
+//    ofPolyline p;
     for (int i=0; i<nbMaxVertex; i++) {
-        p.addVertex(ofVec2f(0.5, 0.5));
+        spleenLine.addVertex(ofVec2f(0.5, 0.5));
     }
-    polylines.push_back(p);
+    polylines.push_back(spleenLine);
+    
+    lastTime = ofGetElapsedTimef();
+    derivativeTime = 0;
+
 
 }
 
 void AnimatedSinusRibbon::update() {
+    
+    derivativeTime += (ofGetElapsedTimef()-lastTime);
+    
     windX = ofMap(wind.x, 0., 1., -windCoeff, windCoeff);
     windY = ofMap(wind.y, 0., 1., -windCoeff, windCoeff);
     
@@ -99,8 +125,10 @@ void AnimatedSinusRibbon::update() {
         lastPoint = curPos;
     }
     
-    polylines[0].addVertex(lastPoint.x, lastPoint.y);
-    vector<ofPoint> p = polylines[0].getVertices();
+//    polylines[0].addVertex(lastPoint.x, lastPoint.y);
+//    vector<ofPoint> p = polylines[0].getVertices();
+    spleenLine.addVertex(lastPoint.x, lastPoint.y);
+    vector<ofPoint> p = spleenLine.getVertices();
     
     // si trop grand, enleve dernier point (premier du polyline
     while (p.size() > (int)(nbMaxVertex*nbVertex)){
@@ -111,8 +139,8 @@ void AnimatedSinusRibbon::update() {
     vector<ofPoint>::iterator pIt = p.begin();
     vector<ofPoint>::iterator pItEnd = p.end();
     int idPt=0;
-    float noiseX, noiseY, disp1, disp2, disp3;
-    ofVec2f norm;
+    float noiseX, noiseY, disp1, disp2, disp3, dispT1;
+    ofVec2f norm, tangent;
     
     while (pIt != pItEnd && idPt < (int)(nbMaxVertex*nbVertex - 2)){
         
@@ -167,22 +195,30 @@ void AnimatedSinusRibbon::update() {
     }
     
     polylines[0].clear();
+    spleenLine.clear();
+//    polylines[0].addVertices(p);
+//    polylines[0].getResampledBySpacing(0.5);
+    spleenLine.addVertices(p);
+    spleenLine.getResampledBySpacing(0.5);
+    spleenLine = spleenLine.getSmoothed(smoothCoeff*smooth);
     
-    polylines[0].addVertices(p);
+    polylines[0] = spleenLine;
     
-    polylines[0].getResampledBySpacing(0.5);
-
     for (int i=0; i<polylines[0].size(); i++) {
-        disp1 = sin((float)i/sin1.freq+ofGetElapsedTimef()*sin1.speed)*sin1.height;
-        disp2 = sin((float)i/sin2.freq+ofGetElapsedTimef()*sin2.speed)*sin2.height;
-        disp3 = sin((float)i/sin3.freq+ofGetElapsedTimef()*sin3.speed)*sin3.height;
-        
-        norm = polylines[0].getNormalAtIndex(i);
+        disp1 = sin((float)i*sin1.freq/polylines[0].size()+derivativeTime*sin1.speed)*sin1.height;
+        disp2 = sin((float)i*sin2.freq/polylines[0].size()+derivativeTime*sin2.speed)*sin2.height;
+        disp3 = sin((float)i*sin3.freq/polylines[0].size()+derivativeTime*sin3.speed)*sin3.height;
+//        dispT1 = sin((float)i*tan1.freq/polylines[0].size()+derivativeTime*tan1.speed)*tan1.height;
+        norm = spleenLine.getNormalAtIndex(i);
+        norm.normalize();
         norm *= (disp1+disp2+disp3);
-        polylines[0][i] += norm;
+//        tangent = polylines[0].getTangentAtIndex(i);
+//        tangent.normalize();
+//        tangent *= dispT1;
+        polylines[0][i] += norm;//+tangent;
     }
     
-    polylines[0] = polylines[0].getSmoothed(smoothCoeff*smooth);
+//    polylines[0] = polylines[0].getSmoothed(smoothCoeff*smooth);
     
 }
 

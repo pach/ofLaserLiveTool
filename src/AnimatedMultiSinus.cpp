@@ -23,37 +23,76 @@ void AnimatedMultiSinus::setup(string name) {
     
     type = "AnimatedMultiSinus";
     
+    sin1.freq = 1.;
+    sin1.speed = 0.;
+    sin1.height = 1.;
+    sin2.freq = 1.;
+    sin2.speed = 0.;
+    sin2.height = 1.;
+    sin3.freq = 1.;
+    sin3.speed = 0.;
+    sin3.height = 1.;
+    sinI1.freq = 1.;
+    sinI1.speed = 0.;
+    sinI1.height = 1.;
+    sinI2.freq = 1.;
+    sinI2.speed = 0.;
+    sinI2.height = 1.;
+    sinI3.freq = 1.;
+    sinI3.speed = 0.;
+    sinI3.height = 1.;
+    
     gui->addSpacer();
     gui->addIntSlider("/nbPoint", 10, 1000, &nbPoint);
     gui->addSlider("/posY", -1., 1., &posY);
     gui->addSpacer();
-    gui->addSlider("/1/freq", 0., 500., &sin1.freq);
+    gui->addSlider("/1/freq", 0., 50., &sin1.freq);
     gui->addSlider("/1/speed", -10., 10., &sin1.speed);
     gui->addSlider("/1/height", 0., 1., &sin1.height);
     gui->addSpacer();
-    gui->addSlider("/2/freq", 0., 500., &sin2.freq);
+    gui->addSlider("/2/freq", 0., 50., &sin2.freq);
     gui->addSlider("/2/speed", -10., 10., &sin2.speed);
     gui->addSlider("/2/height", 0., 1., &sin2.height);
     gui->addSpacer();
-    gui->addSlider("/3/freq", 0., 500., &sin3.freq);
+    gui->addSlider("/3/freq", 0., 50., &sin3.freq);
     gui->addSlider("/3/speed", -10., 10., &sin3.speed);
     gui->addSlider("/3/height", 0., 1., &sin3.height);
+    gui->addSpacer();
+    gui->addSlider("tan/1/freq", 0., 50., &sinI1.freq);
+    gui->addSlider("tan/1/speed", -10., 10., &sinI1.speed);
+    gui->addSlider("tan/1/height", 0., 1., &sinI1.height);
+    gui->addSpacer();
+    gui->addSlider("tan/2/freq", 0., 50., &sinI2.freq);
+    gui->addSlider("tan/2/speed", -10., 10., &sinI2.speed);
+    gui->addSlider("tan/2/height", 0., 1., &sinI2.height);
+    gui->addSpacer();
+    gui->addSlider("tan/3/freq", 0., 50., &sinI3.freq);
+    gui->addSlider("tan/3/speed", -10., 10., &sinI3.speed);
+    gui->addSlider("tan/3/height", 0., 1., &sinI3.height);
     ofPolyline p;
     polylines.push_back(p);
     
     load();
     
+    lastTime = ofGetElapsedTimef();
+    derivativeTime = 0.;
 }
 
 
 void AnimatedMultiSinus::update() {
-    polylines[0].clear();
+    derivativeTime += (ofGetElapsedTimef()-lastTime);
+    lastTime = ofGetElapsedTimef();
     
+    polylines[0].clear();
+    float x1, x2, x3, y1, y2, y3;
     for (int i=0 ; i<nbPoint ; i++){
-        float y1 = sin((float)i/sin1.freq+ofGetElapsedTimef()*sin1.speed)*sin1.height;
-        float y2 = sin((float)i/sin2.freq+ofGetElapsedTimef()*sin2.speed)*sin2.height;
-        float y3 = sin((float)i/sin3.freq+ofGetElapsedTimef()*sin3.speed)*sin3.height;
-        polylines[0].addVertex((float)i/(float)nbPoint, y1+y2+y3-posY);
+        y1 = sin((float)i*sin1.freq/nbPoint+derivativeTime*sin1.speed)*sin1.height;
+        y2 = sin((float)i*sin2.freq/nbPoint+derivativeTime*sin2.speed)*sin2.height;
+        y3 = sin((float)i*sin3.freq/nbPoint+derivativeTime*sin3.speed)*sin3.height;
+        x1 = sin((float)i*sinI1.freq/nbPoint+derivativeTime*sinI1.speed)*sinI1.height;
+        x2 = sin((float)i*sinI2.freq/nbPoint+derivativeTime*sinI2.speed)*sinI2.height;
+        x3 = sin((float)i*sinI3.freq/nbPoint+derivativeTime*sinI3.speed)*sinI3.height;
+        polylines[0].addVertex((float)i/(float)nbPoint+x1+x2+x3, y1+y2+y3-posY);
     }
 }
 

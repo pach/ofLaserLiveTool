@@ -33,7 +33,13 @@ private:
     sinWave sin2;
     sinWave sin3;
     
+    sinWave sinI1;
+    sinWave sinI2;
+    sinWave sinI3;
+    
     int nbPoint;
     float posY;
     
+    float lastTime;
+    float derivativeTime;
 };
