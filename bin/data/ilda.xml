@@ -2,18 +2,18 @@
     <Kind>40</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>0.000000000</XPosition>
+    <XPosition>-1.000000000</XPosition>
     <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>42</Kind>
     <Name>pps</Name>
-    <Value>40620</Value>
+    <Value>37534</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>point count</Name>
-    <Value>924</Value>
+    <Value>777</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -28,12 +28,12 @@
 <Widget>
     <Kind>42</Kind>
     <Name>blank count</Name>
-    <Value>26</Value>
+    <Value>36</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>end count</Name>
-    <Value>12</Value>
+    <Value>16</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -58,7 +58,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>red</Name>
-    <Value>0.665024638</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -68,7 +68,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>blue</Name>
-    <Value>0.541871905</Value>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>show curve</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>11</Kind>

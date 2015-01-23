@@ -12,6 +12,10 @@
         <type>AnimatedMultiSinus</type>
     </animList>
     <animList>
+        <name>multisin2</name>
+        <type>AnimatedMultiSinus2</type>
+    </animList>
+    <animList>
         <name>rect1</name>
         <type>AnimatedRect</type>
     </animList>

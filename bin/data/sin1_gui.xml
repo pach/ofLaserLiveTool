@@ -8,12 +8,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/freq</Name>
-    <Value>10.000000000</Value>
+    <Value>34.482757568</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>/nbPoint</Name>
-    <Value>100</Value>
+    <Value>375</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,10 +23,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/height</Name>
-    <Value>0.103448279</Value>
+    <Value>0.251231521</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/posY</Name>
-    <Value>-0.241379321</Value>
+    <Value>-0.408867002</Value>
 </Widget>

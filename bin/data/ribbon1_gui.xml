@@ -8,7 +8,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>max Vertex coeff</Name>
-    <Value>261</Value>
+    <Value>414</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,12 +43,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/moveSpeed</Name>
-    <Value>0.157635465</Value>
+    <Value>0.477832526</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/nbVertex</Name>
-    <Value>0.945812821</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -58,8 +58,8 @@
 <Widget>
     <Kind>11</Kind>
     <Name>/wind</Name>
-    <XValue>0.502463043</XValue>
-    <YValue>0.497536957</YValue>
+    <XValue>0.822660089</XValue>
+    <YValue>0.123152710</YValue>
 </Widget>
 <Widget>
     <Kind>11</Kind>

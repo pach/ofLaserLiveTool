@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>nbPoint</Name>
-    <Value>198.275863647</Value>
+    <Value>12.413792610</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>spiralCoeff</Name>
-    <Value>0.226600990</Value>
+    <Value>0.236453205</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>rotSpeed</Name>
-    <Value>3.201967478</Value>
+    <Value>-0.246304274</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -44,10 +44,10 @@
 <Widget>
     <Kind>2</Kind>
     <Name>is logarithm spiral</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>log coeff</Name>
-    <Value>1.063793063</Value>
+    <Value>1.031280756</Value>
 </Widget>

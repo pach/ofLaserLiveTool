@@ -32,6 +32,11 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>multisin2</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>rect1</Name>
     <Value>0</Value>
 </Widget>
@@ -53,7 +58,7 @@
 <Widget>
     <Kind>17</Kind>
     <Name>ribbonSin</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -73,6 +78,11 @@
 <Widget>
     <Kind>17</Kind>
     <Name>circle1</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>spiral1</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

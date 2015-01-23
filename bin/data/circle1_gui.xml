@@ -29,15 +29,20 @@
 <Widget>
     <Kind>2</Kind>
     <Name>/useNoise</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise speed coeff</Name>
-    <Value>0.081280790</Value>
+    <Value>0.007389163</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/noiseSpeed</Name>
     <Value>0.206896558</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>/rotSpeed</Name>
+    <Value>30.541873932</Value>
 </Widget>
