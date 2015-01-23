@@ -19,6 +19,7 @@
 //#include "AnimatedPolyline.h"
 #include "AnimatedSinus.h"
 #include "AnimatedMultiSinus.h"
+#include "AnimatedMultiSin2.h"
 #include "AnimatedRect.h"
 //#include "AnimatedMultiline.h"
 #include "AnimatedPerlinLines.h"
@@ -124,6 +125,7 @@ void AnimManager::setupGui(){
 //    gui->addButton("add Multiline", newAnimBool);
     gui->addButton("add Sinus", newAnimBool);
     gui->addButton("add MultiSinus", newAnimBool);
+    gui->addButton("add MultiSinus2", newAnimBool);
     gui->addButton("add Rect", newAnimBool);
     gui->addButton("add Perlin", newAnimBool);
     gui->addButton("add Ribbon", newAnimBool);
@@ -157,6 +159,9 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         }
         else if (name == "add MultiSinus"){
             createNewAnimationWithTextbox("AnimatedMultiSinus");
+        }
+        else if (name == "add MultiSinus2"){
+            createNewAnimationWithTextbox("AnimatedMultiSinus2");
         }
         else if (name == "add Rect"){
             createNewAnimationWithTextbox("AnimatedRect");
@@ -227,6 +232,10 @@ void AnimManager::createNewAnimation(string type, string name){
         }
         else if (type == "AnimatedMultiSinus") {
             a = new AnimatedMultiSinus();
+            a->setup(name);
+        }
+        else if (type == "AnimatedMultiSinus2") {
+            a = new AnimatedMultiSin2();
             a->setup(name);
         }
         else if (type == "AnimatedRect") {
