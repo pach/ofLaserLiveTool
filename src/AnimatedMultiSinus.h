@@ -40,6 +40,4 @@ private:
     int nbPoint;
     float posY;
     
-    float lastTime;
-    float derivativeTime;
 };

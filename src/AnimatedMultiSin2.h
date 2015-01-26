@@ -34,6 +34,4 @@ private:
     
     int nFrame;
     
-    float derivativeTime;
-    float lastTime;
 };

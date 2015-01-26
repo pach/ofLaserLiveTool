@@ -373,6 +373,8 @@ void AnimManager::update() {
         lastSelected -> update();
     }
     
+    polys.clear() ;
+    
     if (!isFading && curSelected != NULL) {
         polys = curSelected->getPolylines();
     }
@@ -386,7 +388,6 @@ void AnimManager::update() {
             }
         }
         else{
-            polys.clear() ;
             
             if(curSelected!=NULL){
                 polysMerger[0].setPoly2(curSelected->getPolylines()[0]);

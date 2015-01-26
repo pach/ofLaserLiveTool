@@ -56,7 +56,4 @@ private:
     sinWave sin3;
     
 //    sinWave tan1;
-    
-    float derivativeTime;
-    float lastTime;
 };

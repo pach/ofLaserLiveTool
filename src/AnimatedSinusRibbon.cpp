@@ -93,16 +93,11 @@ void AnimatedSinusRibbon::setup(string name) {
         spleenLine.addVertex(ofVec2f(0.5, 0.5));
     }
     polylines.push_back(spleenLine);
-    
-    lastTime = ofGetElapsedTimef();
-    derivativeTime = 0;
 
 
 }
 
 void AnimatedSinusRibbon::update() {
-    
-    derivativeTime += (ofGetElapsedTimef()-lastTime);
     
     windX = ofMap(wind.x, 0., 1., -windCoeff, windCoeff);
     windY = ofMap(wind.y, 0., 1., -windCoeff, windCoeff);
@@ -207,9 +202,9 @@ void AnimatedSinusRibbon::update() {
     polylines[0] = spleenLine;
     
     for (int i=0; i<polylines[0].size(); i++) {
-        disp1 = sin((float)i*sin1.freq/polylines[0].size()+derivativeTime*sin1.speed)*sin1.height;
-        disp2 = sin((float)i*sin2.freq/polylines[0].size()+derivativeTime*sin2.speed)*sin2.height;
-        disp3 = sin((float)i*sin3.freq/polylines[0].size()+derivativeTime*sin3.speed)*sin3.height;
+        disp1 = sin((float)i*sin1.freq/polylines[0].size()+ofGetElapsedTimef()*sin1.speed)*sin1.height;
+        disp2 = sin((float)i*sin2.freq/polylines[0].size()+ofGetElapsedTimef()*sin2.speed)*sin2.height;
+        disp3 = sin((float)i*sin3.freq/polylines[0].size()+ofGetElapsedTimef()*sin3.speed)*sin3.height;
 //        dispT1 = sin((float)i*tan1.freq/polylines[0].size()+derivativeTime*tan1.speed)*tan1.height;
         norm = spleenLine.getNormalAtIndex(i);
         norm.normalize();
