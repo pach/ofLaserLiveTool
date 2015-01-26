@@ -61,6 +61,8 @@ void AnimatedSinusRibbon::setup(string name) {
     gui->add2DPad("/wind", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &wind);
 //    gui->add2DPad("/pos", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &curPos);
     
+//    gui->addSpacer();
+//    gui->addToggle("sin mode", &sinMode);
     gui->addSpacer();
     gui->addSlider("/1/freq", 0., 50., &sin1.freq);
     gui->addSlider("/1/speed", -0.01, 0.01, &sin1.speed);
@@ -78,7 +80,7 @@ void AnimatedSinusRibbon::setup(string name) {
 //    gui->addSlider("/tan/speed", -0.1, 0.1, &tan1.speed);
 //    gui->addSlider("/tan/height", 0., 0.5, &tan1.height);
     
-    gui->autoSizeToFitWidgets();
+    gui->setHeight(ofGetHeight());
     
     type = "AnimatedSinusRibbon";
      
@@ -215,9 +217,10 @@ void AnimatedSinusRibbon::update() {
 //        tangent = polylines[0].getTangentAtIndex(i);
 //        tangent.normalize();
 //        tangent *= dispT1;
+        
         polylines[0][i] += norm;//+tangent;
     }
-    
+   
 //    polylines[0] = polylines[0].getSmoothed(smoothCoeff*smooth);
     
 }
