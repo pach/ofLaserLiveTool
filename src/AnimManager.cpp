@@ -28,6 +28,8 @@
 #include "AnimatedLines.h"
 #include "AnimatedCircle.h"
 #include "AnimatedOSCLines.h"
+#include "AnimatedOSCPolylines.h"
+
 #include "AnimatedSvg.h"
 #include "AnimatedImacStraw.h"
 #include "AnimatedSinusRibbon.h"
@@ -135,6 +137,7 @@ void AnimManager::setupGui(){
     gui->addButton("add lines", newAnimBool);
     gui->addButton("add circle", newAnimBool);
     gui->addButton("add osc lines", newAnimBool);
+    gui->addButton("add osc multilines", newAnimBool);
     gui->addButton("add imac straws", newAnimBool);
     gui->addButton("add spiral", newAnimBool);
     gui->addSpacer();
@@ -191,6 +194,9 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         }
         else if (name == "add osc lines"){
             createNewAnimationWithTextbox("AnimatedOSCLines");
+        }
+        else if (name == "add osc multilines"){
+            createNewAnimationWithTextbox("AnimatedOSCPolylines");
         }
         else if (name == "add imac straws"){
             createNewAnimationWithTextbox("AnimatedImacStraw");
@@ -274,6 +280,10 @@ void AnimManager::createNewAnimation(string type, string name){
         }
         else if (type == "AnimatedOSCLines") {
             a = new AnimatedOSCLines();
+            a->setup(name);
+        }
+        else if (type == "AnimatedOSCPolylines") {
+            a = new AnimatedOSCPolylines();
             a->setup(name);
         }
         else if (type == "AnimatedImacStraw") {
