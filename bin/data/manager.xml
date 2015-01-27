@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>fade time</Name>
-    <Value>2.068965673</Value>
+    <Value>2.266009808</Value>
 </Widget>
 <Widget>
     <Kind>22</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>17</Kind>
     <Name>none</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -63,7 +63,7 @@
 <Widget>
     <Kind>17</Kind>
     <Name>ribbonSin</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -93,5 +93,10 @@
 <Widget>
     <Kind>17</Kind>
     <Name>oscLines</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>oscMultilines</Name>
     <Value>0</Value>
 </Widget>

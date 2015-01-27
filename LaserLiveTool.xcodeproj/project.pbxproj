@@ -37,6 +37,7 @@
 		8C3FD5CF1A5414A700E8E54B /* AnimatedMultiSinus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FD5CD1A5414A700E8E54B /* AnimatedMultiSinus.cpp */; };
 		8C5C3D471A52E63300A25C24 /* AnimatedCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C5C3D451A52E63300A25C24 /* AnimatedCircle.cpp */; };
 		8C60190C19CDD80A00F16199 /* AnimatedRibbon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C60190A19CDD80A00F16199 /* AnimatedRibbon.cpp */; };
+		8C6713C91A77E8D200B73905 /* AnimatedOSCPolylines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C6713C71A77E8D200B73905 /* AnimatedOSCPolylines.cpp */; };
 		8C78A42B1A72A1C10043442D /* AnimatedMultiSin2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C78A4291A72A1C10043442D /* AnimatedMultiSin2.cpp */; };
 		8C8EC39719C6135900823AEE /* AnimatedRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C8EC39519C6135900823AEE /* AnimatedRect.cpp */; };
 		8C8EC39A19C636F400823AEE /* AnimatedSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C8EC39819C636F400823AEE /* AnimatedSvg.cpp */; };
@@ -232,6 +233,8 @@
 		8C5C3D461A52E63300A25C24 /* AnimatedCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedCircle.h; sourceTree = "<group>"; };
 		8C60190A19CDD80A00F16199 /* AnimatedRibbon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedRibbon.cpp; sourceTree = "<group>"; };
 		8C60190B19CDD80A00F16199 /* AnimatedRibbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedRibbon.h; sourceTree = "<group>"; };
+		8C6713C71A77E8D200B73905 /* AnimatedOSCPolylines.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedOSCPolylines.cpp; sourceTree = "<group>"; };
+		8C6713C81A77E8D200B73905 /* AnimatedOSCPolylines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedOSCPolylines.h; sourceTree = "<group>"; };
 		8C78A4291A72A1C10043442D /* AnimatedMultiSin2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedMultiSin2.cpp; sourceTree = "<group>"; };
 		8C78A42A1A72A1C10043442D /* AnimatedMultiSin2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedMultiSin2.h; sourceTree = "<group>"; };
 		8C8EC39519C6135900823AEE /* AnimatedRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedRect.cpp; sourceTree = "<group>"; };
@@ -740,6 +743,8 @@
 				8C0C81641A70254700FF07A1 /* AnimatedSpiral.h */,
 				8C78A4291A72A1C10043442D /* AnimatedMultiSin2.cpp */,
 				8C78A42A1A72A1C10043442D /* AnimatedMultiSin2.h */,
+				8C6713C71A77E8D200B73905 /* AnimatedOSCPolylines.cpp */,
+				8C6713C81A77E8D200B73905 /* AnimatedOSCPolylines.h */,
 			);
 			name = AnimTools;
 			sourceTree = "<group>";
@@ -1305,6 +1310,7 @@
 				F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */,
 				8C8F7C3B1938CA82005A2D28 /* ofxUIImageToggle.cpp in Sources */,
 				8C8F7C531938CA82005A2D28 /* ofxUIValuePlotter.cpp in Sources */,
+				8C6713C91A77E8D200B73905 /* AnimatedOSCPolylines.cpp in Sources */,
 				8C8FDE50193730FA00662718 /* tinyxmlparser.cpp in Sources */,
 				837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */,
 				8CC22BA619D18A7A001DD026 /* ofxOscBundle.cpp in Sources */,
