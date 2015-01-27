@@ -5,7 +5,7 @@ void ofApp::setup(){
     ofBackground(125);
     
     
-    ofxTimeline::removeCocoaMenusFromGlut("Laser Anim Toolbox");
+//    ofxTimeline::removeCocoaMenusFromGlut("Laser Anim Toolbox");
     
     ilda.setup();
     ilda.load();

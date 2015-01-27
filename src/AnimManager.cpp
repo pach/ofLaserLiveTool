@@ -9,8 +9,8 @@
 #include "AnimManager.h"
 #include "ofxUI.h"
 
-#include "ofxTimeline.h"
-#include "ofxTLAudioTrack.h"
+//#include "ofxTimeline.h"
+//#include "ofxTLAudioTrack.h"
 
 #include "ofxXmlSettings.h"
 
@@ -118,6 +118,8 @@ void AnimManager::setupAnimatedList(){
 
 void AnimManager::setupGui(){
     // setup gui list
+    gui->addSpacer();
+    gui->addSlider("fade time", 0., 20., &fadeTime);
     gui->addSpacer();
     newAnimBool = false;
     gui->addButton("add SVG", newAnimBool);
@@ -375,8 +377,11 @@ void AnimManager::update() {
     
     polys.clear() ;
     
-    if (!isFading && curSelected != NULL) {
-        polys = curSelected->getPolylines();
+    if (!isFading) {
+        if (curSelected != NULL) {
+            polys = curSelected->getPolylines();
+        }
+
     }
     else{
         fadeCurrentTime = ofGetElapsedTimef()-fadeStartTime;
