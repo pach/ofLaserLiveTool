@@ -8,7 +8,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>/nbCircle</Name>
-    <Value>1</Value>
+    <Value>4</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -44,5 +44,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/rotSpeed</Name>
-    <Value>30.541873932</Value>
+    <Value>22.660099030</Value>
 </Widget>

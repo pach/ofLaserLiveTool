@@ -8,7 +8,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>/nbPoint</Name>
-    <Value>478</Value>
+    <Value>512</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,22 +18,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/1/freq</Name>
-    <Value>50.000000000</Value>
+    <Value>7.881773472</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/1/speed</Name>
-    <Value>-0.147783160</Value>
+    <Value>-6.354679585</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/1/height</Name>
-    <Value>0.019704433</Value>
+    <Value>0.157635465</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/2/freq</Name>
-    <Value>28.325122833</Value>
+    <Value>42.364532471</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,27 +43,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/2/height</Name>
-    <Value>0.029556651</Value>
+    <Value>0.083743840</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/3/freq</Name>
-    <Value>19.458127975</Value>
+    <Value>43.349754333</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/3/speed</Name>
-    <Value>1.330049038</Value>
+    <Value>-3.399014950</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/3/height</Name>
-    <Value>0.054187194</Value>
+    <Value>0.049261082</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>tan/1/freq</Name>
-    <Value>12.561575890</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -73,35 +73,35 @@
 <Widget>
     <Kind>4</Kind>
     <Name>tan/1/height</Name>
-    <Value>0.029556651</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>tan/2/freq</Name>
-    <Value>4.679802895</Value>
+    <Value>43.103446960</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>tan/2/speed</Name>
-    <Value>0.049999952</Value>
+    <Value>1.921181679</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>tan/2/height</Name>
-    <Value>0.000000000</Value>
+    <Value>0.064039409</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>tan/3/freq</Name>
-    <Value>41.379310608</Value>
+    <Value>37.438423157</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>tan/3/speed</Name>
-    <Value>0.000000000</Value>
+    <Value>-0.344827771</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>tan/3/height</Name>
-    <Value>0.000000000</Value>
+    <Value>0.029556651</Value>
 </Widget>

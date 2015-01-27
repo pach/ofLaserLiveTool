@@ -6,6 +6,11 @@
     <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
+    <Kind>4</Kind>
+    <Name>fade time</Name>
+    <Value>2.068965673</Value>
+</Widget>
+<Widget>
     <Kind>22</Kind>
     <Name>anim list</Name>
     <Value>1</Value>
@@ -13,7 +18,7 @@
 <Widget>
     <Kind>17</Kind>
     <Name>none</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
@@ -33,7 +38,7 @@
 <Widget>
     <Kind>17</Kind>
     <Name>multisin2</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
