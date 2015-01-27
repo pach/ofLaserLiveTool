@@ -65,15 +65,15 @@ void AnimatedSinusRibbon::setup(string name) {
 //    gui->addToggle("sin mode", &sinMode);
     gui->addSpacer();
     gui->addSlider("/1/freq", 0., 50., &sin1.freq);
-    gui->addSlider("/1/speed", -0.01, 0.01, &sin1.speed);
+    gui->addSlider("/1/speed", -5, 5, &sin1.speed);
     gui->addSlider("/1/height", 0., 0.5, &sin1.height);
     gui->addSpacer();
     gui->addSlider("/2/freq", 0., 50., &sin2.freq);
-    gui->addSlider("/2/speed", -0.01, 0.01, &sin2.speed);
+    gui->addSlider("/2/speed", -5, 5, &sin2.speed);
     gui->addSlider("/2/height", 0., 0.5, &sin2.height);
     gui->addSpacer();
     gui->addSlider("/3/freq", 0., 50., &sin3.freq);
-    gui->addSlider("/3/speed", -0.01, 0.01, &sin3.speed);
+    gui->addSlider("/3/speed", -5, 5, &sin3.speed);
     gui->addSlider("/3/height", 0., 0.5, &sin3.height);
 //    gui->addSpacer();
 //    gui->addSlider("/tan/freq", 0.1, 50., &tan1.freq);
