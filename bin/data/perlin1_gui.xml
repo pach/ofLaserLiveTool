@@ -8,22 +8,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noise speed coeff</Name>
-    <Value>0.167487681</Value>
+    <Value>0.076354682</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>nb points coeff</Name>
-    <Value>8</Value>
+    <Value>13</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/noiseSpeed</Name>
-    <Value>0.009852217</Value>
+    <Value>0.024630541</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/nbPoint</Name>
-    <Value>0.699999988</Value>
+    <Value>0.369458139</Value>
 </Widget>
 <Widget>
     <Kind>11</Kind>
@@ -34,11 +34,11 @@
 <Widget>
     <Kind>11</Kind>
     <Name>/scale</Name>
-    <XValue>0.748768449</XValue>
-    <YValue>0.635468006</YValue>
+    <XValue>0.305418730</XValue>
+    <YValue>0.290640384</YValue>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>/lineMode</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>

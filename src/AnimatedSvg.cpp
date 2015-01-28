@@ -39,10 +39,10 @@ void AnimatedSvg::setup(string name) {
     
     load();
     
-    if (filename != "none"){
-        svg.load(filename);
-        hasLoaded = true;
-    }
+//    if (filename != "none"){
+//        svg.load(filename);
+//        hasLoaded = true;
+//    }
 }
 
 void AnimatedSvg::textInputEvent(ofxUIEventArgs &e){
@@ -76,6 +76,7 @@ void AnimatedSvg::update() {
     
     if (!hasLoaded){
         if (filename != "none"){
+            svg.clear();
             svg.load(filename);
             hasLoaded = true;
         }

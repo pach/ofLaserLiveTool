@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>size</Name>
-    <Value>0.522167504</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,11 +18,11 @@
 <Widget>
     <Kind>11</Kind>
     <Name>pos</Name>
-    <XValue>0.492610842</XValue>
-    <YValue>0.507389188</YValue>
+    <XValue>0.768472910</XValue>
+    <YValue>0.536945820</YValue>
 </Widget>
 <Widget>
     <Kind>12</Kind>
     <Name>filename</Name>
-    <Value>svg/test.svg</Value>
+    <Value>svg/darkKnight.svg</Value>
 </Widget>

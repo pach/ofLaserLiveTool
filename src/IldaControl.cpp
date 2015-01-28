@@ -35,8 +35,8 @@ void IldaControl::setup(){
 //    guiTabBar = new ofxUITabBar();
     
     gui->addSpacer();
-    gui->addIntSlider("pps", 500, 90000, &pps);
-    gui->addIntSlider("point count", 2, 2500, &pointCount);
+    gui->addIntSlider("pps", 500, 60000, &pps);
+    gui->addIntSlider("point count", 50, 2500, &pointCount);
 //    gui->addToggle("do Smooth", &doSmooth);
     gui->addIntSlider("smooth amount", 0, 10, &smoothing);
     gui->addSlider("tolerance", 0, 1., &tolerance);

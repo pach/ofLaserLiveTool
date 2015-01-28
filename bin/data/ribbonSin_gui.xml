@@ -8,7 +8,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>max Vertex coeff</Name>
-    <Value>704</Value>
+    <Value>739</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,7 +33,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/moveSpeed</Name>
-    <Value>0.019704433</Value>
+    <Value>0.054187194</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -54,32 +54,32 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/1/freq</Name>
-    <Value>48.768470764</Value>
+    <Value>44.334976196</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/1/speed</Name>
-    <Value>-0.238916248</Value>
+    <Value>-1.403940916</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/1/height</Name>
-    <Value>0.002463054</Value>
+    <Value>0.009852217</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/2/freq</Name>
-    <Value>39.408866882</Value>
+    <Value>47.290641785</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/2/speed</Name>
-    <Value>0.431034505</Value>
+    <Value>-3.768472910</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/2/height</Name>
-    <Value>0.007389163</Value>
+    <Value>0.009852217</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -89,10 +89,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/3/speed</Name>
-    <Value>-0.283251226</Value>
+    <Value>1.305418611</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/3/height</Name>
-    <Value>0.009852217</Value>
+    <Value>0.007389163</Value>
 </Widget>
