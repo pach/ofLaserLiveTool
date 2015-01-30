@@ -8,12 +8,12 @@
 <Widget>
     <Kind>42</Kind>
     <Name>/nbCircle</Name>
-    <Value>4</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>/nbPointCircle</Name>
-    <Value>17</Value>
+    <Value>36</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -24,12 +24,12 @@
     <Kind>11</Kind>
     <Name>/pos</Name>
     <XValue>0.507389188</XValue>
-    <YValue>0.482758611</YValue>
+    <YValue>0.487684727</YValue>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>/useNoise</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -44,5 +44,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/rotSpeed</Name>
-    <Value>22.660099030</Value>
+    <Value>37.438423157</Value>
 </Widget>
