@@ -38,12 +38,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/noise</Name>
-    <Value>0.000000000</Value>
+    <Value>0.394088656</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/moveSpeed</Name>
-    <Value>0.408867002</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -58,8 +58,8 @@
 <Widget>
     <Kind>11</Kind>
     <Name>/wind</Name>
-    <XValue>0.871921182</XValue>
-    <YValue>0.738916278</YValue>
+    <XValue>0.443349749</XValue>
+    <YValue>0.541871905</YValue>
 </Widget>
 <Widget>
     <Kind>11</Kind>

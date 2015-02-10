@@ -8,57 +8,57 @@
 <Widget>
     <Kind>42</Kind>
     <Name>/nbPoint</Name>
-    <Value>643</Value>
+    <Value>941</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/posY</Name>
-    <Value>-0.497536957</Value>
+    <Value>0.103448272</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/1/freq</Name>
-    <Value>43.842361450</Value>
+    <Value>140.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/1/speed</Name>
-    <Value>-1.231527328</Value>
+    <Value>6.354680061</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/1/height</Name>
-    <Value>0.024630541</Value>
+    <Value>0.019704433</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/2/freq</Name>
-    <Value>44.088668823</Value>
+    <Value>95.566505432</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/2/speed</Name>
-    <Value>-2.512315512</Value>
+    <Value>-1.330049038</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/2/height</Name>
-    <Value>0.024630541</Value>
+    <Value>0.029556651</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/3/freq</Name>
-    <Value>27.586206436</Value>
+    <Value>37.438423157</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/3/speed</Name>
-    <Value>2.807881832</Value>
+    <Value>-0.837438703</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/3/height</Name>
-    <Value>0.014778325</Value>
+    <Value>0.019704433</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -78,7 +78,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>tan/2/freq</Name>
-    <Value>3.694581270</Value>
+    <Value>18.472906113</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -88,7 +88,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>tan/2/height</Name>
-    <Value>0.019704433</Value>
+    <Value>0.034482758</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
