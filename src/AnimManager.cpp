@@ -27,6 +27,7 @@
 #include "AnimatedSvg.h"
 #include "AnimatedLines.h"
 #include "AnimatedCircle.h"
+#include "AnimatedWalls.h"
 #include "AnimatedOSCLines.h"
 #include "AnimatedOSCPolylines.h"
 
@@ -140,6 +141,7 @@ void AnimManager::setupGui(){
     gui->addButton("add osc multilines", newAnimBool);
     gui->addButton("add imac straws", newAnimBool);
     gui->addButton("add spiral", newAnimBool);
+    gui->addButton("add walls", newAnimBool);
     gui->addSpacer();
     
 //    gui->addRadio("anim list", animName, OFX_UI_ORIENTATION_VERTICAL);
@@ -204,6 +206,9 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         else if (name == "add spiral"){
             createNewAnimationWithTextbox("AnimatedSpiral");
         }
+        else if (name == "add walls"){
+            createNewAnimationWithTextbox("AnimatedWalls");
+        }
         else if (name == "anim list"){
             animUIselectEvent = true;
             cout<<"select a new animation"<<endl;
@@ -229,7 +234,7 @@ void AnimManager::createNewAnimationWithTextbox(string type){
 void AnimManager::createNewAnimation(string type, string name){
     
     if (name != ""){
-        AnimatedStuff *a;
+        AnimatedStuff *a = NULL;
 //        if (type == "AnimatedPolyline") {
 //            a = new AnimatedPolyline();
 //            a->setup(name);
@@ -294,36 +299,41 @@ void AnimManager::createNewAnimation(string type, string name){
             a = new AnimatedSpiral();
             a->setup(name);
         }
+        else if (type == "AnimatedWalls") {
+            a = new AnimatedWalls();
+            a->setup(name);
+        }
 
-        a->setDrawWidth(drawW);
-        a->setDrawHeight(drawH);
-        a->setDrawOffset(drawOffset);
-//        a->setTlOffset(guiOffset+ofVec2f(gui->getRect()->getWidth(),0));
-        allAnims.push_back(a);
-        animName.push_back(name);
-        
-        // update animName gui menu
-        ofxUIDropDownList *w = (ofxUIDropDownList *)gui->getWidget("anim list");
-        w->addToggle(name);
-        
-        /* to update radio group, doesn't work*/
-//        ofxUIRadio *r = (ofxUIRadio *)gui->getWidget("anim list");
-//        ofxUIToggle *toggle = new ofxUIToggle(name, false, r->getRect()->getWidth(), r->getRect()->getHeight());
-//        r->addEmbeddedWidget(toggle);
-//        r->addToggle(toggle);
-//        r->setVisible(true);
-//        r->getRect()->setHeight(500);
-//        r->calculatePaddingRect();
-//        r->stateChange();
-////        gui->autoSizeToFitWidgets();
-//        gui->stateChange();
-        
-        cout<<"create new anim "<<name<<" of type "<<type<<endl;
-//        vector<ofxUIToggle *> tg =r->getToggles();
-//        for (int i=0 ; i<tg.size() ; i++){
-//                    cout<<"radio : "<<tg[i]->getName()<<endl;
-//        }
-
+        if (a != NULL){
+            a->setDrawWidth(drawW);
+            a->setDrawHeight(drawH);
+            a->setDrawOffset(drawOffset);
+    //        a->setTlOffset(guiOffset+ofVec2f(gui->getRect()->getWidth(),0));
+            allAnims.push_back(a);
+            animName.push_back(name);
+            
+            // update animName gui menu
+            ofxUIDropDownList *w = (ofxUIDropDownList *)gui->getWidget("anim list");
+            w->addToggle(name);
+            
+            /* to update radio group, doesn't work*/
+    //        ofxUIRadio *r = (ofxUIRadio *)gui->getWidget("anim list");
+    //        ofxUIToggle *toggle = new ofxUIToggle(name, false, r->getRect()->getWidth(), r->getRect()->getHeight());
+    //        r->addEmbeddedWidget(toggle);
+    //        r->addToggle(toggle);
+    //        r->setVisible(true);
+    //        r->getRect()->setHeight(500);
+    //        r->calculatePaddingRect();
+    //        r->stateChange();
+    ////        gui->autoSizeToFitWidgets();
+    //        gui->stateChange();
+            
+            cout<<"create new anim "<<name<<" of type "<<type<<endl;
+    //        vector<ofxUIToggle *> tg =r->getToggles();
+    //        for (int i=0 ; i<tg.size() ; i++){
+    //                    cout<<"radio : "<<tg[i]->getName()<<endl;
+    //        }
+        }
     }
 }
 
@@ -510,10 +520,15 @@ void AnimManager::parseOSC(ofxOscMessage &m){
     string cmd = osc[0];
     string msg = osc[1];
     
-    if (cmd == "layer1"){
-        m.setAddress(msg);
-        if (curSelected != NULL){
-            curSelected->parseOSC(m);
+    if (cmd == "layer.1"){
+        if (msg == "/load") {
+            setCurrentSelected(m.getArgAsString(0));
+        }
+        else{
+            m.setAddress(msg);
+            if (curSelected != NULL){
+                curSelected->parseOSC(m);
+            }
         }
     }
     
