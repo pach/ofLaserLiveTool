@@ -62,7 +62,14 @@ void AnimManager::setup() {
     
     animUIselectEvent = false;
     
+    name = "layer.0";
     
+}
+
+void AnimManager::setName(string newName){
+    name = newName;
+    gui->setName(name);
+    gui->addLabel(name);
 }
 
 void AnimManager::load(){
@@ -151,6 +158,8 @@ void AnimManager::setupGui(){
     gui->setHeight(ofGetWindowHeight());
     
     ofAddListener(gui->newGUIEvent, this, &AnimManager::guiEvent);
+    
+    gui->setVisible(false);
 
 }
 
@@ -442,7 +451,7 @@ void AnimManager::update() {
 }
 
 void AnimManager::draw() {
-    gui->draw();
+//    gui->draw();
     
     ofSetColor(0);
     ofRect(drawOffset, drawW, drawH);
@@ -520,9 +529,12 @@ void AnimManager::parseOSC(ofxOscMessage &m){
     string cmd = osc[0];
     string msg = osc[1];
     
-    if (cmd == "layer.1"){
+    if (cmd == name){
         if (msg == "/load") {
             setCurrentSelected(m.getArgAsString(0));
+        }
+        else if (msg == "/fadeTime"){
+            fadeTime = m.getArgAsFloat(0);
         }
         else{
             m.setAddress(msg);

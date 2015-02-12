@@ -10,14 +10,30 @@ void ofApp::setup(){
     ilda.setup();
     ilda.load();
     
-    animManager.setup();
+    animManager1.setup();
+    animManager1.setDrawWidth(150);
+    animManager1.setDrawHeight(150);
+    animManager1.setDrawOffset(ofVec2f(ofGetWidth()-400., ofGetHeight()-400));
+    animManager1.setGuiOffset(ofVec2f(ilda.getGuiWidth()+150., 0.));
+    animManager1.setName("layer.1");
     
-    animManager.setDrawWidth(150);
-    animManager.setDrawHeight(150);
-    animManager.setDrawOffset(ofVec2f(ofGetWidth()-400., ofGetHeight()-200));
+    animManager2.setup();
+    animManager2.setDrawWidth(150);
+    animManager2.setDrawHeight(150);
+    animManager2.setDrawOffset(ofVec2f(ofGetWidth()-400., ofGetHeight()-200));
+    animManager2.setGuiOffset(ofVec2f(ilda.getGuiWidth()+150., 0.));
+    animManager2.setName("layer.2");
+
+    ildaTabs.setup();
+    ildaTabs.setPosition(0, 0);
+    ildaTabs.addCanvas(animManager1.getGui());
     
-    animManager.setGuiOffset(ofVec2f(ilda.getGuiWidth()+10., 0.));
+    animManagerTabs.setup();
+    animManagerTabs.setPosition(ilda.getGuiWidth()+150., 0.);
+    animManagerTabs.addCanvas(animManager1.getGui());
+    animManagerTabs.addCanvas(animManager2.getGui());
     
+
     
 //    oscSender.setup(OSC_ASPI_ADDR, OSC_ASPI_PORT);
     oscTimeDelay = 0.2;
@@ -30,7 +46,8 @@ void ofApp::setup(){
 void ofApp::update(){
     parseOSC();
     
-    animManager.update();
+    animManager1.update();
+    animManager2.update();
     
     if (ofGetElapsedTimef()-lastOscTime > oscTimeDelay) {
         
@@ -40,10 +57,14 @@ void ofApp::update(){
     
     ilda.clear();
     
-    vector<ofPolyline> polys = animManager.getPolylines();
+    vector<ofPolyline> polys = animManager1.getPolylines();
     for (int i = 0; i<polys.size(); i++) {
         ilda.addPoly(polys[i]);
     }
+//    polys = animManager2.getPolylines();
+//    for (int i = 0; i<polys.size(); i++) {
+//        ilda.addPoly(polys[i]);
+//    }
     
     ilda.update();
 }
@@ -51,21 +72,30 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    animManager.draw();
+    animManager1.draw();
+    animManager2.draw();
     
     ilda.draw(ofGetWidth()-200, ofGetHeight()-200, 150, 150);
 }
 
 void ofApp::exit(){
     ilda.save();
-    animManager.save();
+    animManager1.save();
+    animManager2.save();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     if (key == 's'){
         ilda.save();
-        animManager.save();
+        animManager1.save();
+        animManager2.save();
+    }
+    if (key=='1'){
+        ilda.setIdEtherdream(0);
+    }
+    else if (key == '2'){
+        ilda.setIdEtherdream(1);
     }
 }
 
@@ -115,7 +145,8 @@ void ofApp::parseOSC(){
         oscReceive.getNextMessage(&m);
         
         cout<<"just received OSC "<<m.getAddress()<<endl;
-        animManager.parseOSC(m);
+        animManager1.parseOSC(m);
+        animManager2.save();
         ilda.parseOSC(m);
     }
 }

@@ -5,6 +5,8 @@
 #include "IldaControl.h"
 #include "SvgLoader.h"
 
+#include "ofxUI.h"
+
 //#define OSC_ASPI_ADDR "169.254.48.100"
 #define OSC_LISTENING_PORT 10000
 
@@ -34,11 +36,15 @@ public:
 private:
     IldaControl ilda;
     
-    AnimManager animManager;
+    AnimManager animManager1;
+    AnimManager animManager2;
     
     ofxOscSender oscSender;
     float oscTimeDelay;
     float lastOscTime;
     
     ofxOscReceiver oscReceive;
+    
+    ofxUITabBar animManagerTabs;
+    ofxUITabBar ildaTabs;
 };

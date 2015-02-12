@@ -29,6 +29,7 @@ public:
     
     void drawGui();
     
+    void setName(string newName);
     
     void setDrawWidth(int w);
     void setDrawHeight(int h);
@@ -56,6 +57,8 @@ public:
     void createNewAnimationWithTextbox(string type);
     
     void parseOSC (ofxOscMessage &m);
+    
+    inline ofxUICanvas * getGui(){return gui;};
     
 private:
     vector<AnimatedStuff*> allAnims;
@@ -90,4 +93,6 @@ private:
     float fadeTime;
     float fadeCurrentTime;
     float fadeStartTime;
+    
+    string name;
 };
