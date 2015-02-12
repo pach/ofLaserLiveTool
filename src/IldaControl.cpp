@@ -15,7 +15,9 @@ IldaControl::~IldaControl(){
 //    delete guiTabBar;
 }
 
-void IldaControl::setup(){
+void IldaControl::setup(int idEtherdream){
+    name = "laser";
+    
     pps = 20000;
     pointCount = 300;
     smoothing = 0;
@@ -65,6 +67,7 @@ void IldaControl::setup(){
 //    guiTabBar->addCanvas(guiCurve);
     
     gui->setHeight(ofGetWindowHeight());
+    gui->setVisible(false);
     
 //	ofAddListener(gui1->newGUIEvent,this,&ofApp::guiEvent);
     
@@ -85,24 +88,26 @@ void IldaControl::setup(){
 //    gui.add(offset.set("offset", ofVec2f(0., 0.), ofVec2f(-1., -1.), ofVec2f(1., 1.)));
 //    gui.add(scale.set("scale", ofVec2f(0.5, 0.5), ofVec2f(0., 0.), ofVec2f(1., 1.)));
     
-    etherdream.setup(true, 0);
+    etherdream.setup(true, idEtherdream);
     etherdream.setPPS(pps);
-    
-    etherdream2.setup(true, 1);
-    etherdream2.setPPS(pps);
     
     redCurve.setup();
     greenCurve.setup();
     blueCurve.setup();
     
     load();
-    
-    idEtherdream = 0;
 
 }
 
-void IldaControl::setIdEtherdream(int idSend){
-    idEtherdream = idSend;
+void IldaControl::setName(string newName){
+    name = newName;
+    gui->setName(name);
+    gui->addLabel(name);
+}
+
+void IldaControl::setIdEtherdream(int idEtherdream){
+    etherdream.kill();
+    etherdream.setup(true, idEtherdream);
 }
 
 void IldaControl::clear(){
@@ -141,18 +146,11 @@ void IldaControl::update(){
  
     // do your thang
     
-    if (idEtherdream == 0) {
-        if (etherdream.checkConnection()){
-            ildaFrame.update();
-            etherdream.setPoints(ildaFrame);
-        }
+    if (etherdream.checkConnection()){
+        ildaFrame.update();
+        etherdream.setPoints(ildaFrame);
     }
-    else{
-        if (etherdream2.checkConnection()){
-            ildaFrame.update();
-            etherdream2.setPoints(ildaFrame);
-        }
-    }
+    
     // send points to the etherdream
     //    etherdream.setPoints(ildaFrame);
 //    etherdream2.setPoints(ildaFrame);
@@ -188,7 +186,7 @@ void IldaControl::draw(int x, int y, int w, int h){
         greenCurve.draw(ofGetWidth()-540, 10);
         blueCurve.draw(ofGetWidth()-270, 10);
     }
-    gui->draw();
+//    gui->draw();
 }
 
 void IldaControl::parseOSC(ofxOscMessage &m){
@@ -217,7 +215,7 @@ void IldaControl::parseOSC(ofxOscMessage &m){
     string cmd = osc[0];
     string msg = osc[1];
     
-    if (cmd == "laser"){
+    if (cmd == name){
         
 //        m.setAddress(msg);
 //        ces = msg.find_first_of("/");

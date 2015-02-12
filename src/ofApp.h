@@ -34,7 +34,8 @@ public:
     void parseOSC();
     
 private:
-    IldaControl ilda;
+    IldaControl ilda1;
+    IldaControl ilda2;
     
     AnimManager animManager1;
     AnimManager animManager2;

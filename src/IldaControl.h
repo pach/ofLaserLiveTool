@@ -19,12 +19,16 @@ class IldaControl {
 public:
     ~IldaControl();
     
-    void setup();
+    void setup(int idEtherdream = 0);
     void update();
     void draw(int x, int y, int w, int h);
     
     void clear();
     void addPoly(ofPolyline poly);
+    
+    void setIdEtherdream (int idEtherdream);
+    
+    void setName(string newName);
     
     int getGuiWidth();
     
@@ -33,7 +37,7 @@ public:
     
     void parseOSC(ofxOscMessage &m);
     
-    void setIdEtherdream(int idSend);
+    inline ofxUICanvas * getGui(){return gui;};
     
     int pps;
     bool capX;
@@ -79,16 +83,15 @@ private:
     ofxIlda::Frame ildaFrame;   // stores and manages ILDA frame drawings
     
     ofxEtherdream etherdream;   // interface to the etherdream device
-    ofxEtherdream etherdream2;
     
     ofxUISuperCanvas * gui;
     
     ofxCurvesTool redCurve;
     ofxCurvesTool greenCurve;
     ofxCurvesTool blueCurve;
+    
+    string name;
 //    ofxUISuperCanvas * guiCurve;
 //    ofxUITabBar *guiTabBar;
-    
-    int idEtherdream;
     
 };
