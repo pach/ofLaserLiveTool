@@ -33,6 +33,8 @@ public:
     
     void parseOSC(ofxOscMessage &m);
     
+    void setIdEtherdream(int idSend);
+    
     int pps;
     bool capX;
     bool capY;
@@ -77,6 +79,7 @@ private:
     ofxIlda::Frame ildaFrame;   // stores and manages ILDA frame drawings
     
     ofxEtherdream etherdream;   // interface to the etherdream device
+    ofxEtherdream etherdream2;
     
     ofxUISuperCanvas * gui;
     
@@ -85,5 +88,7 @@ private:
     ofxCurvesTool blueCurve;
 //    ofxUISuperCanvas * guiCurve;
 //    ofxUITabBar *guiTabBar;
+    
+    int idEtherdream;
     
 };

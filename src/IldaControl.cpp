@@ -85,15 +85,24 @@ void IldaControl::setup(){
 //    gui.add(offset.set("offset", ofVec2f(0., 0.), ofVec2f(-1., -1.), ofVec2f(1., 1.)));
 //    gui.add(scale.set("scale", ofVec2f(0.5, 0.5), ofVec2f(0., 0.), ofVec2f(1., 1.)));
     
-    etherdream.setup();
+    etherdream.setup(true, 0);
     etherdream.setPPS(pps);
+    
+    etherdream2.setup(true, 1);
+    etherdream2.setPPS(pps);
     
     redCurve.setup();
     greenCurve.setup();
     blueCurve.setup();
     
     load();
+    
+    idEtherdream = 0;
 
+}
+
+void IldaControl::setIdEtherdream(int idSend){
+    idEtherdream = idSend;
 }
 
 void IldaControl::clear(){
@@ -109,6 +118,10 @@ void IldaControl::update(){
         etherdream.setPPS(pps);
         oldPps = pps;
     }
+//    if (oldPps != pps){
+//        etherdream2.setPPS(pps);
+//        oldPps = pps;
+//    }
     
     ildaFrame.polyProcessor.params.targetPointCount=pointCount;
     ildaFrame.polyProcessor.params.smoothAmount=smoothing;
@@ -127,9 +140,22 @@ void IldaControl::update(){
     ildaFrame.params.output.endCount = endCount;
  
     // do your thang
-    if (etherdream.checkConnection()){
-        ildaFrame.update();
+    
+    if (idEtherdream == 0) {
+        if (etherdream.checkConnection()){
+            ildaFrame.update();
+            etherdream.setPoints(ildaFrame);
+        }
     }
+    else{
+        if (etherdream2.checkConnection()){
+            ildaFrame.update();
+            etherdream2.setPoints(ildaFrame);
+        }
+    }
+    // send points to the etherdream
+    //    etherdream.setPoints(ildaFrame);
+//    etherdream2.setPoints(ildaFrame);
 }
 
 void IldaControl::load(){
@@ -156,9 +182,6 @@ void IldaControl::draw(int x, int y, int w, int h){
     // draw to the screen
     ofSetColor(255);
     ildaFrame.draw(x, y, w, h);
-    
-    // send points to the etherdream
-    etherdream.setPoints(ildaFrame);
     
     if (showCurve) {
         redCurve.draw(ofGetWidth()-830, 10);
