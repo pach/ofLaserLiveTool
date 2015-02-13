@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(125);
-    
+    ofSetFrameRate(60);
     
 //    ofxTimeline::removeCocoaMenusFromGlut("Laser Anim Toolbox");
     
@@ -150,9 +150,9 @@ void ofApp::parseOSC(){
         ofxOscMessage m ;
         oscReceive.getNextMessage(&m);
         
-        cout<<"just received OSC "<<m.getAddress()<<endl;
+//        cout<<"just received OSC "<<m.getAddress()<<endl;
         animManager1.parseOSC(m);
-        animManager2.save();
+        animManager2.parseOSC(m);
         ilda1.parseOSC(m);
         ilda2.parseOSC(m);
     }
