@@ -54,24 +54,6 @@ public:
     ofPoint offset;
     ofPoint scale;
     
-//    ofParameter<int> pps;
-//
-//    ofParameter<bool> capX;
-//    ofParameter<bool> capY;
-//    ofParameter<int> blankCount;
-//    ofParameter<int> endCount;
-//    
-//    ofParameter<bool> flipX;
-//    ofParameter<bool> flipY;
-//    
-//    ofParameter<int> pointCount;
-//    ofParameter<int> smoothing;
-//    ofParameter<float> tolerance;
-//    
-//    ofParameter<ofFloatColor> laserColor;
-//    
-//    ofParameter<ofVec2f> offset;
-//    ofParameter<ofVec2f> scale;
     
     bool ppsChanged;
     int oldPps;

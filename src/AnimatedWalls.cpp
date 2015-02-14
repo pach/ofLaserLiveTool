@@ -45,6 +45,8 @@ void AnimatedWalls::setup(string name) {
     gui->addSlider("posY21", 0., 1., &posY2[0]);
     gui->addSlider("posY22", 0., 1., &posY2[1]);
     
+    load();
+    
 }
 
 void AnimatedWalls::update() {

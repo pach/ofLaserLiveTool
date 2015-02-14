@@ -16,7 +16,7 @@ IldaControl::~IldaControl(){
 }
 
 void IldaControl::setup(int idEtherdream){
-    name = "laser";
+    name = "/laser."+ofToString(idEtherdream);
     
     pps = 20000;
     pointCount = 300;
@@ -35,6 +35,9 @@ void IldaControl::setup(int idEtherdream){
     gui = new ofxUISuperCanvas("ILDA Control");
 //    guiCurve = new ofxUISuperCanvas("Laser Curve");
 //    guiTabBar = new ofxUITabBar();
+    
+    gui->setName(name);
+    gui->addLabel(name);
     
     gui->addSpacer();
     gui->addIntSlider("pps", 500, 60000, &pps);
