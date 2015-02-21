@@ -2,7 +2,7 @@
     <Kind>40</Kind>
     <Name>perlin1</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>452.000000000</XPosition>
+    <XPosition>732.000000000</XPosition>
     <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -18,24 +18,24 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/noiseSpeed</Name>
-    <Value>0.073891625</Value>
+    <Value>0.029999999</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/nbPoint</Name>
-    <Value>0.334975362</Value>
+    <Value>0.699999988</Value>
 </Widget>
 <Widget>
     <Kind>11</Kind>
     <Name>/offset</Name>
-    <XValue>-0.140394092</XValue>
-    <YValue>0.081280768</YValue>
+    <XValue>0.000000000</XValue>
+    <YValue>-0.129999995</YValue>
 </Widget>
 <Widget>
     <Kind>11</Kind>
     <Name>/scale</Name>
-    <XValue>0.443349749</XValue>
-    <YValue>0.428571433</YValue>
+    <XValue>0.289999992</XValue>
+    <YValue>0.250000000</YValue>
 </Widget>
 <Widget>
     <Kind>2</Kind>

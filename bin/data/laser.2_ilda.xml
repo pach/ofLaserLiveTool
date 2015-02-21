@@ -8,12 +8,12 @@
 <Widget>
     <Kind>42</Kind>
     <Name>pps</Name>
-    <Value>39189</Value>
+    <Value>39775</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>point count</Name>
-    <Value>593</Value>
+    <Value>845</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -28,12 +28,12 @@
 <Widget>
     <Kind>42</Kind>
     <Name>blank count</Name>
-    <Value>49</Value>
+    <Value>25</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>end count</Name>
-    <Value>27</Value>
+    <Value>25</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -58,17 +58,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>red</Name>
-    <Value>0.500000000</Value>
+    <Value>0.682500005</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>green</Name>
-    <Value>0.500000000</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>blue</Name>
-    <Value>0.500000000</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -78,12 +78,12 @@
 <Widget>
     <Kind>11</Kind>
     <Name>offset</Name>
-    <XValue>0.000000000</XValue>
-    <YValue>0.000000000</YValue>
+    <XValue>-0.004926085</XValue>
+    <YValue>-0.349753678</YValue>
 </Widget>
 <Widget>
     <Kind>11</Kind>
     <Name>scale</Name>
     <XValue>1.000000000</XValue>
-    <YValue>1.000000000</YValue>
+    <YValue>0.920000017</YValue>
 </Widget>

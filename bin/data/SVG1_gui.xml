@@ -2,7 +2,7 @@
     <Kind>40</Kind>
     <Name>svg1</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>452.000000000</XPosition>
+    <XPosition>732.000000000</XPosition>
     <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -18,8 +18,8 @@
 <Widget>
     <Kind>11</Kind>
     <Name>pos</Name>
-    <XValue>0.768472910</XValue>
-    <YValue>0.536945820</YValue>
+    <XValue>0.802955687</XValue>
+    <YValue>0.453201979</YValue>
 </Widget>
 <Widget>
     <Kind>12</Kind>

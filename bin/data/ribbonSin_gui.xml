@@ -2,13 +2,13 @@
     <Kind>40</Kind>
     <Name>ribbonSin</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>452.000000000</XPosition>
+    <XPosition>732.000000000</XPosition>
     <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>42</Kind>
     <Name>max Vertex coeff</Name>
-    <Value>507</Value>
+    <Value>719</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,12 +33,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/moveSpeed</Name>
-    <Value>0.137931034</Value>
+    <Value>0.093596056</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/nbVertex</Name>
-    <Value>1.000000000</Value>
+    <Value>0.985221684</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -64,7 +64,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/1/height</Name>
-    <Value>0.071428575</Value>
+    <Value>0.009852217</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -79,7 +79,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/2/height</Name>
-    <Value>0.103448279</Value>
+    <Value>0.009852217</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -94,5 +94,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/3/height</Name>
-    <Value>0.083743840</Value>
+    <Value>0.024630541</Value>
 </Widget>

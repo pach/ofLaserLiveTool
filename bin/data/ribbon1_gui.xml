@@ -2,18 +2,18 @@
     <Kind>40</Kind>
     <Name>ribbon1</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>452.000000000</XPosition>
+    <XPosition>732.000000000</XPosition>
     <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>42</Kind>
     <Name>max Vertex coeff</Name>
-    <Value>744</Value>
+    <Value>1000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>smooth coeff</Name>
-    <Value>6.843349457</Value>
+    <Value>5.304482937</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>wind coeff</Name>
-    <Value>0.004433497</Value>
+    <Value>0.003201971</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,27 +43,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/moveSpeed</Name>
-    <Value>1.000000000</Value>
+    <Value>0.364532024</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/nbVertex</Name>
-    <Value>0.935960591</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>/smooth</Name>
-    <Value>0.689655185</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>11</Kind>
     <Name>/wind</Name>
-    <XValue>0.443349749</XValue>
-    <YValue>0.541871905</YValue>
+    <XValue>0.522167504</XValue>
+    <YValue>0.605911314</YValue>
 </Widget>
 <Widget>
     <Kind>11</Kind>
     <Name>/pos</Name>
-    <XValue>0.502463043</XValue>
-    <YValue>0.502463043</YValue>
+    <XValue>0.768299997</XValue>
+    <YValue>0.980000019</YValue>
 </Widget>

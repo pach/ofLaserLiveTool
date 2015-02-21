@@ -2,7 +2,7 @@
     <Kind>40</Kind>
     <Name>rect2</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>452.000000000</XPosition>
+    <XPosition>732.000000000</XPosition>
     <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -14,7 +14,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>/rot</Name>
-    <Value>360.000000000</Value>
+    <Value>248.544006348</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
