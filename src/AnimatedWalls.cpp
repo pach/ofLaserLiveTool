@@ -22,7 +22,7 @@ void AnimatedWalls::setup(string name) {
     AnimatedStuff::setup(name);
     type = "AnimatedWalls";
     
-    isOrigin = true;
+    isOrigin = false;
     
     posX1 = 0.1;
     posX2 = 0.9;

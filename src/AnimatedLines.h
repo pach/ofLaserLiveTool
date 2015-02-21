@@ -34,4 +34,12 @@ private:
     int updateTime;
     
     bool reinitSpeed;
+    
+    bool useNoise;
+    float noiseCoeff;
+    float noiseSpeed;
+    float noiseScale;
+    
+    float noisePos;
+    float noiseNbPoint;
 };
