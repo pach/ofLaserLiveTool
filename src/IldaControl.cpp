@@ -106,6 +106,7 @@ void IldaControl::setName(string newName){
     name = newName;
     gui->setName(name);
     gui->addLabel(name);
+    load();
 }
 
 void IldaControl::setIdEtherdream(int idEtherdream){
@@ -160,14 +161,14 @@ void IldaControl::update(){
 }
 
 void IldaControl::load(){
-    gui->loadSettings("ilda.xml");
+    gui->loadSettings(name+"_ilda.xml");
     redCurve.load("red.yml");
     redCurve.load("green.yml");
     redCurve.load("blue.yml");
 }
 
 void IldaControl::save(){
-    gui->saveSettings("ilda.xml");
+    gui->saveSettings(name+"_ilda.xml");
     redCurve.save("red.yml");
     redCurve.save("green.yml");
     redCurve.save("blue.yml");
