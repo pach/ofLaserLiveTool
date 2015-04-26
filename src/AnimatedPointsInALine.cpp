@@ -28,7 +28,7 @@ void AnimatedPointsInALine::setup(string name) {
     duration=0.25;
     
     gui->addSpacer();
-    gui->addSlider("/pointsFreq", 0., 0.5, &freq);
+    gui->addSlider("/pointsFreq", 0., 1., &freq);
     gui->addSlider("/pointsDuration", 0., 1, &duration);
     gui->addIntSlider("/pointsNumSimultaneousPoints", 0, 60, &numSimultaneousPoints);
     
