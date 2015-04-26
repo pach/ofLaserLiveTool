@@ -72,6 +72,8 @@ private:
     ofxCurvesTool greenCurve;
     ofxCurvesTool blueCurve;
     
+    bool freezeFrame;
+    
     string name;
 //    ofxUISuperCanvas * guiCurve;
 //    ofxUITabBar *guiTabBar;

@@ -62,6 +62,11 @@ void IldaControl::setup(int idEtherdream){
     gui->add2DPad("offset", ofxUIVec2f(-1., 1), ofxUIVec2f(-1., 1.), &offset);
     gui->add2DPad("scale", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &scale);
     
+    gui->addSpacer();
+    gui->addToggle("freeze", &freezeFrame);
+    
+    freezeFrame = false;
+    
     
 //    guiTabBar->addCanvas(gui);
 //    
@@ -115,11 +120,13 @@ void IldaControl::setIdEtherdream(int idEtherdream){
 }
 
 void IldaControl::clear(){
-    ildaFrame.clear();
+    if (!freezeFrame)
+        ildaFrame.clear();
 }
 
 void IldaControl::addPoly(ofPolyline poly){
-    ildaFrame.addPoly(poly);
+    if (!freezeFrame)
+        ildaFrame.addPoly(poly);
 }
 
 void IldaControl::update(){
