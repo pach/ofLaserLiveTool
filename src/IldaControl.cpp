@@ -162,16 +162,16 @@ void IldaControl::update(){
 
 void IldaControl::load(){
     gui->loadSettings(name+"_ilda.xml");
-    redCurve.load("red.yml");
-    redCurve.load("green.yml");
-    redCurve.load("blue.yml");
+    redCurve.load(name+"red.yml");
+    greenCurve.load(name+"green.yml");
+    blueCurve.load(name+"blue.yml");
 }
 
 void IldaControl::save(){
     gui->saveSettings(name+"_ilda.xml");
-    redCurve.save("red.yml");
-    redCurve.save("green.yml");
-    redCurve.save("blue.yml");
+    redCurve.save(name+"red.yml");
+    greenCurve.save(name+"green.yml");
+    blueCurve.save(name+"blue.yml");
 }
 
 int IldaControl::getGuiWidth(){
