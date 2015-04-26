@@ -30,6 +30,9 @@
 #include "AnimatedWalls.h"
 #include "AnimatedOSCLines.h"
 #include "AnimatedOSCPolylines.h"
+#include "AnimatedPointsInALine.h"
+#include "AnimatedRain.h"
+#include "AnimatedSoundWave.h"
 
 #include "AnimatedSvg.h"
 #include "AnimatedImacStraw.h"
@@ -149,6 +152,9 @@ void AnimManager::setupGui(){
     gui->addButton("add imac straws", newAnimBool);
     gui->addButton("add spiral", newAnimBool);
     gui->addButton("add walls", newAnimBool);
+    gui->addButton("add points in line", newAnimBool);
+    gui->addButton("add rain", newAnimBool);
+    gui->addButton("add sound wave", newAnimBool);
     gui->addSpacer();
     
 //    gui->addRadio("anim list", animName, OFX_UI_ORIENTATION_VERTICAL);
@@ -217,6 +223,15 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         }
         else if (name == "add walls"){
             createNewAnimationWithTextbox("AnimatedWalls");
+        }
+        else if (name == "add points in line"){
+            createNewAnimationWithTextbox("AnimatedPointsInALine");
+        }
+        else if (name == "add rain"){
+            createNewAnimationWithTextbox("AnimatedRain");
+        }
+        else if (name == "add sound wave"){
+            createNewAnimationWithTextbox("AnimatedSoundWave");
         }
         else if (name == "anim list"){
             animUIselectEvent = true;
@@ -310,6 +325,18 @@ void AnimManager::createNewAnimation(string type, string name){
         }
         else if (type == "AnimatedWalls") {
             a = new AnimatedWalls();
+            a->setup(name);
+        }
+        else if (type == "AnimatedPointsInALine") {
+            a = new AnimatedPointsInALine();
+            a->setup(name);
+        }
+        else if (type == "AnimatedRain") {
+            a = new AnimatedRain();
+            a->setup(name);
+        }
+        else if (type == "AnimatedSoundWave") {
+            a = new AnimatedSoundWave();
             a->setup(name);
         }
 
