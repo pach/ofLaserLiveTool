@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C0C81651A70254700FF07A1 /* AnimatedSpiral.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C81631A70254700FF07A1 /* AnimatedSpiral.cpp */; };
 		8C10EB1A1A51D65C00A651FD /* AnimatedLines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C10EB181A51D65C00A651FD /* AnimatedLines.cpp */; };
+		8C1C70651AAD093B00A3EA6E /* AnimatedOnePointCalibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C1C70631AAD093B00A3EA6E /* AnimatedOnePointCalibration.cpp */; };
 		8C31198A199411C1000FAED9 /* AnimatedSinus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C311988199411C1000FAED9 /* AnimatedSinus.cpp */; };
 		8C35E59E1A66AD00005FAC62 /* AnimatedImacStraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C35E59C1A66AD00005FAC62 /* AnimatedImacStraw.cpp */; };
 		8C39599519CD8524001697BF /* AnimatedPerlinLines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C39599319CD8524001697BF /* AnimatedPerlinLines.cpp */; };
@@ -169,6 +170,8 @@
 		8C0C81641A70254700FF07A1 /* AnimatedSpiral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedSpiral.h; sourceTree = "<group>"; };
 		8C10EB181A51D65C00A651FD /* AnimatedLines.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedLines.cpp; sourceTree = "<group>"; };
 		8C10EB191A51D65C00A651FD /* AnimatedLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedLines.h; sourceTree = "<group>"; };
+		8C1C70631AAD093B00A3EA6E /* AnimatedOnePointCalibration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedOnePointCalibration.cpp; sourceTree = "<group>"; };
+		8C1C70641AAD093B00A3EA6E /* AnimatedOnePointCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedOnePointCalibration.h; sourceTree = "<group>"; };
 		8C311988199411C1000FAED9 /* AnimatedSinus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedSinus.cpp; sourceTree = "<group>"; };
 		8C311989199411C1000FAED9 /* AnimatedSinus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedSinus.h; sourceTree = "<group>"; };
 		8C35E59C1A66AD00005FAC62 /* AnimatedImacStraw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedImacStraw.cpp; sourceTree = "<group>"; };
@@ -611,6 +614,8 @@
 				8C6713C81A77E8D200B73905 /* AnimatedOSCPolylines.h */,
 				8C5E98271A8B9B7A00AE3227 /* AnimatedWalls.cpp */,
 				8C5E98281A8B9B7A00AE3227 /* AnimatedWalls.h */,
+				8C1C70631AAD093B00A3EA6E /* AnimatedOnePointCalibration.cpp */,
+				8C1C70641AAD093B00A3EA6E /* AnimatedOnePointCalibration.h */,
 			);
 			name = AnimTools;
 			sourceTree = "<group>";
@@ -1202,6 +1207,7 @@
 				8C8F7C2F1938CA82005A2D28 /* ofxUIButton.cpp in Sources */,
 				8CD0BCC91A7BB7EA00359B0E /* tinyxml.cpp in Sources */,
 				8CD0BCB31A7BB7C800359B0E /* ofxOscBundle.cpp in Sources */,
+				8C1C70651AAD093B00A3EA6E /* AnimatedOnePointCalibration.cpp in Sources */,
 				8C8F7C361938CA82005A2D28 /* ofxUIFPSSlider.cpp in Sources */,
 				8C8F7C4D1938CA82005A2D28 /* ofxUISuperCanvas.cpp in Sources */,
 				8C8F7C311938CA82005A2D28 /* ofxUICircleSlider.cpp in Sources */,
