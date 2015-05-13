@@ -72,6 +72,7 @@
 		8CB8E4B219BE59E0002BD1CB /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB8E4B119BE59E0002BD1CB /* OpenAL.framework */; };
 		8CC1935E1A56DDD900BD8A8C /* AnimatedOSCLines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC1935C1A56DDD900BD8A8C /* AnimatedOSCLines.cpp */; };
 		8CCBCAAA1A6D658900D3D6BC /* ofxPolylineMerger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CCBCAA81A6D658900D3D6BC /* ofxPolylineMerger.cpp */; };
+		8CD020981AFCB9EA00ED19BD /* FixedShot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD020961AFCB9EA00ED19BD /* FixedShot.cpp */; };
 		8CD0BCB31A7BB7C800359B0E /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0BC8C1A7BB7C800359B0E /* ofxOscBundle.cpp */; };
 		8CD0BCB41A7BB7C800359B0E /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0BC8E1A7BB7C800359B0E /* ofxOscMessage.cpp */; };
 		8CD0BCB51A7BB7C800359B0E /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0BC901A7BB7C800359B0E /* ofxOscParameterSync.cpp */; };
@@ -304,6 +305,8 @@
 		8CC1935D1A56DDD900BD8A8C /* AnimatedOSCLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedOSCLines.h; sourceTree = "<group>"; };
 		8CCBCAA81A6D658900D3D6BC /* ofxPolylineMerger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPolylineMerger.cpp; sourceTree = "<group>"; };
 		8CCBCAA91A6D658900D3D6BC /* ofxPolylineMerger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPolylineMerger.h; sourceTree = "<group>"; };
+		8CD020961AFCB9EA00ED19BD /* FixedShot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FixedShot.cpp; sourceTree = "<group>"; };
+		8CD020971AFCB9EA00ED19BD /* FixedShot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FixedShot.h; sourceTree = "<group>"; };
 		8CD0BC8A1A7BB7C800359B0E /* ofxOsc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOsc.h; sourceTree = "<group>"; };
 		8CD0BC8B1A7BB7C800359B0E /* ofxOscArg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOscArg.h; sourceTree = "<group>"; };
 		8CD0BC8C1A7BB7C800359B0E /* ofxOscBundle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscBundle.cpp; sourceTree = "<group>"; };
@@ -582,6 +585,8 @@
 			children = (
 				8C8FDDAB1937303700662718 /* IldaControl.cpp */,
 				8C8FDDAC1937303700662718 /* IldaControl.h */,
+				8CD020961AFCB9EA00ED19BD /* FixedShot.cpp */,
+				8CD020971AFCB9EA00ED19BD /* FixedShot.h */,
 			);
 			name = LaserControl;
 			sourceTree = "<group>";
@@ -1212,6 +1217,7 @@
 				8C8F7C401938CA82005A2D28 /* ofxUIMovingGraph.cpp in Sources */,
 				8CB7E5E41A6ECB08000E9930 /* AnimatedSinusRibbon.cpp in Sources */,
 				8C0C81651A70254700FF07A1 /* AnimatedSpiral.cpp in Sources */,
+				8CD020981AFCB9EA00ED19BD /* FixedShot.cpp in Sources */,
 				8CD0BCCA1A7BB7EA00359B0E /* tinyxmlerror.cpp in Sources */,
 				8C8EC39A19C636F400823AEE /* AnimatedSvg.cpp in Sources */,
 				8C8F7C551938CA82005A2D28 /* ofxUIWidget.cpp in Sources */,

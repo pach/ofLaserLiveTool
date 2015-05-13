@@ -15,6 +15,8 @@
 #include "ofxOsc.h"
 #include "ofxCurvesTool.h"
 
+#include "FixedShot.h"
+
 class IldaControl {
 public:
     ~IldaControl();
@@ -63,6 +65,7 @@ public:
 private:
     
     ofxIlda::Frame ildaFrame;   // stores and manages ILDA frame drawings
+    FixedShot ildaShot;
     
     ofxEtherdream etherdream;   // interface to the etherdream device
     
@@ -73,6 +76,8 @@ private:
     ofxCurvesTool blueCurve;
     
     bool freezeFrame;
+    bool drawCalib;
+    bool fixedShotCalib;
     
     string name;
 //    ofxUISuperCanvas * guiCurve;

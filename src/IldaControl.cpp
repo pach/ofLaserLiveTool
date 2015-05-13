@@ -64,8 +64,8 @@ void IldaControl::setup(int idEtherdream){
     
     gui->addSpacer();
     gui->addToggle("freeze", &freezeFrame);
-    
-    freezeFrame = false;
+    gui->addToggle("calib", &drawCalib);
+    gui->addToggle("fixed shot", &fixedShotCalib);
     
     
 //    guiTabBar->addCanvas(gui);
@@ -125,8 +125,15 @@ void IldaControl::clear(){
 }
 
 void IldaControl::addPoly(ofPolyline poly){
-    if (!freezeFrame)
+    if (!freezeFrame && !drawCalib && !fixedShotCalib){
         ildaFrame.addPoly(poly);
+    }
+    else if (drawCalib){
+        ildaFrame.drawCalibration();
+    }
+    else if (fixedShotCalib){
+        
+    }
 }
 
 void IldaControl::update(){
@@ -134,10 +141,6 @@ void IldaControl::update(){
         etherdream.setPPS(pps);
         oldPps = pps;
     }
-//    if (oldPps != pps){
-//        etherdream2.setPPS(pps);
-//        oldPps = pps;
-//    }
     
     ildaFrame.polyProcessor.params.targetPointCount=pointCount;
     ildaFrame.polyProcessor.params.smoothAmount=smoothing;
@@ -158,8 +161,15 @@ void IldaControl::update(){
     // do your thang
     
     if (etherdream.checkConnection()){
-        ildaFrame.update();
-        etherdream.setPoints(ildaFrame);
+        if (fixedShotCalib){
+            ildaShot.params.output.color = ildaFrame.params.output.color;
+            ildaFrame.params.output.transform.offset = offset;
+            ildaShot.update();
+            etherdream.setPoints(ildaShot);
+        }else{
+            ildaFrame.update();
+            etherdream.setPoints(ildaFrame);
+        }
     }
     
     // send points to the etherdream
@@ -172,6 +182,10 @@ void IldaControl::load(){
     redCurve.load(name+"red.yml");
     greenCurve.load(name+"green.yml");
     blueCurve.load(name+"blue.yml");
+    
+    freezeFrame = false;
+    drawCalib = false;
+    fixedShotCalib = false;
 }
 
 void IldaControl::save(){
@@ -190,7 +204,11 @@ void IldaControl::draw(int x, int y, int w, int h){
     ofRect(x, y, w, h);
     // draw to the screen
     ofSetColor(255);
-    ildaFrame.draw(x, y, w, h);
+    if(fixedShotCalib){
+        ildaShot.draw(x, y, w, h);
+    }else{
+        ildaFrame.draw(x, y, w, h);
+    }
     
     if (showCurve) {
         redCurve.draw(ofGetWidth()-830, 10);
