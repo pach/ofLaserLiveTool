@@ -38,7 +38,7 @@ private:
 //    IldaControl ilda2;
     
     AnimManager animManager1;
-    AnimManager animManager2;
+//    AnimManager animManager2;
     
     ofxOscSender oscSender;
     float oscTimeDelay;

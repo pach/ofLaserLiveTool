@@ -6,7 +6,7 @@ void ofApp::setup(){
     ofSetFrameRate(60);
     
 //    ofxTimeline::removeCocoaMenusFromGlut("Laser Anim Toolbox");
-    ofxEtherdream::startEtherdreamLib();
+//    ofxEtherdream::startEtherdreamLib();
     int nbEtherdream = ofxEtherdream::getNumEtherdream() ;
     ofLog(OF_LOG_NOTICE, "there is "+ofToString(nbEtherdream)+" etherdream detected");
 
@@ -20,6 +20,7 @@ void ofApp::setup(){
         ildaController->setup(i);
         ildaController->setName("laser."+ofToString(i+1));
         ildaController->load();
+        
         ildaTabs.addCanvas(ildaController->getGui());
         
         ilda.push_back(ildaController);
@@ -32,17 +33,17 @@ void ofApp::setup(){
     animManager1.setGuiOffset(ofVec2f(ildaTabs.getGlobalCanvasWidth()+150., 0.));
     animManager1.setName("layer.1");
 //
-    animManager2.setup();
-    animManager2.setDrawWidth(150);
-    animManager2.setDrawHeight(150);
-    animManager2.setDrawOffset(ofVec2f(ofGetWidth()-400., ofGetHeight()-200));
-    animManager2.setGuiOffset(ofVec2f(ildaTabs.getGlobalCanvasWidth()+150., 0.));
-    animManager2.setName("layer.2");
+//    animManager2.setup();
+//    animManager2.setDrawWidth(150);
+//    animManager2.setDrawHeight(150);
+//    animManager2.setDrawOffset(ofVec2f(ofGetWidth()-400., ofGetHeight()-200));
+//    animManager2.setGuiOffset(ofVec2f(ildaTabs.getGlobalCanvasWidth()+150., 0.));
+//    animManager2.setName("layer.2");
     
     animManagerTabs.setup();
     animManagerTabs.setPosition(ildaTabs.getGlobalCanvasWidth()+150., 0.);
     animManagerTabs.addCanvas(animManager1.getGui());
-    animManagerTabs.addCanvas(animManager2.getGui());
+//    animManagerTabs.addCanvas(animManager2.getGui());
     
 
     
@@ -58,7 +59,7 @@ void ofApp::update(){
     parseOSC();
     
     animManager1.update();
-    animManager2.update();
+//    animManager2.update();
     
     if (ofGetElapsedTimef()-lastOscTime > oscTimeDelay) {
         
@@ -66,6 +67,22 @@ void ofApp::update(){
         lastOscTime = ofGetElapsedTimef();
     }
     
+    vector<IldaControl *>::iterator ildaIt = ilda.begin();
+    vector<IldaControl *>::iterator ildaEnd = ilda.end();
+    
+    vector<ofPolyline> polys = animManager1.getPolylines();
+    
+    while (ildaIt != ildaEnd) {
+        (*ildaIt)->clear();
+        
+        for (int i = 0; i<polys.size(); i++) {
+            (*ildaIt)->addPoly(polys[i]);
+        }
+        
+        (*ildaIt)->update();
+        
+        ildaIt ++;
+    }
     
 //    ilda1.clear();
 //    ilda2.clear();
@@ -88,7 +105,7 @@ void ofApp::update(){
 void ofApp::draw(){
     
     animManager1.draw();
-    animManager2.draw();
+//    animManager2.draw();
     
     for (int i=0; i<ilda.size(); i++) {
         ilda[i]->draw(ofGetWidth()-200, ofGetHeight()-400, 150, 150);
@@ -96,27 +113,34 @@ void ofApp::draw(){
 }
 
 void ofApp::exit(){
-    vector<IldaControl *>::iterator ildaBegin = ilda.begin();
+    vector<IldaControl *>::iterator ildaIt = ilda.begin();
     vector<IldaControl *>::iterator ildaEnd = ilda.end();
     
-    while (ildaBegin != ildaEnd) {
-        IldaControl * ildaT = *ildaBegin;
+    while (ildaIt != ildaEnd) {
+        IldaControl * ildaT = *ildaIt;
         ildaT->save();
-        ildaBegin ++;
+        ildaIt ++;
         delete ildaT;
     }
+    ilda.clear();
 
     animManager1.save();
-    animManager2.save();
+//    animManager2.save();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     if (key == 's'){
-//        ilda1.save();
-//        ilda2.save();
+        vector<IldaControl *>::iterator ildaIt = ilda.begin();
+        vector<IldaControl *>::iterator ildaEnd = ilda.end();
+        
+        while (ildaIt != ildaEnd) {
+            (*ildaIt)->save();
+            ildaIt ++;
+        }
+
         animManager1.save();
-        animManager2.save();
+//        animManager2.save();
     }
 }
 
@@ -167,7 +191,15 @@ void ofApp::parseOSC(){
         
 //        cout<<"just received OSC "<<m.getAddress()<<endl;
         animManager1.parseOSC(m);
-        animManager2.parseOSC(m);
+        
+        vector<IldaControl *>::iterator ildaIt = ilda.begin();
+        vector<IldaControl *>::iterator ildaEnd = ilda.end();
+        
+        while (ildaIt != ildaEnd) {
+            (*ildaIt)->parseOSC(m);
+            ildaIt ++;
+        }
+//        animManager2.parseOSC(m);
 //        ilda1.parseOSC(m);
 //        ilda2.parseOSC(m);
     }
