@@ -68,6 +68,7 @@ private:
     FixedShot ildaShot;
     
     ofxEtherdream etherdream;   // interface to the etherdream device
+    long ethId = 0;
     
     ofxUISuperCanvas * gui;
     

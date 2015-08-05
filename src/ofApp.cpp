@@ -14,6 +14,10 @@ void ofApp::setup(){
     
     ildaTabs.setup();
     ildaTabs.setPosition(0, 0);
+    
+    animManagerTabs.setup();
+    animManagerTabs.setPosition(ildaTabs.getGlobalCanvasWidth()+150., 0.);
+    
 //
     for (int i=0; i<nbEtherdream; i++) {
         IldaControl * ildaController = new IldaControl();
@@ -24,30 +28,30 @@ void ofApp::setup(){
         ildaTabs.addCanvas(ildaController->getGui());
         
         ilda.push_back(ildaController);
+        
+        RenderSub *ildaRender = new RenderSub();
+        ildaRender->setup();
+        ildaRender->setMainFrame(&frame);
+        ildaRender->setName("subRender."+ofToString(i+1));
+        ildaRender->setBoundingBox((1./nbEtherdream)*i, 0, (1./nbEtherdream)*(i+1) , 1.);
+        ildaRender->load();
+        subframes.push_back(ildaRender);
+        
+        AnimManager *anim = new AnimManager();
+        anim->setup();
+        anim->setDrawWidth(150);
+        anim->setDrawHeight(150);
+        anim->setDrawOffset(ofVec2f(ofGetWidth()-200., ofGetHeight()-600));
+        anim->setGuiOffset(ofVec2f(ildaTabs.getGlobalCanvasWidth()+150., 0.));
+        anim->setName("layer."+ofToString(i+1));
+        anim->load();
+        
+        animManagerTabs.addCanvas(anim->getGui());
+        animManager.push_back(anim);
     }
     
-    animManager1.setup();
-    animManager1.setDrawWidth(150);
-    animManager1.setDrawHeight(150);
-    animManager1.setDrawOffset(ofVec2f(ofGetWidth()-400., ofGetHeight()-400));
-    animManager1.setGuiOffset(ofVec2f(ildaTabs.getGlobalCanvasWidth()+150., 0.));
-    animManager1.setName("layer.1");
-//
-//    animManager2.setup();
-//    animManager2.setDrawWidth(150);
-//    animManager2.setDrawHeight(150);
-//    animManager2.setDrawOffset(ofVec2f(ofGetWidth()-400., ofGetHeight()-200));
-//    animManager2.setGuiOffset(ofVec2f(ildaTabs.getGlobalCanvasWidth()+150., 0.));
-//    animManager2.setName("layer.2");
+    frame.clear();
     
-    animManagerTabs.setup();
-    animManagerTabs.setPosition(ildaTabs.getGlobalCanvasWidth()+150., 0.);
-    animManagerTabs.addCanvas(animManager1.getGui());
-//    animManagerTabs.addCanvas(animManager2.getGui());
-    
-
-    
-//    oscSender.setup(OSC_ASPI_ADDR, OSC_ASPI_PORT);
     oscTimeDelay = 0.2;
     lastOscTime = 0;
     
@@ -58,60 +62,55 @@ void ofApp::setup(){
 void ofApp::update(){
     parseOSC();
     
-    animManager1.update();
-//    animManager2.update();
+    frame.clear();
+    
+    for (int i=0; i<animManager.size(); i++) {
+        animManager[i]->update();
+        frame.addPolys(animManager[i]->getPolylines());
+    }
     
     if (ofGetElapsedTimef()-lastOscTime > oscTimeDelay) {
-        
-        
         lastOscTime = ofGetElapsedTimef();
     }
     
     vector<IldaControl *>::iterator ildaIt = ilda.begin();
     vector<IldaControl *>::iterator ildaEnd = ilda.end();
-    
-    vector<ofPolyline> polys = animManager1.getPolylines();
+    vector<RenderSub *>::iterator ildaRenderIt = subframes.begin();
+    vector<RenderSub *>::iterator ildaRenderEnd = subframes.end();
+    vector<ofPolyline> rp;
     
     while (ildaIt != ildaEnd) {
-        (*ildaIt)->clear();
+        rp.clear();
         
-        for (int i = 0; i<polys.size(); i++) {
-            (*ildaIt)->addPoly(polys[i]);
+        (*ildaIt)->clear();
+        (*ildaRenderIt)->update();
+        
+        rp = (*ildaRenderIt)->getSubFrame() ;
+        for (int i = 0; i<rp.size(); i++) {
+            (*ildaIt)->addPoly(rp[i]);
         }
         
         (*ildaIt)->update();
         
         ildaIt ++;
+        ildaRenderIt ++;
     }
-    
-//    ilda1.clear();
-//    ilda2.clear();
-//    
-//    vector<ofPolyline> polys = animManager1.getPolylines();
-//    for (int i = 0; i<polys.size(); i++) {
-//        ilda1.addPoly(polys[i]);
-//    }
-//    polys.clear();
-//    polys = animManager2.getPolylines();
-//    for (int i = 0; i<polys.size(); i++) {
-//        ilda2.addPoly(polys[i]);
-//    }
-//    
-//    ilda1.update();
-//    ilda2.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    animManager1.draw();
-//    animManager2.draw();
+    for (int i=0; i<animManager.size(); i++) {
+        animManager[i]->draw();
+    }
     
     for (int i=0; i<ilda.size(); i++) {
-        ilda[i]->draw(ofGetWidth()-200, ofGetHeight()-400, 150, 150);
+        subframes[i]->draw(ofGetWidth()-200*(i+1), ofGetHeight()-400, 150, 150);
+        ilda[i]->draw(ofGetWidth()-200*(i+1), ofGetHeight()-200, 150, 150);
     }
 }
 
+//--------------------------------------------------------------
 void ofApp::exit(){
     vector<IldaControl *>::iterator ildaIt = ilda.begin();
     vector<IldaControl *>::iterator ildaEnd = ilda.end();
@@ -124,8 +123,27 @@ void ofApp::exit(){
     }
     ilda.clear();
 
-    animManager1.save();
-//    animManager2.save();
+    vector<RenderSub *>::iterator ildaRenderIt = subframes.begin();
+    vector<RenderSub *>::iterator ildaRenderEnd = subframes.end();
+    
+    while (ildaRenderIt != ildaRenderEnd) {
+        RenderSub * ildaT = *ildaRenderIt;
+        ildaT->save();
+        ildaRenderIt ++;
+        delete ildaT;
+    }
+    subframes.clear();
+    
+    vector<AnimManager *>::iterator animIt = animManager.begin();
+    vector<AnimManager *>::iterator animEnd = animManager.end();
+    
+    while (animIt != animEnd) {
+        AnimManager * animT = *animIt;
+        animT->save();
+        animIt ++;
+        delete animT;
+    }
+    animManager.clear();
 }
 
 //--------------------------------------------------------------
@@ -139,8 +157,13 @@ void ofApp::keyPressed(int key){
             ildaIt ++;
         }
 
-        animManager1.save();
-//        animManager2.save();
+        vector<AnimManager *>::iterator animIt = animManager.begin();
+        vector<AnimManager *>::iterator animEnd = animManager.end();
+        
+        while (animIt != animEnd) {
+            (*animIt)->save();
+            animIt ++;
+        }
     }
 }
 
@@ -190,7 +213,13 @@ void ofApp::parseOSC(){
         oscReceive.getNextMessage(&m);
         
 //        cout<<"just received OSC "<<m.getAddress()<<endl;
-        animManager1.parseOSC(m);
+        vector<AnimManager *>::iterator animIt = animManager.begin();
+        vector<AnimManager *>::iterator animEnd = animManager.end();
+        
+        while (animIt != animEnd) {
+            (*animIt)->parseOSC(m);
+            animIt ++;
+        }
         
         vector<IldaControl *>::iterator ildaIt = ilda.begin();
         vector<IldaControl *>::iterator ildaEnd = ilda.end();

@@ -5,9 +5,11 @@
 #include "IldaControl.h"
 #include "SvgLoader.h"
 
+#include "RenderFrame.h"
+#include "RenderSub.h"
+
 #include "ofxUI.h"
 
-//#define OSC_ASPI_ADDR "169.254.48.100"
 #define OSC_LISTENING_PORT 10000
 
 #include "ofxOsc.h"
@@ -35,9 +37,11 @@ public:
     
 private:
     vector<IldaControl *> ilda;
-//    IldaControl ilda2;
+    vector<AnimManager *> animManager;
+    RenderFrame frame;
+    vector<RenderSub *> subframes;
     
-    AnimManager animManager1;
+//    AnimManager animManager1;
 //    AnimManager animManager2;
     
     ofxOscSender oscSender;

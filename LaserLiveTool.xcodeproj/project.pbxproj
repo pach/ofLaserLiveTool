@@ -114,6 +114,8 @@
 		8CD0BD261A7BB85000359B0E /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0BD181A7BB85000359B0E /* ofxTween.cpp */; };
 		8CD0BD391A7BE05400359B0E /* CurveLut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0BD351A7BE05400359B0E /* CurveLut.cpp */; };
 		8CD0BD3A1A7BE05400359B0E /* ofxCurvesTool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0BD371A7BE05400359B0E /* ofxCurvesTool.cpp */; };
+		8CDA15441B723B4700F8B609 /* RenderFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA15401B723B4700F8B609 /* RenderFrame.cpp */; };
+		8CDA15451B723B4700F8B609 /* RenderSub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA15421B723B4700F8B609 /* RenderSub.cpp */; };
 		8CDF0AA81AED51060080E4B9 /* AnimatedPointsInALine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDF0AA31AED51060080E4B9 /* AnimatedPointsInALine.cpp */; };
 		8CDF0AA91AED51060080E4B9 /* AnimatedRain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDF0AA51AED51060080E4B9 /* AnimatedRain.cpp */; };
 		8CDF0AAA1AED51060080E4B9 /* AnimatedSoundWave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDF0AA71AED51060080E4B9 /* AnimatedSoundWave.cpp */; };
@@ -401,6 +403,10 @@
 		8CD0BD361A7BE05400359B0E /* CurveLut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurveLut.h; sourceTree = "<group>"; };
 		8CD0BD371A7BE05400359B0E /* ofxCurvesTool.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCurvesTool.cpp; sourceTree = "<group>"; };
 		8CD0BD381A7BE05400359B0E /* ofxCurvesTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxCurvesTool.h; sourceTree = "<group>"; };
+		8CDA15401B723B4700F8B609 /* RenderFrame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderFrame.cpp; sourceTree = "<group>"; };
+		8CDA15411B723B4700F8B609 /* RenderFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderFrame.h; sourceTree = "<group>"; };
+		8CDA15421B723B4700F8B609 /* RenderSub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderSub.cpp; sourceTree = "<group>"; };
+		8CDA15431B723B4700F8B609 /* RenderSub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderSub.h; sourceTree = "<group>"; };
 		8CDF0AA21AED51060080E4B9 /* AnimatedPointsInALine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedPointsInALine.h; sourceTree = "<group>"; };
 		8CDF0AA31AED51060080E4B9 /* AnimatedPointsInALine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedPointsInALine.cpp; sourceTree = "<group>"; };
 		8CDF0AA41AED51060080E4B9 /* AnimatedRain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedRain.h; sourceTree = "<group>"; };
@@ -984,6 +990,17 @@
 			path = ../../../addons/ofxCurvesTool/src;
 			sourceTree = "<group>";
 		};
+		8CDA153F1B72396100F8B609 /* Render */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA15401B723B4700F8B609 /* RenderFrame.cpp */,
+				8CDA15411B723B4700F8B609 /* RenderFrame.h */,
+				8CDA15421B723B4700F8B609 /* RenderSub.cpp */,
+				8CDA15431B723B4700F8B609 /* RenderSub.h */,
+			);
+			name = Render;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -1063,6 +1080,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				8CDA153F1B72396100F8B609 /* Render */,
 				8CDF0AAB1AED53150080E4B9 /* anim.xml */,
 				8C8F7C591938DFBC005A2D28 /* svg */,
 				8C8FDDAE1937307800662718 /* AnimTools */,
@@ -1184,6 +1202,7 @@
 				8CD0BD241A7BB85000359B0E /* ofxEasingQuint.cpp in Sources */,
 				8C8F7C501938CA82005A2D28 /* ofxUITextInput.cpp in Sources */,
 				8C8F7C351938CA82005A2D28 /* ofxUIFPS.cpp in Sources */,
+				8CDA15441B723B4700F8B609 /* RenderFrame.cpp in Sources */,
 				8C8F7C4B1938CA82005A2D28 /* ofxUISpacer.cpp in Sources */,
 				8C8F7C4E1938CA82005A2D28 /* ofxUITabBar.cpp in Sources */,
 				8C8F7C2D1938CA82005A2D28 /* ofxUIBaseDraws.cpp in Sources */,
@@ -1258,6 +1277,7 @@
 				8CD0BD1E1A7BB85000359B0E /* ofxEasingCubic.cpp in Sources */,
 				8CD0BCE51A7BB82900359B0E /* ofxEtherdream.cpp in Sources */,
 				8CD0BD391A7BE05400359B0E /* CurveLut.cpp in Sources */,
+				8CDA15451B723B4700F8B609 /* RenderSub.cpp in Sources */,
 				8C8F7C411938CA82005A2D28 /* ofxUIMultiImageButton.cpp in Sources */,
 				8CD0BCBE1A7BB7C800359B0E /* OscTypes.cpp in Sources */,
 				8CD0BCE81A7BB82900359B0E /* test.c in Sources */,

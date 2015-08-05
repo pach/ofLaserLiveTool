@@ -95,9 +95,17 @@ void IldaControl::setup(int idEtherdream){
 //    
 //    gui.add(offset.set("offset", ofVec2f(0., 0.), ofVec2f(-1., -1.), ofVec2f(1., 1.)));
 //    gui.add(scale.set("scale", ofVec2f(0.5, 0.5), ofVec2f(0., 0.), ofVec2f(1., 1.)));
-    
-    etherdream.setup(true, idEtherdream);
-    etherdream.setPPS(pps);
+    if (ethId == 0) {
+        
+        etherdream.setup(true, idEtherdream);
+        etherdream.setPPS(pps);
+        
+        ethId = etherdream.getEtherdreamId();
+        
+        ofLog(OF_LOG_NOTICE, "etherdream "+ofToString(idEtherdream)+" id is "+ofToString(ethId));
+    }else{
+        
+    }
     
     redCurve.setup();
     greenCurve.setup();
