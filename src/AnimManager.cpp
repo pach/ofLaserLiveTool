@@ -480,8 +480,8 @@ void AnimManager::update() {
 void AnimManager::draw() {
 //    gui->draw();
     
-    ofSetColor(0);
-    ofRect(drawOffset, drawW, drawH);
+//    ofSetColor(0);
+//    ofRect(drawOffset, drawW, drawH);
     
     if(isFading){
         

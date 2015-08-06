@@ -33,7 +33,7 @@ void ofApp::setup(){
         ildaRender->setup();
         ildaRender->setMainFrame(&frame);
         ildaRender->setName("subRender."+ofToString(i+1));
-        ildaRender->setBoundingBox((1./nbEtherdream)*i, 0, (1./nbEtherdream)*(i+1) , 1.);
+        ildaRender->setBoundingBox((float)i/(float)nbEtherdream, 0., 1./(float)nbEtherdream , 1.);
         ildaRender->load();
         subframes.push_back(ildaRender);
         
@@ -44,7 +44,7 @@ void ofApp::setup(){
         anim->setDrawOffset(ofVec2f(ofGetWidth()-200., ofGetHeight()-600));
         anim->setGuiOffset(ofVec2f(ildaTabs.getGlobalCanvasWidth()+150., 0.));
         anim->setName("layer."+ofToString(i+1));
-        anim->load();
+//        anim->load();
         
         animManagerTabs.addCanvas(anim->getGui());
         animManager.push_back(anim);

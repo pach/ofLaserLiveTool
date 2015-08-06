@@ -20,6 +20,7 @@ RenderSub::~RenderSub(){
 
 void RenderSub::setup() {
     mainFrame = NULL;
+    renderName="..";
     setBoundingBox(0., 0., 1., 1.);
 }
 
@@ -41,7 +42,7 @@ void RenderSub::save(){
 }
 
 void RenderSub::setName(string name){
-    
+    renderName = name;
 }
 
 void RenderSub::createSubFrame(){
@@ -203,6 +204,8 @@ void RenderSub::setBoundingBox(float x, float y, float w, float h){
     boundingBox.set(x, y, w, h);
     scale.set(1./ofVec2f(w, h));
     translate.set(x, y);
+    
+    ofLogNotice("setting render sub "+renderName+" to bound "+ofToString(boundingBox)+" scale "+ofToString(scale)+" translate "+ofToString(translate));
 }
 
 void RenderSub::draw(int x, int y, int w, int h) {

@@ -45,4 +45,6 @@ private:
     ofRectangle boundingBox;
     ofVec2f scale;
     ofVec2f translate;
+    
+    string renderName;
 };
