@@ -20,6 +20,10 @@ void ofApp::setup(){
     
 //
     for (int i=0; i<nbEtherdream; i++) {
+    /*****************************/
+    /*** debug hotel *************/
+    /*****************************/
+//    for (int i=0; i<2; i++) {
         IldaControl * ildaController = new IldaControl();
         ildaController->setup(i);
         ildaController->setName("laser."+ofToString(i+1));
@@ -33,10 +37,14 @@ void ofApp::setup(){
         ildaRender->setup();
         ildaRender->setMainFrame(&frame);
         ildaRender->setName("subRender."+ofToString(i+1));
+        
+        // should not be 1-xxx -> bounding box looks reversed. weird...
         ildaRender->setBoundingBox((float)i/(float)nbEtherdream, 0., 1./(float)nbEtherdream , 1.);
         ildaRender->load();
         subframes.push_back(ildaRender);
-        
+    }
+    
+    for (int i=0; i<NB_LAYERS; i++) {
         AnimManager *anim = new AnimManager();
         anim->setup();
         anim->setDrawWidth(150);
@@ -44,7 +52,7 @@ void ofApp::setup(){
         anim->setDrawOffset(ofVec2f(ofGetWidth()-200., ofGetHeight()-600));
         anim->setGuiOffset(ofVec2f(ildaTabs.getGlobalCanvasWidth()+150., 0.));
         anim->setName("layer."+ofToString(i+1));
-//        anim->load();
+        anim->load();
         
         animManagerTabs.addCanvas(anim->getGui());
         animManager.push_back(anim);
@@ -105,8 +113,8 @@ void ofApp::draw(){
     }
     
     for (int i=0; i<ilda.size(); i++) {
-        subframes[i]->draw(ofGetWidth()-200*(i+1), ofGetHeight()-400, 150, 150);
-        ilda[i]->draw(ofGetWidth()-200*(i+1), ofGetHeight()-200, 150, 150);
+        subframes[i]->draw(ofGetWidth()-200*ilda.size()+200*(i), ofGetHeight()-400, 150, 150);
+        ilda[i]->draw(ofGetWidth()-200*ilda.size()+200*(i), ofGetHeight()-200, 150, 150);
     }
 }
 
@@ -212,7 +220,6 @@ void ofApp::parseOSC(){
         ofxOscMessage m ;
         oscReceive.getNextMessage(&m);
         
-//        cout<<"just received OSC "<<m.getAddress()<<endl;
         vector<AnimManager *>::iterator animIt = animManager.begin();
         vector<AnimManager *>::iterator animEnd = animManager.end();
         

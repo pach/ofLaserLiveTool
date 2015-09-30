@@ -61,7 +61,7 @@ public:
     
     void setLoopMode (ofLoopType mode);
     
-    inline virtual vector<ofPolyline> getPolylines(){return polylines;};
+    inline virtual vector<ofPolyline> getPolylines(){return polylines;};    
     
     inline string getName(){return name;}
     

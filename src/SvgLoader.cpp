@@ -24,6 +24,7 @@ void SvgLoader::draw(){
 
 void SvgLoader::clear(){
     polypocket.clear();
+    svg.clear();
 }
 
 bool SvgLoader::hasNextPolyline(){

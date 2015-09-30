@@ -36,8 +36,6 @@ void AnimatedOSCPolylines::parseOSC(ofxOscMessage &m){
     string cmd = osc[0];
     string msg = osc[1];
     
-    cout<<"osc points "<<cmd<<endl;
-    
     if (cmd == "oscLines"){
         ofPolyline p;
         polylines.clear();
@@ -49,8 +47,6 @@ void AnimatedOSCPolylines::parseOSC(ofxOscMessage &m){
                                           
                                           ptOscArgs);
         ptOscArgs ++;
-        
-        cout<<"create new osc poly of "<<nbPolylines<<" lines "<<endl;
         
         for (int i=0; i<nbPolylines; i++) {
             p.clear();

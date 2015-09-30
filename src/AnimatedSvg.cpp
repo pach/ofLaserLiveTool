@@ -28,12 +28,14 @@ void AnimatedSvg::setup(string name) {
     
     hasLoaded = false;
     filename = "none";
+    doLoad = false;
     
     type = "AnimatedSvg";
     gui->addSlider("size", 0., 1., &size);
     gui->addSlider("rot", 0., 360., &rot);
     gui->add2DPad("pos", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &pos);
-    gui->addTextInput("filename", filename);
+//    gui->addTextInput("filename", filename);
+    gui->addButton("load svg", &doLoad);
     
     ofAddListener(gui->newGUIEvent,this,&AnimatedSvg::textInputEvent);
     
@@ -70,9 +72,55 @@ void AnimatedSvg::textInputEvent(ofxUIEventArgs &e){
     }
 }
 
+void AnimatedSvg::processOpenFileSelection(ofFileDialogResult openFileResult){
+	
+	ofLogVerbose("getName(): "  + openFileResult.getName());
+	ofLogVerbose("getPath(): "  + openFileResult.getPath());
+	
+	ofFile file (openFileResult.getPath());
+	
+	if (file.exists()){
+		
+		ofLogVerbose("The file exists - now checking the type via file extension");
+		string fileExtension = ofToUpper(file.getExtension());
+		
+		//We only want images
+		if (fileExtension == "SVG") {
+			
+            filename = openFileResult.getName();
+            
+            svg.clear();
+            svg.setup();
+            
+            svg.load(openFileResult.getPath());
+            
+            hasLoaded = true;
+			
+		}
+	}
+	
+}
+
+
 void AnimatedSvg::update() {
     
     svg.update();
+    if (doLoad) {
+        ofLogVerbose("opening file");
+        
+        ofFileDialogResult openFileResult= ofSystemLoadDialog("Select a svg file");
+		
+		//Check if the user opened a file
+		if (openFileResult.bSuccess){
+			//We have a file, check it and process it
+			processOpenFileSelection(openFileResult);
+            ofLogVerbose("success");
+		}else{
+            ofLogVerbose("fail");
+        }
+        
+        doLoad = false;
+    }
     
     if (!hasLoaded){
         if (filename != "none"){

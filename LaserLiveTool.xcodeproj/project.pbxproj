@@ -71,6 +71,7 @@
 		8CB7E5E41A6ECB08000E9930 /* AnimatedSinusRibbon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CB7E5E21A6ECB08000E9930 /* AnimatedSinusRibbon.cpp */; };
 		8CB8E4B219BE59E0002BD1CB /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB8E4B119BE59E0002BD1CB /* OpenAL.framework */; };
 		8CC1935E1A56DDD900BD8A8C /* AnimatedOSCLines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC1935C1A56DDD900BD8A8C /* AnimatedOSCLines.cpp */; };
+		8CC961C81BB18CDB0093848C /* AnimatedRegularPolygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC961C61BB18CDB0093848C /* AnimatedRegularPolygon.cpp */; };
 		8CCBCAAA1A6D658900D3D6BC /* ofxPolylineMerger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CCBCAA81A6D658900D3D6BC /* ofxPolylineMerger.cpp */; };
 		8CD020981AFCB9EA00ED19BD /* FixedShot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD020961AFCB9EA00ED19BD /* FixedShot.cpp */; };
 		8CD0BCB31A7BB7C800359B0E /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0BC8C1A7BB7C800359B0E /* ofxOscBundle.cpp */; };
@@ -305,6 +306,8 @@
 		8CB8E4B119BE59E0002BD1CB /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		8CC1935C1A56DDD900BD8A8C /* AnimatedOSCLines.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedOSCLines.cpp; sourceTree = "<group>"; };
 		8CC1935D1A56DDD900BD8A8C /* AnimatedOSCLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedOSCLines.h; sourceTree = "<group>"; };
+		8CC961C61BB18CDB0093848C /* AnimatedRegularPolygon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedRegularPolygon.cpp; sourceTree = "<group>"; };
+		8CC961C71BB18CDB0093848C /* AnimatedRegularPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedRegularPolygon.h; sourceTree = "<group>"; };
 		8CCBCAA81A6D658900D3D6BC /* ofxPolylineMerger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPolylineMerger.cpp; sourceTree = "<group>"; };
 		8CCBCAA91A6D658900D3D6BC /* ofxPolylineMerger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPolylineMerger.h; sourceTree = "<group>"; };
 		8CD020961AFCB9EA00ED19BD /* FixedShot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FixedShot.cpp; sourceTree = "<group>"; };
@@ -638,6 +641,8 @@
 				8C6713C81A77E8D200B73905 /* AnimatedOSCPolylines.h */,
 				8C5E98271A8B9B7A00AE3227 /* AnimatedWalls.cpp */,
 				8C5E98281A8B9B7A00AE3227 /* AnimatedWalls.h */,
+				8CC961C61BB18CDB0093848C /* AnimatedRegularPolygon.cpp */,
+				8CC961C71BB18CDB0093848C /* AnimatedRegularPolygon.h */,
 			);
 			name = AnimTools;
 			sourceTree = "<group>";
@@ -1191,6 +1196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CC961C81BB18CDB0093848C /* AnimatedRegularPolygon.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				8C31198A199411C1000FAED9 /* AnimatedSinus.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,

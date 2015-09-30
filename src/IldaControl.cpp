@@ -10,7 +10,8 @@
 #include "Utils.h"
 
 IldaControl::~IldaControl(){
-    delete gui;
+    delete laserGui;
+//    delete renderGui;
 //    delete guiCurve;
 //    delete guiTabBar;
 }
@@ -28,45 +29,60 @@ void IldaControl::setup(int idEtherdream){
     capY = false;
     flipX = true;
     flipY = true;
+    doSpacing = true;
     laserColor = ofFloatColor(1., 1., 1., 1.);
     offset = ofPoint(0., 0.);
     scale = ofPoint(0.5, 0.5);
+    minimumPointCount = 1000;
     
-    gui = new ofxUISuperCanvas("ILDA Control");
+//    laserGui = new ofxUIScrollableCanvas("ILDA Control");
+    laserGui = new ofxUIScrollableCanvas();
+    laserGui->setScrollAreaToScreen();
+    laserGui->setScrollableDirections(false, true);
+    
+//    renderGui = new ofxUISuperCanvas("render Control");
+    
+//    laserTabs.setup();
+//    laserTabs.setPosition(60, 0);
 //    guiCurve = new ofxUISuperCanvas("Laser Curve");
 //    guiTabBar = new ofxUITabBar();
     
-    gui->setName(name);
-    gui->addLabel(name);
+    laserGui->setName(name);
+    laserGui->addLabel(name);
     
-    gui->addSpacer();
-    gui->addIntSlider("pps", 500, 60000, &pps);
-    gui->addIntSlider("point count", 50, 2500, &pointCount);
+    laserGui->addSpacer();
+    laserGui->addIntSlider("pps", 500, 60000, &pps);
+    laserGui->addIntSlider("point count", 0, 2500, &pointCount);
+    laserGui->addIntSlider("min point count", 0, 2500, &minimumPointCount);
 //    gui->addToggle("do Smooth", &doSmooth);
-    gui->addIntSlider("smooth amount", 0, 10, &smoothing);
-    gui->addSlider("tolerance", 0, 1., &tolerance);
-    gui->addIntSlider("blank count", 0, 60, &blankCount);
-    gui->addIntSlider("end count", 0, 60, &endCount);
-    gui->addToggle("cap X", &capX);
-    gui->addToggle("cap Y", &capY);
-    gui->addToggle("flip X", &flipX);
-    gui->addToggle("flip Y", &flipY);
+    laserGui->addIntSlider("smooth amount", 0, 10, &smoothing);
+    laserGui->addSlider("tolerance", 0, 1., &tolerance);
+    laserGui->addToggle("do spacing", &doSpacing);
+    laserGui->addIntSlider("blank count", 0, 60, &blankCount);
+    laserGui->addIntSlider("end count", 0, 60, &endCount);
+    laserGui->addToggle("cap X", &capX);
+    laserGui->addToggle("cap Y", &capY);
+    laserGui->addToggle("flip X", &flipX);
+    laserGui->addToggle("flip Y", &flipY);
     
-    gui->addSpacer();
-    gui->addSlider("red", 0, 1, &laserColor.r);
-    gui->addSlider("green", 0, 1, &laserColor.g);
-    gui->addSlider("blue", 0, 1, &laserColor.b);
-    gui->addToggle("show curve", &showCurve);
+    laserGui->addSpacer();
+    laserGui->addToggle("freeze", &freezeFrame);
+    laserGui->addToggle("calib", &drawCalib);
+    laserGui->addToggle("fixed shot", &fixedShotCalib);
+   
+    /* render GUI */
+    laserGui->addSpacer();
+    laserGui->addSlider("red", 0, 1, &laserColor.r);
+    laserGui->addSlider("green", 0, 1, &laserColor.g);
+    laserGui->addSlider("blue", 0, 1, &laserColor.b);
+    laserGui->addToggle("show curve", &showCurve);
     
-    gui->addSpacer();
-    gui->add2DPad("offset", ofxUIVec2f(-1., 1), ofxUIVec2f(-1., 1.), &offset);
-    gui->add2DPad("scale", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &scale);
-    
-    gui->addSpacer();
-    gui->addToggle("freeze", &freezeFrame);
-    gui->addToggle("calib", &drawCalib);
-    gui->addToggle("fixed shot", &fixedShotCalib);
-    
+    laserGui->addSpacer();
+    laserGui->add2DPad("offset", ofxUIVec2f(-1., 1), ofxUIVec2f(-1., 1.), &offset);
+    laserGui->add2DPad("scale", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &scale);
+    laserGui->addSpacer();
+//    laserTabs.addCanvas(laserGui);
+//    laserTabs.addCanvas(renderGui);
     
 //    guiTabBar->addCanvas(gui);
 //    
@@ -74,27 +90,11 @@ void IldaControl::setup(int idEtherdream){
 //    
 //    guiTabBar->addCanvas(guiCurve);
     
-    gui->setHeight(ofGetWindowHeight());
-    gui->setVisible(false);
+    laserGui->setHeight(ofGetWindowHeight());
+    laserGui->setVisible(false);
+//    renderGui->setHeight(ofGetWindowHeight());
+//    renderGui->setVisible(false);
     
-//	ofAddListener(gui1->newGUIEvent,this,&ofApp::guiEvent);
-    
-//    gui.add(pps.set("pps", 20000, 1000, 90000));
-//    gui.add(pointCount.set("point count", 300, 0, 2000));
-//    gui.add(smoothing.set("smooth amount", 0, 0, 10));
-//    gui.add(tolerance.set("tolerance", 0., 0., 1.));
-//    gui.add(blankCount.set("blank count", 25, 0, 60));
-//    gui.add(endCount.set("end count", 25, 0, 60));
-//    
-//    gui.add(capX.set("cap X", false));
-//    gui.add(capY.set("cap Y", false));
-//    
-//    gui.add(flipX.set("flip X", true));
-//    gui.add(flipY.set("flip Y", true));
-//    gui.add(laserColor.set("color", ofColor(255., 255.),ofColor(0., 255.),ofColor(255., 255.)));
-//    
-//    gui.add(offset.set("offset", ofVec2f(0., 0.), ofVec2f(-1., -1.), ofVec2f(1., 1.)));
-//    gui.add(scale.set("scale", ofVec2f(0.5, 0.5), ofVec2f(0., 0.), ofVec2f(1., 1.)));
     if (ethId == 0) {
         
         etherdream.setup(true, idEtherdream);
@@ -117,8 +117,11 @@ void IldaControl::setup(int idEtherdream){
 
 void IldaControl::setName(string newName){
     name = newName;
-    gui->setName(name);
-    gui->addLabel(name);
+    laserGui->setName(name);
+    laserGui->addLabel(name);
+//    renderGui->setName(name+".rnd");
+//    renderGui->addLabel(name+".rnd");
+//    laserTabs.setName(name);
     load();
 }
 
@@ -133,8 +136,12 @@ void IldaControl::clear(){
 }
 
 void IldaControl::addPoly(ofPolyline poly){
+    addPoly(poly, laserColor);
+}
+
+void IldaControl::addPoly(ofPolyline poly, ofFloatColor color){
     if (!freezeFrame && !drawCalib && !fixedShotCalib){
-        ildaFrame.addPoly(poly);
+        ildaFrame.addPoly(poly, color);
     }
     else if (drawCalib){
         ildaFrame.drawCalibration();
@@ -150,9 +157,15 @@ void IldaControl::update(){
         oldPps = pps;
     }
     
-    ildaFrame.polyProcessor.params.targetPointCount=pointCount;
+    ildaFrame.polyProcessor.params.targetPointCount=pointCount-(blankCount+endCount)*ildaFrame.getPolys().size()*2;
+    if (pointCount != 0 && ildaFrame.polyProcessor.params.targetPointCount < 0)
+        ildaFrame.polyProcessor.params.targetPointCount = 10;
+    else if (pointCount == 0)
+        ildaFrame.polyProcessor.params.targetPointCount = 0;
+    
     ildaFrame.polyProcessor.params.smoothAmount=smoothing;
     ildaFrame.polyProcessor.params.optimizeTolerance=tolerance;
+    ildaFrame.polyProcessor.params.doSpacing=doSpacing;
     
     ildaFrame.params.output.transform.scale = scale;
     ildaFrame.params.output.transform.offset = offset;
@@ -165,13 +178,14 @@ void IldaControl::update(){
     ildaFrame.params.output.color.b = (float)blueCurve[laserColor.b*255]/255.;
     ildaFrame.params.output.blankCount = blankCount;
     ildaFrame.params.output.endCount = endCount;
+    ildaFrame.params.output.minimumPointCount = minimumPointCount;
  
     // do your thang
     
     if (etherdream.checkConnection()){
         if (fixedShotCalib){
             ildaShot.params.output.color = ildaFrame.params.output.color;
-            ildaFrame.params.output.transform.offset = offset;
+            ildaShot.params.output.transform.offset = offset;
             ildaShot.update();
             etherdream.setPoints(ildaShot);
         }else{
@@ -186,7 +200,8 @@ void IldaControl::update(){
 }
 
 void IldaControl::load(){
-    gui->loadSettings(name+"_ilda.xml");
+    laserGui->loadSettings(name+"_ctrl_ilda.xml");
+//    renderGui->loadSettings(name+"_rnd_ilda.xml");
     redCurve.load(name+"red.yml");
     greenCurve.load(name+"green.yml");
     blueCurve.load(name+"blue.yml");
@@ -197,14 +212,16 @@ void IldaControl::load(){
 }
 
 void IldaControl::save(){
-    gui->saveSettings(name+"_ilda.xml");
+    laserGui->saveSettings(name+"_ctrl_ilda.xml");
+//    renderGui->saveSettings(name+"_rnd_ilda.xml");
     redCurve.save(name+"red.yml");
     greenCurve.save(name+"green.yml");
     blueCurve.save(name+"blue.yml");
 }
 
 int IldaControl::getGuiWidth(){
-    return gui->getRect()->getWidth();
+    return laserGui->getRect()->getWidth();
+//    return laserTabs.getRect()->getWidth();
 }
 
 void IldaControl::draw(int x, int y, int w, int h){
@@ -284,6 +301,12 @@ void IldaControl::parseOSC(ofxOscMessage &m){
             laserColor.r = m.getArgAsFloat(0);
             laserColor.g = m.getArgAsFloat(1);
             laserColor.b = m.getArgAsFloat(2);
+        }
+        else if (cmd == "spacing"){
+            doSpacing = m.getArgAsInt32(0);
+        }
+        else if (cmd == "calib"){
+            drawCalib = m.getArgAsInt32(0);
         }
         
     }

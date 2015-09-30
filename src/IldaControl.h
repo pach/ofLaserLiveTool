@@ -27,6 +27,7 @@ public:
     
     void clear();
     void addPoly(ofPolyline poly);
+    void addPoly(ofPolyline poly, ofFloatColor color);
     
     void setIdEtherdream (int idEtherdream);
     
@@ -39,7 +40,9 @@ public:
     
     void parseOSC(ofxOscMessage &m);
     
-    inline ofxUICanvas * getGui(){return gui;};
+//    inline ofxUITabBar * getGui(){return &laserTabs;};
+//    inline ofxUISuperCanvas * getGui(){return laserGui;}
+    inline ofxUIScrollableCanvas * getGui(){return laserGui;}
     
     int pps;
     bool capX;
@@ -49,7 +52,9 @@ public:
     bool flipX;
     bool flipY;
     int pointCount;
+    int minimumPointCount;
 //    bool doSmooth;
+    bool doSpacing;
     int smoothing;
     float tolerance;
     ofFloatColor laserColor;
@@ -70,11 +75,14 @@ private:
     ofxEtherdream etherdream;   // interface to the etherdream device
     long ethId = 0;
     
-    ofxUISuperCanvas * gui;
+    ofxUIScrollableCanvas * laserGui;
+//    ofxUISuperCanvas * renderGui;
+//    ofxUITabBar laserTabs;
     
     ofxCurvesTool redCurve;
     ofxCurvesTool greenCurve;
     ofxCurvesTool blueCurve;
+    
     
     bool freezeFrame;
     bool drawCalib;

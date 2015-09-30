@@ -40,9 +40,6 @@ public:
     void load();
     void save();
     
-    void setupAnimatedList();
-    void setupGui();
-    
     vector<ofPolyline> getPolylines();
     
     void guiEvent(ofxUIEventArgs &e);
@@ -59,8 +56,13 @@ public:
     void parseOSC (ofxOscMessage &m);
     
     inline ofxUICanvas * getGui(){return gui;};
+    inline ofFloatColor getColor(){return color;};
     
 private:
+    
+    void setupAnimatedList();
+    void setupGui();
+    
     vector<AnimatedStuff*> allAnims;
 //    map<int, AnimatedStuff*> activeAnims;
     
@@ -95,4 +97,8 @@ private:
     float fadeStartTime;
     
     string name;
+    
+    ofPoint offset;
+    ofPoint scale;
+    ofFloatColor color;
 };

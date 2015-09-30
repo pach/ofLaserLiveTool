@@ -33,6 +33,7 @@
 #include "AnimatedPointsInALine.h"
 #include "AnimatedRain.h"
 #include "AnimatedSoundWave.h"
+#include "AnimatedRegularPolygon.h"
 
 #include "AnimatedSvg.h"
 #include "AnimatedImacStraw.h"
@@ -44,6 +45,7 @@ AnimManager::AnimManager(){
 }
 
 AnimManager::~AnimManager(){
+
     delete gui;
 }
 
@@ -61,7 +63,7 @@ void AnimManager::setup() {
     
     setupGui();
     
-    load ();
+//    load ();
     
     animUIselectEvent = false;
     
@@ -77,7 +79,7 @@ void AnimManager::setName(string newName){
 
 void AnimManager::load(){
     setupAnimatedList();
-    gui->loadSettings("manager.xml");
+    gui->loadSettings(name+".xml");
 }
 
 void AnimManager::save(){
@@ -103,7 +105,7 @@ void AnimManager::save(){
     xml.popTag();
     
     xml.save("anim.xml");
-    gui->saveSettings("manager.xml");
+    gui->saveSettings(name+".xml");
 }
 
 void AnimManager::setupAnimatedList(){
@@ -134,28 +136,35 @@ void AnimManager::setupGui(){
     gui->addSpacer();
     gui->addSlider("fade time", 0., 20., &fadeTime);
     gui->addSpacer();
+    gui->add2DPad("pos", ofxUIVec2f(0., 1), ofxUIVec2f(0., 1), &offset);
+    gui->add2DPad("scale", ofxUIVec2f(0., 1), ofxUIVec2f(0., 1), &scale);
+//    gui->addSpacer();
+//    gui->addSlider("red", 0, 1, &color.r);
+//    gui->addSlider("green", 0, 1, &color.g);
+//    gui->addSlider("blue", 0, 1, &color.b);
+    
     newAnimBool = false;
-    gui->addButton("add SVG", newAnimBool);
-//    gui->addButton("add Polyline", newAnimBool);
-//    gui->addButton("add Multiline", newAnimBool);
-    gui->addButton("add Sinus", newAnimBool);
-    gui->addButton("add MultiSinus", newAnimBool);
-    gui->addButton("add MultiSinus2", newAnimBool);
-    gui->addButton("add Rect", newAnimBool);
-    gui->addButton("add Perlin", newAnimBool);
-    gui->addButton("add Ribbon", newAnimBool);
-    gui->addButton("add Sinus Ribbon", newAnimBool);
-    gui->addButton("add lines", newAnimBool);
-    gui->addButton("add circle", newAnimBool);
-    gui->addButton("add osc lines", newAnimBool);
-    gui->addButton("add osc multilines", newAnimBool);
-    gui->addButton("add imac straws", newAnimBool);
-    gui->addButton("add spiral", newAnimBool);
-    gui->addButton("add walls", newAnimBool);
-    gui->addButton("add points in line", newAnimBool);
-    gui->addButton("add rain", newAnimBool);
-    gui->addButton("add sound wave", newAnimBool);
-    gui->addSpacer();
+//    gui->addButton("add SVG", newAnimBool);
+////    gui->addButton("add Polyline", newAnimBool);
+////    gui->addButton("add Multiline", newAnimBool);
+//    gui->addButton("add Sinus", newAnimBool);
+//    gui->addButton("add MultiSinus", newAnimBool);
+//    gui->addButton("add MultiSinus2", newAnimBool);
+//    gui->addButton("add Rect", newAnimBool);
+//    gui->addButton("add Perlin", newAnimBool);
+//    gui->addButton("add Ribbon", newAnimBool);
+//    gui->addButton("add Sinus Ribbon", newAnimBool);
+//    gui->addButton("add lines", newAnimBool);
+//    gui->addButton("add circle", newAnimBool);
+//    gui->addButton("add osc lines", newAnimBool);
+//    gui->addButton("add osc multilines", newAnimBool);
+//    gui->addButton("add imac straws", newAnimBool);
+//    gui->addButton("add spiral", newAnimBool);
+//    gui->addButton("add walls", newAnimBool);
+//    gui->addButton("add points in line", newAnimBool);
+//    gui->addButton("add rain", newAnimBool);
+//    gui->addButton("add sound wave", newAnimBool);
+//    gui->addSpacer();
     
 //    gui->addRadio("anim list", animName, OFX_UI_ORIENTATION_VERTICAL);
     ofxUIDropDownList *ddl = gui->addDropDownList("anim list", animName);
@@ -335,6 +344,10 @@ void AnimManager::createNewAnimation(string type, string name){
             a = new AnimatedRain();
             a->setup(name);
         }
+        else if (type == "AnimatedRegularPolygon") {
+            a = new AnimatedRegularPolygon();
+            a->setup(name);
+        }
         else if (type == "AnimatedSoundWave") {
             a = new AnimatedSoundWave();
             a->setup(name);
@@ -459,22 +472,18 @@ void AnimManager::update() {
             
             polysMerger[0].mergePolyline(fadeCurrentTime/fadeTime);
             polys.push_back(polysMerger[0].getPolyline());
-            
-//            for (int i=0; i<polysMerger.size(); i++) {
-//                if (curSelected != NULL && curSelected->getPolylines().size()>i) {
-//                    polysMerger[i].setPoly1(curSelected->getPolylines()[i]);
-//                }
-//                if (lastSelected != NULL && lastSelected->getPolylines().size()>i) {
-//                    polysMerger[i].setPoly2(lastSelected->getPolylines()[i]);
-//                }
-//                
-//                polysMerger[i].mergePolyline(fadeCurrentTime/fadeTime);
-//                
-//                polys.push_back(polysMerger[i].getPolyline());
-//            }
         }
     }
     
+    for (int i=0; i<polys.size(); i++) {
+        vector<ofPoint> ppoints = polys[i].getVertices();
+        for (int j=0; j<ppoints.size(); j++) {
+            ppoints[j].x = ofMap(ppoints[j].x, 0., 1., offset.x, offset.x+scale.x);
+            ppoints[j].y = ofMap(ppoints[j].y, 0., 1., offset.y, offset.y+scale.y);
+        }
+        polys[i].clear();
+        polys[i].addVertices(ppoints);
+    }
 }
 
 void AnimManager::draw() {
@@ -563,10 +572,31 @@ void AnimManager::parseOSC(ofxOscMessage &m){
         else if (msg == "/fadeTime"){
             fadeTime = m.getArgAsFloat(0);
         }
+        else if (msg == "/offset"){
+            offset.x = m.getArgAsFloat(0);
+            offset.y = m.getArgAsFloat(1);
+        }
+        else if (msg=="/scale"){
+            scale.x = m.getArgAsFloat(0);
+            scale.y = m.getArgAsFloat(1);
+        }
+        else if (msg=="/color"){
+            color.r = m.getArgAsFloat(0);
+            color.g = m.getArgAsFloat(1);
+            color.b = m.getArgAsFloat(2);
+        }
         else{
             m.setAddress(msg);
-            if (curSelected != NULL){
-                curSelected->parseOSC(m);
+            osc = getOSCcmd(m.getAddress());
+            cmd = osc[0];
+            msg = osc[1];
+
+            if (cmd =="anim") {
+                m.setAddress(msg);
+                if (curSelected != NULL){
+                    curSelected->parseOSC(m);
+                }
+
             }
         }
     }

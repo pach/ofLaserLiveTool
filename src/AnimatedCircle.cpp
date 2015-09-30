@@ -37,9 +37,9 @@ void AnimatedCircle::setup(string name) {
     gui->addIntSlider("/nbPointCircle", 3, 50, &nbPointPerCircle);
     gui->addSlider("/size", 0., 1., &oneSize);
     gui->add2DPad("/pos", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &onePos);
-    gui->addToggle("/useNoise", &useNoise);
+    gui->addToggle("/noise/sw", &useNoise);
     gui->addSlider("noise speed coeff", 0., 0.5, &noiseSpeedCoeff);
-    gui->addSlider("/noiseSpeed", 0., 1., &noiseSpeed);
+    gui->addSlider("/noise/speed", 0., 1., &noiseSpeed);
     gui->addSlider("/rotSpeed", 0., 100., &rotSpeed);
     
     load();
@@ -74,6 +74,42 @@ void AnimatedCircle::update() {
             }
             p.addVertex(pos.x+sin(currentRot)*size, pos.y+cos(currentRot)*size);
             polylines.push_back(p);
+        }
+    }
+}
+
+void AnimatedCircle::parseOSC(ofxOscMessage &m){
+    
+    vector<string> osc = getOSCcmd(m.getAddress());
+    string cmd = osc[0];
+    string msg = osc[1];
+    
+    if (cmd == "nbCircles"){
+        nbCircle = m.getArgAsInt32(0);
+    }
+    else if (cmd == "nbPointCircle"){
+        nbPointPerCircle = m.getArgAsInt32(0);
+    }
+    else if (cmd == "size"){
+        oneSize = m.getArgAsFloat(0);
+    }
+    else if (cmd == "pos"){
+        onePos = ofVec2f(m.getArgAsFloat(0.), m.getArgAsFloat(1));
+    }
+    else if (cmd == "rotSpeed"){
+        rotSpeed = m.getArgAsFloat(0);
+    }
+    else if (cmd == "noise"){
+        m.setAddress(msg);
+        osc = getOSCcmd(m.getAddress());
+        cmd = osc[0];
+        msg = osc[1];
+        
+        if (cmd == "sw"){
+            useNoise = m.getArgAsInt32(0);
+        }
+        else if (cmd == "speed"){
+            noiseSpeed = m.getArgAsFloat(0);
         }
     }
 }

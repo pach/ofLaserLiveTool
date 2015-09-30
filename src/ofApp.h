@@ -11,6 +11,7 @@
 #include "ofxUI.h"
 
 #define OSC_LISTENING_PORT 10000
+#define NB_LAYERS 8
 
 #include "ofxOsc.h"
 

@@ -20,6 +20,8 @@ public:
     void setup(string name);
     void update();
     
+    void parseOSC(ofxOscMessage &m);
+    
 private:
 //    vector<ofPoint> pos;
 //    vector<float> size;

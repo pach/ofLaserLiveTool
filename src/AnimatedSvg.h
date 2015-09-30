@@ -25,10 +25,13 @@ public:
     
 private:
 
+    void processOpenFileSelection(ofFileDialogResult openFileResult);
+    
     ofPoint pos;
     float rot;
     float size;
     
+    bool doLoad;
     string filename;
     bool hasLoaded;
     

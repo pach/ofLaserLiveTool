@@ -58,17 +58,17 @@ void AnimatedMultiSinus::setup(string name) {
     gui->addSlider("/3/speed", -10., 10., &sin3.speed);
     gui->addSlider("/3/height", 0., 1., &sin3.height);
     gui->addSpacer();
-    gui->addSlider("tan/1/freq", 0., 50., &sinI1.freq);
-    gui->addSlider("tan/1/speed", -10., 10., &sinI1.speed);
-    gui->addSlider("tan/1/height", 0., 1., &sinI1.height);
+    gui->addSlider("/tan/1/freq", 0., 50., &sinI1.freq);
+    gui->addSlider("/tan/1/speed", -10., 10., &sinI1.speed);
+    gui->addSlider("/tan/1/height", 0., 1., &sinI1.height);
     gui->addSpacer();
-    gui->addSlider("tan/2/freq", 0., 50., &sinI2.freq);
-    gui->addSlider("tan/2/speed", -10., 10., &sinI2.speed);
-    gui->addSlider("tan/2/height", 0., 1., &sinI2.height);
+    gui->addSlider("/tan/2/freq", 0., 50., &sinI2.freq);
+    gui->addSlider("/tan/2/speed", -10., 10., &sinI2.speed);
+    gui->addSlider("/tan/2/height", 0., 1., &sinI2.height);
     gui->addSpacer();
-    gui->addSlider("tan/3/freq", 0., 50., &sinI3.freq);
-    gui->addSlider("tan/3/speed", -10., 10., &sinI3.speed);
-    gui->addSlider("tan/3/height", 0., 1., &sinI3.height);
+    gui->addSlider("/tan/3/freq", 0., 50., &sinI3.freq);
+    gui->addSlider("/tan/3/speed", -10., 10., &sinI3.speed);
+    gui->addSlider("/tan/3/height", 0., 1., &sinI3.height);
     ofPolyline p;
     polylines.push_back(p);
     
@@ -125,23 +125,6 @@ void AnimatedMultiSinus::parseOSC(ofxOscMessage &m){
         posY = ofMap(m.getArgAsFloat(0), 0., 1., -1., 1.);
     }
     else if (cmd == "1"){
-//        ces = msg.find_first_of("/");
-//        
-//        if (ces != -1) {
-//            if (ces == 0){
-//                msg = msg.substr(ces+1);
-//                cmd = msg;
-//                ces = msg.find_first_of("/");
-//                if (ces != -1) {
-//                    cmd = msg.substr(0, ces);
-//                    msg = msg.substr(ces);
-//                }
-//            }
-//            else{
-//                cmd = msg.substr(0, ces);
-//                msg = msg.substr(ces);
-//            }
-//        }
         osc = getOSCcmd(msg);
         cmd = osc[0];
         msg = osc[1];
@@ -157,23 +140,6 @@ void AnimatedMultiSinus::parseOSC(ofxOscMessage &m){
         }
     }
     else if (cmd == "2"){
-//        ces = msg.find_first_of("/");
-//        
-//        if (ces != -1) {
-//            if (ces == 0){
-//                msg = msg.substr(ces+1);
-//                cmd = msg;
-//                ces = msg.find_first_of("/");
-//                if (ces != -1) {
-//                    cmd = msg.substr(0, ces);
-//                    msg = msg.substr(ces);
-//                }
-//            }
-//            else{
-//                cmd = msg.substr(0, ces);
-//                msg = msg.substr(ces);
-//            }
-//        }
         osc = getOSCcmd(msg);
         cmd = osc[0];
         msg = osc[1];
@@ -189,23 +155,7 @@ void AnimatedMultiSinus::parseOSC(ofxOscMessage &m){
         }
     }
     else if (cmd == "3"){
-//        ces = msg.find_first_of("/");
-//        
-//        if (ces != -1) {
-//            if (ces == 0){
-//                msg = msg.substr(ces+1);
-//                cmd = msg;
-//                ces = msg.find_first_of("/");
-//                if (ces != -1) {
-//                    cmd = msg.substr(0, ces);
-//                    msg = msg.substr(ces);
-//                }
-//            }
-//            else{
-//                cmd = msg.substr(0, ces);
-//                msg = msg.substr(ces);
-//            }
-//        }
+
 
         osc = getOSCcmd(msg);
         cmd = osc[0];
@@ -221,31 +171,55 @@ void AnimatedMultiSinus::parseOSC(ofxOscMessage &m){
             sin3.height = m.getArgAsFloat(0);
         }
     }
-//    else if (cmd == "1/freq"){
-//        sin1.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
-//    }
-//    else if (cmd == "1/speed"){
-//        sin1.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
-//    }
-//    else if (cmd == "1/height"){
-//        sin1.height = m.getArgAsFloat(0);
-//    }
-//    else if (cmd == "2/freq"){
-//        sin2.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
-//    }
-//    else if (cmd == "2/speed"){
-//        sin2.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
-//    }
-//    else if (cmd == "2/height"){
-//        sin2.height = m.getArgAsFloat(0);
-//    }
-//    else if (cmd == "3/freq"){
-//        sin3.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
-//    }
-//    else if (cmd == "3/speed"){
-//        sin3.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
-//    }
-//    else if (cmd == "3/height"){
-//        sin3.height = m.getArgAsFloat(0);
-//    }
+    else if (cmd == "tan"){
+        osc = getOSCcmd(msg);
+        cmd = osc[0];
+        msg = osc[1];
+        if (cmd == "1"){
+            osc = getOSCcmd(msg);
+            cmd = osc[0];
+            msg = osc[1];
+            
+            if (cmd == "freq"){
+                sinI1.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
+            }
+            else if (cmd == "speed"){
+                sinI1.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
+            }
+            else if (cmd == "height"){
+                sinI1.height = m.getArgAsFloat(0);
+            }
+        }
+        else if (cmd == "2"){
+            osc = getOSCcmd(msg);
+            cmd = osc[0];
+            msg = osc[1];
+            
+            if (cmd == "freq"){
+                sinI2.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
+            }
+            else if (cmd == "speed"){
+                sinI2.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
+            }
+            else if (cmd == "height"){
+                sinI2.height = m.getArgAsFloat(0);
+            }
+        }
+        else if (cmd == "3"){
+            
+            osc = getOSCcmd(msg);
+            cmd = osc[0];
+            msg = osc[1];
+            
+            if (cmd == "freq"){
+                sinI3.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
+            }
+            else if (cmd == "speed"){
+                sinI3.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
+            }
+            else if (cmd == "height"){
+                sinI3.height = m.getArgAsFloat(0);
+            }
+        }
+    }
 }
