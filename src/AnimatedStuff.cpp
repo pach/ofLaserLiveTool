@@ -22,6 +22,7 @@ AnimatedStuff::~AnimatedStuff(){
 }
 
 void AnimatedStuff::showGui(bool show){
+    gui->update();
     gui->setVisible(show);
 }
 
