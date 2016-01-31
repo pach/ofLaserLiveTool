@@ -45,7 +45,35 @@ void AnimatedRegularPolygon::update() {
         p.addVertex(center.x+sin(quadra*i+rot)*size, center.y+cos(quadra*i+rot)*size);
         p.addVertex(center.x+sin(quadra*(i+1)+rot)*size, center.y+cos(quadra*(i+1)+rot)*size);
         polylines.push_back(p);
-        
-        cout<<"add "<<p[0]<<" "<<p[1]<< endl;
+    }
+}
+
+void AnimatedRegularPolygon::parseOSC(ofxOscMessage &m){
+    //    string msg = m.getAddress();
+    //    string cmd ;
+    //
+    //    int ces = msg.find_first_of("/");
+    //
+    //    if (ces != -1) {
+    //        if (ces == 0){
+    //            msg = msg.substr(ces+1);
+    //            cmd = msg;
+    //            ces = msg.find_first_of("/");
+    //            if (ces != -1) {
+    //                cmd = msg.substr(0, ces);
+    //                msg = msg.substr(ces);
+    //            }
+    //        }
+    //        else{
+    //            cmd = msg.substr(0, ces);
+    //            msg = msg.substr(ces);
+    //        }
+    //    }
+    vector<string> osc = getOSCcmd(m.getAddress());
+    string cmd = osc[0];
+    string msg = osc[1];
+    
+    if (cmd == "rot"){
+        rot = ofMap(m.getArgAsFloat(0), 0., 1., 0., 2*PI);
     }
 }

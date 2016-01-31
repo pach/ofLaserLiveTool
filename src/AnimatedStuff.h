@@ -32,8 +32,8 @@ public:
     
     void setName(string newName);
     
-    virtual void load() ;
-    virtual void save() ;
+    virtual void load(string layerName = "") ;
+    virtual void save(string layerName) ;
     
     virtual void parseOSC (ofxOscMessage &m) {};
     
@@ -82,7 +82,7 @@ protected:
     
 //    ofxTimeline timeline;
     string name;
-    
+
     int drawW;
     int drawH;
     ofVec2f drawOffset;

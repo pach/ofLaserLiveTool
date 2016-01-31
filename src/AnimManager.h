@@ -101,4 +101,5 @@ private:
     ofPoint offset;
     ofPoint scale;
     ofFloatColor color;
+//    float rotate;
 };

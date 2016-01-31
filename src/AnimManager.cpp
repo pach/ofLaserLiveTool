@@ -68,6 +68,7 @@ void AnimManager::setup() {
     animUIselectEvent = false;
     
     name = "layer.0";
+//    rotate = 0;
     
 }
 
@@ -86,6 +87,13 @@ void AnimManager::save(){
     vector<AnimatedStuff*>::iterator it = allAnims.begin();
     vector<AnimatedStuff*>::iterator itEnd = allAnims.end();
     
+    // check si folder existe, le crée sinon
+    ofDirectory curDir;
+    if (!curDir.doesDirectoryExist(name)){
+        curDir.createDirectory(name);
+        
+    }
+    
     ofxXmlSettings xml;
     xml.addTag("ANIMATIONS");
     xml.pushTag("ANIMATIONS");
@@ -98,7 +106,7 @@ void AnimManager::save(){
         xml.popTag();
         idTag ++;
         
-        (*it)->save();
+        (*it)->save(name);
         it++;
     }
     
@@ -138,6 +146,7 @@ void AnimManager::setupGui(){
     gui->addSpacer();
     gui->add2DPad("pos", ofxUIVec2f(0., 1), ofxUIVec2f(0., 1), &offset);
     gui->add2DPad("scale", ofxUIVec2f(0., 1), ofxUIVec2f(0., 1), &scale);
+//    gui->addSlider("rotate", 0., 1., &rotate);
 //    gui->addSpacer();
 //    gui->addSlider("red", 0, 1, &color.r);
 //    gui->addSlider("green", 0, 1, &color.g);
@@ -264,9 +273,11 @@ void AnimManager::createNewAnimationWithTextbox(string type){
     createNewAnimation(type, name);
 }
 
-void AnimManager::createNewAnimation(string type, string name){
+void AnimManager::createNewAnimation(string type, string aName){
     
-    if (name != ""){
+    if (aName != ""){
+//        aName = name+"."+aName;
+        
         AnimatedStuff *a = NULL;
 //        if (type == "AnimatedPolyline") {
 //            a = new AnimatedPolyline();
@@ -274,96 +285,97 @@ void AnimManager::createNewAnimation(string type, string name){
 //        }
         if (type == "AnimatedSinus") {
             a = new AnimatedSinus();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedMultiSinus") {
             a = new AnimatedMultiSinus();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedMultiSinus2") {
             a = new AnimatedMultiSin2();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedRect") {
             a = new AnimatedRect();
-            a->setup(name);
+            a->setup(aName);
         }
 //        else if (type == "AnimatedMultiline") {
 //            a = new AnimatedMultiline();
-//            a->setup(name);
+//            a->setup(aName);
 //        }
         else if (type == "AnimatedPerlin") {
             a = new AnimatedPerlinLines();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedRibbon") {
             a = new AnimatedRibbon();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedSinusRibbon") {
             a = new AnimatedSinusRibbon();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedSvg") {
             a = new AnimatedSvg();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedLines") {
             a = new AnimatedLines();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedCircle") {
             a = new AnimatedCircle();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedOSCLines") {
             a = new AnimatedOSCLines();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedOSCPolylines") {
             a = new AnimatedOSCPolylines();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedImacStraw") {
             a = new AnimatedImacStraw();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedSpiral") {
             a = new AnimatedSpiral();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedWalls") {
             a = new AnimatedWalls();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedPointsInALine") {
             a = new AnimatedPointsInALine();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedRain") {
             a = new AnimatedRain();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedRegularPolygon") {
             a = new AnimatedRegularPolygon();
-            a->setup(name);
+            a->setup(aName);
         }
         else if (type == "AnimatedSoundWave") {
             a = new AnimatedSoundWave();
-            a->setup(name);
+            a->setup(aName);
         }
 
         if (a != NULL){
             a->setDrawWidth(drawW);
             a->setDrawHeight(drawH);
             a->setDrawOffset(drawOffset);
+            a->load(name);
     //        a->setTlOffset(guiOffset+ofVec2f(gui->getRect()->getWidth(),0));
             allAnims.push_back(a);
-            animName.push_back(name);
+            animName.push_back(aName);
             
             // update animName gui menu
             ofxUIDropDownList *w = (ofxUIDropDownList *)gui->getWidget("anim list");
-            w->addToggle(name);
+            w->addToggle(aName);
             
             /* to update radio group, doesn't work*/
     //        ofxUIRadio *r = (ofxUIRadio *)gui->getWidget("anim list");
@@ -377,7 +389,7 @@ void AnimManager::createNewAnimation(string type, string name){
     ////        gui->autoSizeToFitWidgets();
     //        gui->stateChange();
             
-            cout<<"create new anim "<<name<<" of type "<<type<<endl;
+            cout<<"create new anim "<<aName<<" of type "<<type<<endl;
     //        vector<ofxUIToggle *> tg =r->getToggles();
     //        for (int i=0 ; i<tg.size() ; i++){
     //                    cout<<"radio : "<<tg[i]->getName()<<endl;

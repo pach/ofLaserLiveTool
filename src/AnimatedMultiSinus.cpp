@@ -42,9 +42,12 @@ void AnimatedMultiSinus::setup(string name) {
     sinI3.speed = 0.;
     sinI3.height = 1.;
     
+    vertical = false;
+    
     gui->addSpacer();
     gui->addIntSlider("/nbPoint", 10, 1000, &nbPoint);
     gui->addSlider("/posY", -1., 1., &posY);
+    gui->addToggle("/vertical", &vertical);
     gui->addSpacer();
     gui->addSlider("/1/freq", 0., 200., &sin1.freq);
     gui->addSlider("/1/speed", -10., 10., &sin1.speed);
@@ -69,6 +72,7 @@ void AnimatedMultiSinus::setup(string name) {
     gui->addSlider("/tan/3/freq", 0., 50., &sinI3.freq);
     gui->addSlider("/tan/3/speed", -10., 10., &sinI3.speed);
     gui->addSlider("/tan/3/height", 0., 1., &sinI3.height);
+    
     ofPolyline p;
     polylines.push_back(p);
     
@@ -87,7 +91,12 @@ void AnimatedMultiSinus::update() {
         x1 = sin((float)i*sinI1.freq/nbPoint+ofGetElapsedTimef()*sinI1.speed)*sinI1.height;
         x2 = sin((float)i*sinI2.freq/nbPoint+ofGetElapsedTimef()*sinI2.speed)*sinI2.height;
         x3 = sin((float)i*sinI3.freq/nbPoint+ofGetElapsedTimef()*sinI3.speed)*sinI3.height;
-        polylines[0].addVertex((float)i/(float)nbPoint+x1+x2+x3, y1+y2+y3-posY);
+        if (! vertical) {
+            polylines[0].addVertex((float)i/(float)nbPoint+x1+x2+x3, y1+y2+y3-posY);
+        }else{
+            polylines[0].addVertex(y1+y2+y3-posY, (float)i/(float)nbPoint+x1+x2+x3);
+        }
+
     }
     
 }
