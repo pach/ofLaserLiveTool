@@ -19,9 +19,7 @@ public:
     void setup(string name);
     void update();
     void parseOSC(ofxOscMessage &m);
-    
-    void parseOSC(ofxOscMessage &m);
-    
+
 private:
     
     ofPoint center;
