@@ -40,4 +40,5 @@ private:
     int nbPoint;
     float posY;
     
+    bool vertical;
 };

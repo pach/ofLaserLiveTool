@@ -92,17 +92,18 @@ void AnimatedStuff::setName(string newName){
     gui->setName(name);
 }
 
-void AnimatedStuff::load(){
-    cout<<"loading animated stuff "<<name<<endl;
+void AnimatedStuff::load(string layerName){
+    cout<<"loading animated stuff "<<layerName<<"/"<<name<<endl;
     
-    gui->loadSettings(name+"_gui.xml");
+    gui->setHeight(ofGetHeight());
+    gui->loadSettings(layerName+"/"+name+"_gui.xml");
 //    timeline.loadTracksFromFolder(ofToDataPath(""));
 }
 
-void AnimatedStuff::save(){
-    cout<<"saving animated stuff "<<name<<endl;
+void AnimatedStuff::save(string layerName){
+    cout<<"saving animated stuff "<<layerName<<"/"<<name<<endl;
 //    timeline.save();
-    gui->saveSettings(name+"_gui.xml");
+    gui->saveSettings(layerName+"/"+name+"_gui.xml");
 }
 
 //void AnimatedStuff::play(){
