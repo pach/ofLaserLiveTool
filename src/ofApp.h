@@ -13,7 +13,9 @@
 #define OSC_LISTENING_PORT 10000
 #define NB_LAYERS 30
 
-#include "ofxOsc.h"
+static int etherdreamID[]={14425400, 15243823, 14441185, 15153313};
+
+#include "ofxOsc.h" 
 
 class ofApp : public ofBaseApp{
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84C2E8B91C60AA87005C1F2F /* AnimatedRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84C2E8B81C60AA87005C1F2F /* AnimatedRing.cpp */; };
 		8C0C81651A70254700FF07A1 /* AnimatedSpiral.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C81631A70254700FF07A1 /* AnimatedSpiral.cpp */; };
 		8C10EB1A1A51D65C00A651FD /* AnimatedLines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C10EB181A51D65C00A651FD /* AnimatedLines.cpp */; };
 		8C31198A199411C1000FAED9 /* AnimatedSinus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C311988199411C1000FAED9 /* AnimatedSinus.cpp */; };
@@ -172,6 +173,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		84C2E8B71C60A9E7005C1F2F /* AnimatedRing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimatedRing.h; sourceTree = "<group>"; };
+		84C2E8B81C60AA87005C1F2F /* AnimatedRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedRing.cpp; sourceTree = "<group>"; };
 		8C0C81631A70254700FF07A1 /* AnimatedSpiral.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedSpiral.cpp; sourceTree = "<group>"; };
 		8C0C81641A70254700FF07A1 /* AnimatedSpiral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedSpiral.h; sourceTree = "<group>"; };
 		8C10EB181A51D65C00A651FD /* AnimatedLines.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedLines.cpp; sourceTree = "<group>"; };
@@ -643,6 +646,8 @@
 				8C5E98281A8B9B7A00AE3227 /* AnimatedWalls.h */,
 				8CC961C61BB18CDB0093848C /* AnimatedRegularPolygon.cpp */,
 				8CC961C71BB18CDB0093848C /* AnimatedRegularPolygon.h */,
+				84C2E8B71C60A9E7005C1F2F /* AnimatedRing.h */,
+				84C2E8B81C60AA87005C1F2F /* AnimatedRing.cpp */,
 			);
 			name = AnimTools;
 			sourceTree = "<group>";
@@ -1282,6 +1287,7 @@
 				8CD0BCE71A7BB82900359B0E /* Makefile in Sources */,
 				8CD0BD1E1A7BB85000359B0E /* ofxEasingCubic.cpp in Sources */,
 				8CD0BCE51A7BB82900359B0E /* ofxEtherdream.cpp in Sources */,
+				84C2E8B91C60AA87005C1F2F /* AnimatedRing.cpp in Sources */,
 				8CD0BD391A7BE05400359B0E /* CurveLut.cpp in Sources */,
 				8CDA15451B723B4700F8B609 /* RenderSub.cpp in Sources */,
 				8C8F7C411938CA82005A2D28 /* ofxUIMultiImageButton.cpp in Sources */,

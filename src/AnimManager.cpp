@@ -39,6 +39,7 @@
 #include "AnimatedImacStraw.h"
 #include "AnimatedSinusRibbon.h"
 #include "AnimatedSpiral.h"
+#include "AnimatedRing.h"
 
 AnimManager::AnimManager(){
     curSelected = NULL;
@@ -251,6 +252,9 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         else if (name == "add sound wave"){
             createNewAnimationWithTextbox("AnimatedSoundWave");
         }
+        else if (name == "add ring"){
+            createNewAnimationWithTextbox("AnimatedRing");
+        }
         else if (name == "anim list"){
             animUIselectEvent = true;
             cout<<"select a new animation"<<endl;
@@ -361,6 +365,10 @@ void AnimManager::createNewAnimation(string type, string aName){
         }
         else if (type == "AnimatedSoundWave") {
             a = new AnimatedSoundWave();
+            a->setup(aName);
+        }
+        else if (type == "AnimatedRing") {
+            a = new AnimatedRing();
             a->setup(aName);
         }
 

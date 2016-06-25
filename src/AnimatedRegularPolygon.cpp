@@ -16,10 +16,10 @@ void AnimatedRegularPolygon::setup(string name) {
     nbPoint = 6;
     rot = 0;
     
-    gui->addSlider("size", 0., 1., &size);
-    gui->addIntSlider("nb Point", 3, 10, &nbPoint);
-    gui->addSlider("rot", 0., 2*PI, &rot);
-    gui->add2DPad("center", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &center);
+    gui->addSlider("/size", 0., 1., &size);
+    gui->addIntSlider("/nbPoint", 3, 10, &nbPoint);
+    gui->addSlider("/rot", 0., 2*PI, &rot);
+    gui->add2DPad("/center", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &center);
     
     type="AnimatedRegularPolygon";
     
@@ -75,5 +75,14 @@ void AnimatedRegularPolygon::parseOSC(ofxOscMessage &m){
     
     if (cmd == "rot"){
         rot = ofMap(m.getArgAsFloat(0), 0., 1., 0., 2*PI);
+    }
+    if (cmd == "size"){
+        size = m.getArgAsFloat(0);
+    }
+    if (cmd == "nbPoint"){
+        nbPoint = m.getArgAsInt32(0);
+    }
+    if (cmd == "center"){
+        center = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
     }
 }

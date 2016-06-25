@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(125);
-    ofSetFrameRate(60);
+    ofSetFrameRate(240);
     
 //    ofxTimeline::removeCocoaMenusFromGlut("Laser Anim Toolbox");
 //    ofxEtherdream::startEtherdreamLib();
@@ -19,13 +19,27 @@ void ofApp::setup(){
     animManagerTabs.setPosition(ildaTabs.getGlobalCanvasWidth()+150., 0.);
     
 //
-    for (int i=0; i<nbEtherdream; i++) {
+//    for (int i=0; i<nbEtherdream; i++) {
     /*****************************/
     /*** debug hotel *************/
     /*****************************/
-//    for (int i=0; i<2; i++) {
+    for (int i=0; i<2; i++) {
         IldaControl * ildaController = new IldaControl();
+        
+/*************************************************/
+/* TODO : Ajout d'un moyen de sauvegarde des ids */
+/*************************************************/
+        
+/*****************************/
+// temporaire : id laser specifique perf.
+//        if (i<3){
+//            ildaController->setup(etherdreamID[i]);
+//        }else{
+//            ildaController->setup(i);
+//        }
+        
         ildaController->setup(i);
+        
         ildaController->setName("laser."+ofToString(i+1));
         ildaController->load();
         
@@ -173,6 +187,22 @@ void ofApp::keyPressed(int key){
             animIt ++;
         }
     }
+    if (key == '1'){
+        if (ilda.size()>=1) {
+            ilda[1]->forceReconnect();
+        }
+    }
+    else if (key == '2'){
+        if (ilda.size()>=2) {
+            ilda[2]->forceReconnect();
+        }
+    }
+    else if (key == '3'){
+        if (ilda.size()>=3) {
+            ilda[3]->forceReconnect();
+        }
+    }
+
 }
 
 //--------------------------------------------------------------
