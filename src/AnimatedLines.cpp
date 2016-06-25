@@ -144,35 +144,41 @@ void AnimatedLines::parseOSC(ofxOscMessage &m){
     string cmd = osc[0];
     string msg = osc[1];
     
-    if (cmd == "nbLines"){
-        nbLines = m.getArgAsFloat(0);
-    }
-    else if (cmd == "pos"){
-        pos = m.getArgAsFloat(0);
-    }
-    else if (cmd == "dir"){
-        dir = m.getArgAsInt32(0);
-    }
-    else if (cmd == "speed"){
-        speed = ofMap(m.getArgAsFloat(0), 0., 1., -0.05, 0.05);
-    }
-    else if (cmd == "noise"){
-        m.setAddress(msg);
-        osc = getOSCcmd(m.getAddress());
-        cmd = osc[0];
-        msg = osc[1];
+    if (cmd == "lines"){
+        osc = getOSCcmd(msg);
+        string cmd = osc[0];
+        string msg = osc[1];
         
-        if (cmd == "sw"){
-            useNoise = m.getArgAsInt32(0);
+        if (cmd == "nbLines"){
+            nbLines = m.getArgAsFloat(0);
         }
-        else if (cmd == "coeff"){
-            noiseCoeff = m.getArgAsFloat(0);
+        else if (cmd == "pos"){
+            pos = m.getArgAsFloat(0);
+        }
+        else if (cmd == "dir"){
+            dir = m.getArgAsInt32(0);
         }
         else if (cmd == "speed"){
-            noiseSpeed = m.getArgAsFloat(0);
+            speed = ofMap(m.getArgAsFloat(0), 0., 1., -0.05, 0.05);
         }
-        else if (cmd == "scale"){
-            noiseScale = m.getArgAsFloat(0);
+        else if (cmd == "noise"){
+            m.setAddress(msg);
+            osc = getOSCcmd(m.getAddress());
+            cmd = osc[0];
+            msg = osc[1];
+            
+            if (cmd == "sw"){
+                useNoise = m.getArgAsInt32(0);
+            }
+            else if (cmd == "coeff"){
+                noiseCoeff = m.getArgAsFloat(0);
+            }
+            else if (cmd == "speed"){
+                noiseSpeed = m.getArgAsFloat(0);
+            }
+            else if (cmd == "scale"){
+                noiseScale = m.getArgAsFloat(0);
+            }
         }
     }
 }

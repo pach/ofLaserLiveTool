@@ -109,15 +109,15 @@ void AnimatedPointsInALine::update() {
 void AnimatedPointsInALine::parseOSC(ofxOscMessage &m){
     string address = m.getAddress();
 
-    if(address.find("/pointsFreq")!=-1)
+    if(address.find("/pointsInLine/pointsFreq")!=-1)
     {
         freq = m.getArgAsFloat(0);
     }
-    else if(address.find("/pointsDuration")!=-1)
+    else if(address.find("/pointsInLine/pointsDuration")!=-1)
     {
         duration = m.getArgAsFloat(0);
     }
-    else if(address.find("/pointsNumSimultaneousPoints")!=-1)
+    else if(address.find("/pointsInLine/pointsNumSimultaneousPoints")!=-1)
     {
         numSimultaneousPoints = m.getArgAsFloat(0);
     }

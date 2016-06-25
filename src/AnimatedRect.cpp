@@ -107,14 +107,19 @@ void AnimatedRect::parseOSC(ofxOscMessage &m){
     vector<string> osc = getOSCcmd(m.getAddress());
     string cmd = osc[0];
     string msg = osc[1];
-    
-    if (cmd == "center"){
-        center = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
-    }
-    else if (cmd == "rot"){
-        rot = ofMap(m.getArgAsFloat(0), 0, 1, 0, 360);
-    }
-    else if (cmd == "size"){
-        size = m.getArgAsFloat(0);
+    if (cmd == "rect"){
+        osc = getOSCcmd(msg);
+        string cmd = osc[0];
+        string msg = osc[1];
+        
+        if (cmd == "center"){
+            center = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
+        }
+        else if (cmd == "rot"){
+            rot = ofMap(m.getArgAsFloat(0), 0, 1, 0, 360);
+        }
+        else if (cmd == "size"){
+            size = m.getArgAsFloat(0);
+        }
     }
 }
