@@ -11,9 +11,9 @@
 #include "ofxUI.h"
 
 #define OSC_LISTENING_PORT 10000
-#define NB_LAYERS 30
+#define NB_LAYERS 12
 
-static int etherdreamID[]={14425400, 15243823, 14441185, 15153313};
+static int etherdreamID[]={14425400, 14441185, 15243823, 15153313};
 
 #include "ofxOsc.h" 
 

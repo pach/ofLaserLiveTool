@@ -19,11 +19,11 @@ void ofApp::setup(){
     animManagerTabs.setPosition(ildaTabs.getGlobalCanvasWidth()+150., 0.);
     
 //
-//    for (int i=0; i<nbEtherdream; i++) {
+    for (int i=0; i<nbEtherdream; i++) {
     /*****************************/
     /*** debug hotel *************/
     /*****************************/
-    for (int i=0; i<2; i++) {
+//    for (int i=0; i<2; i++) {
         IldaControl * ildaController = new IldaControl();
         
 /*************************************************/
@@ -32,11 +32,11 @@ void ofApp::setup(){
         
 /*****************************/
 // temporaire : id laser specifique perf.
-//        if (i<3){
-//            ildaController->setup(etherdreamID[i]);
-//        }else{
-//            ildaController->setup(i);
-//        }
+        if (i<4){
+            ildaController->setup(etherdreamID[i]);
+        }else{
+            ildaController->setup(i);
+        }
         
         ildaController->setup(i);
         

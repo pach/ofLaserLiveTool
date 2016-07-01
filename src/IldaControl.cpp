@@ -57,7 +57,7 @@ void IldaControl::setup(int idEtherdream){
 //    gui->addToggle("do Smooth", &doSmooth);
     laserGui->addIntSlider("smooth amount", 0, 10, &smoothing);
     laserGui->addSlider("tolerance", 0, 1., &tolerance);
-    laserGui->addToggle("do spacing", &doSpacing);
+    laserGui->addToggle("/doSpacing", &doSpacing);
     laserGui->addIntSlider("blank count", 0, 60, &blankCount);
     laserGui->addIntSlider("end count", 0, 60, &endCount);
     laserGui->addToggle("cap X", &capX);
@@ -67,7 +67,7 @@ void IldaControl::setup(int idEtherdream){
     
     laserGui->addSpacer();
     laserGui->addToggle("freeze", &freezeFrame);
-    laserGui->addToggle("calib", &drawCalib);
+    laserGui->addToggle("/calib", &drawCalib);
     laserGui->addToggle("fixed shot", &fixedShotCalib);
    
     /* render GUI */
@@ -78,8 +78,8 @@ void IldaControl::setup(int idEtherdream){
     laserGui->addToggle("show curve", &showCurve);
     
     laserGui->addSpacer();
-    laserGui->add2DPad("offset", ofxUIVec2f(-1., 1), ofxUIVec2f(-1., 1.), &offset);
-    laserGui->add2DPad("scale", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &scale);
+    laserGui->add2DPad("/offset", ofxUIVec2f(-1., 1), ofxUIVec2f(-1., 1.), &offset);
+    laserGui->add2DPad("/scale", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &scale);
     laserGui->addSpacer();
 //    laserTabs.addCanvas(laserGui);
 //    laserTabs.addCanvas(renderGui);

@@ -589,7 +589,7 @@ void AnimManager::parseOSC(ofxOscMessage &m){
         if (msg == "/load") {
             setCurrentSelected(m.getArgAsString(0));
         }
-        else if (msg == "/fadeTime"){
+        else if (msg == "/fadetime"){
             fadeTime = m.getArgAsFloat(0);
         }
         else if (msg == "/offset"){
