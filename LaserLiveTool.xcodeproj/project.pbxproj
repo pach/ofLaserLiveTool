@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		842863CD1D29272800BA0D69 /* AnimatedSolid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 842863CB1D29272800BA0D69 /* AnimatedSolid.cpp */; };
+		842863D01D2964E000BA0D69 /* AnimatedPerlinCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 842863CE1D2964E000BA0D69 /* AnimatedPerlinCircle.cpp */; };
 		84C2E8B91C60AA87005C1F2F /* AnimatedRing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84C2E8B81C60AA87005C1F2F /* AnimatedRing.cpp */; };
 		8C0C81651A70254700FF07A1 /* AnimatedSpiral.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C81631A70254700FF07A1 /* AnimatedSpiral.cpp */; };
 		8C10EB1A1A51D65C00A651FD /* AnimatedLines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C10EB181A51D65C00A651FD /* AnimatedLines.cpp */; };
@@ -173,6 +175,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		842863CB1D29272800BA0D69 /* AnimatedSolid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedSolid.cpp; sourceTree = "<group>"; };
+		842863CC1D29272800BA0D69 /* AnimatedSolid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedSolid.h; sourceTree = "<group>"; };
+		842863CE1D2964E000BA0D69 /* AnimatedPerlinCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedPerlinCircle.cpp; sourceTree = "<group>"; };
+		842863CF1D2964E000BA0D69 /* AnimatedPerlinCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedPerlinCircle.h; sourceTree = "<group>"; };
 		84C2E8B71C60A9E7005C1F2F /* AnimatedRing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimatedRing.h; sourceTree = "<group>"; };
 		84C2E8B81C60AA87005C1F2F /* AnimatedRing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedRing.cpp; sourceTree = "<group>"; };
 		8C0C81631A70254700FF07A1 /* AnimatedSpiral.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedSpiral.cpp; sourceTree = "<group>"; };
@@ -612,8 +618,6 @@
 				8CDF0AA51AED51060080E4B9 /* AnimatedRain.cpp */,
 				8CDF0AA61AED51060080E4B9 /* AnimatedSoundWave.h */,
 				8CDF0AA71AED51060080E4B9 /* AnimatedSoundWave.cpp */,
-				8C8FDDAF1937309B00662718 /* AnimatedStuff.cpp */,
-				8C8FDDB01937309B00662718 /* AnimatedStuff.h */,
 				8C311988199411C1000FAED9 /* AnimatedSinus.cpp */,
 				8C311989199411C1000FAED9 /* AnimatedSinus.h */,
 				8C8EC39519C6135900823AEE /* AnimatedRect.cpp */,
@@ -648,6 +652,12 @@
 				8CC961C71BB18CDB0093848C /* AnimatedRegularPolygon.h */,
 				84C2E8B71C60A9E7005C1F2F /* AnimatedRing.h */,
 				84C2E8B81C60AA87005C1F2F /* AnimatedRing.cpp */,
+				842863CB1D29272800BA0D69 /* AnimatedSolid.cpp */,
+				842863CC1D29272800BA0D69 /* AnimatedSolid.h */,
+				8C8FDDAF1937309B00662718 /* AnimatedStuff.cpp */,
+				8C8FDDB01937309B00662718 /* AnimatedStuff.h */,
+				842863CE1D2964E000BA0D69 /* AnimatedPerlinCircle.cpp */,
+				842863CF1D2964E000BA0D69 /* AnimatedPerlinCircle.h */,
 			);
 			name = AnimTools;
 			sourceTree = "<group>";
@@ -1213,11 +1223,13 @@
 				8CD0BD241A7BB85000359B0E /* ofxEasingQuint.cpp in Sources */,
 				8C8F7C501938CA82005A2D28 /* ofxUITextInput.cpp in Sources */,
 				8C8F7C351938CA82005A2D28 /* ofxUIFPS.cpp in Sources */,
+				842863CD1D29272800BA0D69 /* AnimatedSolid.cpp in Sources */,
 				8CDA15441B723B4700F8B609 /* RenderFrame.cpp in Sources */,
 				8C8F7C4B1938CA82005A2D28 /* ofxUISpacer.cpp in Sources */,
 				8C8F7C4E1938CA82005A2D28 /* ofxUITabBar.cpp in Sources */,
 				8C8F7C2D1938CA82005A2D28 /* ofxUIBaseDraws.cpp in Sources */,
 				8CD0BD221A7BB85000359B0E /* ofxEasingQuad.cpp in Sources */,
+				842863D01D2964E000BA0D69 /* AnimatedPerlinCircle.cpp in Sources */,
 				8C8F7C511938CA82005A2D28 /* ofxUIToggle.cpp in Sources */,
 				8C8F7C331938CA82005A2D28 /* ofxUIDropDownList.cpp in Sources */,
 				8C3FD5CF1A5414A700E8E54B /* AnimatedMultiSinus.cpp in Sources */,

@@ -310,7 +310,7 @@ void IldaControl::parseOSC(ofxOscMessage &m){
             laserColor.b = m.getArgAsFloat(2);
         }
         else if (cmd == "spacing"){
-            doSpacing = m.getArgAsInt32(0);
+            doSpacing = m.getArgAsInt32(0)==1?true:false;
         }
         else if (cmd == "calib"){
             drawCalib = m.getArgAsInt32(0);

@@ -40,6 +40,8 @@
 #include "AnimatedSinusRibbon.h"
 #include "AnimatedSpiral.h"
 #include "AnimatedRing.h"
+#include "AnimatedSolid.h"
+#include "AnimatedPerlinCircle.h"
 
 AnimManager::AnimManager(){
     curSelected = NULL;
@@ -255,6 +257,13 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         else if (name == "add ring"){
             createNewAnimationWithTextbox("AnimatedRing");
         }
+        else if (name == "add solid"){
+            createNewAnimationWithTextbox("AnimatedSolid");
+        }
+        else if (name == "add perlinCircle"){
+            createNewAnimationWithTextbox("AnimatedPerlinCircle");
+        }
+
         else if (name == "anim list"){
             animUIselectEvent = true;
             cout<<"select a new animation"<<endl;
@@ -369,6 +378,14 @@ void AnimManager::createNewAnimation(string type, string aName){
         }
         else if (type == "AnimatedRing") {
             a = new AnimatedRing();
+            a->setup(aName);
+        }
+        else if (type == "AnimatedSolid") {
+            a = new AnimatedSolid();
+            a->setup(aName);
+        }
+        else if (type == "AnimatedPerlinCircle") {
+            a = new AnimatedPerlinCircle();
             a->setup(aName);
         }
 
