@@ -69,6 +69,10 @@ public:
     inline virtual void mouseDragged(ofMouseEventArgs& e) {};
     inline virtual void mouseReleased(ofMouseEventArgs& e) {};
     inline virtual void mouseMoved(ofMouseEventArgs& e) {};
+    
+    inline virtual void mouseScrolled(ofMouseEventArgs& e) {};
+    inline virtual void mouseEntered(ofMouseEventArgs& e) {};
+    inline virtual void mouseExited(ofMouseEventArgs& e) {};
 //
 //    void setCurrentTime(unsigned long long time);
 //    void setTimeLength(long time);

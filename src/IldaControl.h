@@ -13,7 +13,7 @@
 #include "ofxEtherdream.h"
 #include "ofxUI.h"
 #include "ofxOsc.h"
-#include "ofxCurvesTool.h"
+//#include "ofxCurvesTool.h"
 
 #include "FixedShot.h"
 
@@ -67,7 +67,7 @@ public:
     bool ppsChanged;
     int oldPps;
     
-    bool showCurve;
+//    bool showCurve;
     
 private:
     
@@ -81,10 +81,10 @@ private:
 //    ofxUISuperCanvas * renderGui;3
 //    ofxUITabBar laserTabs;
     
-    ofxCurvesTool redCurve;
-    ofxCurvesTool greenCurve;
-    ofxCurvesTool blueCurve;
-    
+//    ofxCurvesTool redCurve;
+//    ofxCurvesTool greenCurve;
+//    ofxCurvesTool blueCurve;
+  
     
     bool freezeFrame;
     bool drawCalib;

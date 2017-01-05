@@ -598,6 +598,8 @@ vector<ofPolyline> AnimManager::getPolylines(){
 }
 
 void AnimManager::parseOSC(ofxOscMessage &m){
+//    ofLog (OF_LOG_NOTICE, "this is a anim OSC"+name+" - "+m.getAddress());
+    
     vector<string> osc = getOSCcmd(m.getAddress());
     string cmd = osc[0];
     string msg = osc[1];
@@ -631,6 +633,7 @@ void AnimManager::parseOSC(ofxOscMessage &m){
             if (cmd =="anim") {
                 m.setAddress(msg);
                 if (curSelected != NULL){
+//                    ofLog (OF_LOG_NOTICE, "send to currend animation for parsing "+m.getAddress());
                     curSelected->parseOSC(m);
                 }
 

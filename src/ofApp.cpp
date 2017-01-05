@@ -250,6 +250,8 @@ void ofApp::parseOSC(){
         ofxOscMessage m ;
         oscReceive.getNextMessage(&m);
         
+//        ofLog (OF_LOG_NOTICE, "osc message received : "+m.getAddress());
+        
         vector<AnimManager *>::iterator animIt = animManager.begin();
         vector<AnimManager *>::iterator animEnd = animManager.end();
         
