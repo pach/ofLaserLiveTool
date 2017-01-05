@@ -1546,7 +1546,9 @@
 					/Users/Pachoud/Documents/TAFF/OF/of_v0.8.0_osx_release/addons/ofxTimeline/libs/openal/libs/win_cb,
 					/Users/Pachoud/Documents/TAFF/OF/of_v0.8.0_osx_release/addons/ofxTimeline/libs/sndfile/lib/osx,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = LaserLiveToolDebug;
+				SDKROOT = macosx10.11;
 				USER_HEADER_SEARCH_PATHS = "../../../../../OF/of_v0.8.0_osx_release/addons/ofxTimeline/libs/kiss/include/ ../../../../../OF/of_v0.8.0_osx_release/addons/ofxTimeline/libs/openal/include/ ../../../../../OF/of_v0.8.0_osx_release/addons/ofxTimeline/libs/sndfile/include/ ../../../addons/ofxOsc/libs/oscpack/src/";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1640,7 +1642,9 @@
 					/Users/Pachoud/Documents/TAFF/OF/of_v0.8.0_osx_release/addons/ofxTimeline/libs/openal/libs/win_cb,
 					/Users/Pachoud/Documents/TAFF/OF/of_v0.8.0_osx_release/addons/ofxTimeline/libs/sndfile/lib/osx,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = LaserLiveTool;
+				SDKROOT = macosx10.11;
 				USER_HEADER_SEARCH_PATHS = "../../../../../OF/of_v0.8.0_osx_release/addons/ofxTimeline/libs/kiss/include/ ../../../../../OF/of_v0.8.0_osx_release/addons/ofxTimeline/libs/openal/include/ ../../../../../OF/of_v0.8.0_osx_release/addons/ofxTimeline/libs/sndfile/include/ ../../../addons/ofxOsc/libs/oscpack/src/";
 				WRAPPER_EXTENSION = app;
 			};
