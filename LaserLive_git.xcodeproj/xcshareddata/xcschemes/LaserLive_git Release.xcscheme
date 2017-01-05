@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-               BuildableName = "LaserLive.app"
-               BlueprintName = "LaserLive"
-               ReferencedContainer = "container:LaserLive.xcodeproj">
+               BuildableName = "LaserLive_git.app"
+               BlueprintName = "LaserLive_git"
+               ReferencedContainer = "container:LaserLive_git.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "LaserLive.app"
-            BlueprintName = "LaserLive"
-            ReferencedContainer = "container:LaserLive.xcodeproj">
+            BuildableName = "LaserLive_git.app"
+            BlueprintName = "LaserLive_git"
+            ReferencedContainer = "container:LaserLive_git.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "LaserLive.app"
-            BlueprintName = "LaserLive"
-            ReferencedContainer = "container:LaserLive.xcodeproj">
+            BuildableName = "LaserLive_git.app"
+            BlueprintName = "LaserLive_git"
+            ReferencedContainer = "container:LaserLive_git.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "LaserLive.app"
-            BlueprintName = "LaserLive"
-            ReferencedContainer = "container:LaserLive.xcodeproj">
+            BuildableName = "LaserLive_git.app"
+            BlueprintName = "LaserLive_git"
+            ReferencedContainer = "container:LaserLive_git.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

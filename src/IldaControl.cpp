@@ -230,13 +230,6 @@ void IldaControl::forceReconnect(){
     etherdream.forceReconnect();
 }
 
-void IldaControl::forceReconnect(){
-//    cout<<"--------------------------------"<<endl;
-//    cout<<"is going to force laser "<<name<<" to reconnect"<<endl;
-//    cout<<"--------------------------------"<<endl;
-    etherdream.forceReconnect();
-}
-
 int IldaControl::getGuiWidth(){
     return laserGui->getRect()->getWidth();
 //    return laserTabs.getRect()->getWidth();

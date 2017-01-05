@@ -19,11 +19,13 @@ void ofApp::setup(){
     animManagerTabs.setPosition(ildaTabs.getGlobalCanvasWidth()+150., 0.);
     
 //
-//    for (int i=0; i<nbEtherdream; i++) {
+    for (int i=0; i<nbEtherdream; i++) {
     /*****************************/
     /*** debug hotel *************/
     /*****************************/
-    for (int i=0; i<4; i++) {
+//    for (int i=0; i<4; i++) {
+    /** fin debug **/
+        
         IldaControl * ildaController = new IldaControl();
         
 /*************************************************/

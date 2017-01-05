@@ -4,25 +4,27 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "840D2B3DC8978BE23A401A765FC2145A5717F5AC" : 9223372036854775807,
-    "DB764BE1A7042734E52454D4CABB8CE921E375DC" : 9223372036854775807,
     "C1E8919E75191C5A81309888FBBC5793267330D8" : 9223372036854775807,
-    "F71958031D205D2C5B7FC71EE73A2878789BBF46" : 9223372036854775807,
     "7E804D925461714118DB355C65BC964B41D94376" : 9223372036854775807,
-    "6B5D1DE462D521A98972DF70F1147E20268C546A" : 9223372036854775807
+    "DB764BE1A7042734E52454D4CABB8CE921E375DC" : 9223372036854775807,
+    "840D2B3DC8978BE23A401A765FC2145A5717F5AC" : 9223372036854775807,
+    "6B5D1DE462D521A98972DF70F1147E20268C546A" : 9223372036854775807,
+    "804365A2A03AE91D0A94F46F33BFBBDE49154A3B" : 9223372036854775807,
+    "F71958031D205D2C5B7FC71EE73A2878789BBF46" : 9223372036854775807
   },
-  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1E344BAA-791A-4FA8-BD95-C77DA1B7A308",
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "49695556-935A-442D-A305-E6628DBBA888",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "840D2B3DC8978BE23A401A765FC2145A5717F5AC" : "..\/..\/addons\/ofxPolylineMerger",
-    "DB764BE1A7042734E52454D4CABB8CE921E375DC" : "LaserLiveTool_git\/",
     "C1E8919E75191C5A81309888FBBC5793267330D8" : "..\/..\/addons\/ofxEtherdream",
-    "F71958031D205D2C5B7FC71EE73A2878789BBF46" : "..\/..\/addons\/ofxIlda",
     "7E804D925461714118DB355C65BC964B41D94376" : "..\/..\/addons\/ofxUI",
-    "6B5D1DE462D521A98972DF70F1147E20268C546A" : "..\/..\/addons\/ofxTween"
+    "DB764BE1A7042734E52454D4CABB8CE921E375DC" : "LaserLive_git\/",
+    "840D2B3DC8978BE23A401A765FC2145A5717F5AC" : "..\/..\/addons\/ofxPolylineMerger",
+    "6B5D1DE462D521A98972DF70F1147E20268C546A" : "..\/..\/addons\/ofxTween",
+    "804365A2A03AE91D0A94F46F33BFBBDE49154A3B" : "..\/..\/addons\/ofxHomography",
+    "F71958031D205D2C5B7FC71EE73A2878789BBF46" : "..\/..\/addons\/ofxIlda"
   },
-  "DVTSourceControlWorkspaceBlueprintNameKey" : "LaserLive",
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "LaserLive_git",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "LaserLive.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "LaserLive_git.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/obviousjim\/ofxTween.git",
@@ -33,6 +35,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/rezaali\/ofxUI",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7E804D925461714118DB355C65BC964B41D94376"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:paulobarcelos\/ofxHomography.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "804365A2A03AE91D0A94F46F33BFBBDE49154A3B"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:pach\/ofxPolylineMerger.git",

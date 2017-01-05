@@ -1,10 +1,10 @@
-ofxGui
-ofxSvg
 ofxEtherdream
+ofxGui
+ofxHomography
 ofxIlda
-ofxMSATimer
-ofxRange
-ofxTextInputField
-ofxTimecode
-ofxTimeline
+ofxOsc
+ofxPolylineMerger
+ofxSvg
 ofxTween
+ofxUI
+ofxXmlSettings
