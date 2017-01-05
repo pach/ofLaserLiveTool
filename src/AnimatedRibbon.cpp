@@ -37,7 +37,7 @@ void AnimatedRibbon::setup(string name) {
     
     lastPoint = ofVec2f (0.5, 0.5);
     
-    gui->addIntSlider("max Vertex coeff", 1, 1000, &nbMaxVertex);
+    gui->addIntSlider("max Vertex coeff", 10, 1000, &nbMaxVertex);
     gui->addSlider("smooth coeff", 1.99, 10., &smoothCoeff);
     gui->addSlider("noise coeff", 0., 0.02, &noiseCoeff);
     gui->addSlider("wind coeff", 0., 0.05, &windCoeff);
@@ -46,7 +46,7 @@ void AnimatedRibbon::setup(string name) {
     
     gui->addSlider("/noise", 0., 1., &noiseSpeed);
     gui->addSlider("/moveSpeed", 0., 1., &moveSpeed);
-    gui->addSlider("/nbVertex", 0., 1., &nbVertex);
+    gui->addSlider("/nbVertex", 0.1, 1., &nbVertex);
     gui->addSlider("/smooth", 0., 1., &smooth);
     gui->add2DPad("/wind", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &wind);
     gui->add2DPad("/pos", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &curPos);
@@ -67,7 +67,7 @@ void AnimatedRibbon::setup(string name) {
     load();
     
     ofPolyline p;
-    for (int i=0; i<nbMaxVertex; i++) {
+    for (int i=0; i<nbMaxVertex*nbVertex; i++) {
         p.addVertex(ofVec2f(0.5, 0.5));
     }
     polylines.push_back(p);
@@ -166,23 +166,29 @@ void AnimatedRibbon::parseOSC(ofxOscMessage &m){
     string cmd = osc[0];
     string msg = osc[1];
     
-    if (cmd == "nbVertex"){
-        nbVertex = m.getArgAsFloat(0);
-    }
-    else if (cmd == "noise"){
-        noiseSpeed = m.getArgAsFloat(0);
-    }
-    else if (cmd == "moveSpeed"){
-        moveSpeed = m.getArgAsFloat(0);
-    }
-    else if (cmd == "smooth"){
-        smooth = m.getArgAsFloat(0);
-    }
-    else if (cmd == "wind"){
-        wind = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
-    }
-    else if (cmd == "pos"){
-        curPos = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
+    if (cmd == "ribbon"){
+        osc = getOSCcmd(msg);
+        string cmd = osc[0];
+        string msg = osc[1];
+        
+        if (cmd == "nbVertex"){
+            nbVertex = m.getArgAsFloat(0);
+        }
+        else if (cmd == "noise"){
+            noiseSpeed = m.getArgAsFloat(0);
+        }
+        else if (cmd == "moveSpeed"){
+            moveSpeed = m.getArgAsFloat(0);
+        }
+        else if (cmd == "smooth"){
+            smooth = m.getArgAsFloat(0);
+        }
+        else if (cmd == "wind"){
+            wind = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
+        }
+        else if (cmd == "pos"){
+            curPos = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
+        }
     }
 }
 

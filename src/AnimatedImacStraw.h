@@ -20,8 +20,8 @@ public:
     void setup(string name);
     void update();
     
-    void save();
-    void load();
+    void save(string layerName);
+    void load(string layerName = "");
     
 private:
     int nbStraw;

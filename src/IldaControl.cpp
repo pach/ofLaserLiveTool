@@ -57,7 +57,7 @@ void IldaControl::setup(int idEtherdream){
 //    gui->addToggle("do Smooth", &doSmooth);
     laserGui->addIntSlider("smooth amount", 0, 10, &smoothing);
     laserGui->addSlider("tolerance", 0, 1., &tolerance);
-    laserGui->addToggle("do spacing", &doSpacing);
+    laserGui->addToggle("/doSpacing", &doSpacing);
     laserGui->addIntSlider("blank count", 0, 60, &blankCount);
     laserGui->addIntSlider("end count", 0, 60, &endCount);
     laserGui->addToggle("cap X", &capX);
@@ -67,7 +67,7 @@ void IldaControl::setup(int idEtherdream){
     
     laserGui->addSpacer();
     laserGui->addToggle("freeze", &freezeFrame);
-    laserGui->addToggle("calib", &drawCalib);
+    laserGui->addToggle("/calib", &drawCalib);
     laserGui->addToggle("fixed shot", &fixedShotCalib);
    
     /* render GUI */
@@ -78,8 +78,8 @@ void IldaControl::setup(int idEtherdream){
     laserGui->addToggle("show curve", &showCurve);
     
     laserGui->addSpacer();
-    laserGui->add2DPad("offset", ofxUIVec2f(-1., 1), ofxUIVec2f(-1., 1.), &offset);
-    laserGui->add2DPad("scale", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &scale);
+    laserGui->add2DPad("/offset", ofxUIVec2f(-1., 1), ofxUIVec2f(-1., 1.), &offset);
+    laserGui->add2DPad("/scale", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &scale);
     laserGui->addSpacer();
 //    laserTabs.addCanvas(laserGui);
 //    laserTabs.addCanvas(renderGui);
@@ -219,6 +219,13 @@ void IldaControl::save(){
     blueCurve.save(name+"blue.yml");
 }
 
+void IldaControl::forceReconnect(){
+//    cout<<"--------------------------------"<<endl;
+//    cout<<"is going to force laser "<<name<<" to reconnect"<<endl;
+//    cout<<"--------------------------------"<<endl;
+    etherdream.forceReconnect();
+}
+
 int IldaControl::getGuiWidth(){
     return laserGui->getRect()->getWidth();
 //    return laserTabs.getRect()->getWidth();
@@ -303,7 +310,7 @@ void IldaControl::parseOSC(ofxOscMessage &m){
             laserColor.b = m.getArgAsFloat(2);
         }
         else if (cmd == "spacing"){
-            doSpacing = m.getArgAsInt32(0);
+            doSpacing = m.getArgAsInt32(0)==1?true:false;
         }
         else if (cmd == "calib"){
             drawCalib = m.getArgAsInt32(0);

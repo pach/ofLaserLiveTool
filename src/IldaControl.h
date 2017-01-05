@@ -38,6 +38,8 @@ public:
     void load();
     void save();
     
+    void forceReconnect();
+    
     void parseOSC(ofxOscMessage &m);
     
 //    inline ofxUITabBar * getGui(){return &laserTabs;};
@@ -76,7 +78,7 @@ private:
     long ethId = 0;
     
     ofxUIScrollableCanvas * laserGui;
-//    ofxUISuperCanvas * renderGui;
+//    ofxUISuperCanvas * renderGui;3
 //    ofxUITabBar laserTabs;
     
     ofxCurvesTool redCurve;

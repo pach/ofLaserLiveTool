@@ -84,32 +84,38 @@ void AnimatedCircle::parseOSC(ofxOscMessage &m){
     string cmd = osc[0];
     string msg = osc[1];
     
-    if (cmd == "nbCircles"){
-        nbCircle = m.getArgAsInt32(0);
-    }
-    else if (cmd == "nbPointCircle"){
-        nbPointPerCircle = m.getArgAsInt32(0);
-    }
-    else if (cmd == "size"){
-        oneSize = m.getArgAsFloat(0);
-    }
-    else if (cmd == "pos"){
-        onePos = ofVec2f(m.getArgAsFloat(0.), m.getArgAsFloat(1));
-    }
-    else if (cmd == "rotSpeed"){
-        rotSpeed = m.getArgAsFloat(0);
-    }
-    else if (cmd == "noise"){
-        m.setAddress(msg);
-        osc = getOSCcmd(m.getAddress());
-        cmd = osc[0];
-        msg = osc[1];
+    if (cmd == "circle"){
+        osc = getOSCcmd(msg);
+        string cmd = osc[0];
+        string msg = osc[1];
         
-        if (cmd == "sw"){
-            useNoise = m.getArgAsInt32(0);
+        if (cmd == "nbCircles"){
+            nbCircle = m.getArgAsInt32(0);
         }
-        else if (cmd == "speed"){
-            noiseSpeed = m.getArgAsFloat(0);
+        else if (cmd == "nbPointCircle"){
+            nbPointPerCircle = m.getArgAsInt32(0);
+        }
+        else if (cmd == "size"){
+            oneSize = m.getArgAsFloat(0);
+        }
+        else if (cmd == "pos"){
+            onePos = ofVec2f(m.getArgAsFloat(0.), m.getArgAsFloat(1));
+        }
+        else if (cmd == "rotSpeed"){
+            rotSpeed = m.getArgAsFloat(0);
+        }
+        else if (cmd == "noise"){
+            m.setAddress(msg);
+            osc = getOSCcmd(m.getAddress());
+            cmd = osc[0];
+            msg = osc[1];
+            
+            if (cmd == "sw"){
+                useNoise = m.getArgAsInt32(0);
+            }
+            else if (cmd == "speed"){
+                noiseSpeed = m.getArgAsFloat(0);
+            }
         }
     }
 }
