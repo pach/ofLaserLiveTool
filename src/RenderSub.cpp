@@ -22,6 +22,25 @@ void RenderSub::setup() {
     mainFrame = NULL;
     renderName="..";
     setBoundingBox(0., 0., 1., 1.);
+    
+    resetHomographySrc();
+    resetHomographyDst();
+    
+    computeHomography();
+}
+
+void RenderSub::resetHomographySrc(){
+    srcCornerHomo[0].set(0., 0.);
+    srcCornerHomo[1].set(1., 0.);
+    srcCornerHomo[2].set(1., 1.);
+    srcCornerHomo[3].set(0., 1.);
+}
+
+void RenderSub::resetHomographyDst(){
+    dstCornerHomo[0].set(0., 0.);
+    dstCornerHomo[1].set(1., 0.);
+    dstCornerHomo[2].set(1., 1.);
+    dstCornerHomo[3].set(0., 1.);
 }
 
 void RenderSub::update() {
@@ -114,7 +133,12 @@ void RenderSub::createSubFrame(){
 }
 
 ofPoint RenderSub::rescale(ofPoint p){
-    return (p-translate)*scale;
+    if (doHomography){
+        return ofxHomography::toScreenCoordinates(p, homography);
+    }
+    else {
+        return (p-translate)*scale;
+    }
 }
 
 ofPoint RenderSub::getIntersectPoint(ofPoint &p1, ofPoint &p2){
@@ -222,4 +246,28 @@ void RenderSub::draw(int x, int y, int w, int h) {
     }
 
     ofPopMatrix();
+}
+
+void RenderSub::setHomographySrcA(ofVec2f a){
+    srcCornerHomo[0] = a;
+    computeHomography();
+}
+
+void RenderSub::setHomographySrcB(ofVec2f b){
+    srcCornerHomo[1] = b;
+    computeHomography();
+}
+
+void RenderSub::setHomographySrcC(ofVec2f c){
+    srcCornerHomo[2] = c;
+    computeHomography();
+}
+
+void RenderSub::setHomographySrcD(ofVec2f d){
+    srcCornerHomo[3] = d;
+    computeHomography();
+}
+
+void RenderSub::computeHomography(){
+    homography = ofxHomography::findHomography(srcCornerHomo, dstCornerHomo);
 }

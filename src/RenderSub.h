@@ -10,7 +10,7 @@
 
 #include "ofMain.h"
 #include "RenderFrame.h"
-//#include "ofxHomography.h"
+#include "ofxHomography.h"
 
 class RenderSub{
     
@@ -31,7 +31,17 @@ public:
     }
     void setBoundingBox(float x, float y, float w, float h);
     
-//    void setHomographySrc(ofVec2f a, ofVec2f b, ofVec2f c, ofVec2f d);
+    // top left
+    void setHomographySrcA(ofVec2f a);
+    // top right
+    void setHomographySrcB(ofVec2f b);
+    // bottom right
+    void setHomographySrcC(ofVec2f c);
+    // bottom left
+    void setHomographySrcD(ofVec2f d);
+    void resetHomographySrc();
+    void resetHomographyDst();
+    void computeHomography();
     
     vector<ofPolyline> getSubFrame();
     
@@ -52,5 +62,8 @@ private:
     
     string renderName;
     
-//    bool doHomography;
+    bool doHomography;
+    ofMatrix4x4 homography;
+    ofPoint srcCornerHomo [4] ;
+    ofPoint dstCornerHomo [4] ;
 };
