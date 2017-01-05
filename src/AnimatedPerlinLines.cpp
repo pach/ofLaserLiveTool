@@ -188,20 +188,26 @@ void AnimatedPerlinLines::parseOSC(ofxOscMessage &m){
     string cmd = osc[0];
     string msg = osc[1];
     
-    if (cmd == "noiseSpeed"){
-        noiseSpeed = m.getArgAsFloat(0);
-    }
-    else if (cmd == "nbPoint"){
-        nbVertex = m.getArgAsFloat(0);
-    }
-    else if (cmd == "offset"){
-        offset = ofPoint(ofMap(m.getArgAsFloat(0), 0, 1, -0.5, 0.5), ofMap(m.getArgAsFloat(1), 0, 1, -0.5, 0.5));
-    }
-    else if (cmd == "scale"){
-        scale = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
-    }
-    else if (cmd == "lineMode"){
-        lineMode = m.getArgAsInt32(0);
+    if (cmd == "perlin"){
+        osc = getOSCcmd(msg);
+        string cmd = osc[0];
+        string msg = osc[1];
+    
+        if (cmd == "noiseSpeed"){
+            noiseSpeed = m.getArgAsFloat(0);
+        }
+        else if (cmd == "nbPoint"){
+            nbVertex = m.getArgAsFloat(0);
+        }
+        else if (cmd == "offset"){
+            offset = ofPoint(ofMap(m.getArgAsFloat(0), 0, 1, -0.5, 0.5), ofMap(m.getArgAsFloat(1), 0, 1, -0.5, 0.5));
+        }
+        else if (cmd == "scale"){
+            scale = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
+        }
+        else if (cmd == "lineMode"){
+            lineMode = m.getArgAsInt32(0);
+        }
     }
 }
 

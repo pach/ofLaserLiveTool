@@ -76,20 +76,25 @@ void AnimatedSinus::parseOSC(ofxOscMessage &m){
     vector<string> osc = getOSCcmd(m.getAddress());
     string cmd = osc[0];
     string msg = osc[1];
-    
-    if (cmd == "freq"){
-        freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
-    }
-    else if (cmd == "nbPoint"){
-        nbPoint = m.getArgAsInt32(0);
-    }
-    else if (cmd == "speed"){
-        speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
-    }
-    else if (cmd == "height"){
-        height = m.getArgAsFloat(0);
-    }
-    else if (cmd == "posY"){
-        posY = ofMap(m.getArgAsFloat(0), 0., 1., -1., 1.);
+    if (cmd == "sin"){
+        osc = getOSCcmd(msg);
+        string cmd = osc[0];
+        string msg = osc[1];
+        
+        if (cmd == "freq"){
+            freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
+        }
+        else if (cmd == "nbPoint"){
+            nbPoint = m.getArgAsInt32(0);
+        }
+        else if (cmd == "speed"){
+            speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
+        }
+        else if (cmd == "height"){
+            height = m.getArgAsFloat(0);
+        }
+        else if (cmd == "posY"){
+            posY = ofMap(m.getArgAsFloat(0), 0., 1., -1., 1.);
+        }
     }
 }

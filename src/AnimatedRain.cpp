@@ -173,23 +173,23 @@ void AnimatedRain::parseOSC(ofxOscMessage &m)
 {
     string address = m.getAddress();
 
-    if(address.find("/numDrops")!=-1)
+    if(address.find("/rain/numDrops")!=-1)
     {
         changeNumDrops(m.getArgAsFloat(0));
     }
-    else if(address == "/rainSpeed")
+    else if(address == "/rain/rainSpeed")
     {
         changeRainSpeed(m.getArgAsFloat(0));
     }
-    else if(address.find("/rainSpeedVariation")!=-1)
+    else if(address.find("/rain/rainSpeedVariation")!=-1)
     {
         changeRainSpeedVariation(m.getArgAsFloat(0));
     }
-    else if(address=="/rainLength")
+    else if(address=="/rain/rainLength")
     {
         changeRainLength(m.getArgAsFloat(0));
     }
-    else if(address.find("/rainLengthVariation")!=-1)
+    else if(address.find("/rain/rainLengthVariation")!=-1)
     {
         changeRainLengthVariation(m.getArgAsFloat(0));
     }

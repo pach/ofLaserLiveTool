@@ -41,11 +41,7 @@ void AnimatedOSCPolylines::parseOSC(ofxOscMessage &m){
         polylines.clear();
 
         int ptOscArgs = 0;
-        int nbPolylines = m.getArgAsInt32(
-                                          
-                                          
-                                          
-                                          ptOscArgs);
+        int nbPolylines = m.getArgAsInt32( ptOscArgs);
         ptOscArgs ++;
         
         for (int i=0; i<nbPolylines; i++) {

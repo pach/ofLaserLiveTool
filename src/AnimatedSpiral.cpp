@@ -87,35 +87,41 @@ void AnimatedSpiral::parseOSC(ofxOscMessage &m){
     string cmd = osc[0];
     string msg = osc[1];
     
-    if (cmd == "nbPoint"){
-        nbPoint = m.getArgAsInt32(0);
-    }
-    else if (cmd == "maxSize"){
-        maxSize = m.getArgAsFloat(0);
-    }
-    else if (cmd == "spiralCoeff"){
-        spiralCoeff = m.getArgAsFloat(0);
-    }
-    else if (cmd == "center"){
-        center = ofVec2f(m.getArgAsFloat(0.), m.getArgAsFloat(1));
-    }
-    else if (cmd == "innerSize"){
-        innerSize = m.getArgAsFloat(0);
-    }
-    else if (cmd == "rotSpeed"){
-        rotSpeed = m.getArgAsFloat(0);
-    }
-    else if (cmd == "log"){
-        m.setAddress(msg);
-        osc = getOSCcmd(m.getAddress());
-        cmd = osc[0];
-        msg = osc[1];
+    if (cmd == "spiral"){
+        osc = getOSCcmd(msg);
+        string cmd = osc[0];
+        string msg = osc[1];
         
-        if (cmd == "sw"){
-            isLogSpiral = m.getArgAsInt32(0);
+        if (cmd == "nbPoint"){
+            nbPoint = m.getArgAsInt32(0);
         }
-        else if (cmd == "coeff"){
-            logCoeff = m.getArgAsFloat(0);
+        else if (cmd == "maxSize"){
+            maxSize = m.getArgAsFloat(0);
+        }
+        else if (cmd == "spiralCoeff"){
+            spiralCoeff = m.getArgAsFloat(0);
+        }
+        else if (cmd == "center"){
+            center = ofVec2f(m.getArgAsFloat(0.), m.getArgAsFloat(1));
+        }
+        else if (cmd == "innerSize"){
+            innerSize = m.getArgAsFloat(0);
+        }
+        else if (cmd == "rotSpeed"){
+            rotSpeed = m.getArgAsFloat(0);
+        }
+        else if (cmd == "log"){
+            m.setAddress(msg);
+            osc = getOSCcmd(m.getAddress());
+            cmd = osc[0];
+            msg = osc[1];
+            
+            if (cmd == "sw"){
+                isLogSpiral = m.getArgAsInt32(0);
+            }
+            else if (cmd == "coeff"){
+                logCoeff = m.getArgAsFloat(0);
+            }
         }
     }
 }

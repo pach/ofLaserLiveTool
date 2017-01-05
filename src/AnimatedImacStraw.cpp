@@ -51,8 +51,8 @@ void AnimatedImacStraw::setup(string name) {
 }
 
 
-void AnimatedImacStraw::save(){
-    AnimatedStuff::save();
+void AnimatedImacStraw::save(string layerName){
+    AnimatedStuff::save(layerName);
     
     ofxXmlSettings xml;
     
@@ -71,11 +71,11 @@ void AnimatedImacStraw::save(){
     xml.addValue("ROT", rot);
     xml.popTag();
     
-    xml.save("imacStraws_pts.xml");
+    xml.save(layerName+"/"+"imacStraws_pts.xml");
 }
 
-void AnimatedImacStraw::load(){
-    AnimatedStuff::load();
+void AnimatedImacStraw::load(string layerName){
+    AnimatedStuff::load(layerName);
     
     ofxXmlSettings xml;
     if(!xml.load("imacStraws_pts.xml")){

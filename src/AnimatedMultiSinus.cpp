@@ -42,9 +42,12 @@ void AnimatedMultiSinus::setup(string name) {
     sinI3.speed = 0.;
     sinI3.height = 1.;
     
+    vertical = false;
+    
     gui->addSpacer();
     gui->addIntSlider("/nbPoint", 10, 1000, &nbPoint);
     gui->addSlider("/posY", -1., 1., &posY);
+    gui->addToggle("/vertical", &vertical);
     gui->addSpacer();
     gui->addSlider("/1/freq", 0., 200., &sin1.freq);
     gui->addSlider("/1/speed", -10., 10., &sin1.speed);
@@ -69,6 +72,7 @@ void AnimatedMultiSinus::setup(string name) {
     gui->addSlider("/tan/3/freq", 0., 50., &sinI3.freq);
     gui->addSlider("/tan/3/speed", -10., 10., &sinI3.speed);
     gui->addSlider("/tan/3/height", 0., 1., &sinI3.height);
+    
     ofPolyline p;
     polylines.push_back(p);
     
@@ -87,7 +91,12 @@ void AnimatedMultiSinus::update() {
         x1 = sin((float)i*sinI1.freq/nbPoint+ofGetElapsedTimef()*sinI1.speed)*sinI1.height;
         x2 = sin((float)i*sinI2.freq/nbPoint+ofGetElapsedTimef()*sinI2.speed)*sinI2.height;
         x3 = sin((float)i*sinI3.freq/nbPoint+ofGetElapsedTimef()*sinI3.speed)*sinI3.height;
-        polylines[0].addVertex((float)i/(float)nbPoint+x1+x2+x3, y1+y2+y3-posY);
+        if (! vertical) {
+            polylines[0].addVertex((float)i/(float)nbPoint+x1+x2+x3, y1+y2+y3-posY);
+        }else{
+            polylines[0].addVertex(y1+y2+y3-posY, (float)i/(float)nbPoint+x1+x2+x3);
+        }
+
     }
     
 }
@@ -118,76 +127,30 @@ void AnimatedMultiSinus::parseOSC(ofxOscMessage &m){
     string cmd = osc[0];
     string msg = osc[1];
     
-    if (cmd == "nbPoint"){
-        nbPoint = m.getArgAsInt32(0);
-    }
-    else if (cmd == "posY"){
-        posY = ofMap(m.getArgAsFloat(0), 0., 1., -1., 1.);
-    }
-    else if (cmd == "1"){
+    if (cmd == "multisin1"){
         osc = getOSCcmd(msg);
-        cmd = osc[0];
-        msg = osc[1];
-        
-        if (cmd == "freq"){
-            sin1.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
+        string cmd = osc[0];
+        string msg = osc[1];
+    
+        if (cmd == "nbPoint"){
+            nbPoint = m.getArgAsInt32(0);
         }
-        else if (cmd == "speed"){
-            sin1.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
+        else if (cmd == "posY"){
+            posY = ofMap(m.getArgAsFloat(0), 0., 1., -1., 1.);
         }
-        else if (cmd == "height"){
-            sin1.height = m.getArgAsFloat(0);
-        }
-    }
-    else if (cmd == "2"){
-        osc = getOSCcmd(msg);
-        cmd = osc[0];
-        msg = osc[1];
-        
-        if (cmd == "freq"){
-            sin2.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
-        }
-        else if (cmd == "speed"){
-            sin2.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
-        }
-        else if (cmd == "height"){
-            sin2.height = m.getArgAsFloat(0);
-        }
-    }
-    else if (cmd == "3"){
-
-
-        osc = getOSCcmd(msg);
-        cmd = osc[0];
-        msg = osc[1];
-        
-        if (cmd == "freq"){
-            sin3.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
-        }
-        else if (cmd == "speed"){
-            sin3.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
-        }
-        else if (cmd == "height"){
-            sin3.height = m.getArgAsFloat(0);
-        }
-    }
-    else if (cmd == "tan"){
-        osc = getOSCcmd(msg);
-        cmd = osc[0];
-        msg = osc[1];
-        if (cmd == "1"){
+        else if (cmd == "1"){
             osc = getOSCcmd(msg);
             cmd = osc[0];
             msg = osc[1];
             
             if (cmd == "freq"){
-                sinI1.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
+                sin1.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
             }
             else if (cmd == "speed"){
-                sinI1.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
+                sin1.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
             }
             else if (cmd == "height"){
-                sinI1.height = m.getArgAsFloat(0);
+                sin1.height = m.getArgAsFloat(0);
             }
         }
         else if (cmd == "2"){
@@ -196,29 +159,81 @@ void AnimatedMultiSinus::parseOSC(ofxOscMessage &m){
             msg = osc[1];
             
             if (cmd == "freq"){
-                sinI2.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
+                sin2.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
             }
             else if (cmd == "speed"){
-                sinI2.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
+                sin2.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
             }
             else if (cmd == "height"){
-                sinI2.height = m.getArgAsFloat(0);
+                sin2.height = m.getArgAsFloat(0);
             }
         }
         else if (cmd == "3"){
-            
+
+
             osc = getOSCcmd(msg);
             cmd = osc[0];
             msg = osc[1];
             
             if (cmd == "freq"){
-                sinI3.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
+                sin3.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
             }
             else if (cmd == "speed"){
-                sinI3.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
+                sin3.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
             }
             else if (cmd == "height"){
-                sinI3.height = m.getArgAsFloat(0);
+                sin3.height = m.getArgAsFloat(0);
+            }
+        }
+        else if (cmd == "tan"){
+            osc = getOSCcmd(msg);
+            cmd = osc[0];
+            msg = osc[1];
+            if (cmd == "1"){
+                osc = getOSCcmd(msg);
+                cmd = osc[0];
+                msg = osc[1];
+                
+                if (cmd == "freq"){
+                    sinI1.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
+                }
+                else if (cmd == "speed"){
+                    sinI1.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
+                }
+                else if (cmd == "height"){
+                    sinI1.height = m.getArgAsFloat(0);
+                }
+            }
+            else if (cmd == "2"){
+                osc = getOSCcmd(msg);
+                cmd = osc[0];
+                msg = osc[1];
+                
+                if (cmd == "freq"){
+                    sinI2.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
+                }
+                else if (cmd == "speed"){
+                    sinI2.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
+                }
+                else if (cmd == "height"){
+                    sinI2.height = m.getArgAsFloat(0);
+                }
+            }
+            else if (cmd == "3"){
+                
+                osc = getOSCcmd(msg);
+                cmd = osc[0];
+                msg = osc[1];
+                
+                if (cmd == "freq"){
+                    sinI3.freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
+                }
+                else if (cmd == "speed"){
+                    sinI3.speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
+                }
+                else if (cmd == "height"){
+                    sinI3.height = m.getArgAsFloat(0);
+                }
             }
         }
     }

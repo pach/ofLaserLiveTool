@@ -32,8 +32,8 @@ public:
     
     void setName(string newName);
     
-    virtual void load() ;
-    virtual void save() ;
+    virtual void load(string layerName = "") ;
+    virtual void save(string layerName) ;
     
     virtual void parseOSC (ofxOscMessage &m) {};
     
@@ -69,6 +69,10 @@ public:
     inline virtual void mouseDragged(ofMouseEventArgs& e) {};
     inline virtual void mouseReleased(ofMouseEventArgs& e) {};
     inline virtual void mouseMoved(ofMouseEventArgs& e) {};
+    
+    inline virtual void mouseScrolled(ofMouseEventArgs& e) {};
+    inline virtual void mouseEntered(ofMouseEventArgs& e) {};
+    inline virtual void mouseExited(ofMouseEventArgs& e) {};
 //
 //    void setCurrentTime(unsigned long long time);
 //    void setTimeLength(long time);
@@ -82,7 +86,7 @@ protected:
     
 //    ofxTimeline timeline;
     string name;
-    
+
     int drawW;
     int drawH;
     ofVec2f drawOffset;

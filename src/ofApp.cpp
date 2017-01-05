@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(125);
-    ofSetFrameRate(60);
+    ofSetFrameRate(240);
     
 //    ofxTimeline::removeCocoaMenusFromGlut("Laser Anim Toolbox");
 //    ofxEtherdream::startEtherdreamLib();
@@ -25,7 +25,21 @@ void ofApp::setup(){
     /*****************************/
 //    for (int i=0; i<2; i++) {
         IldaControl * ildaController = new IldaControl();
+        
+/*************************************************/
+/* TODO : Ajout d'un moyen de sauvegarde des ids */
+/*************************************************/
+        
+/*****************************/
+// temporaire : id laser specifique perf.
+        if (i<4){
+            ildaController->setup(etherdreamID[i]);
+        }else{
+            ildaController->setup(i);
+        }
+        
         ildaController->setup(i);
+        
         ildaController->setName("laser."+ofToString(i+1));
         ildaController->load();
         
@@ -173,6 +187,22 @@ void ofApp::keyPressed(int key){
             animIt ++;
         }
     }
+    if (key == '1'){
+        if (ilda.size()>=1) {
+            ilda[1]->forceReconnect();
+        }
+    }
+    else if (key == '2'){
+        if (ilda.size()>=2) {
+            ilda[2]->forceReconnect();
+        }
+    }
+    else if (key == '3'){
+        if (ilda.size()>=3) {
+            ilda[3]->forceReconnect();
+        }
+    }
+
 }
 
 //--------------------------------------------------------------
@@ -219,6 +249,8 @@ void ofApp::parseOSC(){
     while (oscReceive.hasWaitingMessages()){
         ofxOscMessage m ;
         oscReceive.getNextMessage(&m);
+        
+//        ofLog (OF_LOG_NOTICE, "osc message received : "+m.getAddress());
         
         vector<AnimManager *>::iterator animIt = animManager.begin();
         vector<AnimManager *>::iterator animEnd = animManager.end();
