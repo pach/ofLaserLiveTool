@@ -18,6 +18,7 @@ void ofApp::setup(){
     animManagerTabs.setup();
     animManagerTabs.setPosition(ildaTabs.getGlobalCanvasWidth()+150., 0.);
     
+    renderParams.setName ("sub render parameters");
 //
     for (int i=0; i<nbEtherdream; i++) {
     /*****************************/
@@ -50,14 +51,16 @@ void ofApp::setup(){
         ilda.push_back(ildaController);
         
         RenderSub *ildaRender = new RenderSub();
+        ildaRender->setName("subRender."+ofToString(i+1));
         ildaRender->setup();
         ildaRender->setMainFrame(&frame);
-        ildaRender->setName("subRender."+ofToString(i+1));
         
         // should not be 1-xxx -> bounding box looks reversed. weird...
         ildaRender->setBoundingBox((float)i/(float)nbEtherdream, 0., 1./(float)nbEtherdream , 1.);
         ildaRender->load();
         subframes.push_back(ildaRender);
+        
+        renderParams.add(ildaRender->renderSubParams);
     }
     
     for (int i=0; i<NB_LAYERS; i++) {
@@ -73,6 +76,8 @@ void ofApp::setup(){
         animManagerTabs.addCanvas(anim->getGui());
         animManager.push_back(anim);
     }
+    
+    renderGui.setup(renderParams);
     
     frame.clear();
     
@@ -132,6 +137,8 @@ void ofApp::draw(){
         subframes[i]->draw(ofGetWidth()-200*ilda.size()+200*(i), ofGetHeight()-400, 150, 150);
         ilda[i]->draw(ofGetWidth()-200*ilda.size()+200*(i), ofGetHeight()-200, 150, 150);
     }
+    
+    renderGui.draw();
 }
 
 //--------------------------------------------------------------

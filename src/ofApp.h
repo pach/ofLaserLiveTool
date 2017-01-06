@@ -9,6 +9,7 @@
 #include "RenderSub.h"
 
 #include "ofxUI.h"
+#include "ofxGui.h"
 
 #define OSC_LISTENING_PORT 10000
 #define NB_LAYERS 12
@@ -55,4 +56,7 @@ private:
     
     ofxUITabBar animManagerTabs;
     ofxUITabBar ildaTabs;
+    
+    ofxPanel renderGui;
+    ofParameterGroup renderParams;
 };

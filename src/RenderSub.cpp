@@ -20,8 +20,32 @@ RenderSub::~RenderSub(){
 
 void RenderSub::setup() {
     mainFrame = NULL;
-    renderName="..";
     setBoundingBox(0., 0., 1., 1.);
+    
+    srcA.set("src A", ofVec2f(0., 0.), ofVec2f(0., 0.), ofVec2f(1., 1.));
+    srcB.set("src B", ofVec2f(0., 1.), ofVec2f(0., 0.), ofVec2f(1., 1.));
+    srcC.set("src C", ofVec2f(1., 1.), ofVec2f(0., 0.), ofVec2f(1., 1.));
+    srcD.set("src D", ofVec2f(1., 0.), ofVec2f(0., 0.), ofVec2f(1., 1.));
+    
+    dstA.set("dst A", ofVec2f(0., 0.), ofVec2f(0., 0.), ofVec2f(1., 1.));
+    dstB.set("dst B", ofVec2f(0., 1.), ofVec2f(0., 0.), ofVec2f(1., 1.));
+    dstC.set("dst C", ofVec2f(1., 1.), ofVec2f(0., 0.), ofVec2f(1., 1.));
+    dstD.set("dst D", ofVec2f(1., 0.), ofVec2f(0., 0.), ofVec2f(1., 1.));
+    
+    recomputeHomography.set("recompute Homography", false);
+    doHomography.set("do Homography", false);
+    
+    renderSubParams.setName(renderName);
+    renderSubParams.add(srcA);
+    renderSubParams.add(srcB);
+    renderSubParams.add(srcC);
+    renderSubParams.add(srcD);
+    renderSubParams.add(dstA);
+    renderSubParams.add(dstB);
+    renderSubParams.add(dstC);
+    renderSubParams.add(dstD);
+    renderSubParams.add(recomputeHomography);
+    renderSubParams.add(doHomography);
     
     resetHomographySrc();
     resetHomographyDst();
@@ -30,20 +54,28 @@ void RenderSub::setup() {
 }
 
 void RenderSub::resetHomographySrc(){
-    srcCornerHomo[0].set(0., 0.);
-    srcCornerHomo[1].set(1., 0.);
-    srcCornerHomo[2].set(1., 1.);
-    srcCornerHomo[3].set(0., 1.);
+    srcCornerHomo[0].set(srcA->x, srcA->y);
+    srcCornerHomo[1].set(srcB->x, srcB->y);
+    srcCornerHomo[2].set(srcC->x, srcC->y);
+    srcCornerHomo[3].set(srcD->x, srcD->y);
 }
 
 void RenderSub::resetHomographyDst(){
-    dstCornerHomo[0].set(0., 0.);
-    dstCornerHomo[1].set(1., 0.);
-    dstCornerHomo[2].set(1., 1.);
-    dstCornerHomo[3].set(0., 1.);
+    dstCornerHomo[0].set(dstA->x, dstA->y);
+    dstCornerHomo[1].set(dstB->x, dstB->y);
+    dstCornerHomo[2].set(dstC->x, dstC->y);
+    dstCornerHomo[3].set(dstD->x, dstD->y);
 }
 
 void RenderSub::update() {
+    if (recomputeHomography){
+        resetHomographySrc();
+        resetHomographyDst();
+        
+        computeHomography();
+        
+//        recomputeHomography = false;
+    }
     polys.clear();
     createSubFrame();
 }
@@ -58,10 +90,6 @@ void RenderSub::load(){
 
 void RenderSub::save(){
     
-}
-
-void RenderSub::setName(string name){
-    renderName = name;
 }
 
 void RenderSub::createSubFrame(){
@@ -249,21 +277,25 @@ void RenderSub::draw(int x, int y, int w, int h) {
 }
 
 void RenderSub::setHomographySrcA(ofVec2f a){
+    srcA = a;
     srcCornerHomo[0] = a;
     computeHomography();
 }
 
 void RenderSub::setHomographySrcB(ofVec2f b){
+    srcB = b;
     srcCornerHomo[1] = b;
     computeHomography();
 }
 
 void RenderSub::setHomographySrcC(ofVec2f c){
+    srcC = c;
     srcCornerHomo[2] = c;
     computeHomography();
 }
 
 void RenderSub::setHomographySrcD(ofVec2f d){
+    srcD = d;
     srcCornerHomo[3] = d;
     computeHomography();
 }
