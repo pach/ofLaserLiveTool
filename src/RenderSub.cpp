@@ -21,6 +21,7 @@ RenderSub::~RenderSub(){
 void RenderSub::setup() {
     mainFrame = NULL;
     setBoundingBox(0., 0., 1., 1.);
+    homoBoundingBox.set(0., 0., 1., 1.);
     
     srcA.set("src A", ofVec2f(0., 0.), ofVec2f(0., 0.), ofVec2f(1., 1.));
     srcB.set("src B", ofVec2f(0., 1.), ofVec2f(0., 0.), ofVec2f(1., 1.));
@@ -97,64 +98,139 @@ void RenderSub::createSubFrame(){
     if (mainFrame != NULL) {
         ofPolyline newLine;
         vector<ofPolyline> mfPolys = mainFrame->getPolys();
-        for (int i=0; i<mfPolys.size(); i++) {
-            newLine.clear();
-            lastInside = false;
-            
-            int p = 0;
-            
-            while (p<mfPolys[i].size()-1) {
-                bool previousInside = lastInside;
+        
+        if (doHomography){
+            for (int i=0; i<mfPolys.size(); i++) {
+                ofPolyline newPoly;
                 
-                // si segment de polyline partant intersect (ou est inclu) dans la bounding box, ajout d'un point
-                if (boundingBox.intersects(mfPolys[i][p], mfPolys[i][p+1])){
-                    // si le point de départ est inclu dans la bounding box -> ajout du point
-                    if (boundingBox.inside(mfPolys[i][p])) {
-                        newLine.addVertex(rescale(mfPolys[i][p]));
-                        lastInside = true;
-                    }
-                    else{
-                        if (previousInside) {
-                            newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p-1], mfPolys[i][p])));
-                            polys.push_back(newLine);
-                            
-                            newLine.clear();
-                            lastInside = false;
-                            previousInside = false; // already added - bypass end condition test
-                        }
-                        
-                        if (!boundingBox.inside(mfPolys[i][p+1])){
-                            newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p], mfPolys[i][p+1])));
-                            newLine.addVertex(rescale(getReverseIntersectPoint(mfPolys[i][p], mfPolys[i][p+1])));
-                            polys.push_back(newLine);
-                            newLine.clear();
-                            lastInside = false;
-                        }
-                        else{
-                            newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p], mfPolys[i][p+1])));
+                for (int j=0 ; j<mfPolys[i].size() ; j++){
+                    newPoly.addVertex(rescale(mfPolys[i][j]));
+                }
+                
+                newLine.clear();
+                lastInside = false;
+                
+                int p = 0;
+                while (p<mfPolys[i].size()-1) {
+                    bool previousInside = lastInside;
+                    
+                    // si segment de polyline partant intersect (ou est inclu) dans la bounding box, ajout d'un point
+                    if (homoBoundingBox.intersects(mfPolys[i][p], mfPolys[i][p+1])){
+                        // si le point de départ est inclu dans la bounding box -> ajout du point
+                        if (homoBoundingBox.inside(mfPolys[i][p])) {
+                            newLine.addVertex(rescale(mfPolys[i][p]));
                             lastInside = true;
                         }
+                        else{
+                            if (previousInside) {
+                                newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p-1], mfPolys[i][p])));
+                                polys.push_back(newLine);
+                                
+                                newLine.clear();
+                                lastInside = false;
+                                previousInside = false; // already added - bypass end condition test
+                            }
+                            
+                            if (!homoBoundingBox.inside(mfPolys[i][p+1])){
+                                newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p], mfPolys[i][p+1])));
+                                newLine.addVertex(rescale(getReverseIntersectPoint(mfPolys[i][p], mfPolys[i][p+1])));
+                                polys.push_back(newLine);
+                                newLine.clear();
+                                lastInside = false;
+                            }
+                            else{
+                                newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p], mfPolys[i][p+1])));
+                                lastInside = true;
+                            }
+                        }
                     }
+                    else{
+                        lastInside = false;
+                    }
+                    
+                    if (previousInside && !lastInside) {
+                        newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p-1], mfPolys[i][p])));
+                        polys.push_back(newLine);
+                        
+                        newLine.clear();
+                    }
+                    p ++;
+                    
                 }
-                else{
-                    lastInside = false;
-                }
-                
-                if (previousInside && !lastInside) {
+                if (homoBoundingBox.inside(mfPolys[i][p])) {
+                    newLine.addVertex(rescale(mfPolys[i][p]));
+                    polys.push_back(newLine);
+                }else if (lastInside){
                     newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p-1], mfPolys[i][p])));
                     polys.push_back(newLine);
-                    
-                    newLine.clear();
                 }
-                p ++;
+
                 
+                
+                newPoly.clear();
             }
-            if (boundingBox.inside(mfPolys[i][p])) {
-                newLine.addVertex(rescale(mfPolys[i][p]));
-                polys.push_back(newLine);
-            }else if (lastInside){
-                newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p-1], mfPolys[i][p])));
-                polys.push_back(newLine);
+        }
+        
+        // bounding box classique
+        else{
+            for (int i=0; i<mfPolys.size(); i++) {
+                newLine.clear();
+                lastInside = false;
+                
+                int p = 0;
+                while (p<mfPolys[i].size()-1) {
+                    bool previousInside = lastInside;
+                    
+                    // si segment de polyline partant intersect (ou est inclu) dans la bounding box, ajout d'un point
+                    if (boundingBox.intersects(mfPolys[i][p], mfPolys[i][p+1])){
+                        // si le point de départ est inclu dans la bounding box -> ajout du point
+                        if (boundingBox.inside(mfPolys[i][p])) {
+                            newLine.addVertex(rescale(mfPolys[i][p]));
+                            lastInside = true;
+                        }
+                        else{
+                            if (previousInside) {
+                                newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p-1], mfPolys[i][p])));
+                                polys.push_back(newLine);
+                                
+                                newLine.clear();
+                                lastInside = false;
+                                previousInside = false; // already added - bypass end condition test
+                            }
+                            
+                            if (!boundingBox.inside(mfPolys[i][p+1])){
+                                newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p], mfPolys[i][p+1])));
+                                newLine.addVertex(rescale(getReverseIntersectPoint(mfPolys[i][p], mfPolys[i][p+1])));
+                                polys.push_back(newLine);
+                                newLine.clear();
+                                lastInside = false;
+                            }
+                            else{
+                                newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p], mfPolys[i][p+1])));
+                                lastInside = true;
+                            }
+                        }
+                    }
+                    else{
+                        lastInside = false;
+                    }
+                    
+                    if (previousInside && !lastInside) {
+                        newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p-1], mfPolys[i][p])));
+                        polys.push_back(newLine);
+                        
+                        newLine.clear();
+                    }
+                    p ++;
+                    
+                }
+                if (boundingBox.inside(mfPolys[i][p])) {
+                    newLine.addVertex(rescale(mfPolys[i][p]));
+                    polys.push_back(newLine);
+                }else if (lastInside){
+                    newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p-1], mfPolys[i][p])));
+                    polys.push_back(newLine);
+                }
             }
         }
     }

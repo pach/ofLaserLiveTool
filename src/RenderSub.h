@@ -61,6 +61,7 @@ private:
     vector <ofPolyline> polys;
     
     ofRectangle boundingBox;
+    ofRectangle homoBoundingBox;
     
     ofVec2f scale;
     ofVec2f translate;
