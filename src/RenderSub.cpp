@@ -23,18 +23,19 @@ void RenderSub::setup() {
     setBoundingBox(0., 0., 1., 1.);
     homoBoundingBox.set(0., 0., 1., 1.);
     
-    srcA.set("src A", ofVec2f(0., 0.), ofVec2f(0., 0.), ofVec2f(1., 1.));
-    srcB.set("src B", ofVec2f(0., 1.), ofVec2f(0., 0.), ofVec2f(1., 1.));
-    srcC.set("src C", ofVec2f(1., 1.), ofVec2f(0., 0.), ofVec2f(1., 1.));
-    srcD.set("src D", ofVec2f(1., 0.), ofVec2f(0., 0.), ofVec2f(1., 1.));
+    srcA.set("src A", ofVec2f(0., 0.), ofVec2f(-0.5, -0.5), ofVec2f(1.5, 1.5));
+    srcB.set("src B", ofVec2f(1., 0.), ofVec2f(-0.5, -0.5), ofVec2f(1.5, 1.5));
+    srcC.set("src C", ofVec2f(1., 1.), ofVec2f(-0.5, -0.5), ofVec2f(1.5, 1.5));
+    srcD.set("src D", ofVec2f(0., 1.), ofVec2f(-0.5, -0.5), ofVec2f(1.5, 1.5));
     
     dstA.set("dst A", ofVec2f(0., 0.), ofVec2f(0., 0.), ofVec2f(1., 1.));
-    dstB.set("dst B", ofVec2f(0., 1.), ofVec2f(0., 0.), ofVec2f(1., 1.));
+    dstB.set("dst B", ofVec2f(1., 0.), ofVec2f(0., 0.), ofVec2f(1., 1.));
     dstC.set("dst C", ofVec2f(1., 1.), ofVec2f(0., 0.), ofVec2f(1., 1.));
-    dstD.set("dst D", ofVec2f(1., 0.), ofVec2f(0., 0.), ofVec2f(1., 1.));
+    dstD.set("dst D", ofVec2f(0., 1.), ofVec2f(0., 0.), ofVec2f(1., 1.));
     
     recomputeHomography.set("recompute Homography", false);
     doHomography.set("do Homography", false);
+    doRecut.set("do recut homo", true);
     
     renderSubParams.setName(renderName);
     renderSubParams.add(srcA);
@@ -47,6 +48,7 @@ void RenderSub::setup() {
     renderSubParams.add(dstD);
     renderSubParams.add(recomputeHomography);
     renderSubParams.add(doHomography);
+    renderSubParams.add(doRecut);
     
     resetHomographySrc();
     resetHomographyDst();
@@ -107,64 +109,69 @@ void RenderSub::createSubFrame(){
                     newPoly.addVertex(rescale(mfPolys[i][j]));
                 }
                 
-                newLine.clear();
-                lastInside = false;
-                
-                int p = 0;
-                while (p<newPoly.size()-1) {
-                    bool previousInside = lastInside;
+                if (doRecut){
+                    newLine.clear();
+                    lastInside = false;
                     
-                    // si segment de polyline partant intersect (ou est inclu) dans la bounding box, ajout d'un point
-                    if (homoBoundingBox.intersects(newPoly[p], newPoly[p+1])){
-                        // si le point de départ est inclu dans la bounding box -> ajout du point
-                        if (homoBoundingBox.inside(newPoly[p])) {
-                            newLine.addVertex(newPoly[p]);
-                            lastInside = true;
-                        }
-                        else{
-                            if (previousInside) {
-                                newLine.addVertex(getIntersectPoint(newPoly[p-1], newPoly[p]));
-                                polys.push_back(newLine);
-                                
-                                newLine.clear();
-                                lastInside = false;
-                                previousInside = false; // already added - bypass end condition test
-                            }
-                            
-                            if (!homoBoundingBox.inside(newPoly[p+1])){
-                                newLine.addVertex(getIntersectPoint(newPoly[p], newPoly[p+1]));
-                                newLine.addVertex(getReverseIntersectPoint(newPoly[p], newPoly[p+1]));
-                                polys.push_back(newLine);
-                                newLine.clear();
-                                lastInside = false;
-                            }
-                            else{
-                                newLine.addVertex(getIntersectPoint(newPoly[p], newPoly[p+1]));
+                    int p = 0;
+                    while (p<newPoly.size()-1) {
+                        bool previousInside = lastInside;
+                        
+                        // si segment de polyline partant intersect (ou est inclu) dans la bounding box, ajout d'un point
+                        if (homoBoundingBox.intersects(newPoly[p], newPoly[p+1])){
+                            // si le point de départ est inclu dans la bounding box -> ajout du point
+                            if (homoBoundingBox.inside(newPoly[p])) {
+                                newLine.addVertex(newPoly[p]);
                                 lastInside = true;
                             }
+                            else{
+                                if (previousInside) {
+                                    newLine.addVertex(getIntersectPoint(newPoly[p-1], newPoly[p]));
+                                    polys.push_back(newLine);
+                                    
+                                    newLine.clear();
+                                    lastInside = false;
+                                    previousInside = false; // already added - bypass end condition test
+                                }
+                                
+                                if (!homoBoundingBox.inside(newPoly[p+1])){
+                                    newLine.addVertex(getIntersectPoint(newPoly[p], newPoly[p+1]));
+                                    newLine.addVertex(getReverseIntersectPoint(newPoly[p], newPoly[p+1]));
+                                    polys.push_back(newLine);
+                                    newLine.clear();
+                                    lastInside = false;
+                                }
+                                else{
+                                    newLine.addVertex(getIntersectPoint(newPoly[p], newPoly[p+1]));
+                                    lastInside = true;
+                                }
+                            }
                         }
+                        else{
+                            lastInside = false;
+                        }
+                        
+                        if (previousInside && !lastInside) {
+                            newLine.addVertex(getIntersectPoint(newPoly[p-1], newPoly[p]));
+                            polys.push_back(newLine);
+                            
+                            newLine.clear();
+                        }
+                        p ++;
+                        
                     }
-                    else{
-                        lastInside = false;
-                    }
-                    
-                    if (previousInside && !lastInside) {
+                    if (homoBoundingBox.inside(newPoly[p])) {
+                        newLine.addVertex(newPoly[p]);
+                        polys.push_back(newLine);
+                    }else if (lastInside){
                         newLine.addVertex(getIntersectPoint(newPoly[p-1], newPoly[p]));
                         polys.push_back(newLine);
-                        
-                        newLine.clear();
                     }
-                    p ++;
-                    
                 }
-                if (homoBoundingBox.inside(newPoly[p])) {
-                    newLine.addVertex(newPoly[p]);
-                    polys.push_back(newLine);
-                }else if (lastInside){
-                    newLine.addVertex(getIntersectPoint(newPoly[p-1], newPoly[p]));
-                    polys.push_back(newLine);
+                else {
+                    polys.push_back(newPoly);
                 }
-
+                
                 newPoly.clear();
             }
         }

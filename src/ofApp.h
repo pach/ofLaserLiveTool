@@ -14,7 +14,9 @@
 #define OSC_LISTENING_PORT 10000
 #define NB_LAYERS 12
 
-static int etherdreamID[]={15153313, 14425400, 14441185, 15243823};
+#define DEBUG_OFFLINE false
+
+static int etherdreamID[]={15153313, 15243823, 14441185, 14425400};
 
 #include "ofxOsc.h" 
 

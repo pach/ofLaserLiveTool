@@ -21,11 +21,6 @@ void ofApp::setup(){
     renderParams.setName ("sub render parameters");
 //
     for (int i=0; i<nbEtherdream; i++) {
-    /*****************************/
-    /*** debug hotel *************/
-    /*****************************/
-//    for (int i=0; i<4; i++) {
-    /** fin debug **/
         
         IldaControl * ildaController = new IldaControl();
         
@@ -40,7 +35,7 @@ void ofApp::setup(){
         }else{
             ildaController->setup(i);
         }
-        
+    
         ildaController->setup(i);
         
         ildaController->setName("laser."+ofToString(i+1));
@@ -78,6 +73,16 @@ void ofApp::setup(){
     }
     
     renderGui.setup(renderParams);
+    renderGui.loadFromFile("settings.xml");
+    
+    // recompute homography for each subRender
+    for (int i=0; i<subframes.size(); i++){
+        subframes[i]->resetHomographySrc();
+        subframes[i]->resetHomographyDst();
+        subframes[i]->computeHomography();
+    }
+
+    
     
     frame.clear();
     

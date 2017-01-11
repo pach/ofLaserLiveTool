@@ -1,0 +1,65 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DB764BE1A7042734E52454D4CABB8CE921E375DC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C1E8919E75191C5A81309888FBBC5793267330D8" : 9223372036854775807,
+    "E3C3F224F22A1E7AD9BED6F3268F3C9E1AA9B991" : 9223372036854775807,
+    "7E804D925461714118DB355C65BC964B41D94376" : 9223372036854775807,
+    "DB764BE1A7042734E52454D4CABB8CE921E375DC" : 9223372036854775807,
+    "840D2B3DC8978BE23A401A765FC2145A5717F5AC" : 9223372036854775807,
+    "6B5D1DE462D521A98972DF70F1147E20268C546A" : 9223372036854775807,
+    "F71958031D205D2C5B7FC71EE73A2878789BBF46" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "AB6EA6E9-4DF7-4406-9F46-1AD6E51FBAD3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C1E8919E75191C5A81309888FBBC5793267330D8" : "..\/..\/addons\/ofxEtherdream",
+    "E3C3F224F22A1E7AD9BED6F3268F3C9E1AA9B991" : "..\/..\/addons\/ofxCurvesTool",
+    "7E804D925461714118DB355C65BC964B41D94376" : "..\/..\/addons\/ofxUI",
+    "DB764BE1A7042734E52454D4CABB8CE921E375DC" : "LaserLive_git\/",
+    "840D2B3DC8978BE23A401A765FC2145A5717F5AC" : "..\/..\/addons\/ofxPolylineMerger",
+    "6B5D1DE462D521A98972DF70F1147E20268C546A" : "..\/..\/addons\/ofxTween",
+    "F71958031D205D2C5B7FC71EE73A2878789BBF46" : "..\/..\/addons\/ofxIlda"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "LaserLive_old",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "LaserLive_old.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/obviousjim\/ofxTween.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6B5D1DE462D521A98972DF70F1147E20268C546A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/rezaali\/ofxUI",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7E804D925461714118DB355C65BC964B41D94376"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:pach\/ofxPolylineMerger.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "840D2B3DC8978BE23A401A765FC2145A5717F5AC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:pach\/ofxEtherdream.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C1E8919E75191C5A81309888FBBC5793267330D8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:pach\/ofLaserLiveTool.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DB764BE1A7042734E52454D4CABB8CE921E375DC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kylemcdonald\/ofxCurvesTool.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E3C3F224F22A1E7AD9BED6F3268F3C9E1AA9B991"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:pach\/ofxIlda.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F71958031D205D2C5B7FC71EE73A2878789BBF46"
+    }
+  ]
+}

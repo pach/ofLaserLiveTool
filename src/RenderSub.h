@@ -85,6 +85,7 @@ private:
     ofParameter <ofVec2f> dstD;
     ofParameter <bool> recomputeHomography;
     ofParameter <bool> doHomography;
+    ofParameter <bool> doRecut;
 
     
     
