@@ -112,8 +112,9 @@ void AnimatedPerlinLines::update() {
     if (oldMode != lineMode) {
         if(lineMode){
             ofPolyline oldPoly = polylines[0];
+            
             polylines.clear();
-            for (int i=0 ; i<nbPoints ; i++) {
+            for (int i=0 ; i<nbPoints-1 ; i++) {
                 ofPolyline p ;
                 p.addVertex(oldPoly[i]);
                 p.addVertex(oldPoly[i+1]);

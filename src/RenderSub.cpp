@@ -28,10 +28,10 @@ void RenderSub::setup() {
     srcC.set("src C", ofVec2f(1., 1.), ofVec2f(-0.5, -0.5), ofVec2f(1.5, 1.5));
     srcD.set("src D", ofVec2f(0., 1.), ofVec2f(-0.5, -0.5), ofVec2f(1.5, 1.5));
     
-    dstA.set("dst A", ofVec2f(0., 0.), ofVec2f(0., 0.), ofVec2f(1., 1.));
-    dstB.set("dst B", ofVec2f(1., 0.), ofVec2f(0., 0.), ofVec2f(1., 1.));
-    dstC.set("dst C", ofVec2f(1., 1.), ofVec2f(0., 0.), ofVec2f(1., 1.));
-    dstD.set("dst D", ofVec2f(0., 1.), ofVec2f(0., 0.), ofVec2f(1., 1.));
+    dstA.set("dst A", ofVec2f(0., 0.), ofVec2f(-0.5, -0.5), ofVec2f(1.5, 1.5));
+    dstB.set("dst B", ofVec2f(1., 0.), ofVec2f(-0.5, -0.5), ofVec2f(1.5, 1.5));
+    dstC.set("dst C", ofVec2f(1., 1.), ofVec2f(-0.5, -0.5), ofVec2f(1.5, 1.5));
+    dstD.set("dst D", ofVec2f(0., 1.), ofVec2f(-0.5, -0.5), ofVec2f(1.5, 1.5));
     
     recomputeHomography.set("recompute Homography", false);
     doHomography.set("do Homography", false);

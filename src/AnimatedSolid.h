@@ -26,7 +26,7 @@ public:
     
 private:
     
-    ofxEasingExpo easing;
+    ofxEasingQuad easing;
     float clamp;
     ofxTween::ofxEasingType easingType;
     

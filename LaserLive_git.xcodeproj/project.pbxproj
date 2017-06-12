@@ -26,7 +26,6 @@
 		1DAAC3FB4B98B08AE63F4687 /* ofxUISuperCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38EBD5650A3BF5A499B07525 /* ofxUISuperCanvas.cpp */; };
 		22030CBDCC25D815E7ED6757 /* ofxUIFPSSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E592342D8B7FB73A6F64D /* ofxUIFPSSlider.cpp */; };
 		222C3AB10FA3158602718602 /* ofxUIMultiImageButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17E06821FB98542FDB806E50 /* ofxUIMultiImageButton.cpp */; };
-		24B475D09D396FD37823F959 /* test.c in Sources */ = {isa = PBXBuildFile; fileRef = 998154314347A01197567C72 /* test.c */; };
 		26874B150C8535AEA0F24C8C /* ofxUIImageSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2689C5C8A97002C218125F2F /* ofxUIImageSlider.cpp */; };
 		27765D1BFF26BD9A6186915F /* ofxEasingCirc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4973CEF438C8931B5E03E0A /* ofxEasingCirc.cpp */; };
 		2FE7B4B1F6354F2D2888F663 /* AnimatedOSCLines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDFA077900D4C55C9CFBC46 /* AnimatedOSCLines.cpp */; };
@@ -321,7 +320,6 @@
 		9604B925D32EE39065747725 /* ofxBaseGui.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxBaseGui.cpp; path = ../../../addons/ofxGui/src/ofxBaseGui.cpp; sourceTree = SOURCE_ROOT; };
 		961DE8B564EF22E65C9480AE /* ofxUI2DPad.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUI2DPad.h; path = ../../../addons/ofxUI/src/ofxUI2DPad.h; sourceTree = SOURCE_ROOT; };
 		98D7024AB5785BC79D2C7544 /* AnimatedOSCLines.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = AnimatedOSCLines.h; path = src/AnimatedOSCLines.h; sourceTree = SOURCE_ROOT; };
-		998154314347A01197567C72 /* test.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 30; name = test.c; path = ../../../addons/ofxEtherdream/libs/driver/libetherdream/test.c; sourceTree = SOURCE_ROOT; };
 		9A4CFDCEA412E8BCDACA9B26 /* ofxEasingLinear.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxEasingLinear.cpp; path = ../../../addons/ofxTween/src/Easings/ofxEasingLinear.cpp; sourceTree = SOURCE_ROOT; };
 		9AAEF50558BBDBEB5260FC35 /* easing_terms_of_use.html */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = easing_terms_of_use.html; path = ../../../addons/ofxTween/src/Easings/easing_terms_of_use.html; sourceTree = SOURCE_ROOT; };
 		9BF3AA0D4FAA89D0F8A0E545 /* OscReceivedElements.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OscReceivedElements.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.cpp; sourceTree = SOURCE_ROOT; };
@@ -585,7 +583,6 @@
 			children = (
 				E472D66E13960563DF74BB41 /* etherdream.c */,
 				23F3707AC2C550C3F34520BC /* etherdream.h */,
-				998154314347A01197567C72 /* test.c */,
 			);
 			name = libetherdream;
 			sourceTree = "<group>";
@@ -1160,7 +1157,6 @@
 				4FCD750D819F11CDC75D5AED /* SvgLoader.cpp in Sources */,
 				AE4927F8533E9F44EF99F6C7 /* ofxEtherdream.cpp in Sources */,
 				87C50BA2BBD5B23272DAA6D5 /* etherdream.c in Sources */,
-				24B475D09D396FD37823F959 /* test.c in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,
 				5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */,
 				B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */,

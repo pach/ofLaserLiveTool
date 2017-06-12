@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(125);
-    ofSetFrameRate(240);
+    ofSetFrameRate(60);
     
 //    ofxTimeline::removeCocoaMenusFromGlut("Laser Anim Toolbox");
 //    ofxEtherdream::startEtherdreamLib();
@@ -90,6 +90,8 @@ void ofApp::setup(){
     lastOscTime = 0;
     
     oscReceive.setup(OSC_LISTENING_PORT);
+    
+    animManager[0]->setCurrentSelected("oscMultilines");
 }
 
 //--------------------------------------------------------------

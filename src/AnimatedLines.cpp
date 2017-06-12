@@ -27,6 +27,7 @@ void AnimatedLines::setup(string name) {
     pos = 0.5;
     dir = 0;
     speed = 0.;
+    rot = 0.;
     reinitSpeed = false;
     
     noiseCoeff = 0;
@@ -41,6 +42,7 @@ void AnimatedLines::setup(string name) {
     gui->addSlider("/nbLines", 1, 10, &nbLines);
     gui->addSlider("/pos", 0., 1., &pos);
     gui->addIntSlider("/dir", 0, 2, &dir);
+    gui->addSlider("/rot", 0, 360, &rot);
     
     gui->addSlider("/speed", -0.05, 0.05, &speed);
     gui->addToggle("reinit speed", &reinitSpeed);
@@ -114,6 +116,11 @@ void AnimatedLines::update() {
                 }
             }
         }
+        if (rot != 0.){
+            for (int i=0 ; i<p.size() ; i++){
+                p[i].rotate(rot, ofVec3f(0.5, 0.5, 0.), ofVec3f(0., 0., 1.));
+            }
+        }
         polylines.push_back(p);
     }
 }
@@ -157,6 +164,9 @@ void AnimatedLines::parseOSC(ofxOscMessage &m){
         }
         else if (cmd == "dir"){
             dir = m.getArgAsInt32(0);
+        }
+        else if (cmd == "rot"){
+            rot = ofMap(m.getArgAsFloat(0), 0., 1., 0., 360.);
         }
         else if (cmd == "speed"){
             speed = ofMap(m.getArgAsFloat(0), 0., 1., -0.05, 0.05);

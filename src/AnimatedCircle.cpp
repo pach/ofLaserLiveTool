@@ -89,7 +89,7 @@ void AnimatedCircle::parseOSC(ofxOscMessage &m){
         string cmd = osc[0];
         string msg = osc[1];
         
-        if (cmd == "nbCircles"){
+        if (cmd == "nbCircle"){
             nbCircle = m.getArgAsInt32(0);
         }
         else if (cmd == "nbPointCircle"){

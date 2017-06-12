@@ -28,6 +28,8 @@ private:
     float pos;
     int dir;
     
+    float rot;
+    
     float speed;
     
     long lastTime;
