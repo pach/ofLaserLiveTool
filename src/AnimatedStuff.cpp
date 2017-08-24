@@ -59,9 +59,17 @@ void AnimatedStuff::setup(string name) {
     drawH = ofGetHeight();
     drawOffset = ofVec2f (0., 0.);
 //    setLoopMode(OF_LOOP_NORMAL);
+    time = 0.;
+    lastTime = ofGetElapsedTimef();
 }
 
 void AnimatedStuff::draw(){
+    
+    
+    time += (ofGetElapsedTimef()-lastTime)*speed;
+    lastTime = ofGetElapsedTimef();
+    
+    
     ofSetColor(0);
     ofRect(drawOffset, drawW, drawH);
     

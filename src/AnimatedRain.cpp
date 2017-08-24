@@ -171,50 +171,37 @@ void AnimatedRain::update() {
 
 void AnimatedRain::parseOSC(ofxOscMessage &m)
 {
-    string address = m.getAddress();
-
-    if(address.find("/rain/numDrops")!=-1)
-    {
-        changeNumDrops(m.getArgAsFloat(0));
-    }
-    else if(address == "/rain/rainSpeed")
-    {
-        changeRainSpeed(m.getArgAsFloat(0));
-    }
-    else if(address.find("/rain/rainSpeedVariation")!=-1)
-    {
-        changeRainSpeedVariation(m.getArgAsFloat(0));
-    }
-    else if(address=="/rain/rainLength")
-    {
-        changeRainLength(m.getArgAsFloat(0));
-    }
-    else if(address.find("/rain/rainLengthVariation")!=-1)
-    {
-        changeRainLengthVariation(m.getArgAsFloat(0));
-    }
+    ofLog (OF_LOG_NOTICE, "rain osc "+m.getAddress());
     
-    /*
     vector<string> osc = getOSCcmd(m.getAddress());
     string cmd = osc[0];
     string msg = osc[1];
-    
-    if (cmd == "freq"){
-        freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
+    if (cmd == "rain"){
+        osc = getOSCcmd(msg);
+        cmd = osc[0];
+        msg = osc[1];
+        
+        ofLog (OF_LOG_NOTICE, "rain parse "+cmd);
+        
+        if (cmd == "numDrops"){
+            ofLog(OF_LOG_NOTICE, "change drops");
+            changeNumDrops(m.getArgAsFloat(0));
+        }
+        else if (cmd == "rainSpeed"){
+            ofLog(OF_LOG_NOTICE, "change speed");
+            changeRainSpeed(m.getArgAsFloat(0));
+        }
+        else if (cmd == "rainSpeedVariation"){
+            changeRainSpeedVariation(m.getArgAsFloat(0));
+        }
+        else if (cmd == "rainLenth"){
+            changeRainLength(m.getArgAsFloat(0));
+        }
+        else if (cmd == "rainLengthVariation"){
+            changeRainLengthVariation(m.getArgAsFloat(0));
+        }
     }
-    else if (cmd == "nbPoint"){
-        nbPoint = m.getArgAsInt32(0);
-    }
-    else if (cmd == "speed"){
-        speed = ofMap(m.getArgAsFloat(0), 0., 1., 0., 50.);
-    }
-    else if (cmd == "height"){
-        height = m.getArgAsFloat(0);
-    }
-    else if (cmd == "posY"){
-        posY = ofMap(m.getArgAsFloat(0), 0., 1., -1., 1.);
-    }
-    */
+
 }
 
 void AnimatedRain::changeNumDrops(int n)

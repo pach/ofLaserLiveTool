@@ -74,5 +74,6 @@ void SvgLoader::load(string filename){
             
             polypocket.push_back(poly);
         }
+        ofLog(OF_LOG_NOTICE, "svg load path "+ofToString(i));   
     }
 }

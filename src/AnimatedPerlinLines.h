@@ -11,6 +11,8 @@
 #include "ofMain.h"
 #include "AnimatedStuff.h"
 
+#define NB_POINTS_SPACING 200
+
 class AnimatedPerlinLines : public AnimatedStuff{
     
 public:
@@ -39,5 +41,6 @@ private:
     
     ofPoint scale;
     ofPoint offset;
-    
+   
+    vector<ofPolyline> pointPoly;
 };

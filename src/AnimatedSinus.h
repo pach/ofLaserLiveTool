@@ -25,8 +25,9 @@ public:
 private:
     float freq;
     int nbPoint;
-    float speed;
+//    float speed;
     float height;
     float posY;
+    
     
 };

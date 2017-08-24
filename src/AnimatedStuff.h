@@ -97,6 +97,10 @@ protected:
     
     ofxUISuperCanvas *gui;
     
+    float time;
+    float lastTime;
+    float speed = 1.;
+    
 //    bool useTimeline; // todo
     
 };

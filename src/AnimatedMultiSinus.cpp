@@ -85,12 +85,12 @@ void AnimatedMultiSinus::update() {
     polylines[0].clear();
     float x1, x2, x3, y1, y2, y3;
     for (int i=0 ; i<nbPoint ; i++){
-        y1 = sin((float)i*sin1.freq/nbPoint+ofGetElapsedTimef()*sin1.speed)*sin1.height;
-        y2 = sin((float)i*sin2.freq/nbPoint+ofGetElapsedTimef()*sin2.speed)*sin2.height;
-        y3 = sin((float)i*sin3.freq/nbPoint+ofGetElapsedTimef()*sin3.speed)*sin3.height;
-        x1 = sin((float)i*sinI1.freq/nbPoint+ofGetElapsedTimef()*sinI1.speed)*sinI1.height;
-        x2 = sin((float)i*sinI2.freq/nbPoint+ofGetElapsedTimef()*sinI2.speed)*sinI2.height;
-        x3 = sin((float)i*sinI3.freq/nbPoint+ofGetElapsedTimef()*sinI3.speed)*sinI3.height;
+        y1 = sin((float)i*sin1.freq/nbPoint+time*sin1.speed)*sin1.height;
+        y2 = sin((float)i*sin2.freq/nbPoint+time*sin2.speed)*sin2.height;
+        y3 = sin((float)i*sin3.freq/nbPoint+time*sin3.speed)*sin3.height;
+        x1 = sin((float)i*sinI1.freq/nbPoint+time*sinI1.speed)*sinI1.height;
+        x2 = sin((float)i*sinI2.freq/nbPoint+time*sinI2.speed)*sinI2.height;
+        x3 = sin((float)i*sinI3.freq/nbPoint+time*sinI3.speed)*sinI3.height;
         if (! vertical) {
             polylines[0].addVertex((float)i/(float)nbPoint+x1+x2+x3, y1+y2+y3-posY);
         }else{

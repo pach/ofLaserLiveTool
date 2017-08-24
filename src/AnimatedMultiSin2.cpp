@@ -99,13 +99,13 @@ void AnimatedMultiSin2::update() {
 //    }
     float y1, y2, y3;
     for (int i=0 ; i<nbPoint ; i++){
-        y1 = sin((float)i*sin11.freq/nbPoint+ofGetElapsedTimef()*sin11.speed)*sin11.height;
-        y2 = sin((float)i*sin12.freq/nbPoint+ofGetElapsedTimef()*sin12.speed)*sin12.height;
-        y3 = sin((float)i*sin13.freq/nbPoint+ofGetElapsedTimef()*sin13.speed)*sin13.height;
+        y1 = sin((float)i*sin11.freq/nbPoint+time*sin11.speed)*sin11.height;
+        y2 = sin((float)i*sin12.freq/nbPoint+time*sin12.speed)*sin12.height;
+        y3 = sin((float)i*sin13.freq/nbPoint+time*sin13.speed)*sin13.height;
         polylines[0].addVertex((float)i/(float)nbPoint, (y1+y2+y3)-posY);
-        y1 = sin((float)i*sin21.freq/nbPoint+ofGetElapsedTimef()*sin21.speed)*sin21.height;
-        y2 = sin((float)i*sin22.freq/nbPoint+ofGetElapsedTimef()*sin22.speed)*sin22.height;
-        y3 = sin((float)i*sin23.freq/nbPoint+ofGetElapsedTimef()*sin23.speed)*sin23.height;
+        y1 = sin((float)i*sin21.freq/nbPoint+time*sin21.speed)*sin21.height;
+        y2 = sin((float)i*sin22.freq/nbPoint+time*sin22.speed)*sin22.height;
+        y3 = sin((float)i*sin23.freq/nbPoint+time*sin23.speed)*sin23.height;
         polylines[1].addVertex((float)i/(float)nbPoint, (y1+y2+y3)-posY);
     }
     

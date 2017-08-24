@@ -63,6 +63,7 @@ void AnimatedSolid::setup(string name){
 }
 
 void AnimatedSolid::update(){
+    
     polylines.clear();
     
     float quadra = (2*PI) / nbPoint;

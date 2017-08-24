@@ -48,7 +48,7 @@ void AnimatedSinus::update() {
     polylines[0].clear();
     
     for (int i=0 ; i<nbPoint ; i++){
-        polylines[0].addVertex((float)i/(float)nbPoint, sin((float)i*freq/nbPoint+ofGetElapsedTimef()*speed)*height-posY);
+        polylines[0].addVertex((float)i/(float)nbPoint, sin((float)i*freq/nbPoint+time)*height-posY);
     }
 }
 
@@ -78,8 +78,8 @@ void AnimatedSinus::parseOSC(ofxOscMessage &m){
     string msg = osc[1];
     if (cmd == "sin"){
         osc = getOSCcmd(msg);
-        string cmd = osc[0];
-        string msg = osc[1];
+        cmd = osc[0];
+        msg = osc[1];
         
         if (cmd == "freq"){
             freq = ofMap(m.getArgAsFloat(0), 0., 1., 0., 500.);
