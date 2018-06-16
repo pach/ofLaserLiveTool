@@ -516,6 +516,7 @@ void AnimManager::update() {
             if(curSelected!=NULL){
                 polysMerger[0].setPoly2(curSelected->getPolylines()[0]);
             }
+            
             if (lastSelected != NULL) {
                 polysMerger[0].setPoly1(lastSelected->getPolylines()[0]);
             }
@@ -523,7 +524,7 @@ void AnimManager::update() {
             polysMerger[0].mergePolyline(fadeCurrentTime/fadeTime);
             polys.push_back(polysMerger[0].getPolyline());
             // gerer merge de couleur
-            polyColors.push_back(ofFloatColor(1.));
+            polyColors.push_back(ofFloatColor (1.));
         }
     }
     
@@ -538,6 +539,7 @@ void AnimManager::update() {
         polys[i].addVertices(ppoints);
     }
     
+    /* scale colors */
     for (int i=0 ; i<polyColors.size() ; i++){
         polyColors[i] *= color;
     }

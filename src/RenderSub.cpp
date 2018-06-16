@@ -80,11 +80,16 @@ void RenderSub::update() {
 //        recomputeHomography = false;
     }
     polys.clear();
+    colors.clear();
     createSubFrame();
 }
 
-vector<ofPolyline> RenderSub::getSubFrame(){
+vector<ofPolyline> RenderSub::getSubFramePolys(){
     return polys;
+}
+
+vector<ofFloatColor> RenderSub::getSubFrameColors(){
+    return colors;
 }
 
 void RenderSub::load(){
@@ -100,10 +105,12 @@ void RenderSub::createSubFrame(){
     if (mainFrame != NULL) {
         ofPolyline newLine;
         vector<ofPolyline> mfPolys = mainFrame->getPolys();
+        vector<ofFloatColor> mfColors = mainFrame->getColors();
         
         if (doHomography){
             for (int i=0; i<mfPolys.size(); i++) {
                 ofPolyline newPoly;
+                ofFloatColor polyColor = mfColors[i];
                 
                 for (int j=0 ; j<mfPolys[i].size() ; j++){
                     newPoly.addVertex(rescale(mfPolys[i][j]));
@@ -127,7 +134,9 @@ void RenderSub::createSubFrame(){
                             else{
                                 if (previousInside) {
                                     newLine.addVertex(getIntersectPoint(newPoly[p-1], newPoly[p]));
+                                    
                                     polys.push_back(newLine);
+                                    colors.push_back(polyColor);
                                     
                                     newLine.clear();
                                     lastInside = false;
@@ -137,7 +146,10 @@ void RenderSub::createSubFrame(){
                                 if (!homoBoundingBox.inside(newPoly[p+1])){
                                     newLine.addVertex(getIntersectPoint(newPoly[p], newPoly[p+1]));
                                     newLine.addVertex(getReverseIntersectPoint(newPoly[p], newPoly[p+1]));
+                                    
                                     polys.push_back(newLine);
+                                    colors.push_back(polyColor);
+                                    
                                     newLine.clear();
                                     lastInside = false;
                                 }
@@ -153,7 +165,9 @@ void RenderSub::createSubFrame(){
                         
                         if (previousInside && !lastInside) {
                             newLine.addVertex(getIntersectPoint(newPoly[p-1], newPoly[p]));
+                            
                             polys.push_back(newLine);
+                            colors.push_back(polyColor);
                             
                             newLine.clear();
                         }
@@ -162,14 +176,21 @@ void RenderSub::createSubFrame(){
                     }
                     if (homoBoundingBox.inside(newPoly[p])) {
                         newLine.addVertex(newPoly[p]);
+                        
                         polys.push_back(newLine);
+                        colors.push_back(polyColor);
+                        
                     }else if (lastInside){
                         newLine.addVertex(getIntersectPoint(newPoly[p-1], newPoly[p]));
+                        
                         polys.push_back(newLine);
+                        colors.push_back(polyColor);
+                        
                     }
                 }
                 else {
                     polys.push_back(newPoly);
+                    colors.push_back(polyColor);
                 }
                 
                 newPoly.clear();
@@ -181,6 +202,8 @@ void RenderSub::createSubFrame(){
             for (int i=0; i<mfPolys.size(); i++) {
                 newLine.clear();
                 lastInside = false;
+                
+                ofFloatColor polyColor = mfColors[i];
                 
                 int p = 0;
                 while (p<mfPolys[i].size()-1) {
@@ -196,7 +219,9 @@ void RenderSub::createSubFrame(){
                         else{
                             if (previousInside) {
                                 newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p-1], mfPolys[i][p])));
+                                
                                 polys.push_back(newLine);
+                                colors.push_back(polyColor);
                                 
                                 newLine.clear();
                                 lastInside = false;
@@ -206,7 +231,10 @@ void RenderSub::createSubFrame(){
                             if (!boundingBox.inside(mfPolys[i][p+1])){
                                 newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p], mfPolys[i][p+1])));
                                 newLine.addVertex(rescale(getReverseIntersectPoint(mfPolys[i][p], mfPolys[i][p+1])));
+                                
                                 polys.push_back(newLine);
+                                colors.push_back(polyColor);
+                                
                                 newLine.clear();
                                 lastInside = false;
                             }
@@ -222,7 +250,9 @@ void RenderSub::createSubFrame(){
                     
                     if (previousInside && !lastInside) {
                         newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p-1], mfPolys[i][p])));
+                        
                         polys.push_back(newLine);
+                        colors.push_back(polyColor);
                         
                         newLine.clear();
                     }
@@ -231,10 +261,15 @@ void RenderSub::createSubFrame(){
                 }
                 if (boundingBox.inside(mfPolys[i][p])) {
                     newLine.addVertex(rescale(mfPolys[i][p]));
+                    
                     polys.push_back(newLine);
+                    colors.push_back(polyColor);
+                    
                 }else if (lastInside){
                     newLine.addVertex(rescale(getIntersectPoint(mfPolys[i][p-1], mfPolys[i][p])));
+                    
                     polys.push_back(newLine);
+                    colors.push_back(polyColor);
                 }
             }
         }

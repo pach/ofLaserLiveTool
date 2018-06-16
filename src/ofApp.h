@@ -12,7 +12,7 @@
 #include "ofxGui.h"
 
 #define OSC_LISTENING_PORT 10000
-#define NB_LAYERS 5
+#define NB_LAYERS 2
 
 #define DEBUG_OFFLINE false
 

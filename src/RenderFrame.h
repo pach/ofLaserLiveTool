@@ -21,6 +21,7 @@ public:
     void update();
     void draw(int x, int y, int w, int h);
     vector<ofPolyline> getPolys();
+    vector<ofFloatColor> getColors();
     void setPolys(vector <ofPolyline> newPolys);
     void addPolys(vector <ofPolyline> newPolys);
     void setPolys(vector <ofPolyline> newPolys, vector<ofFloatColor> colors);

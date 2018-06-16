@@ -43,7 +43,8 @@ public:
     void resetHomographyDst();
     void computeHomography();
     
-    vector<ofPolyline> getSubFrame();
+    vector<ofPolyline> getSubFramePolys();
+    vector<ofFloatColor> getSubFrameColors();
     
 //    inline ofParameterGroup getParams() { return renderSubParams;};
     
@@ -59,6 +60,7 @@ private:
     
     RenderFrame * mainFrame;
     vector <ofPolyline> polys;
+    vector <ofFloatColor> colors;
     
     ofRectangle boundingBox;
     ofRectangle homoBoundingBox;

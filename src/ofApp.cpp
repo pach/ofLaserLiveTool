@@ -90,8 +90,6 @@ void ofApp::setup(){
     lastOscTime = 0;
     
     oscReceive.setup(OSC_LISTENING_PORT);
-    
-    animManager[0]->setCurrentSelected("oscMultilines");
 }
 
 //--------------------------------------------------------------
@@ -114,6 +112,7 @@ void ofApp::update(){
     vector<RenderSub *>::iterator ildaRenderIt = subframes.begin();
     vector<RenderSub *>::iterator ildaRenderEnd = subframes.end();
     vector<ofPolyline> rp;
+    vector<ofFloatColor> cp;
     
     while (ildaIt != ildaEnd) {
         rp.clear();
@@ -121,9 +120,10 @@ void ofApp::update(){
         (*ildaIt)->clear();
         (*ildaRenderIt)->update();
         
-        rp = (*ildaRenderIt)->getSubFrame() ;
+        rp = (*ildaRenderIt)->getSubFramePolys() ;
+        cp = (*ildaRenderIt)->getSubFrameColors() ;
         for (int i = 0; i<rp.size(); i++) {
-            (*ildaIt)->addPoly(rp[i]);
+            (*ildaIt)->addPoly(rp[i], cp[i]);
         }
         
         (*ildaIt)->update();
