@@ -28,7 +28,7 @@ void AnimatedOSCPolylines::setup(string name) {
 }
 
 void AnimatedOSCPolylines::update(){
-    
+    AnimatedStuff::update();
 }
 
 void AnimatedOSCPolylines::parseOSC(ofxOscMessage &m){

@@ -50,133 +50,83 @@ void AnimatedPerlinLines::setup(string name) {
     oldNbPoints = nbPoints;
     oldMode = lineMode;
 
+    easingType = ofxTween::easeInOut;
+    clamp = true;
     
-    if(lineMode){
-        for (int i=0 ; i<=nbPoints ; i++) {
-            ofPolyline p;
-            p.addVertex(0.5, 0.5);
-            p.addVertex(0.5, 0.5);
-            pointPoly.push_back(p);
-        }
+    for (int i=0 ; i<=nbPoints ; i++) {
+        targetPoint.addVertex(0.5, 0.5);
     }
-    else{
-        ofPolyline p;
-        for (int i=0 ; i<=nbPoints ; i++) {
-            p.addVertex(0.5, 0.5);
-        }
-        pointPoly.push_back(p);
-    }
+    
+//    if(lineMode){
+//        for (int i=0 ; i<=nbPoints ; i++) {
+//            ofPolyline p;
+//            p.addVertex(0.5, 0.5);
+//            p.addVertex(0.5, 0.5);
+//            targetPoint.push_back(p);
+//        }
+//    }
+//    else{
+//        ofPolyline p;
+//        for (int i=0 ; i<=nbPoints ; i++) {
+//            p.addVertex(0.5, 0.5);
+//        }
+//        targetPoint.push_back(p);
+//    }
     
     type = "AnimatedPerlin";
 }
 
 void AnimatedPerlinLines::update() {
-    
-    // force lineMode to false - avoid bug
-    lineMode = false;
-    
-//    nbPoints = (int)(timeline.getValue("nb points")*nbPointsCoeff);
+    AnimatedStuff::update();
+
     nbPoints = nbVertex*nbPointsCoeff;
     if (nbPoints == 0) nbPoints = 1;
     
-//    lineMode = (timeline.getValue("line mode")>0.5) ? true : false;
     if (nbPoints != oldNbPoints){
-        if (lineMode){
-            if (nbPoints > oldNbPoints){
-                for (int i= oldNbPoints; i<=nbPoints; i++) {
-                    ofPolyline p;
-                    p.addVertex(0.5, 0.5);
-                    p.addVertex(0.5, 0.5);
-                    pointPoly.push_back(p);
-                }
-            }
-            else{
-                pointPoly.resize(nbPoints+1);
+        if (nbPoints > oldNbPoints){
+            for (int i=oldNbPoints; i<=nbPoints; i++) {
+                targetPoint.addVertex(0.5, 0.5);
             }
         }
         else{
-            if (nbPoints > oldNbPoints){
-                for (int i=oldNbPoints; i<=nbPoints; i++) {
-                    pointPoly[0].addVertex(0.5, 0.5);
-                }
-            }
-            else{
-                pointPoly[0].resize(nbPoints+1);
-            }
+            targetPoint.resize(nbPoints+1);
         }
         oldNbPoints = nbPoints;
     }
     
-//    noiseSpeed = timeline.getValue("noise speed");
-    
     noiseTime += noiseSpeedCoeff*noiseSpeed;
     
     
-    // if line mode did change
-    if (oldMode != lineMode) {
-        if(lineMode){
-            ofPolyline oldPoly = pointPoly[0];
-            
-            pointPoly.clear();
-            for (int i=0 ; i<nbPoints-1 ; i++) {
-                ofPolyline p ;
-                p.addVertex(oldPoly[i]);
-                p.addVertex(oldPoly[i+1]);
-                pointPoly.push_back(p);
-            }
-            ofPolyline p ;
-            p.addVertex(oldPoly[nbPoints]);
-            p.addVertex(oldPoly[0]);
-            pointPoly.push_back(p);
-        }
-        else{
-            ofPolyline p;
-            for (int i=0 ; i<=nbPoints ; i++) {
-                p.addVertex(pointPoly[i][0]);
-            }
-            pointPoly.clear();
-            pointPoly.push_back(p);
-        }
-        oldMode = lineMode;
-    }
-    
-//    float scaleX = timeline.getValue("scaleX");
-//    float scaleY = timeline.getValue("scaleY");
-//    float offsetX = ofMap(timeline.getValue("offsetX"), 0., 1., -0.5, 0.5);
-//    float offsetY = ofMap(timeline.getValue("offsetY"), 0., 1., -0.5, 0.5);
     float scaleX = scale.x;
     float scaleY = scale.y;
     float offsetX = offset.x;
     float offsetY = offset.y;
     
     // set perlin points
-    if (lineMode) {
-        pointPoly[0][0].set(ofMap(ofNoise(0, 0, noiseTime), 0., 1., 0.5-scaleX, 0.5+scaleX)+offsetX, ofMap(ofNoise(0, 1, noiseTime), 0., 1., 0.5-scaleY, 0.5+scaleY)+offsetY);
-        pointPoly[0][1].set(ofMap(ofNoise(0, 0, noiseTime), 0., 1., 0.5-scaleX, 0.5+scaleX)+offsetX, ofMap(ofNoise(0, 1, noiseTime), 0., 1., 0.5-scaleY, 0.5+scaleY)+offsetY);
-        for (int i = 1; i<nbPoints; i++) {
-            pointPoly[i][0].set(pointPoly[i-1][1]);
-            pointPoly[i][1].set(ofMap(ofNoise(i, 0, noiseTime), 0., 1., 0.5-scaleX, 0.5+scaleX), ofMap(ofNoise(i, 1, noiseTime), 0., 1., 0.5-scaleY, 0.5+scaleY)+offsetY);
-        }
-        pointPoly[nbPoints][0].set(pointPoly[nbPoints-1][1]);
-        pointPoly[nbPoints][1].set(pointPoly[0][0]);
+    for (int i = 0; i<targetPoint.size(); i++) {
+        targetPoint[i].set(ofMap(ofNoise(i, 0, noiseTime), 0., 1., 0.5-scaleX, 0.5+scaleX)+offsetX, ofMap(ofNoise(i, 1, noiseTime), 0., 1., 0.5-scaleY, 0.5+scaleY)+offsetY);
+    }
+    
+    // doSpacing
+
+    polylines.clear();
+    if (!lineMode){
+        polylines.push_back(targetPoint.getResampledByCount(NB_POINTS_SPACING));
     }
     else{
-        
-        // non line mode -> without spacing
-//        for (int i = 0; i<nbPoints; i++) {
-//            pointPoly[0][i].set(ofMap(ofNoise(i, 0, noiseTime), 0., 1., 0.5-scaleX, 0.5+scaleX)+offsetX, ofMap(ofNoise(i, 1, noiseTime), 0., 1., 0.5-scaleY, 0.5+scaleY)+offsetY);
-//        }
-//        pointPoly[0][nbPoints]= pointPoly[0][0];
-        
-        // non line mode -> doSpacing
-        for (int i = 0; i<nbPoints; i++) {
-            pointPoly[0][i].set(ofMap(ofNoise(i, 0, noiseTime), 0., 1., 0.5-scaleX, 0.5+scaleX)+offsetX, ofMap(ofNoise(i, 1, noiseTime), 0., 1., 0.5-scaleY, 0.5+scaleY)+offsetY);
+        ofPolyline p;
+        ofPoint pt;
+        int pointPerLine = NB_POINTS_SPACING/targetPoint.size();
+        for (int i=0; i<targetPoint.size()-1; i++) {
+            for (int j=0; j<pointPerLine; j++) {
+                pt = ofVec2f(ofxTween::map(j, 0, pointPerLine, targetPoint[i].x, targetPoint[i+1].x, clamp, easing, easingType), ofxTween::map(j, 0, pointPerLine, targetPoint[i].y, targetPoint[i+1].y, clamp, easing, easingType));
+                p.addVertex(pt);
+            }
+            p.addVertex(p[0]);
         }
-        pointPoly[0][nbPoints]= pointPoly[0][0];
-        
-        polylines.clear();
-        polylines.push_back(pointPoly[0].getResampledByCount(NB_POINTS_SPACING));
+        polylines.push_back(p);
     }
+//    }
 }
 
 void AnimatedPerlinLines::parseOSC(ofxOscMessage &m){

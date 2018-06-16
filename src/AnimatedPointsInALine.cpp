@@ -45,6 +45,7 @@ void AnimatedPointsInALine::setup(string name) {
 
 
 void AnimatedPointsInALine::update() {
+    AnimatedStuff::update();
     
     //cout << ofGetElapsedTimef() <<" : " << lastChangeFreqTime << " ::-:: " << ofGetElapsedTimef()-lastChangeFreqTime << " // " << duration << endl;
 

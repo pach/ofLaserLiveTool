@@ -41,6 +41,7 @@ public:
     void save();
     
     vector<ofPolyline> getPolylines();
+    vector<ofFloatColor> getPolyColors();
     
     void guiEvent(ofxUIEventArgs &e);
     
@@ -85,6 +86,7 @@ private:
     vector<string>animName;
     
     vector<ofPolyline> polys;
+    vector<ofFloatColor> polyColors;
     vector<ofxPolylineMerger> polysMerger;
     
     bool newAnimBool ;

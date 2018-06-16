@@ -59,6 +59,8 @@ void AnimManager::setup() {
     curSelected = NULL;
     lastSelected = NULL;
     
+    color = ofFloatColor(1.);
+    
     animName.push_back("none");
     
     fadeTime = 2.;
@@ -71,6 +73,10 @@ void AnimManager::setup() {
     animUIselectEvent = false;
     
     name = "layer.0";
+    
+    polys.clear();
+    polyColors.clear();
+    
 //    rotate = 0;
     
 }
@@ -149,11 +155,13 @@ void AnimManager::setupGui(){
     gui->addSpacer();
     gui->add2DPad("pos", ofxUIVec2f(0., 1), ofxUIVec2f(0., 1), &offset);
     gui->add2DPad("scale", ofxUIVec2f(0., 1), ofxUIVec2f(0., 1), &scale);
+    
 //    gui->addSlider("rotate", 0., 1., &rotate);
-//    gui->addSpacer();
-//    gui->addSlider("red", 0, 1, &color.r);
-//    gui->addSlider("green", 0, 1, &color.g);
-//    gui->addSlider("blue", 0, 1, &color.b);
+    gui->addSpacer();
+    gui->addSlider("red", 0, 1, &color.r);
+    gui->addSlider("green", 0, 1, &color.g);
+    gui->addSlider("blue", 0, 1, &color.b);
+//    gui->addSlider("alpha", 0, 1, &color.b);
     
     newAnimBool = false;
 //    gui->addButton("add SVG", newAnimBool);
@@ -482,10 +490,12 @@ void AnimManager::update() {
     }
     
     polys.clear() ;
+    polyColors.clear();
     
     if (!isFading) {
         if (curSelected != NULL) {
             polys = curSelected->getPolylines();
+            polyColors = curSelected->getPolyColors();
         }
 
     }
@@ -496,9 +506,12 @@ void AnimManager::update() {
             lastSelected = NULL;
             if (curSelected != NULL){
                 polys = curSelected->getPolylines();
+                polyColors = curSelected->getPolyColors();
             }
         }
         else{
+            
+            /* TODO **** GERER MERGE DE COULEUR */
             
             if(curSelected!=NULL){
                 polysMerger[0].setPoly2(curSelected->getPolylines()[0]);
@@ -509,9 +522,12 @@ void AnimManager::update() {
             
             polysMerger[0].mergePolyline(fadeCurrentTime/fadeTime);
             polys.push_back(polysMerger[0].getPolyline());
+            // gerer merge de couleur
+            polyColors.push_back(ofFloatColor(1.));
         }
     }
     
+    /* scale + offset layer */
     for (int i=0; i<polys.size(); i++) {
         vector<ofPoint> ppoints = polys[i].getVertices();
         for (int j=0; j<ppoints.size(); j++) {
@@ -521,6 +537,11 @@ void AnimManager::update() {
         polys[i].clear();
         polys[i].addVertices(ppoints);
     }
+    
+    for (int i=0 ; i<polyColors.size() ; i++){
+        polyColors[i] *= color;
+    }
+    
 }
 
 void AnimManager::draw() {
@@ -597,6 +618,10 @@ vector<ofPolyline> AnimManager::getPolylines(){
     return polys;
 }
 
+vector<ofFloatColor> AnimManager::getPolyColors(){
+    return polyColors;
+}
+
 void AnimManager::parseOSC(ofxOscMessage &m){
 //    ofLog (OF_LOG_NOTICE, "this is a anim OSC"+name+" - "+m.getAddress());
     
@@ -633,10 +658,11 @@ void AnimManager::parseOSC(ofxOscMessage &m){
             if (cmd =="anim") {
                 m.setAddress(msg);
                 if (curSelected != NULL){
-//                    ofLog (OF_LOG_NOTICE, "send to currend animation for parsing "+m.getAddress());
                     curSelected->parseOSC(m);
                 }
-
+                if (lastSelected != NULL){
+                    lastSelected->parseOSC(m);
+                }
             }
         }
     }

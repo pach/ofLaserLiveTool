@@ -38,6 +38,7 @@ void AnimatedRegularPolygon::setup(string name) {
 }
 
 void AnimatedRegularPolygon::update() {
+    AnimatedStuff::update();
     polylines.clear();
     float quadra = (2*PI) / nbPoint; 
     for (int i=0; i<nbPoint; i++) {

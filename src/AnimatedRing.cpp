@@ -58,6 +58,8 @@ void AnimatedRing::setup(string name) {
 }
 
 void AnimatedRing::update() {
+    AnimatedStuff::update();
+    
     time = ofGetElapsedTimef()-lastTime;
     lastTime = ofGetElapsedTimef();
     

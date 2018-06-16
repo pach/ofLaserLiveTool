@@ -55,6 +55,7 @@ void AnimatedRect::setup(string name) {
 }
 
 void AnimatedRect::update() {
+    AnimatedStuff::update();
     
 //    center.x = timeline.getValue(name+".x");
 //    center.y = timeline.getValue(name+".y");

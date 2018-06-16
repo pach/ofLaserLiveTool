@@ -30,6 +30,8 @@ private:
     ofPoint pos;
     float rot;
     float size;
+    int nbPointSpacing;
+    bool doSpacing;
     
     bool doLoad;
     string filename;

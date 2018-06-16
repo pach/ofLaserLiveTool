@@ -29,5 +29,5 @@ private:
     float height;
     float posY;
     
-    
+    ofFloatColor c;
 };

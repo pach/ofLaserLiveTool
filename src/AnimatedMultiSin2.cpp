@@ -79,6 +79,7 @@ void AnimatedMultiSin2::setup(string name) {
 }
 
 void AnimatedMultiSin2::update() {
+    AnimatedStuff::update();
     polylines[0].clear();
     polylines[1].clear();
     

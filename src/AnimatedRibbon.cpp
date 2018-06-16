@@ -74,6 +74,8 @@ void AnimatedRibbon::setup(string name) {
 }
 
 void AnimatedRibbon::update() {
+    AnimatedStuff::update();
+    
     windX = ofMap(wind.x, 0., 1., -windCoeff, windCoeff);
     windY = ofMap(wind.y, 0., 1., -windCoeff, windCoeff);
 
@@ -130,28 +132,21 @@ void AnimatedRibbon::update() {
         pIt->x += windX;
         pIt->y += windY;
         
-//        if (pIt->x < 0.) {
-//            pIt->x = 0.;
-//        }else if (pIt->x > 1.){
-//            pIt->x = 1.;
-//        }
-//        
-//        if (pIt->y < 0.) {
-//            pIt->y = 0.;
-//        }else if (pIt->y > 1.){
-//            pIt->y = 1.;
-//        }
-//        
-//        pIt ++ ;
-
-        if (pIt->x < 0. || pIt->x > 1. || pIt->y < 0. || pIt->y > 1.){
-            vector<ofPoint>::iterator pTemp = pIt;
-            pIt ++;
-            p.erase(pTemp);
-        }else{
-            pIt ++;
+        if (pIt->x < 0.) {
+            pIt->x = 0.;
+        }else if (pIt->x > 1.){
+            pIt->x = 1.;
         }
         
+        if (pIt->y < 0.) {
+            pIt->y = 0.;
+        }else if (pIt->y > 1.){
+            pIt->y = 1.;
+        }
+        
+        pIt ++ ;
+
+         
 
         idPt++;
     }
@@ -184,10 +179,16 @@ void AnimatedRibbon::parseOSC(ofxOscMessage &m){
             smooth = m.getArgAsFloat(0);
         }
         else if (cmd == "wind"){
-            wind = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
+            if (m.getNumArgs()>=2  && m.getArgType(0) == OFXOSC_TYPE_FLOAT && m.getArgType(1) == OFXOSC_TYPE_FLOAT){
+                wind = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
+                cout<<"wind osc "<<endl;
+            }
         }
         else if (cmd == "pos"){
-            curPos = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
+            if (m.getNumArgs()>=2 && m.getArgType(0) == OFXOSC_TYPE_FLOAT && m.getArgType(1) == OFXOSC_TYPE_FLOAT){
+                curPos = ofPoint(m.getArgAsFloat(0), m.getArgAsFloat(1));
+                cout<<"pos osc "<<endl;
+            }
         }
     }
 }

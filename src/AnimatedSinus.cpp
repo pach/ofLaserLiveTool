@@ -28,6 +28,7 @@ void AnimatedSinus::setup(string name) {
     speed = 5;
     height = 0.5;
     posY = 0.;
+    c = ofFloatColor(1.);
     
     gui->addSpacer();
     gui->addSlider("/freq", 0., 50., &freq);
@@ -35,9 +36,14 @@ void AnimatedSinus::setup(string name) {
     gui->addSlider("/speed", 0., 50., &speed);
     gui->addSlider("/height", 0., 1., &height);
     gui->addSlider("/posY", -1., 1., &posY);
+    gui->addSpacer();
+    gui->addSlider("/red", 0., 1., &c.r);
+    gui->addSlider("/green", 0., 1., &c.g);
+    gui->addSlider("/blue", 0., 1., &c.b);
     
     ofPolyline p;
     polylines.push_back(p);
+    colors.push_back(c);
     
     load();
  
@@ -45,11 +51,15 @@ void AnimatedSinus::setup(string name) {
 
 
 void AnimatedSinus::update() {
+    AnimatedStuff::update();
     polylines[0].clear();
     
     for (int i=0 ; i<nbPoint ; i++){
         polylines[0].addVertex((float)i/(float)nbPoint, sin((float)i*freq/nbPoint+time)*height-posY);
     }
+    
+    colors.clear();
+    colors.push_back(c);
 }
 
 void AnimatedSinus::parseOSC(ofxOscMessage &m){

@@ -50,6 +50,8 @@ void AnimatedSpiral::setup(string name) {
 }
 
 void AnimatedSpiral::update() {
+    AnimatedStuff::update();
+    
     if (resetSpeed) {
         rotSpeed = 0;
         resetSpeed = false;

@@ -63,6 +63,7 @@ void AnimatedSolid::setup(string name){
 }
 
 void AnimatedSolid::update(){
+    AnimatedStuff::update();
     
     polylines.clear();
     

@@ -28,7 +28,7 @@ void AnimatedOSCLines::setup(string name) {
 }
 
 void AnimatedOSCLines::update() {
-    
+    AnimatedStuff::update();
 }
 
 void AnimatedOSCLines::parseOSC(ofxOscMessage &m){

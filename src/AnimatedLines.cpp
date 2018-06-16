@@ -54,6 +54,8 @@ void AnimatedLines::setup(string name) {
 }
 
 void AnimatedLines::update() {
+    AnimatedStuff::update();
+    
     if (reinitSpeed == false) {
         speed = 0;
         reinitSpeed = true;

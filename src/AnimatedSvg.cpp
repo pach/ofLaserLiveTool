@@ -30,12 +30,19 @@ void AnimatedSvg::setup(string name) {
     filename = "none";
     doLoad = false;
     
+    doSpacing = true;
+    nbPointSpacing = 700;
+    
     type = "AnimatedSvg";
     gui->addSlider("size", 0., 1., &size);
     gui->addSlider("rot", 0., 360., &rot);
     gui->add2DPad("pos", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &pos);
 //    gui->addTextInput("filename", filename);
     gui->addButton("load svg", &doLoad);
+    
+    gui->addButton("doSpacing", &doSpacing);
+    gui->addIntSlider("nbPointSpacing", 100, 1000, &nbPointSpacing);
+    
     
     ofAddListener(gui->newGUIEvent,this,&AnimatedSvg::textInputEvent);
     
@@ -103,8 +110,10 @@ void AnimatedSvg::processOpenFileSelection(ofFileDialogResult openFileResult){
 
 
 void AnimatedSvg::update() {
+    AnimatedStuff::update();
     
     svg.update();
+    
     if (doLoad) {
         ofLogVerbose("opening file");
         
@@ -134,6 +143,9 @@ void AnimatedSvg::update() {
         while (svg.hasNextPolyline()){
             p.clear();
             p = svg.getPolyline();
+            if (doSpacing){
+                p = p.getResampledByCount(nbPointSpacing);
+            }
             // size and rot
             for (int i=0; i<p.size(); i++) {
                 ofVec2f pt = p[i];

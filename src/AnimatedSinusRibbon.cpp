@@ -98,6 +98,7 @@ void AnimatedSinusRibbon::setup(string name) {
 }
 
 void AnimatedSinusRibbon::update() {
+    AnimatedStuff::update();
     
     windX = ofMap(wind.x, 0., 1., -windCoeff, windCoeff);
     windY = ofMap(wind.y, 0., 1., -windCoeff, windCoeff);

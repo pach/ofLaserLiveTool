@@ -103,6 +103,8 @@ void AnimatedImacStraw::load(string layerName){
 }
 
 void AnimatedImacStraw::update() {
+    AnimatedStuff::update();
+    
     polylines.clear();
     
     

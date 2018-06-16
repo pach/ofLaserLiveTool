@@ -23,8 +23,11 @@ public:
     vector<ofPolyline> getPolys();
     void setPolys(vector <ofPolyline> newPolys);
     void addPolys(vector <ofPolyline> newPolys);
+    void setPolys(vector <ofPolyline> newPolys, vector<ofFloatColor> colors);
+    void addPolys(vector <ofPolyline> newPolys, vector<ofFloatColor> colors);
     void clear();
     
 private:
     vector<ofPolyline> polys;
+    vector<ofFloatColor> polyColors;
 };

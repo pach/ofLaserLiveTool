@@ -13,7 +13,7 @@
 
 #include "ofxTween.h"
 
-#define NB_POINTS 250
+#define NB_POINTS 700
 
 
 class AnimatedSolid : public AnimatedStuff{

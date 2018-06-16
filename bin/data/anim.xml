@@ -60,12 +60,16 @@
         <type>AnimatedRegularPolygon</type>
     </animList>
     <animList>
-        <name>solid</name>
-        <type>AnimatedSolid</type>
+        <name>ring</name>
+        <type>AnimatedRing</type>
     </animList>
     <animList>
         <name>perlinCircle</name>
         <type>AnimatedPerlinCircle</type>
+    </animList>
+    <animList>
+        <name>solid</name>
+        <type>AnimatedSolid</type>
     </animList>
     <animList>
         <name>soundWave</name>

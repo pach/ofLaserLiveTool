@@ -50,6 +50,8 @@ void AnimatedWalls::setup(string name) {
 }
 
 void AnimatedWalls::update() {
+    AnimatedStuff::update();
+    
     polylines.clear();
     ofPolyline p;
     if (isOrigin) {

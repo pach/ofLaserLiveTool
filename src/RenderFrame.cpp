@@ -35,6 +35,24 @@ void RenderFrame::addPolys(vector<ofPolyline> newPolys){
     }
 }
 
+void RenderFrame::setPolys(vector<ofPolyline> newPolys, vector<ofFloatColor> colors){
+    polys.clear();
+    polys = newPolys;
+    polyColors = colors;
+}
+
+void RenderFrame::addPolys(vector<ofPolyline> newPolys, vector<ofFloatColor> colors){
+    for (int i=0; i<newPolys.size(); i++) {
+        polys.push_back(newPolys[i]);
+        if (i<colors.size()){
+            colors.push_back(colors[i]);
+        }
+        else {
+            colors.push_back(ofFloatColor(1.));
+        }
+    }
+}
+
 void RenderFrame::clear(){
     polys.clear();
 }

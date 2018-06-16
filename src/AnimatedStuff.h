@@ -21,7 +21,7 @@ public:
     ~AnimatedStuff();
     
     virtual void setup(string name);
-    virtual void update() = 0 ;
+    virtual void update();
     virtual void draw();
     virtual void start(){};
     
@@ -61,7 +61,8 @@ public:
     
     void setLoopMode (ofLoopType mode);
     
-    inline virtual vector<ofPolyline> getPolylines(){return polylines;};    
+    inline virtual vector<ofPolyline> getPolylines(){return polylines;};
+    inline vector<ofFloatColor> getPolyColors() {return colors;};
     
     inline string getName(){return name;}
     
@@ -83,6 +84,7 @@ protected:
     string type;
     
     vector<ofPolyline> polylines;
+    vector<ofFloatColor> colors;
     
 //    ofxTimeline timeline;
     string name;

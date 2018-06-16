@@ -47,6 +47,8 @@ void AnimatedCircle::setup(string name) {
 }
 
 void AnimatedCircle::update() {
+    AnimatedStuff::update();
+    
     polylines.clear();
     ofPolyline p;
     

@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "AnimatedStuff.h"
+#include "ofxTween.h"
 
 #define NB_POINTS_SPACING 200
 
@@ -42,5 +43,9 @@ private:
     ofPoint scale;
     ofPoint offset;
    
-    vector<ofPolyline> pointPoly;
+    ofPolyline targetPoint;
+    
+    ofxEasingQuad easing;
+    float clamp;
+    ofxTween::ofxEasingType easingType;
 };

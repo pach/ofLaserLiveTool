@@ -72,6 +72,8 @@ void AnimatedSoundWave::guiEvent(ofxUIEventArgs &e)
 //--------------------------------------------------------------
 void AnimatedSoundWave::update()
 {
+    AnimatedStuff::update();
+    
     polylines.clear();
     
     ofPolyline p ;

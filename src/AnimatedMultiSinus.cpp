@@ -81,7 +81,7 @@ void AnimatedMultiSinus::setup(string name) {
 
 
 void AnimatedMultiSinus::update() {
-    
+    AnimatedStuff::update();
     polylines[0].clear();
     float x1, x2, x3, y1, y2, y3;
     for (int i=0 ; i<nbPoint ; i++){

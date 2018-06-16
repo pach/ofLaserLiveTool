@@ -79,6 +79,7 @@ void AnimatedRain::guiEvent(ofxUIEventArgs &e)
 }
 
 void AnimatedRain::update() {
+    AnimatedStuff::update();
     
     for(int i=0;i<vecADrops.size();i++)
     {

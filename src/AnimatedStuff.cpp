@@ -26,6 +26,11 @@ void AnimatedStuff::showGui(bool show){
     gui->setVisible(show);
 }
 
+void AnimatedStuff::update(){
+    time += (ofGetElapsedTimef()-lastTime)*speed;
+    lastTime = ofGetElapsedTimef();
+}
+
 //void AnimatedStuff::setTimelineActive(bool enable){
 //    if (enable){
 //        timeline.enableEvents();
@@ -61,25 +66,29 @@ void AnimatedStuff::setup(string name) {
 //    setLoopMode(OF_LOOP_NORMAL);
     time = 0.;
     lastTime = ofGetElapsedTimef();
+    
+    colors.clear();
 }
 
+
 void AnimatedStuff::draw(){
-    
-    
-    time += (ofGetElapsedTimef()-lastTime)*speed;
-    lastTime = ofGetElapsedTimef();
     
     
     ofSetColor(0);
     ofRect(drawOffset, drawW, drawH);
     
     ofPushMatrix();
-    ofSetColor(255);
     
     ofTranslate(drawOffset);
     ofScale(drawW, drawH);
     
     for (int i =0 ; i<polylines.size(); i++) {
+        if (i<colors.size()){
+            ofSetColor(colors[i]);
+        }
+        else{
+            ofSetColor(255);
+        }
         polylines[i].draw();
     }
     

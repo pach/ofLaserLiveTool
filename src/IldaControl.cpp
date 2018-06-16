@@ -141,7 +141,7 @@ void IldaControl::addPoly(ofPolyline poly){
 
 void IldaControl::addPoly(ofPolyline poly, ofFloatColor color){
     if (!freezeFrame && !drawCalib && !fixedShotCalib){
-        ildaFrame.addPoly(poly, color);
+        ildaFrame.addPoly(poly, color*laserColor);
     }
     else if (drawCalib){
         ildaFrame.drawCalibration();
@@ -318,6 +318,12 @@ void IldaControl::parseOSC(ofxOscMessage &m){
         }
         else if (cmd == "calib"){
             drawCalib = m.getArgAsInt32(0);
+        }
+        else if (cmd == "pps"){
+            pps = m.getArgAsInt32(0);
+        }
+        else if (cmd == "pointCount"){
+            pointCount = m.getArgAsInt32(0);
         }
         
     }

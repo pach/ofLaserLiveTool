@@ -102,7 +102,7 @@ void ofApp::update(){
     
     for (int i=0; i<animManager.size(); i++) {
         animManager[i]->update();
-        frame.addPolys(animManager[i]->getPolylines());
+        frame.addPolys(animManager[i]->getPolylines(), animManager[i]->getPolyColors());
     }
     
     if (ofGetElapsedTimef()-lastOscTime > oscTimeDelay) {

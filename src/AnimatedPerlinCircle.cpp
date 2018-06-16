@@ -32,7 +32,7 @@ void AnimatedPerlinCircle::setup(string name) {
     
     center = ofVec2f (0.5, 0.5);
     size = 0.5;
-    nbPoints = 100;
+    nbPoints = 700;
     noiseSpeed = 0.;
     noiseCoeff = 0.;
     
@@ -41,7 +41,7 @@ void AnimatedPerlinCircle::setup(string name) {
     
     noiseDisplace = 0.1;
     
-    gui->addIntSlider("/nbPoints", 10, 100, &nbPoints);
+    gui->addIntSlider("/nbPoints", 10, 1000, &nbPoints);
     gui->addSlider("/size", 0., 1., &size);
     gui->add2DPad("/center", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &center);
     gui->addSlider("/noise/speed", 0., 1., &noiseSpeed);
@@ -60,6 +60,7 @@ void AnimatedPerlinCircle::setup(string name) {
 }
 
 void AnimatedPerlinCircle::update() {
+    AnimatedStuff::update();
     polylines.clear();
     ofPolyline p;
     
