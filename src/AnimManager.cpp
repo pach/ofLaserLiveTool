@@ -25,6 +25,7 @@
 #include "AnimatedPerlinLines.h"
 #include "AnimatedRibbon.h"
 #include "AnimatedSvg.h"
+#include "AnimatedMultiSvg.h"
 #include "AnimatedLines.h"
 #include "AnimatedCircle.h"
 #include "AnimatedWalls.h"
@@ -232,6 +233,9 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
         else if (name == "add SVG"){
             createNewAnimationWithTextbox("AnimatedSvg");
         }
+        else if (name == "add SVG multi"){
+            createNewAnimationWithTextbox("AnimatedMultiSvg");
+        }
         else if (name == "add lines"){
             createNewAnimationWithTextbox("AnimatedLines");
         }
@@ -338,6 +342,10 @@ void AnimManager::createNewAnimation(string type, string aName){
         }
         else if (type == "AnimatedSvg") {
             a = new AnimatedSvg();
+            a->setup(aName);
+        }
+        else if (type == "AnimatedMultiSvg") {
+            a = new AnimatedMultiSvg();
             a->setup(aName);
         }
         else if (type == "AnimatedLines") {

@@ -4,6 +4,10 @@
         <type>AnimatedSvg</type>
     </animList>
     <animList>
+        <name>svg_multi</name>
+        <type>AnimatedMultiSvg</type>
+    </animList>
+    <animList>
         <name>sin</name>
         <type>AnimatedSinus</type>
     </animList>

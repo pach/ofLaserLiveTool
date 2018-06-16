@@ -2,7 +2,7 @@
 //  AnimatedSvg.h
 //  LaserAnimTool
 //
-//  Created by pach on 14/09/14.
+//  Created by pach on 16/06/18.
 //  Copyright (c) 2014 __MyCompanyName__. All rights reserved.
 //
 
@@ -12,19 +12,19 @@
 #include "AnimatedStuff.h"
 #include "SvgLoader.h"
 
-class AnimatedSvg : public AnimatedStuff{
+class AnimatedMultiSvg : public AnimatedStuff{
     
 public:
-    AnimatedSvg();
-    ~AnimatedSvg();
+    AnimatedMultiSvg();
+    ~AnimatedMultiSvg();
     
     void setup (string name);
     void update ();
     
-//    void textInputEvent(ofxUIEventArgs &e);
+    void textInputEvent(ofxUIEventArgs &e);
     
 private:
-
+    
     void processOpenFileSelection(ofFileDialogResult openFileResult);
     
     ofPoint pos;
@@ -34,9 +34,13 @@ private:
     bool doSpacing;
     
     bool doLoad;
-    string filename;
+    string dirname;
     bool hasLoaded;
     
-    SvgLoader svg;
+    vector<SvgLoader> svgVec;
+    
+    int idSvg ;
+    float svgTime;
+    float lastTime;
     
 };

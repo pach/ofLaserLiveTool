@@ -33,7 +33,6 @@ void AnimatedSvg::setup(string name) {
     doSpacing = true;
     nbPointSpacing = 700;
     
-    type = "AnimatedSvg";
     gui->addSlider("size", 0., 1., &size);
     gui->addSlider("rot", 0., 360., &rot);
     gui->add2DPad("pos", ofxUIVec2f(0., 1.), ofxUIVec2f(0., 1.), &pos);
@@ -44,7 +43,7 @@ void AnimatedSvg::setup(string name) {
     gui->addIntSlider("nbPointSpacing", 100, 1000, &nbPointSpacing);
     
     
-    ofAddListener(gui->newGUIEvent,this,&AnimatedSvg::textInputEvent);
+//    ofAddListener(gui->newGUIEvent,this,&AnimatedSvg::textInputEvent);
     
     load();
     
@@ -54,30 +53,30 @@ void AnimatedSvg::setup(string name) {
 //    }
 }
 
-void AnimatedSvg::textInputEvent(ofxUIEventArgs &e){
-    
-    if(e.getName() == "filename")
-    {
-        ofxUITextInput *ti = (ofxUITextInput *) e.widget;
-        if(ti->getInputTriggerType() == OFX_UI_TEXTINPUT_ON_ENTER)
-        {
-            cout << "ON ENTER: ";
-        }
-        else if(ti->getInputTriggerType() == OFX_UI_TEXTINPUT_ON_FOCUS)
-        {
-            cout << "ON FOCUS: ";
-        }
-        else if(ti->getInputTriggerType() == OFX_UI_TEXTINPUT_ON_UNFOCUS)
-        {
-            cout << "ON BLUR: ";
-        }
-        string output = ti->getTextString();
-        cout << output << endl;
-        
-        filename = ti->getTextString();
-        hasLoaded = false;
-    }
-}
+//void AnimatedSvg::textInputEvent(ofxUIEventArgs &e){
+//
+//    if(e.getName() == "filename")
+//    {
+//        ofxUITextInput *ti = (ofxUITextInput *) e.widget;
+//        if(ti->getInputTriggerType() == OFX_UI_TEXTINPUT_ON_ENTER)
+//        {
+//            cout << "ON ENTER: ";
+//        }
+//        else if(ti->getInputTriggerType() == OFX_UI_TEXTINPUT_ON_FOCUS)
+//        {
+//            cout << "ON FOCUS: ";
+//        }
+//        else if(ti->getInputTriggerType() == OFX_UI_TEXTINPUT_ON_UNFOCUS)
+//        {
+//            cout << "ON BLUR: ";
+//        }
+//        string output = ti->getTextString();
+//        cout << output << endl;
+//
+//        filename = ti->getTextString();
+//        hasLoaded = false;
+//    }
+//}
 
 void AnimatedSvg::processOpenFileSelection(ofFileDialogResult openFileResult){
 	

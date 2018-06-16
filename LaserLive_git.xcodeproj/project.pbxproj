@@ -74,6 +74,7 @@
 		7F2CD93F681F3C1547B3BF2C /* ofxUIImageButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6280B5FA1CEA20450916E49 /* ofxUIImageButton.cpp */; };
 		82845E1F8C90E1F5A99D9868 /* ofxUIWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08A9C84B3CA68561BE01FF37 /* ofxUIWidget.cpp */; };
 		837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15F2C6477A769C03A56D1401 /* ofxSlider.cpp */; };
+		84A93DF120D5901C00C1EB0B /* AnimatedMultiSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84A93DEF20D5901C00C1EB0B /* AnimatedMultiSvg.cpp */; };
 		856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9604B925D32EE39065747725 /* ofxBaseGui.cpp */; };
 		85A41526FDFA1A8CDAEE81F7 /* ofxEasingQuart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 882494DB324414B7B31DB11C /* ofxEasingQuart.cpp */; };
 		879A251454401BC0B6E4F238 /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9BFFBBF4CC43DEE890B3C3E /* OscTypes.cpp */; };
@@ -296,6 +297,9 @@
 		828EDF7F6C239EA7B17F32F0 /* ofxUIRectangle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUIRectangle.cpp; path = ../../../addons/ofxUI/src/ofxUIRectangle.cpp; sourceTree = SOURCE_ROOT; };
 		832BDC407620CDBA568B713D /* tinyxmlerror.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = tinyxmlerror.cpp; path = ../../../addons/ofxXmlSettings/libs/tinyxmlerror.cpp; sourceTree = SOURCE_ROOT; };
 		8431685B2571EE82D56B7126 /* AnimManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = AnimManager.h; path = src/AnimManager.h; sourceTree = SOURCE_ROOT; };
+		84A93DEF20D5901C00C1EB0B /* AnimatedMultiSvg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedMultiSvg.cpp; sourceTree = "<group>"; };
+		84A93DF020D5901C00C1EB0B /* AnimatedMultiSvg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimatedMultiSvg.h; sourceTree = "<group>"; };
+		84A93DF220D5924B00C1EB0B /* anim.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = anim.xml; path = bin/data/anim.xml; sourceTree = SOURCE_ROOT; };
 		84EA9FD3F01D59BACFEFDFA3 /* ofxEtherdream.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxEtherdream.cpp; path = ../../../addons/ofxEtherdream/src/ofxEtherdream.cpp; sourceTree = SOURCE_ROOT; };
 		856BF5AB0322D0689EE63829 /* ofxUIRangeSlider.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUIRangeSlider.h; path = ../../../addons/ofxUI/src/ofxUIRangeSlider.h; sourceTree = SOURCE_ROOT; };
 		87035EFE3D4427294D4D1338 /* ofxUIUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUIUtils.h; path = ../../../addons/ofxUI/src/ofxUIUtils.h; sourceTree = SOURCE_ROOT; };
@@ -660,6 +664,8 @@
 				0563B1B141038BCB76DAAB10 /* AnimatedSvg.h */,
 				1F96FFA0841D363414475FE8 /* AnimatedWalls.cpp */,
 				A2D832CB4B980CFCC75CAFDB /* AnimatedWalls.h */,
+				84A93DEF20D5901C00C1EB0B /* AnimatedMultiSvg.cpp */,
+				84A93DF020D5901C00C1EB0B /* AnimatedMultiSvg.h */,
 			);
 			name = anim;
 			sourceTree = "<group>";
@@ -957,6 +963,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				84A93DF220D5924B00C1EB0B /* anim.xml */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
@@ -1201,6 +1208,7 @@
 				4B3ED367CA852D522E2EE996 /* ofxUI2DPad.cpp in Sources */,
 				F1E8DE8734BA6F69A5112FA8 /* ofxUIBaseDraws.cpp in Sources */,
 				C381F2B7CFD84C0E540EB4BC /* ofxUIBiLabelSlider.cpp in Sources */,
+				84A93DF120D5901C00C1EB0B /* AnimatedMultiSvg.cpp in Sources */,
 				7D393646FB859A930EF58917 /* ofxUIButton.cpp in Sources */,
 				7BE46522B64E24FAEDE1A25D /* ofxUICanvas.cpp in Sources */,
 				DF0C851B244C4C867CEA8806 /* ofxUICircleSlider.cpp in Sources */,

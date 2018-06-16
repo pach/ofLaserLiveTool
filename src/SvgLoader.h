@@ -23,9 +23,11 @@ public:
     
     bool hasNextPolyline();
     ofPolyline getPolyline();
+    ofFloatColor getCurrentColor();
     
 private:
     vector<ofPolyline> polypocket;
+    vector<ofFloatColor> colors;
     int curPoly;
     
     ofxSVG svg;

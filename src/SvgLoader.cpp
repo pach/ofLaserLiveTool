@@ -14,7 +14,6 @@ void SvgLoader::setup(){
 }
 
 void SvgLoader::update(){
-    
 }
 
 void SvgLoader::draw(){
@@ -38,10 +37,17 @@ ofPolyline SvgLoader::getPolyline(){
     if (!hasNextPolyline()){
         return ;
     }
-    ofPolyline poly = polypocket.at(curPoly);
+    ofPolyline &poly = polypocket.at(curPoly);
     curPoly ++;
     return poly;
     
+}
+
+ofFloatColor SvgLoader::getCurrentColor(){
+    if (curPoly < colors.size())
+        return colors.at(curPoly);
+    else
+        return ofFloatColor(1.);
 }
 
 void SvgLoader::load(string filename){
@@ -59,6 +65,8 @@ void SvgLoader::load(string filename){
     for (int i=0; i<svg.getNumPath(); i++) {
         ofPath path = svg.getPathAt(i);
         vector<ofPolyline> polypath = path.getOutline();
+        ofFloatColor color = path.getStrokeColor();
+        
         for (int j=0; j<polypath.size(); j++) {
             ofPolyline poly = polypath.at(j);
             vector<ofPoint> polyPoints = poly.getVertices();
@@ -73,7 +81,9 @@ void SvgLoader::load(string filename){
             }
             
             polypocket.push_back(poly);
+            colors.push_back(color);
+            
         }
-        ofLog(OF_LOG_NOTICE, "svg load path "+ofToString(i));   
+//        ofLog(OF_LOG_NOTICE, "svg load path "+ofToString(i));   
     }
 }
