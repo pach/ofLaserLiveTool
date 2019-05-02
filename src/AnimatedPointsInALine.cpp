@@ -32,7 +32,7 @@ void AnimatedPointsInALine::setup(string name) {
     gui->addSlider("/pointsDuration", 0., 1, &duration);
     gui->addIntSlider("/pointsNumSimultaneousPoints", 0, 60, &numSimultaneousPoints);
     
-    load();
+//    load();
     
     ofPolyline* p = new ofPolyline();
     polylines.push_back(*p);

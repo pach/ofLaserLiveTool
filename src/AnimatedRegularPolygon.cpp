@@ -33,7 +33,7 @@ void AnimatedRegularPolygon::setup(string name) {
         polylines.push_back(p);
     }
     
-    load();
+//    load();
     
 }
 

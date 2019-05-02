@@ -23,6 +23,15 @@ public:
     
     void textInputEvent(ofxUIEventArgs &e);
     
+    void parseOSC(ofxOscMessage &m);
+    
+    void draw();
+    
+    void load (string layerName = "");
+    void save (string layerName);
+    
+    void loadFromDir (string dirPath);
+    
 private:
     
     void processOpenFileSelection(ofFileDialogResult openFileResult);
@@ -37,10 +46,12 @@ private:
     string dirname;
     bool hasLoaded;
     
+    bool restart;
+    
     vector<SvgLoader> svgVec;
     
     int idSvg ;
     float svgTime;
-    float lastTime;
-    
+    float svgLastTime;
+    float svgStartTime;
 };

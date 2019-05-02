@@ -24,6 +24,7 @@ public:
     bool hasNextPolyline();
     ofPolyline getPolyline();
     ofFloatColor getCurrentColor();
+    inline int getNbPoly() {return polypocket.size();};
     
 private:
     vector<ofPolyline> polypocket;

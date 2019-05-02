@@ -76,7 +76,7 @@ void AnimatedMultiSinus::setup(string name) {
     ofPolyline p;
     polylines.push_back(p);
     
-    load();
+//    load();
 }
 
 

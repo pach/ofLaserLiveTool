@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(125);
-    ofSetFrameRate(60);
+    ofSetFrameRatrte(60);
     
 //    ofxTimeline::removeCocoaMenusFromGlut("Laser Anim Toolbox");
 //    ofxEtherdream::startEtherdreamLib();

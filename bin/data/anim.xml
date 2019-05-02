@@ -84,7 +84,7 @@
         <type>AnimatedOSCLines</type>
     </animList>
     <animList>
-        <name>oscMultilines</name>
-        <type>AnimatedOSCPolylines</type>
+        <name>oscMultiLines</name>
+        <type>AnimatedOSCMultilines</type>
     </animList>
 </ANIMATIONS>

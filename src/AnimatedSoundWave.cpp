@@ -49,7 +49,7 @@ void AnimatedSoundWave::setup(string name)
     /// GUI
     gui->addSlider("/amplitude", 0.0, 0.5, &amplitude);
     ofAddListener(gui->newGUIEvent, this, &AnimatedSoundWave::guiEvent);
-    load();
+//    load();
     
     ofPolyline* p = new ofPolyline();
     polylines.push_back(*p);

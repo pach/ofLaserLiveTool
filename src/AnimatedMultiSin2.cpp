@@ -75,7 +75,7 @@ void AnimatedMultiSin2::setup(string name) {
     polylines.push_back(p);
     nFrame = 0;
     
-    load();
+//    load();
 }
 
 void AnimatedMultiSin2::update() {

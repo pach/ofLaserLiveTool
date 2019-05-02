@@ -42,7 +42,7 @@ void AnimatedCircle::setup(string name) {
     gui->addSlider("/noise/speed", 0., 1., &noiseSpeed);
     gui->addSlider("/rotSpeed", 0., 100., &rotSpeed);
     
-    load();
+//    load();
 
 }
 

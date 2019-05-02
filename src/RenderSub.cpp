@@ -326,6 +326,7 @@ ofPoint RenderSub::getIntersectPoint(ofPoint &p1, ofPoint &p2){
         return ofPoint((segmentBound.y-bCoeff)/dirCoeff, segmentBound.y);
     }
 }
+
 ofPoint RenderSub::getReverseIntersectPoint(ofPoint &p1, ofPoint &p2){
     // recherche avec quel segment du carré il y a intersection, ordre des segment inverse
     bool foundSide = false;

@@ -57,7 +57,7 @@ void AnimatedSolid::setup(string name){
     time = 0;
     lastTime = ofGetElapsedTimef();
     
-    load();
+//    load();
     
     
 }

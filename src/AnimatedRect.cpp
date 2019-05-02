@@ -51,7 +51,7 @@ void AnimatedRect::setup(string name) {
     p.addVertex(center+ofVec2f(-size/2., -size/2.));
     polylines.push_back(p);
     
-    load();
+//    load();
 }
 
 void AnimatedRect::update() {

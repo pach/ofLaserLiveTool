@@ -53,7 +53,7 @@ void AnimatedRing::setup(string name) {
     easingType = ofxTween::easeInOut;
     clamp = true;
     
-    load();
+//    load();
     
 }
 

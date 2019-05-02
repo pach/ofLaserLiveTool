@@ -41,7 +41,7 @@ void AnimatedRain::setup(string name)
     
     ofAddListener(gui->newGUIEvent, this, &AnimatedRain::guiEvent);
 
-    load();
+//    load();
     
     ofPolyline* p = new ofPolyline();
 

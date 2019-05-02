@@ -84,7 +84,7 @@ void AnimatedSinusRibbon::setup(string name) {
     
     type = "AnimatedSinusRibbon";
      
-    load();
+//    load();
     
     polylines.clear();
     

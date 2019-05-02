@@ -64,7 +64,7 @@ void AnimatedRibbon::setup(string name) {
     
     type = "AnimatedRibbon";
     
-    load();
+//    load();
     
     ofPolyline p;
     for (int i=0; i<nbMaxVertex*nbVertex; i++) {

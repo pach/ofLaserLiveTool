@@ -162,7 +162,7 @@ void AnimManager::setupGui(){
     gui->addSlider("red", 0, 1, &color.r);
     gui->addSlider("green", 0, 1, &color.g);
     gui->addSlider("blue", 0, 1, &color.b);
-//    gui->addSlider("alpha", 0, 1, &color.b);
+//    gui->addSlider("alpha", 0, 1, &color.a);
     
     newAnimBool = false;
 //    gui->addButton("add SVG", newAnimBool);
@@ -246,7 +246,7 @@ void AnimManager::guiEvent(ofxUIEventArgs &e)
             createNewAnimationWithTextbox("AnimatedOSCLines");
         }
         else if (name == "add osc multilines"){
-            createNewAnimationWithTextbox("AnimatedOSCPolylines");
+            createNewAnimationWithTextbox("AnimatedOSCMultilines");
         }
         else if (name == "add imac straws"){
             createNewAnimationWithTextbox("AnimatedImacStraw");
@@ -360,7 +360,7 @@ void AnimManager::createNewAnimation(string type, string aName){
             a = new AnimatedOSCLines();
             a->setup(aName);
         }
-        else if (type == "AnimatedOSCPolylines") {
+        else if (type == "AnimatedOSCMultilines") {
             a = new AnimatedOSCPolylines();
             a->setup(aName);
         }

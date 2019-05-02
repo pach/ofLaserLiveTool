@@ -55,7 +55,7 @@ void AnimatedPerlinCircle::setup(string name) {
     timeRot = 0.;
     lastTime = ofGetElapsedTimef();
     
-    load();
+//    load();
     
 }
 

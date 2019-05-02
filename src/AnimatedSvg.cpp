@@ -45,7 +45,7 @@ void AnimatedSvg::setup(string name) {
     
 //    ofAddListener(gui->newGUIEvent,this,&AnimatedSvg::textInputEvent);
     
-    load();
+//    load();
     
 //    if (filename != "none"){
 //        svg.load(filename);

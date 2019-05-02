@@ -45,7 +45,7 @@ void AnimatedSinus::setup(string name) {
     polylines.push_back(p);
     colors.push_back(c);
     
-    load();
+//    load();
  
 }
 

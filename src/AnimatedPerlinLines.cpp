@@ -44,7 +44,8 @@ void AnimatedPerlinLines::setup(string name) {
     gui->addToggle("/lineMode", &lineMode);
     noiseTime = 0.;
     
-    load();
+//    load();
+    
     nbPoints = nbVertex*nbPointsCoeff;
     
     oldNbPoints = nbPoints;

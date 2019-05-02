@@ -47,7 +47,7 @@ void AnimatedImacStraw::setup(string name) {
     gui->addSlider("anim speed", 0., 2., &animationSpeed);
     gui->addSlider("displaceSize", 0., 0.2, &horizontalDisplace);
     
-    load();
+//    load();
 }
 
 

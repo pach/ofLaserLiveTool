@@ -136,7 +136,7 @@ void IldaControl::clear(){
 }
 
 void IldaControl::addPoly(ofPolyline poly){
-    addPoly(poly, ofFloatColor(1.));
+    addPoly(poly, laserColor);
 }
 
 void IldaControl::addPoly(ofPolyline poly, ofFloatColor color){

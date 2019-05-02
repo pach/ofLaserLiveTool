@@ -67,7 +67,7 @@ void AnimatedStuff::setup(string name) {
     time = 0.;
     lastTime = ofGetElapsedTimef();
     
-    colors.clear();
+    colors.push_back(ofFloatColor(1.));
 }
 
 

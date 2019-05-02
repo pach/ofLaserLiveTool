@@ -20,7 +20,7 @@ AnimatedOSCPolylines::~AnimatedOSCPolylines(){
 
 void AnimatedOSCPolylines::setup(string name) {
     AnimatedStuff::setup(name);
-    type = "AnimatedOSCPolylines";
+    type = "AnimatedOSCMultilines";
     
     ofPolyline p;
     p.addVertex(ofVec2f(0.5, 0.5));
@@ -38,8 +38,10 @@ void AnimatedOSCPolylines::parseOSC(ofxOscMessage &m){
     
     if (cmd == "oscLines"){
         ofPolyline p;
+        ofFloatColor c;
         polylines.clear();
-
+        colors.clear();
+        
         int ptOscArgs = 0;
         int nbPolylines = m.getArgAsInt32( ptOscArgs);
         ptOscArgs ++;
@@ -48,11 +50,19 @@ void AnimatedOSCPolylines::parseOSC(ofxOscMessage &m){
             p.clear();
             int nbPoints = m.getArgAsInt32(ptOscArgs);
             ptOscArgs ++;
+            
+            c.r = m.getArgAsFloat(ptOscArgs);
+            c.g = m.getArgAsFloat(ptOscArgs+1);
+            c.b = m.getArgAsFloat(ptOscArgs+2);
+//            c.a = m.getArgAsFloat(ptOscArgs+3);
+            ptOscArgs += 3;
+            
             for (int j=0; j<nbPoints; j++) {
                 p.addVertex(m.getArgAsFloat(ptOscArgs), m.getArgAsFloat(ptOscArgs+1));
                 ptOscArgs += 2;
             }
             polylines.push_back(p);
+            colors.push_back(c);
         }
     }
 }

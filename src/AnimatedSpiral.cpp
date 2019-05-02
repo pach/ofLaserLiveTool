@@ -45,7 +45,7 @@ void AnimatedSpiral::setup(string name) {
     gui->addToggle("/log/sw", &isLogSpiral);
     gui->addSlider("/log/coeff", 0.95, 1.5, &logCoeff);
     
-    load();
+//    load();
     
 }
 
