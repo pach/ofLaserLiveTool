@@ -11,12 +11,13 @@
 #include "ofxUI.h"
 #include "ofxGui.h"
 
-#define OSC_LISTENING_PORT 10000
-#define NB_LAYERS 9
+#define OSC_LISTENING_PORT 10010
+#define NB_LAYERS 24
 
 #define DEBUG_OFFLINE false
 
-static int etherdreamID[]={15243823, 14446096, 14441185, 14425400, 15153313};
+static int etherdreamID[]={14441185, 14446096, 15243823, 14425400, 15153313};
+//static int etherdreamID[]={15243823, 14446096, 14441185, 14425400, 15153313};
 //static int etherdreamID[]={15153313, 15243823, 14446096, 14441185, 14425400};
 
 #include "ofxOsc.h" 
